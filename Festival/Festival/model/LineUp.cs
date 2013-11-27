@@ -1,0 +1,102 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
+using System.Data.Common;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BADProject.model
+{
+    class LineUp
+    {
+
+
+        #region props
+        private int _id;
+
+        public int ID
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+        private DateTime _date;
+
+        public DateTime Date
+        {
+            get { return _date; }
+            set { _date = value; }
+        }
+
+        private string _from;
+
+        public string From
+        {
+            get { return _from; }
+            set { _from = value; }
+        }
+
+        private string _until;
+
+        public string Until
+        {
+            get { return _until; }
+            set { _until = value; }
+        }
+
+        private Stage _stage;
+
+        public Stage Stage
+        {
+            get { return _stage; }
+            set { _stage = value; }
+        }
+
+        private Band _band;
+
+        public Band Band
+        {
+            get { return _band; }
+            set { _band = value; }
+        }
+        #endregion
+
+
+
+        public static ObservableCollection<LineUp> GetLineupByStageAndDate(int stageID,DateTime day) {
+            ObservableCollection<LineUp> lineUpCollectie = new ObservableCollection<LineUp>();
+
+            DbParameter stageIdPar = DataBase.AddParameter("@StageID", stageID);
+            day = day.Date;
+            string sDateTime = day.ToString("yyyy/MM/dd HH:mm:ss");
+
+            DbParameter datePar = DataBase.AddParameter("@Day", sDateTime);
+            DbDataReader reader = DataBase.GetData("SELECT * FROM LineUp WHERE Stage = @StageID AND Datum = @Day ORDER BY LineUp.Until ASC", stageIdPar,datePar);
+            foreach (IDataRecord record in reader)
+            {
+                LineUp tempLineup = new LineUp();
+                tempLineup.ID = (int)reader["ID"];
+                tempLineup.Date = (DateTime)reader["Datum"];
+                tempLineup.From = (string)reader["From"];
+                tempLineup.Until = (string)reader["Until"];
+                tempLineup.Stage = Stage.GetStageByID((int)reader["Stage"]);
+                tempLineup.Band = Band.GetBandByID((int)reader["Band"]);
+                lineUpCollectie.Add(tempLineup);
+            }
+
+            return lineUpCollectie;
+        }
+
+
+     
+
+
+
+
+
+    }
+}

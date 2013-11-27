@@ -1,0 +1,24 @@
+﻿<Window x:Class="BADProject.view.AddStage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:context="clr-namespace:BADProject.viewmodel"
+        Title="AddStage" Height="120" Width="175">
+    <Window.DataContext>
+        <context:LineupVM></context:LineupVM>
+    </Window.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label>Enter the stagename:</Label>
+        <TextBox Name="txtStage" Grid.Row="1"></TextBox>
+        <Button x:Name="btnAddStage" Command="{Binding AddStageActionCom}" Grid.Row="2" Click="btnAddStage_Click">Add stage.</Button>
+    </Grid>
+</Window>

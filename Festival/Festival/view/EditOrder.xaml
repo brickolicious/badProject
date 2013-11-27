@@ -1,0 +1,46 @@
+﻿<Window x:Class="BADProject.view.EditOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:context="clr-namespace:BADProject.viewmodel"
+        Title="EditOrder" Height="300" Width="300">
+    <Window.DataContext>
+        <context:BezoekersVM/>
+    </Window.DataContext>
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.75*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,34,0" Width="91" Content="Edit order:"/>
+        <Label Grid.Column="0" Grid.Row="1" Content="Person ID"/>
+        <Label Grid.Column="0" Grid.Row="2" Content="Name:"/>
+        <Label Grid.Column="0" Grid.Row="3" Content="E-mail:"/>
+        <Label Grid.Column="0" Grid.Row="5">Amount:</Label>
+
+        <!--<ListBox ItemsSource="{Binding EditContact}" DisplayMemberPath="Name"></ListBox>-->
+        <Label x:Name="lblOrderID" Content="{Binding Path=SelectedTicket.ID}" Grid.Column="1" HorizontalAlignment="Center" ></Label>
+        <Label x:Name="lblPersonID"  Grid.Column="1" Grid.Row="1" Content="{Binding SelectedTicket.TicketholderID}" HorizontalAlignment="Center"></Label>
+        <Label x:Name="lblName" Grid.Column="1" Grid.Row="2" Content="{Binding SelectedTicket.Name}"></Label>
+
+        <!--by ref selectedItem-->
+        <ComboBox x:Name="cboTicketType" Grid.Column="1" Grid.Row="4" ItemsSource="{Binding TicketTypeList}" DisplayMemberPath="Name">
+        </ComboBox>
+        <Label x:Name="lblEmail" Grid.Column="1" Grid.Row="3" Content="{Binding SelectedTicket.Email}"/>
+        <TextBox x:Name="txtAmount" Grid.Column="1" Grid.Row="5" Text="{Binding SelectedTicket.Amount}"></TextBox>
+
+        <Button x:Name="sendBtn" Command="{Binding EditActionCommand}"  Grid.ColumnSpan="2" Grid.Row="9" Click="sendBtn_Click" Content="Edit order" />
+    </Grid>
+</Window>

@@ -1,0 +1,52 @@
+﻿<Window x:Class="BADProject.view.EditBand"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:context="clr-namespace:BADProject.viewmodel"
+        Title="EditBand" Height="420" Width="300">
+    <Window.DataContext>
+        <context:BandsVM/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" HorizontalAlignment="Center" Content="Edit details of band:" Width="146"/>
+        <Label Grid.Column="0" Grid.Row="1" Content="Bandnaam:"/>
+        <Label Grid.Column="0" Grid.Row="2" Content="Description:"/>
+        <Label Grid.Column="0" Grid.Row="3" Content="Twitter:"/>
+        <Label Grid.Column="0" Grid.Row="4" Content="Facebook:"/>
+        <Label Grid.Column="0" Grid.Row="6" Content="Photo:"/>
+
+        <Label x:Name="lblID" Content="{Binding SelectedBand.ID}"  Grid.Column="1" ></Label>
+        <Label x:Name="lblName"  Content="{Binding SelectedBand.Name}" Grid.Column="1" Grid.Row="1" />
+        <TextBox x:Name="txtDescription" Text="{Binding SelectedBand.Description}" Grid.Column="1" Grid.Row="2"/>
+        <TextBox x:Name="txtTwitter" Text="{Binding SelectedBand.Twitter}" Grid.Column="1" Grid.Row="3"/>
+        <TextBox x:Name="txtFacebook" Text="{Binding SelectedBand.Facebook}" Grid.Column="1" Grid.Row="4"/>
+        <Image Grid.Row="7" Grid.ColumnSpan="2" AllowDrop="True">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Drop">
+                    <cmd:EventToCommand Command="{Binding PictureCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Image>
+        <Button x:Name="sendBtn" Command="{Binding EditBandActionCommand}"  Grid.ColumnSpan="2" Grid.Row="10" Click="sendBtn_Click" Margin="0,0,0,-1" Content="Edit band"/>
+        <Label Grid.Column="0" Grid.Row="5" Content="Genres:"/>
+        <TextBox x:Name="txtGenres" Text="{Binding SelectedBand.GenresInText}" Grid.Column="1" Grid.Row="5"/>
+    </Grid>
+</Window>

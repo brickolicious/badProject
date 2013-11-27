@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="BADProject.view.Bands"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Width="788" Height="473"
+             xmlns:viewModelns="clr-namespace:BADProject.viewmodel">
+
+
+    <Grid Style="{StaticResource gridStyle}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Bands" Grid.Column="1"   HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333"/>
+        <ListView x:Name="lstvwBands" Grid.Column="1" Grid.Row="2" Grid.RowSpan="4" ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Naam" Width="auto" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Description" Width="auto" DisplayMemberBinding="{Binding Description}" />
+                    <GridViewColumn Header="Twitter" Width="auto" DisplayMemberBinding="{Binding Twitter}" />
+                    <GridViewColumn Header="Facebook" Width="auto" DisplayMemberBinding="{Binding Facebook}" />
+                    <GridViewColumn Header="Genres" Width="auto" DisplayMemberBinding="{Binding GenresInText}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Command="{Binding AddBandCommand}" Style="{StaticResource buttonStyle}" Content="Add band" Grid.Column="3" Height="35" Width="120" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+        <Image  Source="{Binding SelectedBand.Picture}" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,10" Grid.Row="4" VerticalAlignment="Stretch"/>
+        <Button Command="{Binding EditBandCommand}" CommandParameter="{Binding ElementName=lstvwBands,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwBands}"  Style="{StaticResource buttonStyle}" Content="Edit band" Grid.Column="3" Height="35" Width="120" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="0,8,0,0"/>
+        <Button Command="{Binding DeleteBandCommand}" CommandParameter="{Binding ElementName=lstvwBands,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwBands}"  Style="{StaticResource buttonStyle}" Content="Delete band" Grid.Column="3" Height="35" Width="120" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+    </Grid>
+</UserControl>
