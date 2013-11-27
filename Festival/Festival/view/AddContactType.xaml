@@ -1,0 +1,32 @@
+﻿<Window x:Class="BADProject.view.AddContactType"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:context="clr-namespace:BADProject.viewmodel"
+        Title="AddContactType" Height="150" Width="300">
+    
+    
+    <Window.DataContext>
+        <context:ContactVM/>
+    </Window.DataContext>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.75*"/>
+        </Grid.RowDefinitions>
+        
+        
+        
+        
+        <Label Grid.Column="1" HorizontalAlignment="Center" Content="Enter new category:"/>
+        <TextBox x:Name="txtType" Grid.Column="1" Grid.Row="1"></TextBox>
+        <Button Command="{Binding AddCategory}" CommandParameter="{Binding ElementName=txtType, Path=Text}" Grid.Column="1" Grid.Row="2" Click="Button_Click" >Add category</Button>
+    </Grid>
+</Window>

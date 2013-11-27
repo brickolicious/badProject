@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BADProject.model
 {
@@ -79,7 +80,54 @@ namespace BADProject.model
 
             return tempConTyp;
         }
-        
-        
+
+        public static void AddContactType(string strName) {
+
+            try
+            {
+                DbParameter catName = DataBase.AddParameter("@catName", strName);
+                string sql = "INSERT INTO ContactPersonType(Name) VALUES (@catName)";
+                int iModifiedData = DataBase.ModifyData(sql, catName);
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public static void DeleteContactType(int id) {
+            try
+            {
+                DbParameter idPar = DataBase.AddParameter("@typeID", id);
+
+
+                string sql = "SELECT COUNT(JobRole) AS FrequencyOfType FROM ContactPerson WHERE ContactPerson.JobRole = @typeID";
+                DbDataReader reader = DataBase.GetData(sql, idPar);
+                int iPresentContactsInCategory =0;
+
+                foreach (IDataRecord record in reader) {
+
+                    iPresentContactsInCategory = (int)reader["FrequencyOfType"];
+
+                }
+
+
+                if (iPresentContactsInCategory > 0)
+                {
+                    MessageBox.Show("Category can not be deleted, there are still contacts present.", "Delete notification", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                }
+                else {
+                    DbParameter idPar_2 = DataBase.AddParameter("@typeID_2", id);
+                    string sql_delete = "DELETE FROM ContactPersonType WHERE ID = @typeID_2";
+                    int iModifiedData = DataBase.ModifyData(sql_delete, idPar_2);
+                    
+                }
+
+
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }

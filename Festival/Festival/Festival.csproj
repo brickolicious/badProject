@@ -81,6 +81,9 @@
     <Compile Include="view\AddContact.xaml.cs">
       <DependentUpon>AddContact.xaml</DependentUpon>
     </Compile>
+    <Compile Include="view\AddContactType.xaml.cs">
+      <DependentUpon>AddContactType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\AddStage.xaml.cs">
       <DependentUpon>AddStage.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\AddContact.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\AddContactType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

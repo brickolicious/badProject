@@ -32,7 +32,7 @@ namespace BADProject.viewmodel
             get {
                 _conType = ContactPersonType.GetAllContactPersonType();
                 return _conType; }
-            set { _conType = value; }
+            set { _conType = value; OnPropertyChanged("ContactTypeLijst"); }
         }
 
 
@@ -62,7 +62,7 @@ namespace BADProject.viewmodel
             get {
                 _lstContact = ContactPersonType.GetAllContactPersonType();
                 return _lstContact; }
-            set { _lstContact = value; }
+            set { _lstContact = value; OnPropertyChanged("ContactList"); }
         }
 
         private ObservableCollection<ContactPerson> _searchList;
@@ -187,6 +187,55 @@ namespace BADProject.viewmodel
         
         }
 
+
+        public ICommand AddContactTypeCommand {
+            get { return new RelayCommand(OpenAddContactType); }
+        }
+
+        private void OpenAddContactType()
+        {
+            AddContactType viewAddType = new AddContactType();
+            viewAddType.Show();
+        }
+
+        public ICommand AddCategory
+        {
+            get { return new RelayCommand<string>(AddCategoryAction); }
+        }
+
+        private void AddCategoryAction(string strName)
+        {
+
+            if (!String.IsNullOrEmpty(strName)) {
+                ContactPersonType.AddContactType(strName);
+            }
+   
+        }
+
+        public ICommand DeleteContactTypeCommand
+        {
+            get { return new RelayCommand<ContactPersonType>(DeleteTypeAction); }
+        }
+
+        private void DeleteTypeAction(ContactPersonType ConType)
+        {
+            ContactPersonType.DeleteContactType(ConType.ID);
+        }
+
+        public ICommand DeleteContact
+        {
+            get { return new RelayCommand<ContactPerson>(DeleteContactAction); }
+        }
+
+        private void DeleteContactAction(ContactPerson contact)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you wish to delete this contact?", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                ContactPerson.DeleteContact(contact.ID);
+            }
+            else { return; }
+        }
 
     }
 }

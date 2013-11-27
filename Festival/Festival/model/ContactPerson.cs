@@ -212,7 +212,19 @@ namespace BADProject.model
 
         }
 
+        public static void DeleteContact(int contactID) {
+            try
+            {
+                DbParameter idPar = DataBase.AddParameter("@idPar", contactID);
+                string sql = "DELETE FROM ContactPerson WHERE ID = @idPar";
 
+                int iModifiedData = DataBase.ModifyData(sql, idPar);
+
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+        }
 
     }
 }
