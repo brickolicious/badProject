@@ -14,18 +14,19 @@ namespace BADProject.model
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            MemoryStream ms = new MemoryStream((byte[])value);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
+         
+            MemoryStream ms = new MemoryStream();
+            Image img = (Image)value;
+            img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            return ms.ToArray();
         
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            MemoryStream ms = new MemoryStream();
-            Image img = (Image)value;
-            img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-            return ms.ToArray();
+            MemoryStream ms = new MemoryStream((byte[])value);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
         }
     }
 }

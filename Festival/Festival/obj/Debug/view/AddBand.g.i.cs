@@ -75,7 +75,7 @@ namespace BADProject.view {
         #line hidden
         
         
-        #line 49 "..\..\..\view\AddBand.xaml"
+        #line 50 "..\..\..\view\AddBand.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button sendBtn;
         
@@ -83,7 +83,7 @@ namespace BADProject.view {
         #line hidden
         
         
-        #line 51 "..\..\..\view\AddBand.xaml"
+        #line 52 "..\..\..\view\AddBand.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox txtGenres;
         
@@ -133,15 +133,23 @@ namespace BADProject.view {
             this.txtFacebook = ((System.Windows.Controls.TextBox)(target));
             return;
             case 5:
-            this.sendBtn = ((System.Windows.Controls.Button)(target));
             
-            #line 49 "..\..\..\view\AddBand.xaml"
-            this.sendBtn.Click += new System.Windows.RoutedEventHandler(this.sendBtn_Click);
+            #line 42 "..\..\..\view\AddBand.xaml"
+            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Click);
             
             #line default
             #line hidden
             return;
             case 6:
+            this.sendBtn = ((System.Windows.Controls.Button)(target));
+            
+            #line 50 "..\..\..\view\AddBand.xaml"
+            this.sendBtn.Click += new System.Windows.RoutedEventHandler(this.sendBtn_Click);
+            
+            #line default
+            #line hidden
+            return;
+            case 7:
             this.txtGenres = ((System.Windows.Controls.TextBox)(target));
             return;
             }
