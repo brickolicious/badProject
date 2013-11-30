@@ -174,9 +174,10 @@ namespace BADProject.model
                         DbParameter descriptionUpdatePar = DataBase.AddParameter("@descriptionUpdate",band.Description);
                         DbParameter twitterUpdatePar = DataBase.AddParameter("@twitterUpdate",band.Twitter);
                         DbParameter facebookUpdatePar = DataBase.AddParameter("@facebookUpdate",band.Facebook);
+                        DbParameter picturePar = DataBase.AddParameter("@picture", band.Picture);
                         DbParameter idUpdatePar = DataBase.AddParameter("@idUpdate",tempband.ID);
-                        string sql_update = "UPDATE Band SET Name = @nameUpdate,Description = @descriptionUpdate, Twitter = @twitterUpdate, Facebook = @facebookUpdate WHERE ID = @idUpdate";
-                        int iModifiedDataUpdate = DataBase.ModifyData(sql_update, nameUpdatePar, descriptionUpdatePar, twitterUpdatePar, facebookUpdatePar, idUpdatePar);
+                        string sql_update = "UPDATE Band SET Name = @nameUpdate,Picture = @picture,Description = @descriptionUpdate, Twitter = @twitterUpdate, Facebook = @facebookUpdate WHERE ID = @idUpdate";
+                        int iModifiedDataUpdate = DataBase.ModifyData(sql_update, nameUpdatePar,picturePar, descriptionUpdatePar, twitterUpdatePar, facebookUpdatePar, idUpdatePar);
 
                         string sql = "DELETE FROM Band_Genre WHERE Band = @id";
                         DbParameter idpar = DataBase.AddParameter("@id", tempband.ID);
@@ -184,6 +185,7 @@ namespace BADProject.model
 
                         foreach (Genre gen in genColl)
                         {
+                            //check op genres doen
                             DbParameter bandPar = DataBase.AddParameter("@band", tempband.ID);
                             DbParameter genPar = DataBase.AddParameter("@genre", gen.ID);
                             string sql_q2 = "INSERT INTO Band_Genre (Genre,Band) VALUES (@Genre,@band)";
@@ -198,16 +200,15 @@ namespace BADProject.model
                 if(createNew == true){
 
                         int insertedID = 0;
-                        //picture ng instoppen
-                        string sql_insert = "INSERT INTO Band(Name,Description,Twitter,Facebook) OUTPUT Inserted.ID VALUES (@name,@descr,@twit,@fb)";
+                        string sql_insert = "INSERT INTO Band(Name,Picture,Description,Twitter,Facebook) OUTPUT Inserted.ID VALUES (@name,@pic,@descr,@twit,@fb)";
 
                         DbParameter namePar = DataBase.AddParameter("@name",band.Name);
-                        //DbParameter picPar = DataBase.AddParameter("@pic", /*band.Picture*/"empty");
+                        DbParameter picPar = DataBase.AddParameter("@pic", band.Picture);
                         DbParameter descripPar = DataBase.AddParameter("@descr", band.Description);
                         DbParameter twitPar = DataBase.AddParameter("@twit", band.Twitter);
                         DbParameter fbPar = DataBase.AddParameter("@fb", band.Facebook);
-                        /*, picPar*/
-                        DbDataReader reader = DataBase.GetData(sql_insert,namePar,descripPar,twitPar,fbPar);
+
+                        DbDataReader reader = DataBase.GetData(sql_insert,namePar,descripPar,twitPar,fbPar,picPar);
 
                         foreach (IDataRecord record in reader) {
                             insertedID = (int)reader["ID"];

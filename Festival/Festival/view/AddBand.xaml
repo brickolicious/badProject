@@ -11,6 +11,8 @@
         <context:BandsVM/>
     </Window.DataContext>
 
+    
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -39,13 +41,21 @@
         <TextBox x:Name="txtDescription" Grid.Column="1" Grid.Row="2"/>
         <TextBox x:Name="txtTwitter" Grid.Column="1" Grid.Row="3"/>
         <TextBox x:Name="txtFacebook" Grid.Column="1" Grid.Row="4"/>
-        <Image Grid.Row="7" Grid.ColumnSpan="2" AllowDrop="True">
+        <Button Grid.Column="1" Grid.Row="6" Click="Button_Click" >Choose image</Button>
+        <Border Grid.Row="7" Grid.ColumnSpan="2">
+            <Image x:Name="imgBand"  Source="{StaticResource noImage}"/>
+        </Border>
+
+        <!--<Border Grid.Row="7" Grid.ColumnSpan="2">
+            <Image x:Name="imgBand"  AllowDrop="True" Source="{StaticResource noImage}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Drop">
                     <cmd:EventToCommand Command="{Binding PictureCommand}" PassEventArgsToCommand="True"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Image>
+        </Border>-->
+        
         <Button x:Name="sendBtn" Command="{Binding AddBandActionCommand}"  Grid.ColumnSpan="2" Grid.Row="10" Click="sendBtn_Click" Margin="0,0,0,-1" Content="Voeg toe."/>
         <Label Grid.Column="0" Grid.Row="5" Content="Genres:"/>
         <TextBox x:Name="txtGenres" Grid.Column="1" Grid.Row="5"/>

@@ -48,5 +48,9 @@
         <Button x:Name="sendBtn" Command="{Binding EditBandActionCommand}"  Grid.ColumnSpan="2" Grid.Row="10" Click="sendBtn_Click" Margin="0,0,0,-1" Content="Edit band"/>
         <Label Grid.Column="0" Grid.Row="5" Content="Genres:"/>
         <TextBox x:Name="txtGenres" Text="{Binding SelectedBand.GenresInText}" Grid.Column="1" Grid.Row="5"/>
+        <Button Grid.Column="1" Grid.Row="6" Click="Button_Click" >Choose image</Button>
+        <Border Grid.Row="7" Grid.ColumnSpan="2">
+            <Image x:Name="imgBand"  Source="{StaticResource noImage}"/>
+        </Border>
     </Grid>
 </Window>

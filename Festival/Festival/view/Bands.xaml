@@ -39,9 +39,13 @@
             </ListView.View>
         </ListView>
 
-        <Button Command="{Binding AddBandCommand}" Style="{StaticResource buttonStyle}" Content="Add band" Grid.Column="3" Height="35" Width="120" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
-        <Image  Source="{Binding SelectedBand.Picture}" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,10" Grid.Row="4" VerticalAlignment="Stretch"/>
+        <Button Command="{Binding AddBandShowCommand}" Style="{StaticResource buttonStyle}" Content="Add band" Grid.Column="3" Height="35" Width="120" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
         <Button Command="{Binding EditBandCommand}" CommandParameter="{Binding ElementName=lstvwBands,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwBands}"  Style="{StaticResource buttonStyle}" Content="Edit band" Grid.Column="3" Height="35" Width="120" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="0,8,0,0"/>
         <Button Command="{Binding DeleteBandCommand}" CommandParameter="{Binding ElementName=lstvwBands,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwBands}"  Style="{StaticResource buttonStyle}" Content="Delete band" Grid.Column="3" Height="35" Width="120" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+
+        <!--<Image  Source="{Binding SelectedBand.Picture}" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,10" Grid.Row="4" VerticalAlignment="Stretch"/>-->
+        <Image  Source="{Binding SelectedBand.Picture,Converter={StaticResource ImgConverter}}" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,10" Grid.Row="4" VerticalAlignment="Stretch"/>
+
+
     </Grid>
 </UserControl>

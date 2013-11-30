@@ -67,7 +67,7 @@
     <Compile Include="model\DataBase.cs" />
     <Compile Include="model\Festival.cs" />
     <Compile Include="model\Genre.cs" />
-    <Compile Include="model\ImageConverter.cs" />
+    <Compile Include="model\ImgConverter.cs" />
     <Compile Include="model\LineUp.cs" />
     <Compile Include="model\Stage.cs" />
     <Compile Include="model\Ticket.cs" />
@@ -226,11 +226,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="view\images\x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Images\noimage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

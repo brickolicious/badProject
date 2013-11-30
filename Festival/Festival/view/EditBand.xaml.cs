@@ -1,4 +1,5 @@
 ﻿using BADProject.model;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,21 +26,51 @@ namespace BADProject.view
             InitializeComponent();
         }
 
+        public Byte[] Photo { get; set; }
+
         private void sendBtn_Click(object sender, RoutedEventArgs e)
         {
             Band tempBand = new Band();
             tempBand.ID = (int)lblID.Content;
-            tempBand.Name = lblID.Content.ToString();
+            tempBand.Name = lblName.Content.ToString();
             tempBand.Description = txtDescription.Text;
             tempBand.Twitter = txtTwitter.Text;
             tempBand.Facebook = txtFacebook.Text;
             tempBand.GenresInText = txtGenres.Text;
             tempBand.Genres = Genre.GetCollectionOfGenresForBandFromGenresString(tempBand.GenresInText);
-            tempBand.Picture = null; //ng toevoegen
+
+            if (this.Photo != null)
+            {
+                tempBand.Picture = Photo;
+            }
+            else
+            {
+                tempBand.Picture = null;
+            }
 
             sendBtn.CommandParameter = tempBand;
 
             this.Close();
+        }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            oFD.Filter = "jpg files (*.jpg)|*.jpg|All files (*.*)|*.*";
+            oFD.Title = "Please select an image for your band.";
+            string fileName;
+            if (oFD.ShowDialog() == true)
+            {
+
+                fileName = oFD.FileName;
+                this.Photo = Band.GetPhoto(fileName);
+                imgBand.Source = new ImageSourceConverter().ConvertFromString(fileName) as ImageSource;
+            }
+
+
+
         }
     }
 }

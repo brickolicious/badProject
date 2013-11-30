@@ -51,7 +51,7 @@ namespace BADProject.viewmodel
         public ContactPersonType SelectedContactType
         {
             get { return _selectedContactType; }
-            set { _selectedContactType = value; opVullenMetGeselecteerdeType(); OnPropertyChanged("SelectedContactType"); }
+            set { _selectedContactType = value; opVullenMetGeselecteerdeType();OnPropertyChanged("SelectedContactType"); }
         }
 
         private ObservableCollection<ContactPersonType> _lstContact;
@@ -87,7 +87,7 @@ namespace BADProject.viewmodel
         
 
       
-        public void opVullenMetGeselecteerdeType(){
+       public void opVullenMetGeselecteerdeType(){
 
             SelectedContactTypeLijst = ContactPerson.GetContactPersonsByJobrole(SelectedContactType.ID);
 
@@ -170,7 +170,8 @@ namespace BADProject.viewmodel
 
             EditContact editWindow = new EditContact();
             editWindow.Show();
-            ContactTypeLijst = ContactPersonType.GetAllContactPersonType();
+            //crash hier
+            //ContactTypeLijst = ContactPersonType.GetAllContactPersonType();
         }
 
         

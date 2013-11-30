@@ -1,7 +1,9 @@
 ﻿<Application x:Class="BADProject.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="view/MainWindow.xaml">
+             StartupUri="view/MainWindow.xaml"
+             xmlns:converter="clr-namespace:BADProject.model">
+             
     <Application.Resources>
 
         <Style x:Key="defaultStyle" TargetType="{x:Type Control}">
@@ -124,7 +126,11 @@
             <Setter Property="Height" Value="50px"/>
             <Setter Property="Width"    Value="100px"/>
             <Setter Property="BorderBrush" Value="White"/>
-        </Style>    
+        </Style>
 
+        <BitmapImage x:Key="noImage" UriSource=".\Content\Images\noimage.png" ></BitmapImage>
+        
+        <converter:ImgConverter x:Key="ImgConverter"/>
+        
     </Application.Resources>
 </Application>

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace BADProject.viewmodel
@@ -31,21 +32,21 @@ namespace BADProject.viewmodel
             set { _bands = value; OnPropertyChanged("Bands"); }
         }
 
-        private static Band _selectedBand;
-
-        public static Band SelectedBand
+        private Band _selectedBand;
+        //geen binding tenzij deze prop static is
+        public Band SelectedBand
         {
             get { return _selectedBand; }
-            set { _selectedBand = value; /*OnPropertyChanged("SelectedBand");*/ }
+            set { _selectedBand = value; OnPropertyChanged("SelectedBand"); }
         }
-        
 
 
 
 
 
 
-        public ICommand AddBandCommand
+
+        public ICommand AddBandShowCommand
         {
             get { return new RelayCommand(ToonAddBand); }
         }
@@ -105,16 +106,16 @@ namespace BADProject.viewmodel
 
 
 
-
+        /*
         public ICommand PictureCommand
         {
-            get { return new RelayCommand(AddPictureToDB); }
+            get { return new RelayCommand<Image>(AddPictureToDB); }
         }
 
-        private void AddPictureToDB()
+        private void AddPictureToDB(Image img)
         {
             
-        }
+        }*/
 
 
 

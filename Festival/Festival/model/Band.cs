@@ -189,5 +189,17 @@ namespace BADProject.model
             }
         }
 
+
+
+
+        public static byte[] GetPhoto(string path)
+        {
+            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+            byte[] data = new byte[fs.Length];
+            fs.Read(data, 0, (int)fs.Length);
+            fs.Close();
+            return data;
+        }
+
     }
 }

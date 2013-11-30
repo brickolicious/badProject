@@ -1,6 +1,9 @@
 ﻿using BADProject.model;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +28,8 @@ namespace BADProject.view
             InitializeComponent();
         }
 
+        public byte[] Photo { get; set; }
+
         private void sendBtn_Click(object sender, RoutedEventArgs e)
         {
             Band tempBand = new Band();
@@ -33,11 +38,43 @@ namespace BADProject.view
             tempBand.Twitter = txtTwitter.Text;
             tempBand.Facebook = txtFacebook.Text;
             tempBand.GenresInText = txtGenres.Text;
-            tempBand.Picture = null; //vaste waard in insert
+
+            if (this.Photo != null)
+            {
+                tempBand.Picture = Photo;
+            }
+            else {
+                tempBand.Picture = null;
+            }
+            
             sendBtn.CommandParameter = tempBand;
 
             this.Close();
         
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            oFD.Filter = "jpg files (*.jpg)|*.jpg|All files (*.*)|*.*";
+            oFD.Title = "Please select an image for your band.";
+            string fileName;
+            if (oFD.ShowDialog() == true)
+            {
+                
+                fileName = oFD.FileName;
+                this.Photo = Band.GetPhoto(fileName);
+                imgBand.Source = new ImageSourceConverter().ConvertFromString(fileName) as ImageSource;
+            }
+
+
+
+        }
+
+
+        
+
+
     }
 }
