@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -110,20 +111,30 @@ namespace BADProject.viewmodel
 
 
                 ObservableCollection<LineUp> tempLineUp = LineUp.GetLineupByStageAndDate(stage.ID, day);
-                
 
+                
                 DataGrid tempDG = new DataGrid();
                 tempDG.ItemsSource = tempLineUp;
-                
+                tempDG.AutoGenerateColumns = false;
+
+
+                DataGridTextColumn BandCol = new DataGridTextColumn();
+                BandCol.Header = "Band";
+               /* BandCol.Binding = {Binding Band.Name} //?*/
+
+
+
+
 
                 tempDG.RowHeaderWidth = 0;
                 tempDG.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
                 tempDG.Height = 500;
                 
 
+                
+                stpnlContainer.Children.Add(tempDG);
 
                 stpnlContainer.Children.Add(txbKop);
-                stpnlContainer.Children.Add(tempDG);
                 stpnlColLineUpPerDay.Add(stpnlContainer);
             }
             
