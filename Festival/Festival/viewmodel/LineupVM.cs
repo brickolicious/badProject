@@ -115,12 +115,12 @@ namespace BADProject.viewmodel
                 
                 DataGrid tempDG = new DataGrid();
                 tempDG.ItemsSource = tempLineUp;
-                tempDG.AutoGenerateColumns = false;
+               /* tempDG.AutoGenerateColumns = false;
 
 
                 DataGridTextColumn BandCol = new DataGridTextColumn();
                 BandCol.Header = "Band";
-               /* BandCol.Binding = {Binding Band.Name} //?*/
+                BandCol.Binding = {Binding Band.Name} //?*/
 
 
 
@@ -128,13 +128,13 @@ namespace BADProject.viewmodel
 
                 tempDG.RowHeaderWidth = 0;
                 tempDG.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
-                tempDG.Height = 500;
-                
+                tempDG.Height = 300;
 
-                
-                stpnlContainer.Children.Add(tempDG);
+
 
                 stpnlContainer.Children.Add(txbKop);
+                stpnlContainer.Children.Add(tempDG);
+
                 stpnlColLineUpPerDay.Add(stpnlContainer);
             }
             
@@ -218,6 +218,36 @@ namespace BADProject.viewmodel
                 Console.WriteLine(ex);
             }
         
+        }
+
+
+        public ICommand ShowAddLineUp {
+            get { return new RelayCommand(ShowAddLineUpAction); }
+        }
+
+        private void ShowAddLineUpAction()
+        {
+            AddLineUp addLineUpView = new AddLineUp();
+            addLineUpView.Show();
+        }
+
+        public ICommand AddLineUpAction {
+            get { return new RelayCommand<LineUp>(AddAction); }
+        }
+
+        private void AddAction(LineUp lineup)
+        {
+            LineUp.AddLineUp(lineup);
+        }
+
+        public ICommand RemoveLineUp
+        {
+            get { return new RelayCommand(RemoveLineUpAction); }
+        }
+
+        private void RemoveLineUpAction()
+        {
+            throw new NotImplementedException();
         }
 
     }

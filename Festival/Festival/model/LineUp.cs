@@ -81,7 +81,7 @@ namespace BADProject.model
                 LineUp tempLineup = new LineUp();
                 tempLineup.ID = (int)reader["ID"];
                 tempLineup.Date = (DateTime)reader["Datum"];
-                tempLineup.From = (string)reader["From"];
+                tempLineup.From = (string)reader["Start"];
                 tempLineup.Until = (string)reader["Until"];
                 tempLineup.Stage = Stage.GetStageByID((int)reader["Stage"]);
                 tempLineup.Band = Band.GetBandByID((int)reader["Band"]);
@@ -91,6 +91,26 @@ namespace BADProject.model
             return lineUpCollectie;
         }
 
+
+        public static void AddLineUp(LineUp lineup) {
+
+            try
+            {
+                DbParameter datePar = DataBase.AddParameter("@date", lineup.Date);
+                DbParameter fromPar = DataBase.AddParameter("@from", lineup.From);
+                DbParameter untilPar = DataBase.AddParameter("@until", lineup.Until);
+                DbParameter stagePar = DataBase.AddParameter("@stage", lineup.Stage.ID);
+                DbParameter bandPar = DataBase.AddParameter("@band", lineup.Band.ID);
+                string sql = "INSERT INTO LineUp (Datum,Start,Until,Stage,Band) VALUES (@date,@from,@until,@stage,@band)";
+                int iModifiedData = DataBase.ModifyData(sql, datePar, fromPar, untilPar, stagePar, bandPar);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
 
      
 
