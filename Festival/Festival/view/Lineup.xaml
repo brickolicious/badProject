@@ -27,40 +27,12 @@
         </Grid.RowDefinitions>
 
         <Label Content="Line-up" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333"/>
-        <ScrollViewer Margin="5" Grid.Row="4" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Visible" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.ColumnSpan="4">
 
 
-
-            <StackPanel  x:Name="podiaStackPanel" RenderTransformOrigin="0.5,0.5" Background="White" Orientation="Horizontal" CanHorizontallyScroll="True">
-
-
-                <ItemsControl ItemsSource="{Binding PodiumCollectie}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-
-                    <ItemsControl.ItemTemplate>
-
-                        <DataTemplate>
-
-
-                            <!--<DataGrid Style="{StaticResource dataGridStyle}" ColumnHeaderStyle="{StaticResource dgColHeadStyle}"  x:Name="dg">-->
-
-                            <!--</DataGrid>-->
-
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-
-
-            </StackPanel>
-
-
-
-
-        </ScrollViewer>
+        <ItemsControl ItemsSource="{Binding StageList}" ItemTemplate="{StaticResource hoofd}">
+        </ItemsControl>
+        
+        
         <Button Command="{Binding AddStageCommand}" Style="{StaticResource buttonStyle}" Content="Add stage"  Grid.Row="1" Grid.Column="3" />
         <Button Command="{Binding DeleteDayCommand}" Style="{StaticResource buttonStyle}" Content="Remove day"   Grid.Row="2" Grid.Column="3" />
         <Button Command="{Binding AddDayCommand}" Style="{StaticResource buttonStyle}" Content="Add day" Grid.Column="3"  />

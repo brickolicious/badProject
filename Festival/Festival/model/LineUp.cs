@@ -89,8 +89,9 @@ namespace BADProject.model
             }
 
             return lineUpCollectie;
+             
         }
-
+            
 
         public static void AddLineUp(LineUp lineup) {
 
@@ -113,7 +114,7 @@ namespace BADProject.model
         }
 
      
-
+            
 
 
 

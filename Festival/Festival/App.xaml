@@ -132,5 +132,52 @@
         
         <converter:ImgConverter x:Key="ImgConverter"/>
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--Maken van lineup-->
+        <DataTemplate x:Key="hoofd">
+            <StackPanel>
+            <TextBlock Text="{Binding Name}"></TextBlock>
+                <ItemsControl>
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Band" Width="auto" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="From" Width="auto" DisplayMemberBinding="{Binding From}" />
+                                <GridViewColumn Header="Until" Width="auto" DisplayMemberBinding="{Binding Until}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ItemsControl>
+            </StackPanel>
+        </DataTemplate>
+        
+        
+        
+        
+        
+        
+        
+        
+        
     </Application.Resources>
 </Application>
