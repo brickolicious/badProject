@@ -30,6 +30,16 @@ namespace BADProject.model
             get { return _name; }
             set { _name = value; }
         }
+
+
+        private ObservableCollection<LineUp> _lineUp;
+
+        public ObservableCollection<LineUp> LineUpByStage
+        {
+            get { return _lineUp; }
+            set { _lineUp = value; }
+        }
+        
         #endregion
 
 

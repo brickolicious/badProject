@@ -29,7 +29,7 @@
         <Label Content="Line-up" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333"/>
 
 
-        <ItemsControl ItemsSource="{Binding StageList}" ItemTemplate="{StaticResource hoofd}">
+        <ItemsControl ItemsSource="{Binding StageList}" ItemTemplate="{StaticResource hoofd}" Grid.Row="4">
         </ItemsControl>
         
         

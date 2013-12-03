@@ -155,10 +155,11 @@
         
         <!--Maken van lineup-->
         <DataTemplate x:Key="hoofd">
-            <StackPanel>
+            <WrapPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
             <TextBlock Text="{Binding Name}"></TextBlock>
-                <ItemsControl>
-                    <ListView>
+                    <ItemsControl ItemsSource="{Binding LineUpPerStage}">
+                    <ListView ItemsSource="{Binding }">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Band" Width="auto" DisplayMemberBinding="{Binding Name}" />
@@ -168,7 +169,8 @@
                         </ListView.View>
                     </ListView>
                 </ItemsControl>
-            </StackPanel>
+                </StackPanel>
+            </WrapPanel>
         </DataTemplate>
         
         

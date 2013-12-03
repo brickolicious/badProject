@@ -23,6 +23,9 @@ namespace BADProject.viewmodel
             get { return "Line-up"; }
         }
 
+
+      
+
        
         private List<DateTime> _lstDates;
 
@@ -35,17 +38,6 @@ namespace BADProject.viewmodel
         }
 
 
-        private ObservableCollection<Stage> _stageList;
-
-        public ObservableCollection<Stage> StageList
-        {
-            get {
-                _stageList = Stage.GetAllStages();
-                return _stageList; }
-            set { _stageList = value; OnPropertyChanged("StageList"); }
-        }
-
-
         private ObservableCollection<StackPanel> _colPodia;
 
         public ObservableCollection<StackPanel> PodiumCollectie
@@ -53,6 +45,15 @@ namespace BADProject.viewmodel
             get { return _colPodia; }
             set { _colPodia = value; OnPropertyChanged("PodiumCollectie"); }
         }
+
+        private Band _selecBand;
+
+        public Band SelectedBand
+        {
+            get { return _selecBand; }
+            set { _selecBand = value; OnPropertyChanged("SelectedBand"); }
+        }
+
 
         private DateTime _selectedDay;
 
@@ -62,20 +63,43 @@ namespace BADProject.viewmodel
             set { _selectedDay = value; OnPropertyChanged("SelectedDay"); }
         }
 
+        private ObservableCollection<Stage> _stageList;
 
-        private Band _selecBand;
-
-        public Band SelectedBand
+        public ObservableCollection<Stage> StageList
         {
-            get { return _selecBand; }
-            set { _selecBand = value; OnPropertyChanged("SelectedBand"); }
+            get
+            {
+                _stageList = Stage.GetAllStages();
+                return _stageList;
+            }
+            set { _stageList = value; OnPropertyChanged("StageList"); }
+        }
+
+        private Stage _stageForTheLineup;
+
+        public Stage StageForTheLineup
+        {
+            get { return _stageForTheLineup; }
+            set { _stageForTheLineup = value; }
+        }
+
+        private ObservableCollection<LineUp> _byDayByStage;
+
+        public ObservableCollection<LineUp> LineUpByDayByStage
+        {
+            get { return _byDayByStage; }
+            set { _byDayByStage = value; }
+        }
+
+
+        private ObservableCollection<ObservableCollection<LineUp>> _perstagePerdag;
+
+        public ObservableCollection<ObservableCollection<LineUp>> LineUpPerStage
+        {
+            get { return _perstagePerdag; }
+            set { _perstagePerdag = value; OnPropertyChanged("LineUpPerStage"); }
         }
         
-        
-
-        
-
-
 
 
 
@@ -89,58 +113,28 @@ namespace BADProject.viewmodel
         public void ToonLineUp(DateTime day) {
 
             SelectedDay = day;
-            ObservableCollection<StackPanel> stpnlColLineUpPerDay = new ObservableCollection<StackPanel>();
+            LineUpByDayByStage = LineUp.GetLineupByStageAndDate(this.StageForTheLineup.ID, day);
 
-            
+
+            ObservableCollection<ObservableCollection<LineUp>> tempCol = new ObservableCollection<ObservableCollection<LineUp>>();
 
             foreach (Stage stage in StageList) {
 
-                StackPanel stpnlContainer = new StackPanel();
+               tempCol.Add(LineUp.GetLineupByStageAndDate(stage.ID, day));
 
-                stpnlContainer.Width = 507;
-
-                TextBlock txbKop = new TextBlock();
-                txbKop.Text = stage.Name+"\n"+day.Day+"-"+day.Month+"-"+day.Year;
-                txbKop.FontSize = 18;
-                txbKop.FontWeight = FontWeights.Bold;
-                txbKop.HorizontalAlignment = HorizontalAlignment.Center;
-                txbKop.VerticalAlignment = VerticalAlignment.Center;
-                Thickness thick = new Thickness();
-                thick.Bottom = 15;
-                txbKop.Margin = thick;
-
-
-                ObservableCollection<LineUp> tempLineUp = LineUp.GetLineupByStageAndDate(stage.ID, day);
-
-                
-                DataGrid tempDG = new DataGrid();
-                tempDG.ItemsSource = tempLineUp;
-               /* tempDG.AutoGenerateColumns = false;
-
-
-                DataGridTextColumn BandCol = new DataGridTextColumn();
-                BandCol.Header = "Band";
-                BandCol.Binding = {Binding Band.Name} //?*/
-
-
-
-
-
-                tempDG.RowHeaderWidth = 0;
-                tempDG.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
-                tempDG.Height = 300;
-
-
-
-                stpnlContainer.Children.Add(txbKop);
-                stpnlContainer.Children.Add(tempDG);
-
-                stpnlColLineUpPerDay.Add(stpnlContainer);
-            }
+               LineUpPerStage = tempCol;
             
-            this.PodiumCollectie = stpnlColLineUpPerDay;
-        
+            }
         }
+
+
+
+
+
+
+
+
+
 
 
         public ICommand DeleteDayCommand
