@@ -129,30 +129,36 @@
         </Style>
 
         <BitmapImage x:Key="noImage" UriSource=".\Content\Images\noimage.png" ></BitmapImage>
+        <BitmapImage x:Key="newImage" UriSource=".\Content\Images\newimage.png" ></BitmapImage>
         
         <converter:ImgConverter x:Key="ImgConverter"/>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--<HierarchicalDataTemplate x:Key="hoofd" ItemsSource={Binding LineUpPerStage}>
+            <TextBlock Text="{Binding Name}"/>
+        </HierarchicalDataTemplate>
+        <DataTemplate>
+            ^<ListView
+        </DataTemplate>-->
+
+
+
+
         <!--Maken van lineup-->
         <DataTemplate x:Key="hoofd">
             <WrapPanel Orientation="Horizontal">

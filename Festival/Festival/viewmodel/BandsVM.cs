@@ -37,10 +37,17 @@ namespace BADProject.viewmodel
         public Band SelectedBand
         {
             get { return _selectedBand; }
-            set { _selectedBand = value; OnPropertyChanged("SelectedBand"); }
+            set { _selectedBand = value; SelectedBandStatic = _selectedBand; OnPropertyChanged("SelectedBand"); }
         }
 
+        private static Band _selectedBandStatic;
 
+        public static Band SelectedBandStatic
+        {
+            get { return _selectedBandStatic; }
+            set { _selectedBandStatic = value; }
+        }
+        
 
 
 

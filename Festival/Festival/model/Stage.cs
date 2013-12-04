@@ -74,6 +74,32 @@ namespace BADProject.model
 
             return tempStage;
         }
+
+        private static Stage CreateStageWithDate(DbDataReader reader, DateTime time) {
+
+            Stage stage = new Stage();
+            stage.ID = (int)reader["ID"];
+            stage.Name = (string)reader["Name"];
+            stage.LineUpByStage = LineUp.GetBandsByLineUpIDAndDate((int)reader["ID"], time);
+            return stage;
+        }
+
+        public static Stage GetStageByDay(DateTime day)
+        {
+            Stage tempStage = new Stage();
+            DbParameter dayPar = DataBase.AddParameter("@day", day);
+            DbDataReader reader = DataBase.GetData("SELECT * FROM Stage");
+            foreach (IDataRecord record in reader)
+            {
+
+                tempStage.ID = (int)reader["ID"];
+                tempStage.Name = (string)reader["Name"];
+
+            }
+
+            return tempStage;
+        }
+        
         
 
     }

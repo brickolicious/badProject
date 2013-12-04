@@ -252,7 +252,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Content\Images\newimage.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="view\images\x.png" />
   </ItemGroup>

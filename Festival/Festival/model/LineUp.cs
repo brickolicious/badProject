@@ -113,11 +113,39 @@ namespace BADProject.model
 
         }
 
-     
-            
 
 
 
 
+
+
+
+        public static ObservableCollection<LineUp> GetBandsByLineUpIDAndDate(int id, DateTime time)
+        {
+            ObservableCollection<LineUp> tempCol = new ObservableCollection<LineUp>();
+
+            try
+            {
+                DbParameter idPar = DataBase.AddParameter("@id",id);
+                DbParameter datePar = DataBase.AddParameter("@date",time);  //co,vertren naar ander formaat type yyyy/mm/dd
+                DbDataReader reader = DataBase.GetData("SELECT * FROM LineUp WHERE Stage = @id AND Datum = @date",idPar,datePar);
+
+                while (reader.Read())
+                {
+                   // tempCol.Add(createLineUp(reader));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return tempCol;
+        }
+
+       /* private static LineUp createLineUp(DbDataReader reader)
+        {
+           //lineupcreren
+        }*/
     }
 }
