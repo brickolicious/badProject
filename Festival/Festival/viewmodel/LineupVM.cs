@@ -1,4 +1,5 @@
-﻿using BADProject.model;
+﻿//using BADProject.model;
+using ClassLibraryModels;
 using BADProject.view;
 using GalaSoft.MvvmLight.Command;
 using System;
@@ -113,7 +114,7 @@ namespace BADProject.viewmodel
         public void ToonLineUp(DateTime day) {
 
             SelectedDay = day;
-            LineUpByDayByStage = LineUp.GetLineupByStageAndDate(this.StageForTheLineup.ID, day);
+            //LineUpByDayByStage = LineUp.GetLineupByStageAndDate(this.StageForTheLineup.ID, day);
 
 
             ObservableCollection<ObservableCollection<LineUp>> tempCol = new ObservableCollection<ObservableCollection<LineUp>>();
@@ -122,9 +123,10 @@ namespace BADProject.viewmodel
 
                tempCol.Add(LineUp.GetLineupByStageAndDate(stage.ID, day));
 
-               LineUpPerStage = tempCol;
+               
             
             }
+            LineUpPerStage = tempCol;
         }
 
 

@@ -1,4 +1,5 @@
-﻿using BADProject.model;
+﻿//using BADProject.model;
+using ClassLibraryModels;
 using BADProject.view;
 using GalaSoft.MvvmLight.Command;
 using System;

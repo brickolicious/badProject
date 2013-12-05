@@ -1,4 +1,5 @@
-﻿using BADProject.model;
+﻿using ClassLibraryModels;
+//using BADProject.model;
 using BADProject.view;
 using GalaSoft.MvvmLight.Command;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+
 
 namespace BADProject.viewmodel
 {
