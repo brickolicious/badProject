@@ -161,7 +161,7 @@
 
 
         <!--Maken van lineup-->
-        <DataTemplate x:Key="hoofd">
+        <!--<DataTemplate x:Key="hoofd">
             <WrapPanel Orientation="Horizontal">
                 <StackPanel Orientation="Vertical">
             <TextBlock Text="{Binding Name}"></TextBlock>
@@ -178,15 +178,29 @@
                 </ItemsControl>
                 </StackPanel>
             </WrapPanel>
+        </DataTemplate>-->
+
+        <ItemsPanelTemplate x:Key="stkPnl">
+            <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+
+        <DataTemplate x:Key="lstLineup">
+            
+                <StackPanel>
+                <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" />
+
+                <ListView x:Name="lstvwLineup" Width="278" Height="300" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding LineUpByStage}" SelectedItem="{Binding SelectedLineup}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Band" Width="auto" DisplayMemberBinding="{Binding Band.Name}" />
+                            <GridViewColumn Header="From" Width="auto" DisplayMemberBinding="{Binding From}" />
+                            <GridViewColumn Header="Until" Width="auto" DisplayMemberBinding="{Binding Until}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                </StackPanel>
         </DataTemplate>
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
     </Application.Resources>
 </Application>

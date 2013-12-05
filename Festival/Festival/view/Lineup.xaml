@@ -29,12 +29,11 @@
         <Label Content="Line-up" Grid.Column="0"   HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333"/>
 
 
-        <ItemsControl ItemsSource="{Binding StageList}" ItemTemplate="{StaticResource hoofd}" Grid.Row="4" Grid.ColumnSpan="2">
-        </ItemsControl>
-        
-        
-        
-        
+
+
+
+
+
         <Button Command="{Binding AddStageCommand}" Style="{StaticResource buttonStyle}" Content="Add stage"  Grid.Row="1" Grid.Column="3" />
         <Button Command="{Binding DeleteDayCommand}" Style="{StaticResource buttonStyle}" Content="Remove day"   Grid.Row="2" Grid.Column="3" />
         <Button Command="{Binding AddDayCommand}" Style="{StaticResource buttonStyle}" Content="Add day" Grid.Column="3"  />
@@ -66,5 +65,20 @@
 
             </StackPanel>
         </ScrollViewer>
+
+
+
+
+
+        <ScrollViewer x:Name="scrlViewer" Grid.Row="4" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
+            <ItemsControl 	ItemsSource="{Binding StageList, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource lstLineup}" ItemsPanel="{StaticResource stkPnl}"/>
+
+        </ScrollViewer>
+
+
+
+
+
+
     </Grid>
 </UserControl>

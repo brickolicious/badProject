@@ -174,12 +174,20 @@ namespace ClassLibraryModels
             return tempCol;
         }
 
-        /*private static LineUp createLineUp(DbDataReader reader)
-        {
-            LineUp lineUp = new LineUp();
-            lineUp.ID = (int)reader["ID"];
-            //stageToevoegen
-            
-        }*/
+        public static void DeleteLineUpElement(int lineupID) {
+
+            try
+            {
+                DbParameter idPar = DataBase.AddParameter("@id",lineupID);
+                string sql = "DELETE FROM LineUp WHERE ID = @id";
+                int iModifiedData = DataBase.ModifyData(sql, idPar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        
+        
+        }
     }
 }

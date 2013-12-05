@@ -19,6 +19,12 @@ namespace BADProject.viewmodel
 {
     class LineupVM : ObservableObject, IPage
     {
+        public LineupVM()
+        {
+            this.StageList = Stage.GetAllStages();
+        }
+
+
         public string Name
         {
             get { return "Line-up"; }
@@ -70,7 +76,7 @@ namespace BADProject.viewmodel
         {
             get
             {
-                _stageList = Stage.GetAllStages();
+               // _stageList = Stage.GetAllStages();
                 return _stageList;
             }
             set { _stageList = value; OnPropertyChanged("StageList"); }
@@ -84,13 +90,13 @@ namespace BADProject.viewmodel
             set { _stageForTheLineup = value; }
         }
 
-        private ObservableCollection<LineUp> _byDayByStage;
+        /*private ObservableCollection<LineUp> _byDayByStage;
 
         public ObservableCollection<LineUp> LineUpByDayByStage
         {
             get { return _byDayByStage; }
             set { _byDayByStage = value; }
-        }
+        }*/
 
 
         private ObservableCollection<ObservableCollection<LineUp>> _perstagePerdag;
@@ -99,6 +105,14 @@ namespace BADProject.viewmodel
         {
             get { return _perstagePerdag; }
             set { _perstagePerdag = value; OnPropertyChanged("LineUpPerStage"); }
+        }
+
+        private LineUp _selectedLineup;
+
+        public LineUp SelectedLineup
+        {
+            get { return _selectedLineup; }
+            set { _selectedLineup = value; }
         }
         
 
@@ -114,27 +128,10 @@ namespace BADProject.viewmodel
         public void ToonLineUp(DateTime day) {
 
             SelectedDay = day;
-            //LineUpByDayByStage = LineUp.GetLineupByStageAndDate(this.StageForTheLineup.ID, day);
 
+            StageList = Stage.GetAllStages(day);
 
-            ObservableCollection<ObservableCollection<LineUp>> tempCol = new ObservableCollection<ObservableCollection<LineUp>>();
-
-            foreach (Stage stage in StageList) {
-
-               tempCol.Add(LineUp.GetLineupByStageAndDate(stage.ID, day));
-
-               
-            
-            }
-            LineUpPerStage = tempCol;
         }
-
-
-
-
-
-
-
 
 
 
@@ -243,7 +240,10 @@ namespace BADProject.viewmodel
 
         private void RemoveLineUpAction()
         {
-            throw new NotImplementedException();
+            if (SelectedLineup != null)
+            {
+                LineUp.DeleteLineUpElement(SelectedLineup.ID);
+            }
         }
 
     }

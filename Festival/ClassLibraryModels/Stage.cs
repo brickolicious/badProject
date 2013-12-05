@@ -51,9 +51,25 @@ namespace ClassLibraryModels
         
         #endregion
 
+        public static ObservableCollection<Stage> GetAllStages()
+        {
+            ObservableCollection<Stage> stageCollectie = new ObservableCollection<Stage>();
 
+            DbDataReader reader = DataBase.GetData("SELECT * FROM Stage");
+            foreach (IDataRecord record in reader)
+            {
+                Stage tempStage = new Stage();
+                tempStage.ID = (int)reader["ID"];
+                tempStage.Name = (string)reader["Name"];
+                // tempStage.LineUpByStage = LineUp.GetLineUpForStage(tempStage.ID);
+                //tempStage.LineUpByStage = LineUp.GetLineupByStageAndDate(tempStage.ID, day);
+                stageCollectie.Add(tempStage);
+            }
 
-        public static ObservableCollection<Stage> GetAllStages() {
+            return stageCollectie;
+        }
+
+        public static ObservableCollection<Stage> GetAllStages(DateTime day) {
             ObservableCollection<Stage> stageCollectie = new ObservableCollection<Stage>();
 
             DbDataReader reader = DataBase.GetData("SELECT * FROM Stage");
@@ -61,7 +77,8 @@ namespace ClassLibraryModels
                 Stage tempStage = new Stage();
                 tempStage.ID = (int)reader["ID"];
                 tempStage.Name = (string)reader["Name"];
-                tempStage.LineUpByStage = LineUp.GetLineUpForStage(tempStage.ID);
+               // tempStage.LineUpByStage = LineUp.GetLineUpForStage(tempStage.ID);
+                tempStage.LineUpByStage = LineUp.GetLineupByStageAndDate(tempStage.ID, day);
                 stageCollectie.Add(tempStage);
             }
 
