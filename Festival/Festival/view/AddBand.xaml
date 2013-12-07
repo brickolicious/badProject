@@ -11,8 +11,8 @@
         <context:BandsVM/>
     </Window.DataContext>
 
-    
-    
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -26,23 +26,25 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Center" Content="Add a band to the list."/>
-        <Label Grid.Column="0" Grid.Row="1" Content="Bandnaam:"/>
-        <Label Grid.Column="0" Grid.Row="2" Content="Description:"/>
-        <Label Grid.Column="0" Grid.Row="3" Content="Twitter:"/>
-        <Label Grid.Column="0" Grid.Row="4" Content="Facebook:"/>
-        <Label Grid.Column="0" Grid.Row="6" Content="Photo:"/>
+        <Label Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Center" Content="Add a band to the list." Grid.Column="1" Margin="60,0,57.006,0"/>
+        <Label Grid.Column="1" Grid.Row="1" Content="Bandnaam:" Margin="0.308,0,0.192,0"/>
+        <Label Grid.Column="1" Grid.Row="2" Content="Description:" Margin="0.308,0,0.192,0"/>
+        <Label Grid.Column="1" Grid.Row="3" Content="Twitter:" Margin="0.308,0,0.192,0"/>
+        <Label Grid.Column="1" Grid.Row="4" Content="Facebook:" Margin="0.308,0,0.192,0"/>
+        <Label Grid.Column="1" Grid.Row="6" Content="Photo:" Margin="0.308,0,0.192,0"/>
 
-        <TextBox x:Name="txtName"  Grid.Column="1" Grid.Row="1" />
-        <TextBox x:Name="txtDescription" Grid.Column="1" Grid.Row="2"/>
-        <TextBox x:Name="txtTwitter" Grid.Column="1" Grid.Row="3"/>
-        <TextBox x:Name="txtFacebook" Grid.Column="1" Grid.Row="4"/>
-        <Button Grid.Column="1" Grid.Row="6" Click="Button_Click" >Choose image</Button>
-        <Border Grid.Row="7" Grid.ColumnSpan="2">
+        <TextBox x:Name="txtName"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" />
+        <TextBox x:Name="txtDescription" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
+        <TextBox x:Name="txtTwitter" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
+        <TextBox x:Name="txtFacebook" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
+        <Button Style="{StaticResource buttonStyle}" Grid.Column="1" Grid.Row="6" Click="Button_Click" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" >Choose image</Button>
+        <Border Grid.Row="7" Grid.ColumnSpan="4">
             <Image x:Name="imgBand"  Source="{StaticResource noImage}"/>
         </Border>
 
@@ -55,9 +57,9 @@
             </i:Interaction.Triggers>
         </Image>
         </Border>-->
-        
-        <Button x:Name="sendBtn" Command="{Binding AddBandActionCommand}"  Grid.ColumnSpan="2" Grid.Row="10" Click="sendBtn_Click" Margin="0,0,0,-1" Content="Voeg toe."/>
-        <Label Grid.Column="0" Grid.Row="5" Content="Genres:"/>
-        <TextBox x:Name="txtGenres" Grid.Column="1" Grid.Row="5"/>
+
+        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding AddBandActionCommand}"  Grid.ColumnSpan="3" Grid.Row="8" Click="sendBtn_Click" Margin="0.308,0,33.692,-1" Content="Voeg toe." Grid.Column="1"/>
+        <Label Grid.Column="1" Grid.Row="5" Content="Genres:" Margin="0.308,0,0.192,0"/>
+        <TextBox x:Name="txtGenres" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
     </Grid>
 </Window>

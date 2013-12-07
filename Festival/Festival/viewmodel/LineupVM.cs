@@ -91,7 +91,7 @@ namespace BADProject.viewmodel
         public Stage StageForTheLineup
         {
             get { return _stageForTheLineup; }
-            set { _stageForTheLineup = value; }
+            set { _stageForTheLineup = value; OnPropertyChanged("StageForTheLineup"); }
         }
 
        
@@ -108,7 +108,7 @@ namespace BADProject.viewmodel
         public LineUp SelectedLineup
         {
             get { return _selectedLineup; }
-            set { _selectedLineup = value; }
+            set { _selectedLineup = value; OnPropertyChanged("SelectedLineup"); }
         }
 
         #endregion

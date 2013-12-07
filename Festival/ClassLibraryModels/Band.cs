@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.Common;
 using System.IO;
@@ -10,13 +12,41 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 
 
-namespace ClassLibraryModels
+namespace ClassLibraryModels 
 {
-    public class Band 
+    public class Band : IDataErrorInfo
     {
 
-       
 
+        #region IDataErrorInfo
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                try
+                {
+                    object value = this.GetType().GetProperty(columnName).GetValue(this);
+                    Validator.ValidateProperty(value, new ValidationContext(this, null, null) { MemberName = columnName });
+                }
+                catch (ValidationException ex)
+                {
+
+                    return ex.Message;
+                }
+                return string.Empty;
+            }
+
+
+
+
+
+        }
+        #endregion
         #region props
         private int _id;
 
@@ -28,6 +58,8 @@ namespace ClassLibraryModels
 
         private string _name;
 
+
+        [Required]
         public string Name
         {
             get { return _name; }
@@ -44,7 +76,7 @@ namespace ClassLibraryModels
         }
 
         private string _description;
-
+        [Required]
         public string Description
         {
             get { return _description; }
@@ -52,7 +84,7 @@ namespace ClassLibraryModels
         }
 
         private string _twitter;
-
+        [Required]
         public string Twitter
         {
             get { return _twitter; }
@@ -60,7 +92,7 @@ namespace ClassLibraryModels
         }
 
         private string _facebook;
-
+        [Required]
         public string Facebook
         {
             get { return _facebook; }
@@ -68,7 +100,7 @@ namespace ClassLibraryModels
         }
 
         private ObservableCollection<Genre> _genres;
-
+        [Required]
         public ObservableCollection<Genre> Genres
         {
             get { return _genres; }
@@ -187,7 +219,7 @@ namespace ClassLibraryModels
             try
             {
                 DbParameter idPar = DataBase.AddParameter("@id", id);
-                string sql = "DELETE FROM Band_Genre WHERE Band = @id; DELETE FROM Band WHERE ID =@id";
+                string sql = "DELETE FROM LineUp WHERE Band = @id;DELETE FROM Band_Genre WHERE Band = @id;DELETE FROM Band WHERE ID =@id;";
                 int iModifiedData = DataBase.ModifyData(sql, idPar);
 
             }

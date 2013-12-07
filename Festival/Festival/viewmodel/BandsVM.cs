@@ -98,6 +98,7 @@ namespace BADProject.viewmodel
         private void AddBandAction(Band band)
         {
             Genre.InsertBandAndOrAttachGenres(band);
+            Bands = Band.GetBands();
         }
         
 
@@ -106,7 +107,14 @@ namespace BADProject.viewmodel
 
         private void DeleteBand(Band band)
         {
-            Band.DeleteBand(band.ID);
+            MessageBoxResult result = MessageBox.Show("Removing this band will also remove all the line-up elements coupled to this band.\nAre you sure?", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+
+                Band.DeleteBand(band.ID);
+                Bands = Band.GetBands();
+            }
+            else { return; }
         }
 
         

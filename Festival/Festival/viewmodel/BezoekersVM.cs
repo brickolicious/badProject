@@ -42,9 +42,8 @@ namespace BADProject.viewmodel
         public static Ticket SelectedTicket
         {
             get { return _selectedTicket; }
-            set { _selectedTicket = value; }
+            set { _selectedTicket = value;}
         }
-        //SelectedItem="{Binding SelectedTicket}"
 
         private ObservableCollection<TicketType> _tickTypList;
 

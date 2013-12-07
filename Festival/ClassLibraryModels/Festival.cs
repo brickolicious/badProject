@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.Common;
 using System.IO;
@@ -10,9 +12,37 @@ using System.Threading.Tasks;
 
 namespace ClassLibraryModels
 {
-    public class Festival
+    public class Festival : IDataErrorInfo
     {
+        #region IDataErrorInfo
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
 
+        public string this[string columnName]
+        {
+            get
+            {
+                try
+                {
+                    object value = this.GetType().GetProperty(columnName).GetValue(this);
+                    Validator.ValidateProperty(value, new ValidationContext(this, null, null) { MemberName = columnName });
+                }
+                catch (ValidationException ex)
+                {
+
+                    return ex.Message;
+                }
+                return string.Empty;
+            }
+
+
+
+
+
+        }
+        #endregion
         #region prop
         private DateTime _startDate;
 

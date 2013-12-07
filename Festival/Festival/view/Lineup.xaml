@@ -77,7 +77,7 @@
 
 
 
-        <ScrollViewer x:Name="scrlViewer" Grid.Row="4" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="3" Grid.RowSpan="7">
+        <ScrollViewer x:Name="scrlViewer" Grid.Row="4" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="3" Grid.RowSpan="6">
             <ItemsControl 	ItemsSource="{Binding StageList, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource lstLineup}" ItemsPanel="{StaticResource stkPnl}"/>
 
         </ScrollViewer>

@@ -45,7 +45,7 @@
         <xctk:TimePicker  x:Name="untilPicker" Grid.Column="2" Grid.Row="3"/>
         <ComboBox x:Name="cboStage" Grid.Column="2" Grid.Row="4" ItemsSource="{Binding StageList}" DisplayMemberPath="Name"/>
         <ComboBox x:Name="cboBand" Grid.Column="2" Grid.Row="5" ItemsSource="{Binding Bands,Source={StaticResource bandVM}}" DisplayMemberPath="Name"/>
-        <Button x:Name="btnSend" Command="{Binding AddLineUpAction}" Grid.Row="7" Grid.ColumnSpan="4" Click="Button_Click">Add line-up</Button>
+        <Button Style="{StaticResource buttonStyle}" x:Name="btnSend" Command="{Binding AddLineUpAction}" Grid.Row="7" Grid.ColumnSpan="4" Click="Button_Click">Add line-up</Button>
 
     </Grid>
 </Window>

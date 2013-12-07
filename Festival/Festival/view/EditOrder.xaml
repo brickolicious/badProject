@@ -6,7 +6,7 @@
     <Window.DataContext>
         <context:BezoekersVM/>
     </Window.DataContext>
-        <Grid>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -20,27 +20,29 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.75*"/>
+            <ColumnDefinition Width="0.3*"/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,34,0" Width="91" Content="Edit order:"/>
-        <Label Grid.Column="0" Grid.Row="1" Content="Person ID"/>
-        <Label Grid.Column="0" Grid.Row="2" Content="Name:"/>
-        <Label Grid.Column="0" Grid.Row="3" Content="E-mail:"/>
-        <Label Grid.Column="0" Grid.Row="5">Amount:</Label>
+        <Label Grid.Row="0" HorizontalAlignment="Center" Margin="8,0,34,0" Width="70" Content="Edit order:" Grid.Column="1"/>
+        <Label Grid.Column="1" Grid.Row="1" Content="Person ID"/>
+        <Label Grid.Column="1" Grid.Row="2" Content="Name:"/>
+        <Label Grid.Column="1" Grid.Row="3" Content="E-mail:"/>
+        <Label Grid.Column="1" Grid.Row="5">Amount:</Label>
 
         <!--<ListBox ItemsSource="{Binding EditContact}" DisplayMemberPath="Name"></ListBox>-->
-        <Label x:Name="lblOrderID" Content="{Binding Path=SelectedTicket.ID}" Grid.Column="1" HorizontalAlignment="Center" ></Label>
-        <Label x:Name="lblPersonID"  Grid.Column="1" Grid.Row="1" Content="{Binding SelectedTicket.TicketholderID}" HorizontalAlignment="Center"></Label>
-        <Label x:Name="lblName" Grid.Column="1" Grid.Row="2" Content="{Binding SelectedTicket.Name}"></Label>
+        <Label x:Name="lblOrderID" Content="{Binding Path=SelectedTicket.ID}" Grid.Column="2" HorizontalAlignment="Center" Margin="79,0,45,0" ></Label>
+        <Label x:Name="lblPersonID"  Grid.Column="2" Grid.Row="1" Content="{Binding SelectedTicket.TicketholderID}" HorizontalAlignment="Center" Width="112"/>
+        <Label x:Name="lblName" Grid.Column="2" Grid.Row="2" Content="{Binding SelectedTicket.Name}"/>
 
         <!--by ref selectedItem-->
-        <ComboBox x:Name="cboTicketType" Grid.Column="1" Grid.Row="4" ItemsSource="{Binding TicketTypeList}" DisplayMemberPath="Name">
-        </ComboBox>
-        <Label x:Name="lblEmail" Grid.Column="1" Grid.Row="3" Content="{Binding SelectedTicket.Email}"/>
-        <TextBox x:Name="txtAmount" Grid.Column="1" Grid.Row="5" Text="{Binding SelectedTicket.Amount}"></TextBox>
+        <ComboBox x:Name="cboTicketType" Grid.Column="2" Grid.Row="4" ItemsSource="{Binding TicketTypeList}" DisplayMemberPath="Name"/>
+        <Label x:Name="lblEmail" Grid.Column="2" Grid.Row="3" Content="{Binding SelectedTicket.Email}"/>
+        <TextBox x:Name="txtAmount" Grid.Column="2" Grid.Row="5" Text="{Binding SelectedTicket.Amount}"/>
 
-        <Button x:Name="sendBtn" Command="{Binding EditActionCommand}"  Grid.ColumnSpan="2" Grid.Row="9" Click="sendBtn_Click" Content="Edit order" />
+        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding EditActionCommand}"  Grid.ColumnSpan="2" Grid.Row="9" Click="sendBtn_Click" Content="Edit order" Grid.Column="1" />
+        <Label Grid.Column="1" Grid.Row="4" Content="Type:"/>
     </Grid>
 </Window>

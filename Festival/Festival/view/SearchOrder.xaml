@@ -12,7 +12,7 @@
         <Grid.RowDefinitions>
 
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="0.75*"/>
+            <RowDefinition/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -23,15 +23,17 @@
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="0.75*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Search order:"/>
-        <TextBox Name="txtSearch" Grid.Row="1" Margin="0,0,5,0"></TextBox>
-        <Button Command="{Binding SearchOrderActionCommand}" CommandParameter="{Binding Text, ElementName=txtSearch}" Grid.Row="1" Grid.Column="1" Content="Search name"/>
-        <ListView x:Name="lstvwOrder" Grid.Row="3" Grid.RowSpan="5" Grid.ColumnSpan="3" ItemsSource="{Binding SearchList}">
+        <Label Content="Search order:" Grid.Column="1"/>
+        <TextBox Name="txtSearch" Grid.Column="1" Grid.Row="1"/>
+        <Button Style="{StaticResource buttonStyle}" Command="{Binding SearchOrderActionCommand}" CommandParameter="{Binding Text, ElementName=txtSearch}" Grid.Row="1" Grid.Column="3" Content="Search name"/>
+        <ListView x:Name="lstvwOrder" Grid.Row="3" Grid.RowSpan="5" Grid.ColumnSpan="5" ItemsSource="{Binding SearchList}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="OrderID" Width="auto" DisplayMemberBinding="{Binding ID}" />
@@ -44,6 +46,6 @@
         </ListView>
 
 
-        <Button Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=lstvwOrder,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwOrder}"  Grid.Row="8">Edit</Button>
+        <Button Style="{StaticResource buttonStyle}" Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=lstvwOrder,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwOrder}"  Grid.Row="8" Grid.Column="1">Edit</Button>
     </Grid>
 </Window>

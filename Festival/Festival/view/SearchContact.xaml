@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:context="clr-namespace:BADProject.viewmodel"
         Title="SearchContact" Height="300" Width="450">
-    
+
     <Window.DataContext>
         <context:ContactVM/>
     </Window.DataContext>
-    
+
     <Grid>
         <Grid.RowDefinitions>
 
@@ -23,15 +23,17 @@
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition/>
             <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
 
-        <Label>Zoek contactpersoon:</Label>
-        <TextBox Name="txtSearch" Grid.Row="1" Margin="0,0,5,0"></TextBox>
-        <Button Command="{Binding SearchContactActionCommand}" CommandParameter="{Binding ElementName=txtSearch,Path=Text}" Grid.Row="1" Grid.Column="1">Zoek</Button>
-        <ListView  Grid.Row="4" Grid.RowSpan="4" Grid.ColumnSpan="3" ItemsSource="{Binding SearchList}">
+        <Label Grid.Column="1" Grid.Row="1">Zoek contactpersoon:</Label>
+        <TextBox Name="txtSearch" Grid.Row="2" Grid.Column="1"/>
+        <Button Style="{StaticResource buttonStyle}" Command="{Binding SearchContactActionCommand}" CommandParameter="{Binding ElementName=txtSearch,Path=Text}" Grid.Row="2" Grid.Column="3">Zoek</Button>
+        <ListView  Grid.Row="4" Grid.RowSpan="4" Grid.ColumnSpan="5" ItemsSource="{Binding SearchList}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Naam" Width="auto" DisplayMemberBinding="{Binding Name}" />

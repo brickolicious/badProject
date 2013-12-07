@@ -154,7 +154,7 @@
                 <StackPanel>
                 <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" />
 
-                <ListView x:Name="lstvwLineup" Width="278" Height="300" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding LineUpByStage}" SelectedItem="{Binding SelectedLineup}">
+                <ListView x:Name="lstvwLineup" Width="270" Height="290" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding LineUpByStage}" SelectedItem="{Binding SelectedLineup}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Band" Width="auto" DisplayMemberBinding="{Binding Band.Name}" />

@@ -59,10 +59,6 @@ namespace BADProject.viewmodel
         #endregion
 
 
-
-
-
-
         #region commands
         public ICommand SearchCommand
         {
