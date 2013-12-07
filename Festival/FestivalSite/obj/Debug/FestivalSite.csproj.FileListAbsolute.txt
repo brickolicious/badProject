@@ -82,3 +82,4 @@ C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\FestivalSite\bin\zh-Hans
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\FestivalSite\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\FestivalSite\obj\Debug\FestivalSite.dll
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\FestivalSite\obj\Debug\FestivalSite.pdb
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\FestivalSite\obj\Debug\FestivalSite.csprojResolveAssemblyReference.cache

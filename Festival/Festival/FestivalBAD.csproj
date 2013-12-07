@@ -121,6 +121,9 @@
     <Compile Include="view\Contact.xaml.cs">
       <DependentUpon>Contact.xaml</DependentUpon>
     </Compile>
+    <Compile Include="view\RemoveStage.xaml.cs">
+      <DependentUpon>RemoveStage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\Reserveren.xaml.cs">
       <DependentUpon>Reserveren.xaml</DependentUpon>
     </Compile>
@@ -199,6 +202,10 @@
     <Page Include="view\Contact.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\RemoveStage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\Reserveren.xaml">
       <SubType>Designer</SubType>

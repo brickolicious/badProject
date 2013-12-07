@@ -30,8 +30,12 @@ namespace BADProject.view
         {
             LineUp tempLineUp = new LineUp();
             tempLineUp.Date = Convert.ToDateTime(datePicker.Text);
-            tempLineUp.From = fromPicker.Value.ToString().Split(' ')[1] ;
-            tempLineUp.Until = untilPicker.Value.ToString().Split(' ')[1];
+
+            string[] formatingTime = fromPicker.Value.ToString().Split(' ')[1].Split(':');
+            tempLineUp.From = formatingTime[0]+":"+formatingTime[1];
+            formatingTime = untilPicker.Value.ToString().Split(' ')[1].Split(':');
+            tempLineUp.Until = formatingTime[0] + ":" + formatingTime[1];
+
             tempLineUp.Band = (Band)cboBand.SelectedItem;
             tempLineUp.Stage = (Stage)cboStage.SelectedItem;
 

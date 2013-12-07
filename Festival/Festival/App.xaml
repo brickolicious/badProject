@@ -134,51 +134,16 @@
         
         <converter:ImgConverter x:Key="ImgConverter"/>
 
+        <Style x:Key="btnDeleteStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Width" Value="20px"/>
+            <Setter Property="Height" Value="20px"/>
+        </Style>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        <!--<HierarchicalDataTemplate x:Key="hoofd" ItemsSource={Binding LineUpPerStage}>
-            <TextBlock Text="{Binding Name}"/>
-        </HierarchicalDataTemplate>
-        <DataTemplate>
-            ^<ListView
-        </DataTemplate>-->
-
-
-
-
-        <!--Maken van lineup-->
-        <!--<DataTemplate x:Key="hoofd">
-            <WrapPanel Orientation="Horizontal">
-                <StackPanel Orientation="Vertical">
-            <TextBlock Text="{Binding Name}"></TextBlock>
-                    <ItemsControl ItemsSource="{Binding LineUpPerStage}">
-                    <ListView ItemsSource="{Binding }">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Band" Width="auto" DisplayMemberBinding="{Binding Name}" />
-                                <GridViewColumn Header="From" Width="auto" DisplayMemberBinding="{Binding From}" />
-                                <GridViewColumn Header="Until" Width="auto" DisplayMemberBinding="{Binding Until}" />
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </ItemsControl>
-                </StackPanel>
-            </WrapPanel>
-        </DataTemplate>-->
 
         <ItemsPanelTemplate x:Key="stkPnl">
             <StackPanel Orientation="Horizontal"/>
@@ -195,6 +160,13 @@
                             <GridViewColumn Header="Band" Width="auto" DisplayMemberBinding="{Binding Band.Name}" />
                             <GridViewColumn Header="From" Width="auto" DisplayMemberBinding="{Binding From}" />
                             <GridViewColumn Header="Until" Width="auto" DisplayMemberBinding="{Binding Until}" />
+                            <GridViewColumn Header="Delete" Width="auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Style="{StaticResource btnDeleteStyle}" Content="X" Command="{Binding DataContext.RemoveLineUp, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>

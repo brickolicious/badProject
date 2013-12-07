@@ -72,3 +72,5 @@ C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\BADPr
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\FestivalBAD.csproj.GenerateResource.Cache
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\Festival.exe
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\Festival.pdb
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\RemoveStage.baml
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\RemoveStage.g.cs

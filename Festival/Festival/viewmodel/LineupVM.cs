@@ -235,16 +235,29 @@ namespace BADProject.viewmodel
 
         public ICommand RemoveLineUp
         {
-            get { return new RelayCommand(RemoveLineUpAction); }
+            get { return new RelayCommand<LineUp>(RemoveLineUpAction); }
         }
 
-        private void RemoveLineUpAction()
+        private void RemoveLineUpAction(LineUp lineup)
         {
-            if (SelectedLineup != null)
-            {
-                LineUp.DeleteLineUpElement(SelectedLineup.ID);
+
+            //MessageBox.Show("test "+lineup.ID);
+            if (lineup != null) {
+                LineUp.DeleteLineUpElement(lineup.ID);
             }
         }
+
+        public ICommand DeleteStageCommand
+        {
+            get { return new RelayCommand(ShowRemoveStage); }
+        }
+
+        private void ShowRemoveStage()
+        {
+            
+        }
+
+       
 
     }
 }
