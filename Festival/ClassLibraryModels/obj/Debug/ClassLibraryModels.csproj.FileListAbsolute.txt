@@ -2,6 +2,6 @@ C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\ClassLibraryModels\bin\D
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\ClassLibraryModels\bin\Debug\ClassLibraryModels.pdb
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\ClassLibraryModels\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\ClassLibraryModels\bin\Debug\System.Windows.Interactivity.xml
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\ClassLibraryModels\obj\Debug\ClassLibraryModels.csprojResolveAssemblyReference.cache
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\ClassLibraryModels\obj\Debug\ClassLibraryModels.dll
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\ClassLibraryModels\obj\Debug\ClassLibraryModels.pdb
-C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\ClassLibraryModels\obj\Debug\ClassLibraryModels.csprojResolveAssemblyReference.cache

@@ -126,8 +126,20 @@ namespace ClassLibraryModels
 
             return tempStage;
         }
-        
-        
+
+        public static void RemoveStageAndItsLineup(int stageID) {
+
+            try
+            {
+                string sql = "DELETE FROM LineUp WHERE Stage = @id;Delete FROM Stage WHERE ID = @id";
+                DbParameter idPar = DataBase.AddParameter("@id", stageID);
+                int iModifiedData = DataBase.ModifyData(sql, idPar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
 
     }
 }

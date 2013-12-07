@@ -47,6 +47,7 @@ C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\Lineup.g.cs
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\Bands.g.cs
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\Contact.g.cs
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\RemoveStage.g.cs
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\Reserveren.g.cs
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\SearchContact.g.cs
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\SearchOrder.g.cs
@@ -65,6 +66,7 @@ C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\EditOrder.baml
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\MainWindow.baml
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\Bands.baml
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\RemoveStage.baml
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\SearchContact.baml
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\SearchOrder.baml
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\Festival.g.resources
@@ -72,5 +74,3 @@ C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\BADPr
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\FestivalBAD.csproj.GenerateResource.Cache
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\Festival.exe
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\Festival.pdb
-C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\RemoveStage.baml
-C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\RemoveStage.g.cs

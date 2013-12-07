@@ -15,13 +15,18 @@ using System.Windows.Shapes;
 namespace BADProject.view
 {
     /// <summary>
-    /// Interaction logic for RemoveStafe.xaml
+    /// Interaction logic for RemoveStage.xaml
     /// </summary>
-    public partial class RemoveStafe : Window
+    public partial class RemoveStage : Window
     {
-        public RemoveStafe()
+        public RemoveStage()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
