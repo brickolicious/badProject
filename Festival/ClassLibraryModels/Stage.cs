@@ -51,19 +51,26 @@ namespace ClassLibraryModels
         
         #endregion
 
+        #region functions
         public static ObservableCollection<Stage> GetAllStages()
         {
             ObservableCollection<Stage> stageCollectie = new ObservableCollection<Stage>();
 
-            DbDataReader reader = DataBase.GetData("SELECT * FROM Stage");
-            foreach (IDataRecord record in reader)
+            try
             {
-                Stage tempStage = new Stage();
-                tempStage.ID = (int)reader["ID"];
-                tempStage.Name = (string)reader["Name"];
-                // tempStage.LineUpByStage = LineUp.GetLineUpForStage(tempStage.ID);
-                //tempStage.LineUpByStage = LineUp.GetLineupByStageAndDate(tempStage.ID, day);
-                stageCollectie.Add(tempStage);
+                DbDataReader reader = DataBase.GetData("SELECT * FROM Stage");
+                foreach (IDataRecord record in reader)
+                {
+                    Stage tempStage = new Stage();
+                    tempStage.ID = (int)reader["ID"];
+                    tempStage.Name = (string)reader["Name"];
+                    // tempStage.LineUpByStage = LineUp.GetLineUpForStage(tempStage.ID);
+                    //tempStage.LineUpByStage = LineUp.GetLineupByStageAndDate(tempStage.ID, day);
+                    stageCollectie.Add(tempStage);
+                }
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
             }
 
             return stageCollectie;
@@ -72,14 +79,21 @@ namespace ClassLibraryModels
         public static ObservableCollection<Stage> GetAllStages(DateTime day) {
             ObservableCollection<Stage> stageCollectie = new ObservableCollection<Stage>();
 
-            DbDataReader reader = DataBase.GetData("SELECT * FROM Stage");
-            foreach (IDataRecord record in reader) {
-                Stage tempStage = new Stage();
-                tempStage.ID = (int)reader["ID"];
-                tempStage.Name = (string)reader["Name"];
-               // tempStage.LineUpByStage = LineUp.GetLineUpForStage(tempStage.ID);
-                tempStage.LineUpByStage = LineUp.GetLineupByStageAndDate(tempStage.ID, day);
-                stageCollectie.Add(tempStage);
+            try
+            {
+                DbDataReader reader = DataBase.GetData("SELECT * FROM Stage");
+                foreach (IDataRecord record in reader)
+                {
+                    Stage tempStage = new Stage();
+                    tempStage.ID = (int)reader["ID"];
+                    tempStage.Name = (string)reader["Name"];
+                    // tempStage.LineUpByStage = LineUp.GetLineUpForStage(tempStage.ID);
+                    tempStage.LineUpByStage = LineUp.GetLineupByStageAndDate(tempStage.ID, day);
+                    stageCollectie.Add(tempStage);
+                }
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
             }
 
             return stageCollectie;
@@ -89,14 +103,21 @@ namespace ClassLibraryModels
         public static Stage GetStageByID(int stageID)
         {
             Stage tempStage = new Stage();
-            DbParameter idPar = DataBase.AddParameter("@StageID", stageID);
-            DbDataReader reader = DataBase.GetData("SELECT * FROM Stage WHERE ID = @StageID",idPar);
-            foreach (IDataRecord record in reader)
+            try
             {
+                
+                DbParameter idPar = DataBase.AddParameter("@StageID", stageID);
+                DbDataReader reader = DataBase.GetData("SELECT * FROM Stage WHERE ID = @StageID", idPar);
+                foreach (IDataRecord record in reader)
+                {
 
-                tempStage.ID = (int)reader["ID"];
-                tempStage.Name = (string)reader["Name"];
+                    tempStage.ID = (int)reader["ID"];
+                    tempStage.Name = (string)reader["Name"];
 
+                }
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
             }
 
             return tempStage;
@@ -105,23 +126,37 @@ namespace ClassLibraryModels
         private static Stage CreateStageWithDate(DbDataReader reader, DateTime time) {
 
             Stage stage = new Stage();
-            stage.ID = (int)reader["ID"];
-            stage.Name = (string)reader["Name"];
-            stage.LineUpByStage = LineUp.GetBandsByLineUpIDAndDate((int)reader["ID"], time);
+            try
+            {
+                stage.ID = (int)reader["ID"];
+                stage.Name = (string)reader["Name"];
+                stage.LineUpByStage = LineUp.GetBandsByLineUpIDAndDate((int)reader["ID"], time);
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
             return stage;
         }
 
         public static Stage GetStageByDay(DateTime day)
         {
             Stage tempStage = new Stage();
-            DbParameter dayPar = DataBase.AddParameter("@day", day);
-            DbDataReader reader = DataBase.GetData("SELECT * FROM Stage");
-            foreach (IDataRecord record in reader)
+            try
             {
+                DbParameter dayPar = DataBase.AddParameter("@day", day);
+                DbDataReader reader = DataBase.GetData("SELECT * FROM Stage");
+                foreach (IDataRecord record in reader)
+                {
 
-                tempStage.ID = (int)reader["ID"];
-                tempStage.Name = (string)reader["Name"];
+                    tempStage.ID = (int)reader["ID"];
+                    tempStage.Name = (string)reader["Name"];
 
+                }
+            }
+            catch (Exception ex) {
+
+                Console.WriteLine(ex.Message);
+            
             }
 
             return tempStage;
@@ -141,5 +176,22 @@ namespace ClassLibraryModels
             }
         }
 
+        public static void AddStageAction(string strStageName)
+        {
+
+            try
+            {
+                string sql = "INSERT INTO Stage VALUES (@StageName)";
+                DbParameter namePar = DataBase.AddParameter("@StageName", strStageName);
+                int modifiedData = DataBase.ModifyData(sql, namePar);
+               
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+        }
+        #endregion
     }
 }

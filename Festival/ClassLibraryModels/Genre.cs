@@ -30,7 +30,7 @@ namespace ClassLibraryModels
         }
         #endregion
 
-
+        #region functions
         public static ObservableCollection<Genre> GetGenres() {
             ObservableCollection<Genre> genreList = new ObservableCollection<Genre>();
 
@@ -238,6 +238,6 @@ namespace ClassLibraryModels
                 Console.WriteLine(ex.Message);
             }
         }
-
+        #endregion
     }
 }

@@ -17,6 +17,9 @@ namespace BADProject.viewmodel
 {
     class ReserverenVM: ObservableObject,IPage
     {
+
+
+        #region props
         public string Name
         {
             get { return "Reserveren"; }
@@ -53,34 +56,24 @@ namespace BADProject.viewmodel
         }
 
 
+        #endregion
 
 
 
 
 
 
-
-
+        #region commands
         public ICommand SearchCommand
         {
             get { return new RelayCommand<KeyEventArgs>(Search); }
         }
 
-        private void Search(KeyEventArgs e)
-        {
-
-            FilterList = Ticket.GetVisitorsSearch(SearchText);
-
-            e.Handled = false;
-        }
-
+        
         public ICommand PlaceOrderCommand
         {
             get { return new RelayCommand<Ticket>(Reserveren); }
         }
-
-
-
 
 
         public ICommand DeleteTypeCommand
@@ -88,18 +81,6 @@ namespace BADProject.viewmodel
             get { return new RelayCommand<TicketType>(DeleteTicketType); }
         }
 
-        private void DeleteTicketType(TicketType ticketType)
-        {
-
-            MessageBoxResult result = MessageBox.Show("This will delete the ticket type along with the orders placed with this type, are you sure?", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes)
-            {
-                TicketType.DeleteTicketTypeAndOrdersPlacedWithThisType(ticketType.ID);
-            }
-            else { return; }
-        }
-
-        
 
         public ICommand AddTypeCommand {
             get {
@@ -107,11 +88,6 @@ namespace BADProject.viewmodel
             }
         }
 
-        private void ShowAddType()
-        {
-            AddTicketType ticketTypeView = new AddTicketType();
-            ticketTypeView.Show();
-        }
 
         public ICommand AddTypeAction
         {
@@ -120,6 +96,9 @@ namespace BADProject.viewmodel
             }
         }
 
+        #endregion
+
+        #region functions
         private void AddTickTypeAction(TicketType type)
         {
             MessageBox.Show("add");
@@ -145,8 +124,31 @@ namespace BADProject.viewmodel
             }
         }
 
+        private void Search(KeyEventArgs e)
+        {
 
-        
+            FilterList = Ticket.GetVisitorsSearch(SearchText);
 
+            e.Handled = false;
+        }
+
+        private void DeleteTicketType(TicketType ticketType)
+        {
+
+            MessageBoxResult result = MessageBox.Show("This will delete the ticket type along with the orders placed with this type, are you sure?", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                TicketType.DeleteTicketTypeAndOrdersPlacedWithThisType(ticketType.ID);
+            }
+            else { return; }
+        }
+
+
+        private void ShowAddType()
+        {
+            AddTicketType ticketTypeView = new AddTicketType();
+            ticketTypeView.Show();
+        }
+        #endregion
     }
 }

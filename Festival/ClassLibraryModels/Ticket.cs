@@ -55,20 +55,29 @@ namespace ClassLibraryModels
 
         #endregion
 
+        #region functions
+
         public static ObservableCollection<Ticket> GetAllVisitors() {
             ObservableCollection<Ticket> visitorsCollection = new ObservableCollection<Ticket>();
 
-            DbDataReader reader = DataBase.GetData("SELECT Reservatie.ID AS reservationID, TicketHolderID,Reservatie.TicketType,Amount,UserId,UserName,UserEmail,TicketType.ID AS typeID,TicketType.Name AS TypeName,Price,TotalTickets FROM Reservatie JOIN UserProfile ON Reservatie.TicketHolderID =  UserProfile.UserId JOIN TicketType ON Reservatie.TicketType = TicketType.ID ORDER BY UserName");
-            foreach (IDataRecord record in reader) {
-                Ticket tempTicket = new Ticket();
-                tempTicket.ID = (int)reader["reservationID"];
-                tempTicket.TicketholderID = (int)reader["UserID"];
-                tempTicket.Amount = (int)reader["Amount"];
-                tempTicket.TicketTypeProp = TicketType.GetTicketTypeByID((int)reader["TicketType"]);
-                tempTicket.Name = (string)reader["UserName"];
-                tempTicket.Email = (string)reader["UserEmail"];
+            try
+            {
+                DbDataReader reader = DataBase.GetData("SELECT Reservatie.ID AS reservationID, TicketHolderID,Reservatie.TicketType,Amount,UserId,UserName,UserEmail,TicketType.ID AS typeID,TicketType.Name AS TypeName,Price,TotalTickets FROM Reservatie JOIN UserProfile ON Reservatie.TicketHolderID =  UserProfile.UserId JOIN TicketType ON Reservatie.TicketType = TicketType.ID ORDER BY UserName");
+                foreach (IDataRecord record in reader)
+                {
+                    Ticket tempTicket = new Ticket();
+                    tempTicket.ID = (int)reader["reservationID"];
+                    tempTicket.TicketholderID = (int)reader["UserID"];
+                    tempTicket.Amount = (int)reader["Amount"];
+                    tempTicket.TicketTypeProp = TicketType.GetTicketTypeByID((int)reader["TicketType"]);
+                    tempTicket.Name = (string)reader["UserName"];
+                    tempTicket.Email = (string)reader["UserEmail"];
 
-                visitorsCollection.Add(tempTicket);
+                    visitorsCollection.Add(tempTicket);
+                }
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
             }
 
             return visitorsCollection;
@@ -78,20 +87,26 @@ namespace ClassLibraryModels
         {
             ObservableCollection<Ticket> searchColl = new ObservableCollection<Ticket>();
 
-            DbParameter partialPar = DataBase.AddParameter("@partial", partialName+"%");
-            DbDataReader reader = DataBase.GetData("SELECT * FROM UserProfile JOIN Reservatie ON UserProfile.UserId = Reservatie.TicketHolderID WHERE UserProfile.UserName LIKE @partial OR UserProfile.UserEmail LIKE @partial",partialPar);
-            foreach (IDataRecord record in reader)
+            try
             {
-                Ticket tempTicket = new Ticket();
-                tempTicket.ID = (int)reader["ID"];
-                tempTicket.TicketholderID = (int)reader["UserID"];
-                tempTicket.Amount = (int)reader["Amount"];
-                tempTicket.TicketTypeProp = TicketType.GetTicketTypeByID(tempTicket.ID);
+                DbParameter partialPar = DataBase.AddParameter("@partial", partialName + "%");
+                DbDataReader reader = DataBase.GetData("SELECT * FROM UserProfile JOIN Reservatie ON UserProfile.UserId = Reservatie.TicketHolderID WHERE UserProfile.UserName LIKE @partial OR UserProfile.UserEmail LIKE @partial", partialPar);
+                foreach (IDataRecord record in reader)
+                {
+                    Ticket tempTicket = new Ticket();
+                    tempTicket.ID = (int)reader["ID"];
+                    tempTicket.TicketholderID = (int)reader["UserID"];
+                    tempTicket.Amount = (int)reader["Amount"];
+                    tempTicket.TicketTypeProp = TicketType.GetTicketTypeByID(tempTicket.ID);
 
-                tempTicket.Name = (string)reader["UserName"];
-                tempTicket.Email = (string)reader["UserEmail"];
+                    tempTicket.Name = (string)reader["UserName"];
+                    tempTicket.Email = (string)reader["UserEmail"];
 
-                searchColl.Add(tempTicket);
+                    searchColl.Add(tempTicket);
+                }
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
             }
 
             return searchColl;
@@ -185,7 +200,7 @@ namespace ClassLibraryModels
         }
 
 
-        //crypto voor zodat users die aangemaakt zijn in de desktopapp ook online kunnen inloggen(pasw hash berekenen)
+        //crypto zodat users die aangemaakt zijn in de desktopapp ook online kunnen inloggen(pasw hash berekenen)
          #region Crypto
         private const int PBKDF2IterCount = 1000; // default for Rfc2898DeriveBytes
         private const int PBKDF2SubkeyLength = 256 / 8; // 256 bits
@@ -244,6 +259,6 @@ namespace ClassLibraryModels
             }
         }
 
-
+        #endregion
     }
 }

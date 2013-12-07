@@ -66,26 +66,31 @@ namespace ClassLibraryModels
         #endregion
 
 
-
+        #region functions
         public static ObservableCollection<LineUp> GetLineupByStageAndDate(int stageID,DateTime day) {
             ObservableCollection<LineUp> lineUpCollectie = new ObservableCollection<LineUp>();
-
-            DbParameter stageIdPar = DataBase.AddParameter("@StageID", stageID);
-            day = day.Date;
-            string sDateTime = day.ToString("yyyy/MM/dd HH:mm:ss");
-
-            DbParameter datePar = DataBase.AddParameter("@Day", sDateTime);
-            DbDataReader reader = DataBase.GetData("SELECT * FROM LineUp WHERE Stage = @StageID AND Datum = @Day ORDER BY LineUp.Until ASC", stageIdPar,datePar);
-            foreach (IDataRecord record in reader)
+            try
             {
-                LineUp tempLineup = new LineUp();
-                tempLineup.ID = (int)reader["ID"];
-                tempLineup.Date = (DateTime)reader["Datum"];
-                tempLineup.From = (string)reader["Start"];
-                tempLineup.Until = (string)reader["Until"];
-                tempLineup.Stage = Stage.GetStageByID((int)reader["Stage"]);
-                tempLineup.Band = Band.GetBandByID((int)reader["Band"]);
-                lineUpCollectie.Add(tempLineup);
+                DbParameter stageIdPar = DataBase.AddParameter("@StageID", stageID);
+                day = day.Date;
+                string sDateTime = day.ToString("yyyy/MM/dd HH:mm:ss");
+
+                DbParameter datePar = DataBase.AddParameter("@Day", sDateTime);
+                DbDataReader reader = DataBase.GetData("SELECT * FROM LineUp WHERE Stage = @StageID AND Datum = @Day ORDER BY LineUp.Until ASC", stageIdPar, datePar);
+                foreach (IDataRecord record in reader)
+                {
+                    LineUp tempLineup = new LineUp();
+                    tempLineup.ID = (int)reader["ID"];
+                    tempLineup.Date = (DateTime)reader["Datum"];
+                    tempLineup.From = (string)reader["Start"];
+                    tempLineup.Until = (string)reader["Until"];
+                    tempLineup.Stage = Stage.GetStageByID((int)reader["Stage"]);
+                    tempLineup.Band = Band.GetBandByID((int)reader["Band"]);
+                    lineUpCollectie.Add(tempLineup);
+                }
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
             }
 
             return lineUpCollectie;
@@ -145,12 +150,6 @@ namespace ClassLibraryModels
         }
 
 
-
-
-
-
-
-
         public static ObservableCollection<LineUp> GetBandsByLineUpIDAndDate(int id, DateTime time)
         {
             ObservableCollection<LineUp> tempCol = new ObservableCollection<LineUp>();
@@ -186,8 +185,10 @@ namespace ClassLibraryModels
             {
                 Console.WriteLine(ex.Message);
             }
-        
-        
+
+
         }
+
+        #endregion
     }
 }

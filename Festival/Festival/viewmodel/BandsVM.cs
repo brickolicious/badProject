@@ -17,10 +17,13 @@ namespace BADProject.viewmodel
 {
     class BandsVM : ObservableObject, IPage
     {
+
+        #region props
         public string Name
         {
             get { return "Bands"; }
         }
+
 
         private ObservableCollection<Band> _bands;
 
@@ -49,17 +52,40 @@ namespace BADProject.viewmodel
             get { return _selectedBandStatic; }
             set { _selectedBandStatic = value; }
         }
-        
+        #endregion
 
 
-
-
+        #region commands
 
         public ICommand AddBandShowCommand
         {
             get { return new RelayCommand(ToonAddBand); }
         }
 
+        public ICommand AddBandActionCommand
+        {
+            get { return new RelayCommand<Band>(AddBandAction); }
+        }
+
+        public ICommand DeleteBandCommand
+        {
+            get { return new RelayCommand<Band>(DeleteBand); }
+        }
+
+        public ICommand EditBandCommand
+        {
+            get { return new RelayCommand<Band>(EditSelectedBand); }
+        }
+
+        public ICommand EditBandActionCommand
+        {
+            get { return new RelayCommand<Band>(EditAction); }
+        }
+        #endregion
+
+
+
+        #region commandFunctions
         public void ToonAddBand() {
 
             AddBand addBandWindow = new AddBand();
@@ -67,10 +93,7 @@ namespace BADProject.viewmodel
 
         }
 
-        public ICommand AddBandActionCommand
-        {
-            get { return new RelayCommand<Band>(AddBandAction); }
-        }
+        
 
         private void AddBandAction(Band band)
         {
@@ -79,20 +102,14 @@ namespace BADProject.viewmodel
         
 
 
-        public ICommand DeleteBandCommand
-        {
-            get { return new RelayCommand<Band>(DeleteBand); }
-        }
+        
 
         private void DeleteBand(Band band)
         {
             Band.DeleteBand(band.ID);
         }
 
-        public ICommand EditBandCommand
-        {
-            get { return new RelayCommand<Band>(EditSelectedBand); }
-        }
+        
 
         private void EditSelectedBand(Band band)
         {
@@ -101,9 +118,7 @@ namespace BADProject.viewmodel
             viewEditBand.Show();
         }
 
-        public ICommand EditBandActionCommand {
-            get { return new RelayCommand<Band>(EditAction); }
-        }
+        
 
         private void EditAction(Band band)
         {
@@ -111,25 +126,9 @@ namespace BADProject.viewmodel
             Genre.InsertBandAndOrAttachGenres(band);
         }
 
+        #endregion
 
 
-
-
-        /*
-        public ICommand PictureCommand
-        {
-            get { return new RelayCommand<Image>(AddPictureToDB); }
-        }
-
-        private void AddPictureToDB(Image img)
-        {
-            
-        }*/
-
-
-
-
-        
 
 
     }

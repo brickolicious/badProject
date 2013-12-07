@@ -17,6 +17,9 @@ namespace BADProject.viewmodel
 {
     class BezoekersVM: ObservableObject,IPage
     {
+
+
+        #region props
         public string Name
         {
             get { return "Bezoekers"; }
@@ -61,11 +64,11 @@ namespace BADProject.viewmodel
             get { return _SearchList; }
             set { _SearchList = value; OnPropertyChanged("SearchList"); }
         }
-        
 
 
+        #endregion
 
-
+        #region commands
         public ICommand SearchCommand
         {
             get
@@ -104,8 +107,9 @@ namespace BADProject.viewmodel
                 return new RelayCommand<Ticket>(EditOrderAction);
             }
         }
+        #endregion
 
-
+        #region commandFunctions
         private void SearchOrders()
         {
 
@@ -140,9 +144,9 @@ namespace BADProject.viewmodel
         public void SearchAction(string namePartial) {
 
             SearchList = Ticket.GetVisitorsSearch(namePartial);
-        
-        }
 
+        }
+        #endregion
 
     }
 }

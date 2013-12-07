@@ -12,7 +12,7 @@ namespace ClassLibraryModels
     public class DataBase
     {
 
-
+        #region functions
         //connectionstringssettings moet eerst een referentie hebben -->(assambely framework) system.configuration
         private static ConnectionStringSettings ConnectionString
         {
@@ -220,6 +220,6 @@ namespace ClassLibraryModels
 
         #endregion
 
-
+        #endregion
     }
 }

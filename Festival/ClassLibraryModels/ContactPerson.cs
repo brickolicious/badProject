@@ -81,6 +81,7 @@ namespace ClassLibraryModels
         }
         #endregion
 
+        #region functions
         public static ObservableCollection<ContactPerson> GetAllContacts() {
             ObservableCollection<ContactPerson> contactCollection = new ObservableCollection<ContactPerson>();
 
@@ -186,6 +187,32 @@ namespace ClassLibraryModels
             return contColl;
         }
 
+        public static void AddTheContact(ContactPerson contact)
+        {
+            try
+            {
+                DbParameter par1 = DataBase.AddParameter("@Name", contact.Name);
+                DbParameter par2 = DataBase.AddParameter("@Company", contact.Company);
+                DbParameter par3 = DataBase.AddParameter("@ContactPersonType", contact.JobRole.ID);
+                DbParameter par4 = DataBase.AddParameter("@City", contact.City);
+                DbParameter par5 = DataBase.AddParameter("@Email", contact.Email);
+                DbParameter par6 = DataBase.AddParameter("@Phone", contact.Phone);
+                DbParameter par7 = DataBase.AddParameter("@CellPhone", contact.CellPhone);
+                string sql = "INSERT INTO ContactPerson (Name,Company,JobRole,City,Email,Phone,CellPhone) VALUES (@Name,@Company,@ContactPersonType,@City,@Email,@Phone,@Cellphone)";
+                int modifiedRows = DataBase.ModifyData(sql, par1, par2, par3, par4, par5, par6, par7);
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex);
+
+            }
+
+        }
+
         public static void UpdateContact(ContactPerson person) {
 
             try
@@ -225,6 +252,6 @@ namespace ClassLibraryModels
                 Console.WriteLine(ex.Message);
             }
         }
-
+        #endregion
     }
 }

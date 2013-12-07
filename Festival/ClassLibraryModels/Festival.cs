@@ -13,6 +13,7 @@ namespace ClassLibraryModels
     public class Festival
     {
 
+        #region prop
         private DateTime _startDate;
 
         public DateTime StartDate
@@ -37,10 +38,10 @@ namespace ClassLibraryModels
             set { _endDate = value; }
         }
 
+        #endregion
 
-        
 
-
+        #region functions
         public static List<DateTime> GetFestivalDays()
         {
 
@@ -83,8 +84,26 @@ namespace ClassLibraryModels
 
         }
 
+        public static void AddDay()
+        {
+            try
+            {
+                int tempID = 1;
+
+                DbParameter idPar = DataBase.AddParameter("@id", tempID);
+                string sql = "UPDATE FestivalDatums SET EindDatum = EindDatum+1 WHERE id = @id";
+
+                DataBase.ModifyData(sql, idPar);
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        #endregion
 
 
-   
     }
 }

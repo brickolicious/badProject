@@ -25,24 +25,28 @@ namespace BADProject.viewmodel
         }
 
 
+        #region props
+
         public string Name
         {
             get { return "Line-up"; }
         }
 
 
-      
 
-       
+
         private List<DateTime> _lstDates;
 
         public List<DateTime> DatesList
         {
-            get {
+            get
+            {
                 _lstDates = Festival.GetFestivalDays();
-                return _lstDates; }
+                return _lstDates;
+            }
             set { _lstDates = value; OnPropertyChanged("DatesList"); }
         }
+        
 
 
         private ObservableCollection<StackPanel> _colPodia;
@@ -90,15 +94,7 @@ namespace BADProject.viewmodel
             set { _stageForTheLineup = value; }
         }
 
-        /*private ObservableCollection<LineUp> _byDayByStage;
-
-        public ObservableCollection<LineUp> LineUpByDayByStage
-        {
-            get { return _byDayByStage; }
-            set { _byDayByStage = value; }
-        }*/
-
-
+       
         private ObservableCollection<ObservableCollection<LineUp>> _perstagePerdag;
 
         public ObservableCollection<ObservableCollection<LineUp>> LineUpPerStage
@@ -114,32 +110,23 @@ namespace BADProject.viewmodel
             get { return _selectedLineup; }
             set { _selectedLineup = value; }
         }
-        
+
+        #endregion
 
 
-
-
+        #region commands
 
         public ICommand ShowLineUpCommand
         {
             get { return new RelayCommand<DateTime>(ToonLineUp); }
         }
 
-        public void ToonLineUp(DateTime day) {
-
-            SelectedDay = day;
-
-            StageList = Stage.GetAllStages(day);
-
-        }
-
-
-
-
         public ICommand DeleteDayCommand
         {
             get { return new RelayCommand(DeleteDay); }
         }
+
+        
 
         public ICommand AddDayCommand
         {
@@ -157,7 +144,58 @@ namespace BADProject.viewmodel
             get { return new RelayCommand<string>(AddStageAction); }
         }
 
-        public void DeleteDay() {
+        
+        public ICommand ShowAddLineUp {
+            get { return new RelayCommand(ShowAddLineUpAction); }
+        }
+
+        public ICommand AddLineUpAction {
+            get { return new RelayCommand<LineUp>(AddAction); }
+        }
+
+
+        public ICommand RemoveLineUp
+        {
+            get { return new RelayCommand<LineUp>(RemoveLineUpAction); }
+        }
+
+        
+        public ICommand DeleteStageCommand
+        {
+            get { return new RelayCommand(ShowRemoveStage); }
+        }
+
+        public ICommand RemoveStageAction
+        {
+            get { return new RelayCommand<Stage>(RemoveAction); }
+        }
+        #endregion
+
+
+        #region commandFunctions
+        private void RemoveAction(Stage stage)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you wish to delete this stage?\nDeleting this stage will also delete all of the line-up elements coupled with it for each day.", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                Stage.RemoveStageAndItsLineup(stage.ID);
+            }
+            else { return; }
+        }
+
+        public void ToonLineUp(DateTime day)
+        {
+
+            SelectedDay = day;
+
+            StageList = Stage.GetAllStages(day);
+
+        }
+
+        public void DeleteDay()
+        {
+
+            //functie deels afhankelijk van property =/= in model
             try
             {
                 int tempID = 1;
@@ -168,88 +206,43 @@ namespace BADProject.viewmodel
                 int iModifiedData = DataBase.ModifyData(sql, idPar);
                 DatesList = Festival.GetFestivalDays();
             }
-            catch (Exception ex) {
-                Console.WriteLine(ex);
-            }
-        }
-
-        public void AddDay() {
-            try
-            {
-                int tempID = 1;
-
-                DbParameter idPar = DataBase.AddParameter("@id", tempID);
-                string sql = "UPDATE FestivalDatums SET EindDatum = EindDatum+1 WHERE id = @id";
-
-                DataBase.ModifyData(sql, idPar);
-                DatesList = Festival.GetFestivalDays();
-            }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
         }
 
-        public void AddStages() {
+
+        public void AddDay()
+        {
+            Festival.AddDay();
+            DatesList = Festival.GetFestivalDays();
+        }
+
+        public void AddStages()
+        {
 
             AddStage addStage = new AddStage();
             addStage.Show();
 
         }
 
-        public void AddStageAction(string strStageName) {
-
-            try
-            {
-                string sql = "INSERT INTO Stage VALUES (@StageName)";
-                DbParameter namePar = DataBase.AddParameter("@StageName", strStageName);
-                int modifiedData = DataBase.ModifyData(sql, namePar);
-                StageList = Stage.GetAllStages();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-        
-        }
-
-
-        public ICommand ShowAddLineUp {
-            get { return new RelayCommand(ShowAddLineUpAction); }
-        }
-
-        private void ShowAddLineUpAction()
+        public void AddStageAction(string strStageName)
         {
-            AddLineUp addLineUpView = new AddLineUp();
-            addLineUpView.Show();
-        }
 
-        public ICommand AddLineUpAction {
-            get { return new RelayCommand<LineUp>(AddAction); }
-        }
+            Stage.AddStageAction(strStageName);
+            StageList = Stage.GetAllStages();
 
-        private void AddAction(LineUp lineup)
-        {
-            LineUp.AddLineUp(lineup);
-        }
-
-        public ICommand RemoveLineUp
-        {
-            get { return new RelayCommand<LineUp>(RemoveLineUpAction); }
         }
 
         private void RemoveLineUpAction(LineUp lineup)
         {
 
             //MessageBox.Show("test "+lineup.ID);
-            if (lineup != null) {
+            if (lineup != null)
+            {
                 LineUp.DeleteLineUpElement(lineup.ID);
             }
-        }
-
-        public ICommand DeleteStageCommand
-        {
-            get { return new RelayCommand(ShowRemoveStage); }
         }
 
         private void ShowRemoveStage()
@@ -259,21 +252,18 @@ namespace BADProject.viewmodel
         }
 
 
-        public ICommand RemoveStageAction
+        private void AddAction(LineUp lineup)
         {
-            get { return new RelayCommand<Stage>(RemoveAction); }
+            LineUp.AddLineUp(lineup);
         }
 
-        private void RemoveAction(Stage stage)
+        private void ShowAddLineUpAction()
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you wish to delete this stage?\nDeleting this stage will also delete all of the line-up elements coupled with it for each day.", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes)
-            {
-                Stage.RemoveStageAndItsLineup(stage.ID);
-            }
-            else { return; }
+            AddLineUp addLineUpView = new AddLineUp();
+            addLineUpView.Show();
         }
-       
+
+        #endregion
 
     }
 }

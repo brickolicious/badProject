@@ -89,6 +89,7 @@ namespace ClassLibraryModels
         #endregion
 
 
+        #region functions
         public static ObservableCollection<Band> GetBands() {
 
             ObservableCollection<Band> bandsCol = new ObservableCollection<Band>();
@@ -134,28 +135,37 @@ namespace ClassLibraryModels
         public static Band GetBandByID(int bandID)
         {
             Band tempBand = new Band();
-            DbParameter idPar = DataBase.AddParameter("@bandID", bandID);
-            DbDataReader reader = DataBase.GetData("SELECT * FROM Band WHERE ID = @bandID",idPar);
-            foreach (IDataRecord record in reader) {
 
-                
-                tempBand.ID = (int)reader["ID"];
-                tempBand.Name = (string)reader["Name"];
-                tempBand.Picture = reader["Picture"] as Byte[];
-                tempBand.Description = (string)reader["Description"];
-                tempBand.Twitter = (string)reader["Twitter"];
-                tempBand.Facebook = (string)reader["Facebook"];
-                tempBand.Genres = Genre.GetListOfGenresByBand((string)reader["Name"]);
-
-                string tempstring = "";
-                foreach (Genre genre in tempBand.Genres)
+            try
+            {
+                DbParameter idPar = DataBase.AddParameter("@bandID", bandID);
+                DbDataReader reader = DataBase.GetData("SELECT * FROM Band WHERE ID = @bandID", idPar);
+                foreach (IDataRecord record in reader)
                 {
-                    tempstring = tempstring + "," + genre.Name;
-                }
-                tempstring = tempstring.TrimStart(',');
-                tempBand.GenresInText = tempstring;
 
-            
+
+                    tempBand.ID = (int)reader["ID"];
+                    tempBand.Name = (string)reader["Name"];
+                    tempBand.Picture = reader["Picture"] as Byte[];
+                    tempBand.Description = (string)reader["Description"];
+                    tempBand.Twitter = (string)reader["Twitter"];
+                    tempBand.Facebook = (string)reader["Facebook"];
+                    tempBand.Genres = Genre.GetListOfGenresByBand((string)reader["Name"]);
+
+                    string tempstring = "";
+                    foreach (Genre genre in tempBand.Genres)
+                    {
+                        tempstring = tempstring + "," + genre.Name;
+                    }
+                    tempstring = tempstring.TrimStart(',');
+                    tempBand.GenresInText = tempstring;
+
+
+                }
+            }
+            catch (Exception ex) {
+
+                Console.WriteLine(ex.Message);
             }
             return tempBand;
 
@@ -202,18 +212,6 @@ namespace ClassLibraryModels
         }
 
 
-        public static Band GetBandByDay(DateTime day) {
-            Band band = new Band();
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return band;
-        }
-
+        #endregion
     }
 }

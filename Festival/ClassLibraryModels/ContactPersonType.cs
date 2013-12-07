@@ -13,6 +13,8 @@ namespace ClassLibraryModels
 {
     public class ContactPersonType
     {
+
+        #region props
         private int _id;
 
         public int ID
@@ -28,8 +30,10 @@ namespace ClassLibraryModels
             get { return _name; }
             set { _name = value; }
         }
+        #endregion
 
 
+        #region functions
         public static ObservableCollection<ContactPersonType> GetAllContactPersonType()
         {
             ObservableCollection<ContactPersonType> contactPersonTypeCol = new ObservableCollection<ContactPersonType>();
@@ -128,6 +132,6 @@ namespace ClassLibraryModels
                 Console.WriteLine(ex.Message);
             }
         }
-
+        #endregion
     }
 }

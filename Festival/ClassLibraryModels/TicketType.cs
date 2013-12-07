@@ -57,7 +57,7 @@ namespace ClassLibraryModels
         }
         #endregion
 
-
+        #region functions
         public static ObservableCollection<TicketType> GetAllTicketTypes() { 
             ObservableCollection<TicketType> typesColl = new ObservableCollection<TicketType>();
 
@@ -159,5 +159,6 @@ namespace ClassLibraryModels
                 Console.WriteLine(ex.Message);
             }
         }
+        #endregion
     }
 }

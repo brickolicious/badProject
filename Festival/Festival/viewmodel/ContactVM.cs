@@ -17,8 +17,8 @@ namespace BADProject.viewmodel
     class ContactVM : ObservableObject, IPage
     {
 
-   
 
+        #region prop
         public string Name
         {
             get { return "Contact"; }
@@ -82,29 +82,14 @@ namespace BADProject.viewmodel
             set { _editContact = value; /*OnPropertyChanged("EditContact");*/ }
         }
 
-        
-        
-        
-        
-
-      
-       public void opVullenMetGeselecteerdeType(){
-
-            SelectedContactTypeLijst = ContactPerson.GetContactPersonsByJobrole(SelectedContactType.ID);
-
-        }
+        #endregion
 
 
 
+        #region Commands
         public ICommand AddContactCom
         {
             get { return new RelayCommand(ToonAddContact); }
-        }
-
-        public void ToonAddContact() {
-            
-            AddContact openNewContact = new AddContact();
-            openNewContact.Show();
         }
 
         public ICommand AddContactComBtn
@@ -112,39 +97,11 @@ namespace BADProject.viewmodel
             get { return new RelayCommand<ContactPerson>(AddTheContact); }
         }
 
-        public void AddTheContact(ContactPerson contact){
-            try
-            {
-                DbParameter par1 = DataBase.AddParameter("@Name", contact.Name);
-                DbParameter par2 = DataBase.AddParameter("@Company", contact.Company);
-                DbParameter par3 = DataBase.AddParameter("@ContactPersonType", contact.JobRole.ID);
-                DbParameter par4 = DataBase.AddParameter("@City", contact.City);
-                DbParameter par5 = DataBase.AddParameter("@Email", contact.Email);
-                DbParameter par6 = DataBase.AddParameter("@Phone", contact.Phone);
-                DbParameter par7 = DataBase.AddParameter("@CellPhone", contact.CellPhone);
-                string sql = "INSERT INTO ContactPerson (Name,Company,JobRole,City,Email,Phone,CellPhone) VALUES (@Name,@Company,@ContactPersonType,@City,@Email,@Phone,@Cellphone)";
-                int modifiedRows = DataBase.ModifyData(sql, par1, par2, par3, par4, par5, par6, par7);
-                
-
-                
-            }catch(Exception ex){
-            
-                Console.WriteLine(ex);
-            
-            }
-
-        }
-
         public ICommand SearchContactCommand
         {
             get { return new RelayCommand(SearchContact); }
         }
 
-        private void SearchContact()
-        {
-            SearchContact search = new SearchContact();
-            search.Show();
-        }
 
         public ICommand SearchContactActionCommand {
             get
@@ -153,29 +110,11 @@ namespace BADProject.viewmodel
             }
         }
 
-        private void SearchAction(string strName)
-        {
-            SearchList = ContactPerson.GetContactByName(strName);
-        }
-
-
         public ICommand EditContactCommand {
             get {
                 return new RelayCommand<ContactPerson>(ShowEditContact);
             }
         }
-
-        private void ShowEditContact(ContactPerson conPers)
-        {
-            EditContact = conPers;
-
-            EditContact editWindow = new EditContact();
-            editWindow.Show();
-            //crash hier
-            //ContactTypeLijst = ContactPersonType.GetAllContactPersonType();
-        }
-
-        
 
         public ICommand EditContactComBtn {
             get {
@@ -183,35 +122,15 @@ namespace BADProject.viewmodel
             }
         }
 
-        public void EditContactAction(ContactPerson conPer) {
-
-            ContactPerson.UpdateContact(conPer);
-        
-        }
-
 
         public ICommand AddContactTypeCommand {
             get { return new RelayCommand(OpenAddContactType); }
         }
 
-        private void OpenAddContactType()
-        {
-            AddContactType viewAddType = new AddContactType();
-            viewAddType.Show();
-        }
-
+        
         public ICommand AddCategory
         {
             get { return new RelayCommand<string>(AddCategoryAction); }
-        }
-
-        private void AddCategoryAction(string strName)
-        {
-
-            if (!String.IsNullOrEmpty(strName)) {
-                ContactPersonType.AddContactType(strName);
-            }
-   
         }
 
         public ICommand DeleteContactTypeCommand
@@ -219,14 +138,32 @@ namespace BADProject.viewmodel
             get { return new RelayCommand<ContactPersonType>(DeleteTypeAction); }
         }
 
-        private void DeleteTypeAction(ContactPersonType ConType)
-        {
-            ContactPersonType.DeleteContactType(ConType.ID);
-        }
 
         public ICommand DeleteContact
         {
             get { return new RelayCommand<ContactPerson>(DeleteContactAction); }
+        }
+
+#endregion
+
+
+        #region commandFunctions
+
+        public void ToonAddContact()
+        {
+
+            AddContact openNewContact = new AddContact();
+            openNewContact.Show();
+        }
+
+        private void AddTheContact(ContactPerson person)
+        {
+            ContactPerson.AddTheContact(person);
+        }
+
+        private void DeleteTypeAction(ContactPersonType ConType)
+        {
+            ContactPersonType.DeleteContactType(ConType.ID);
         }
 
         private void DeleteContactAction(ContactPerson contact)
@@ -239,5 +176,56 @@ namespace BADProject.viewmodel
             else { return; }
         }
 
+        private void AddCategoryAction(string strName)
+        {
+
+            if (!String.IsNullOrEmpty(strName))
+            {
+                ContactPersonType.AddContactType(strName);
+            }
+
+        }
+
+        private void OpenAddContactType()
+        {
+            AddContactType viewAddType = new AddContactType();
+            viewAddType.Show();
+        }
+
+
+        public void EditContactAction(ContactPerson conPer)
+        {
+
+            ContactPerson.UpdateContact(conPer);
+
+        }
+
+        private void ShowEditContact(ContactPerson conPers)
+        {
+            EditContact = conPers;
+
+            EditContact editWindow = new EditContact();
+            editWindow.Show();
+        }
+
+        private void SearchAction(string strName)
+        {
+            SearchList = ContactPerson.GetContactByName(strName);
+        }
+
+
+        private void SearchContact()
+        {
+            SearchContact search = new SearchContact();
+            search.Show();
+        }
+
+        public void opVullenMetGeselecteerdeType()
+        {
+
+            SelectedContactTypeLijst = ContactPerson.GetContactPersonsByJobrole(SelectedContactType.ID);
+
+        }
+        #endregion
     }
 }
