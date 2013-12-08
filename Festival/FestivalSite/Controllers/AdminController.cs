@@ -6,15 +6,15 @@ using System.Web.Mvc;
 
 namespace FestivalSite.Controllers
 {
-    public class HomeController : Controller
+    public class AdminController : Controller
     {
+        //
+        // GET: /Admin/
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-            
-
-            return View("HomeIndex");
+            return View("AdminIndex");
         }
 
     }

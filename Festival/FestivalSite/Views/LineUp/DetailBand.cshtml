@@ -1,0 +1,24 @@
+﻿@model FestivalSite.ViewModels.LineUpVM
+@using ClassLibraryModels
+@{
+    ViewBag.Title = "DetailBand";
+}
+
+<h2>DetailBand</h2>
+
+
+<div>
+    <h3>@Model.SelectedBand.Name</h3>
+    <h3>@Model.SelectedBand.Description</h3>
+    <h3>Genres</h3>
+    <ul>
+        @foreach (Genre genre in Model.SelectedBand.Genres)
+        {
+            <li>@genre.Name</li> 
+        }
+       
+    </ul>
+    @if(Model.SelectedBand.Picture != null){
+    <img src="@Url.Action("GetPhoto",new {photo = Model.SelectedBand.Picture})" alt="@Model.SelectedBand.Name" />
+    }
+</div>

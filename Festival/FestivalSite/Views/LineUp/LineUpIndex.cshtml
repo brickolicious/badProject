@@ -1,0 +1,35 @@
+﻿@model FestivalSite.ViewModels.LineUpVM
+@using ClassLibraryModels
+@{
+    ViewBag.Title = "LineUpIndex";
+}
+
+    <div>
+    <h2>Pick a day.</h2>
+
+    <ul>
+        @foreach(DateTime day in Model.Days){
+
+            <li>@Html.ActionLink(day.DayOfWeek + "\t" + day.Date.ToShortDateString(), "LineUpForDay", new {date = day,lineVM = Model})</li>
+    
+        }
+    
+    </ul>
+    </div>
+
+    <div>
+    <h2>Pick a band to see their scedule:</h2>
+    <table>
+
+
+
+        @foreach (Band band in Model.BandList)
+        {
+            <tr>
+                <td>@Html.ActionLink(band.Name,"Detailband",new {bandID = band.ID,lineVM = Model})</td>
+                <td>@Html.ActionLink("see line-up","DetailLineup",new {bandID = band.ID,lineVM = Model})</td>
+            </tr>
+        }
+
+    </table>
+    </div>

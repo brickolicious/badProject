@@ -128,7 +128,7 @@ namespace ClassLibraryModels
 
             try
             {
-                DbDataReader reader = DataBase.GetData("SELECT * FROM Band");
+                DbDataReader reader = DataBase.GetData("SELECT * FROM Band ORDER BY Name ASC");
 
                 foreach (IDataRecord record in reader)
                 {

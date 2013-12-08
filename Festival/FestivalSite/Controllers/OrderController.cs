@@ -6,15 +6,14 @@ using System.Web.Mvc;
 
 namespace FestivalSite.Controllers
 {
-    public class HomeController : Controller
+    public class OrderController : Controller
     {
+        //
+        // GET: /Order/
 
-        [AllowAnonymous]
         public ActionResult Index()
         {
-            
-
-            return View("HomeIndex");
+            return View("OrderIndex");
         }
 
     }

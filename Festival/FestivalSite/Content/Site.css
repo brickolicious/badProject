@@ -104,15 +104,17 @@ h5, h6 {
     padding-bottom: 35px;
 }
 
-    .main-content {
+/*bolleke*/
+   /* .main-content {
         background: url("../Images/accent.png") no-repeat;
         padding-left: 10px;
         padding-top: 30px;
+        height:600px;
     }
 
     .featured + .main-content {
         background: url("../Images/heroAccent.png") no-repeat;
-    }
+    }*/
 
 header .content-wrapper {
     padding-top: 20px; 
@@ -587,6 +589,14 @@ tr.pager td {
 }
 
 
+/*Eigen css*/
+#body {
+    height: 800px;
+}
+
+
+
+
 /********************
 *   Mobile Styles   *
 ********************/
@@ -596,8 +606,10 @@ tr.pager td {
     ----------------------------------------------------------*/
     header .float-left,
     header .float-right {
-        float: none;
+        float: left;
     }
+    
+
 
     /* logo */
     header .site-title {
@@ -639,6 +651,7 @@ tr.pager td {
     /* menu */
     nav {
         margin-bottom: 5px;
+        float:left;
     }
 
     ul#menu {
