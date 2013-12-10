@@ -45,6 +45,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -187,6 +188,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineUpController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\RSSController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -202,6 +204,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\festivalHome.jpg" />
+    <Content Include="Content\Images\rss-logo.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -322,6 +325,8 @@
     <Content Include="Views\LineUp\LineUpIndex.cshtml" />
     <Content Include="Views\LineUp\LineUpForDay.cshtml" />
     <Content Include="Views\LineUp\DetailBand.cshtml" />
+    <Content Include="Views\LineUp\BandLineUp.cshtml" />
+    <Content Include="Views\Admin\_RSSpartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

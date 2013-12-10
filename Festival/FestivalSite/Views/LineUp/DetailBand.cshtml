@@ -19,6 +19,18 @@
        
     </ul>
     @if(Model.SelectedBand.Picture != null){
-    <img src="@Url.Action("GetPhoto",new {photo = Model.SelectedBand.Picture})" alt="@Model.SelectedBand.Name" />
+    <img src="@Url.Action("GetPhoto",new {photo = Model.SelectedBand.ID})" alt="@Model.SelectedBand.Name" />
     }
 </div>
+
+@if (Model.SelectedDay != null) {
+
+    @Html.ActionLink("Go back", "LineUpForDay", new { date = Model.SelectedDay });
+    
+    
+}else{
+
+    @Html.ActionLink("Go back", "Index")
+
+}
+

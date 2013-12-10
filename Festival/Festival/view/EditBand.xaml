@@ -6,7 +6,7 @@
         xmlns:context="clr-namespace:BADProject.viewmodel"
         Title="EditBand" Height="420" Width="300">
     <Window.DataContext>
-        <context:BandsVM/>
+        <context:EditBandVM/>
     </Window.DataContext>
 
     <Grid>
@@ -35,11 +35,11 @@
         <Label Grid.Column="1" Grid.Row="4" Content="Facebook:"/>
         <Label Grid.Column="1" Grid.Row="6" Content="Photo:"/>
 
-        <Label x:Name="lblID" Content="{Binding SelectedBandStatic.ID}"  Grid.Column="2" Grid.ColumnSpan="2" ></Label>
-        <Label x:Name="lblName"  Content="{Binding SelectedBandStatic.Name}" Grid.Column="2" Grid.Row="1" />
-        <TextBox x:Name="txtDescription" Text="{Binding SelectedBandStatic.Description}" Grid.Column="2" Grid.Row="2"/>
-        <TextBox x:Name="txtTwitter" Text="{Binding SelectedBandStatic.Twitter}" Grid.Column="2" Grid.Row="3"/>
-        <TextBox x:Name="txtFacebook" Text="{Binding SelectedBandStatic.Facebook}" Grid.Column="2" Grid.Row="4"/>
+        <Label x:Name="lblID" Content="{Binding SelectedBand.ID}"  Grid.Column="2" Grid.ColumnSpan="2" ></Label>
+        <Label x:Name="lblName"  Content="{Binding SelectedBand.Name}" Grid.Column="2" Grid.Row="1" />
+        <TextBox x:Name="txtDescription" Text="{Binding SelectedBand.Description}" Grid.Column="2" Grid.Row="2"/>
+        <TextBox x:Name="txtTwitter" Text="{Binding SelectedBand.Twitter}" Grid.Column="2" Grid.Row="3"/>
+        <TextBox x:Name="txtFacebook" Text="{Binding SelectedBand.Facebook}" Grid.Column="2" Grid.Row="4"/>
         <Image Grid.Row="7" Grid.ColumnSpan="4" AllowDrop="True">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Drop">
@@ -47,12 +47,12 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Image>
-        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding EditBandActionCommand}"  Grid.ColumnSpan="2" Grid.Row="8" Click="sendBtn_Click" Margin="0,0,0,-1" Content="Edit band" Grid.Column="1"/>
+        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding EditBandAction}"  Grid.ColumnSpan="2" Grid.Row="8"  Margin="0,0,0,-1" Content="Edit band" Grid.Column="1" Click="sendBtn_Click"/>
         <Label Grid.Column="1" Grid.Row="5" Content="Genres:"/>
-        <TextBox x:Name="txtGenres" Text="{Binding SelectedBandStatic.GenresInText}" Grid.Column="2" Grid.Row="5"/>
-        <Button Style="{StaticResource buttonStyle}" Grid.Column="2" Grid.Row="6" Click="Button_Click" >Choose image</Button>
+        <TextBox x:Name="txtGenres" Text="{Binding SelectedBand.GenresInText}" Grid.Column="2" Grid.Row="5"/>
+        <Button Style="{StaticResource buttonStyle}" Command="{Binding ChoosePictureCommand}" Grid.Column="2" Grid.Row="6">New image</Button>
         <Border Grid.Row="7" Grid.ColumnSpan="4">
-            <Image x:Name="imgBand"   Source="{StaticResource newImage}"/>
+            <Image x:Name="imgBand"   Source="{Binding Photo.Source}"/>
         </Border>
     </Grid>
 </Window>

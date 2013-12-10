@@ -28,18 +28,7 @@ namespace BADProject.view
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LineUp tempLineUp = new LineUp();
-            tempLineUp.Date = Convert.ToDateTime(datePicker.Text);
-
-            string[] formatingTime = fromPicker.Value.ToString().Split(' ')[1].Split(':');
-            tempLineUp.From = formatingTime[0]+":"+formatingTime[1];
-            formatingTime = untilPicker.Value.ToString().Split(' ')[1].Split(':');
-            tempLineUp.Until = formatingTime[0] + ":" + formatingTime[1];
-
-            tempLineUp.Band = (Band)cboBand.SelectedItem;
-            tempLineUp.Stage = (Stage)cboStage.SelectedItem;
-
-            btnSend.CommandParameter = tempLineUp;
+            
             this.Close();
         }
     }

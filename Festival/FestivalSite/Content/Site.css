@@ -595,6 +595,13 @@ tr.pager td {
 }
 
 
+#rss img {
+    max-height:30px;
+    float: right;
+    margin-right:50px;
+}
+
+
 
 
 /********************

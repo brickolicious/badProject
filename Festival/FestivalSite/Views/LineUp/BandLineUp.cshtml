@@ -1,0 +1,34 @@
+﻿@model FestivalSite.ViewModels.LineUpVM
+@using ClassLibraryModels
+@{
+    ViewBag.Title = "DetailLineup";
+}
+
+<div id="bandLineup">
+<h2>Line-up for @Model.SelectedBand.Name</h2>
+
+<table>
+   
+
+@foreach (LineUp line in Model.LineupForBand) {
+    <tr>
+        <td>
+            @line.Date.ToShortDateString()
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => line.Stage.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => line.From)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => line.Until)
+        </td>
+        
+    </tr>
+}
+
+</table>
+</div>
+
+@Html.ActionLink("Go back", "Index")

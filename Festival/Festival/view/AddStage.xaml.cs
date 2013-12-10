@@ -26,7 +26,6 @@ namespace BADProject.view
 
         private void btnAddStage_Click(object sender, RoutedEventArgs e)
         {
-            btnAddStage.CommandParameter = txtStage.Text;
             this.Close();
         }
     }

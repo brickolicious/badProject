@@ -10,6 +10,7 @@
     <ul>
         @foreach(DateTime day in Model.Days){
 
+            //toon alle dagen van het festival als link  -> geef een overzicht van alle stages met hun lineup voor die dag indien er op geklikt wordt
             <li>@Html.ActionLink(day.DayOfWeek + "\t" + day.Date.ToShortDateString(), "LineUpForDay", new {date = day,lineVM = Model})</li>
     
         }
@@ -25,10 +26,15 @@
 
         @foreach (Band band in Model.BandList)
         {
+            
+            //toon enkel de bands waarvoor een lineup is
+            if(LineUp.GetLineUpForBand(band.ID).Count != 0){
             <tr>
-                <td>@Html.ActionLink(band.Name,"Detailband",new {bandID = band.ID,lineVM = Model})</td>
-                <td>@Html.ActionLink("see line-up","DetailLineup",new {bandID = band.ID,lineVM = Model})</td>
+                <td>@band.Name</td>
+                <td>@Html.ActionLink("Info","Detailband",new {bandID = band.ID,lineVM = Model})</td>
+                <td>@Html.ActionLink("see line-up","BandLineUp",new {bandID = band.ID,lineVM = Model})</td>
             </tr>
+            }
         }
 
     </table>

@@ -14,6 +14,7 @@ namespace FestivalSite.Controllers
         //
         // GET: /Lineup/
 
+        
         public ActionResult Index()
         {
             List<DateTime> lstDays = Festival.GetFestivalDays();
@@ -26,16 +27,10 @@ namespace FestivalSite.Controllers
             return View("LineUpIndex",lineVM);
         }
 
+        
+        public ActionResult LineUpForDay(DateTime date) {
 
-        public ActionResult LineUpForDay(DateTime date,LineUpVM lineVM) {
-
-            // parameter lineVM word al meegegeven indien men terug wil keren naar het overzicht dan heeft men al alle waarden die de gebruiker eerder koos
-            //indien het de eerste keer is wordt er een instantie gemaakt ervoor
-            if (lineVM == null) {
-
-                lineVM = new LineUpVM();
-
-            }
+            LineUpVM lineVM = new LineUpVM();
 
             if (date != null)
             {
@@ -47,32 +42,36 @@ namespace FestivalSite.Controllers
         }
 
 
-        public ActionResult DetailBand(int bandID,LineUpVM lineVM) {
+        public ActionResult DetailBand(int bandID, DateTime? date) {
 
-            if (lineVM == null) {
-                lineVM = new LineUpVM();
-            }
+            LineUpVM lineVM = new LineUpVM();
 
-            //vragen waarom er geen modelbinding is tussen lineVM en Model, in de view zit er nochtans een annonieme variable om aan modelbindingte kunnen doen
+           
+
+            lineVM.SelectedDay = date;
             lineVM.SelectedBand = Band.GetBandByID(bandID);
 
             return View("DetailBand",lineVM);
         }
 
-        public ActionResult DetailLineup(int bandID,LineUpVM lineVM) {
+        public ActionResult BandLineUp(int bandID) {
+
+            LineUpVM lineVM = new LineUpVM();
+
+            lineVM.SelectedBand = Band.GetBandByID(bandID);
+            lineVM.LineupForBand = LineUp.GetLineUpForBand(bandID);
 
 
-
-            return View("DetailLineup", lineVM);
+            return View("BandLineUp", lineVM);
         }
 
 
 
-        public ActionResult GetPhoto(byte[] photo)
-        {
+        //public ActionResult GetPhoto(int id)
+        //{
             
-            return File(photo, "image/jpeg");
-        }
+        //    return File(photo, "image/jpeg");
+        //}
 
     }
 }

@@ -8,7 +8,7 @@
         Title="AddBand" Height="420" Width="300">
 
     <Window.DataContext>
-        <context:BandsVM/>
+        <context:AddBandVM/>
     </Window.DataContext>
 
 
@@ -39,13 +39,13 @@
         <Label Grid.Column="1" Grid.Row="4" Content="Facebook:" Margin="0.308,0,0.192,0"/>
         <Label Grid.Column="1" Grid.Row="6" Content="Photo:" Margin="0.308,0,0.192,0"/>
 
-        <TextBox x:Name="txtName"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" />
-        <TextBox x:Name="txtDescription" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
-        <TextBox x:Name="txtTwitter" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
-        <TextBox x:Name="txtFacebook" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
-        <Button Style="{StaticResource buttonStyle}" Grid.Column="1" Grid.Row="6" Click="Button_Click" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" >Choose image</Button>
+        <TextBox x:Name="txtName" Text="{Binding BandToAdd.Name}"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" />
+        <TextBox x:Name="txtDescription" Text="{Binding BandToAdd.Description}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
+        <TextBox x:Name="txtTwitter" Text="{Binding BandToAdd.Twitter}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
+        <TextBox x:Name="txtFacebook" Text="{Binding BandToAdd.Facebook}" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
+        <Button Style="{StaticResource buttonStyle}" Grid.Column="1" Command="{Binding ChoosePictureCommand}" Grid.Row="6" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" >Choose image</Button>
         <Border Grid.Row="7" Grid.ColumnSpan="4">
-            <Image x:Name="imgBand"  Source="{StaticResource noImage}"/>
+            <Image x:Name="imgBand"  Source="{Binding Photo.Source}"/>
         </Border>
 
         <!--<Border Grid.Row="7" Grid.ColumnSpan="2">
@@ -58,8 +58,8 @@
         </Image>
         </Border>-->
 
-        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding AddBandActionCommand}"  Grid.ColumnSpan="3" Grid.Row="8" Click="sendBtn_Click" Margin="0.308,0,33.692,-1" Content="Voeg toe." Grid.Column="1"/>
+        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding AddToBands}"  Grid.ColumnSpan="3" Grid.Row="8" Click="sendBtn_Click" Margin="0.308,0,33.692,-1" Content="Voeg toe." Grid.Column="1"/>
         <Label Grid.Column="1" Grid.Row="5" Content="Genres:" Margin="0.308,0,0.192,0"/>
-        <TextBox x:Name="txtGenres" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
+        <TextBox x:Name="txtGenres" Text="{Binding BandToAdd.GenresInText }" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
     </Grid>
 </Window>

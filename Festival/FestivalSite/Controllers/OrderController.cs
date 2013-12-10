@@ -10,7 +10,7 @@ namespace FestivalSite.Controllers
     {
         //
         // GET: /Order/
-
+        [Authorize]
         public ActionResult Index()
         {
             return View("OrderIndex");

@@ -57,6 +57,7 @@
     <Compile Include="ImgConverter.cs" />
     <Compile Include="LineUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RSSmodel.cs" />
     <Compile Include="Stage.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TicketType.cs" />

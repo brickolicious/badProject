@@ -219,6 +219,34 @@ namespace ClassLibraryModels
 
         }
 
+
+        public static ObservableCollection<LineUp> GetLineUpForBand(int bandID) {
+            ObservableCollection<LineUp> lstLineup = new ObservableCollection<LineUp>();
+
+            try
+            {
+                DbParameter idPar = DataBase.AddParameter("@id", bandID);
+                DbDataReader reader = DataBase.GetData("SELECT * FROM LineUp WHERE Band = @id",idPar);
+                foreach (IDataRecord record in reader)
+                {
+                    LineUp tempLine = new LineUp();
+                    tempLine.ID = (int)reader["ID"];
+                    tempLine.Date = (DateTime)reader["Datum"];
+                    tempLine.From = (string)reader["Start"];
+                    tempLine.Until = (string)reader["Until"];
+                    tempLine.Stage = Stage.GetStageByID((int)reader["Stage"]);
+                    tempLine.Band = Band.GetBandByID((int)reader["Band"]);
+                    lstLineup.Add(tempLine);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return lstLineup;
+        }
+
         #endregion
     }
 }

@@ -4,7 +4,7 @@
         xmlns:context="clr-namespace:BADProject.viewmodel"
         Title="AddStage" Height="120" Width="200">
     <Window.DataContext>
-        <context:LineupVM></context:LineupVM>
+        <context:AddStageVM></context:AddStageVM>
     </Window.DataContext>
 
     <Grid>
@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Column="1" Grid.ColumnSpan="2">Enter the stagename:</Label>
-        <TextBox Name="txtStage" Grid.Row="1" Grid.Column="1"/>
-        <Button Style="{StaticResource buttonStyle}" x:Name="btnAddStage" Command="{Binding AddStageActionCom}" Grid.Row="2" Click="btnAddStage_Click" Grid.Column="1">Add stage.</Button>
+        <TextBox Name="txtStage" Text="{Binding StageToCreate.Name }" Grid.Row="1" Grid.Column="1"/>
+        <Button Style="{StaticResource buttonStyle}" x:Name="btnAddStage" Command="{Binding CreateStage}" Grid.Row="2" Click="btnAddStage_Click" Grid.Column="1">Add stage.</Button>
     </Grid>
 </Window>

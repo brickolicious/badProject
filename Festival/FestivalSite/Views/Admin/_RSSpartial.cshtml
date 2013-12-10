@@ -1,0 +1,52 @@
+﻿@model ClassLibraryModels.RSSmodel
+
+@using (Html.BeginForm("OpslaanRSS","Admin",FormMethod.Post)) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>RSSmodel</legend>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RSScontent)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RSScontent)
+            @Html.ValidationMessageFor(model => model.RSScontent)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AlternativeURI)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AlternativeURI)
+            @Html.ValidationMessageFor(model => model.AlternativeURI)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ItemID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ItemID)
+            @Html.ValidationMessageFor(model => model.ItemID)
+        </div>
+
+       
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
