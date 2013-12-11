@@ -17,7 +17,10 @@ namespace BADProject.viewmodel
 {
     class ReserverenVM: ObservableObject,IPage
     {
-
+        public ReserverenVM()
+        {
+            TicketOrder = new Ticket();
+        }
 
         #region props
         public string Name
@@ -56,6 +59,15 @@ namespace BADProject.viewmodel
         }
 
 
+        private Ticket _ticketOrder;
+
+        public Ticket TicketOrder
+        {
+            get { return _ticketOrder; }
+            set { _ticketOrder = value; OnPropertyChanged("TicketOrder"); }
+        }
+        
+
         #endregion
 
 
@@ -68,7 +80,7 @@ namespace BADProject.viewmodel
         
         public ICommand PlaceOrderCommand
         {
-            get { return new RelayCommand<Ticket>(Reserveren); }
+            get { return new RelayCommand(Reserveren); }
         }
 
 
@@ -106,18 +118,19 @@ namespace BADProject.viewmodel
 
 
 
-        private void Reserveren(Ticket ticket)
+        private void Reserveren()
         {
-            int iPossibleUserID = Ticket.SearchIfUserExistsOrNot(ticket.Name, ticket.Email);
+            int iPossibleUserID = Ticket.SearchIfUserExistsOrNot(this.TicketOrder.Name, this.TicketOrder.Email);
 
             if (iPossibleUserID != 0)
             {
-                ticket.TicketholderID = iPossibleUserID;
-                Ticket.PlaceAnOrder(ticket);
+                TicketOrder.TicketholderID = iPossibleUserID;
+                Ticket.PlaceAnOrder(TicketOrder);
             }
             else {
-                Ticket.InsertUserAndOrder(ticket);
+                Ticket.InsertUserAndOrder(TicketOrder);
             }
+            MessageBox.Show("A ticket has been orderd for: " + TicketOrder.Name);
         }
 
         private void Search(KeyEventArgs e)

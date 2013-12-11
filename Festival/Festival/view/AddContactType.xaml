@@ -6,7 +6,7 @@
     
     
     <Window.DataContext>
-        <context:ContactVM/>
+        <context:AddContactTypeVM/>
     </Window.DataContext>
     
     <Grid>
@@ -26,7 +26,7 @@
         
         
         <Label Grid.Column="1" HorizontalAlignment="Center" Content="Enter new category:"/>
-        <TextBox x:Name="txtType" Grid.Column="1" Grid.Row="1"></TextBox>
-        <Button Command="{Binding AddCategory}" CommandParameter="{Binding ElementName=txtType, Path=Text}" Grid.Column="1" Grid.Row="2" Click="Button_Click" >Add category</Button>
+        <TextBox x:Name="txtType" Text="{Binding Name}" Grid.Column="1" Grid.Row="1"></TextBox>
+        <Button Command="{Binding AddTypeCommand}" Style="{StaticResource buttonStyle}" CommandParameter="{Binding ElementName=txtType, Path=Text}" Grid.Column="1" Grid.Row="2" Click="Button_Click" >Add category</Button>
     </Grid>
 </Window>

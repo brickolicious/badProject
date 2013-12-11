@@ -110,9 +110,10 @@ namespace BADProject.viewmodel
             }
         }
 
-        public ICommand EditContactCommand {
+        public ICommand EditContactCommand
+        {
             get {
-                return new RelayCommand<ContactPerson>(ShowEditContact);
+                return new RelayCommand(ShowEditContact);
             }
         }
 
@@ -200,9 +201,9 @@ namespace BADProject.viewmodel
 
         }
 
-        private void ShowEditContact(ContactPerson conPers)
+        private void ShowEditContact()
         {
-            EditContact = conPers;
+            //EditContact = conPers;
 
             EditContact editWindow = new EditContact();
             editWindow.Show();

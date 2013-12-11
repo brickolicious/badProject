@@ -38,14 +38,14 @@
             <Label Style="{StaticResource labelStyle}" Content="Type:" VerticalAlignment="Center" Grid.Column="3" Grid.Row="3" Height="32"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="4"  Grid.Row="2" Grid.RowSpan="4">
-            <TextBox  x:Name="txtName" Margin="0,3,0,8" Text="{Binding ElementName=lstvwUsers,Path=SelectedItem.Name}" Grid.Column="4" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center"/>
-            <TextBox  x:Name="txtEmail" Margin="0,3,0,8" Text="{Binding ElementName=lstvwUsers,Path=SelectedItem.Email}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="2" VerticalAlignment="Center" />
-            <TextBox  x:Name="txtAmount" Margin="0,3,0,8" TextWrapping="Wrap" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" />
-            <ComboBox x:Name="cboType" Margin="0,0,0,15"  ItemsSource="{Binding TicketTypeList}" DisplayMemberPath="Name" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" />
-            <Button x:Name="btnSend" Command="{Binding PlaceOrderCommand}"  Style="{StaticResource buttonStyle}" Content="Order" Click="Button_Click"/>
-        </StackPanel>
+        <StackPanel Grid.Column="4"  Grid.Row="2" Grid.RowSpan="2" Margin="0,0,0,10">
+            <TextBox  x:Name="txtName" Margin="0,3,0,8" Text="{Binding TicketOrder.Name}" Grid.Column="4" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center"/>
+            <TextBox  x:Name="txtEmail" Margin="0,3,0,8" Text="{Binding TicketOrder.Email}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="2" VerticalAlignment="Center" />
+            <TextBox  x:Name="txtAmount" Margin="0,3,0,8" Text="{Binding TicketOrder.Amount}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" />
+            <ComboBox x:Name="cboType" Margin="0,0,0,15"  ItemsSource="{Binding TicketTypeList}" SelectedItem="{Binding TicketOrder.TicketTypeProp}" DisplayMemberPath="Name" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" />
 
+        </StackPanel>
+        <Button x:Name="btnSend" Command="{Binding PlaceOrderCommand}"  Style="{StaticResource buttonStyle}" Content="Order" Grid.Column="4" Grid.Row="4" Margin="0,0,0,3"/>
         <ListView x:Name="lstvwTickets" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2"  ItemsSource="{Binding TicketTypeList}" Margin="0,0,0,4">
             <ListView.View>
                 <GridView>
@@ -57,7 +57,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="lstvwUsers" Grid.Column="6" Grid.Row="2" Grid.RowSpan="4"  ItemsSource="{Binding FilterList}" Margin="0,27,0,0" >
+        <ListView x:Name="lstvwUsers" Grid.Column="6" Grid.Row="2"  ItemsSource="{Binding FilterList}" SelectedItem="{Binding TicketOrder}" Margin="0,27,0,2" Grid.RowSpan="3" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding Name}" />

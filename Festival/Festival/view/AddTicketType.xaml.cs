@@ -28,11 +28,7 @@ namespace BADProject.view
 
         private void sendBtn_Click(object sender, RoutedEventArgs e)
         {
-            TicketType tempType = new TicketType();
-            tempType.Name = txtName.Text;
-            tempType.Price = Convert.ToDouble(txtPrice.Text);
-            tempType.TotalTickets = Convert.ToInt16(txtTotal.Text);
-            sendBtn.CommandParameter = tempType;
+            
 
 
             this.Close();

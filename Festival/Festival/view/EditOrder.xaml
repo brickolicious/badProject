@@ -4,7 +4,7 @@
         xmlns:context="clr-namespace:BADProject.viewmodel"
         Title="EditOrder" Height="300" Width="300">
     <Window.DataContext>
-        <context:BezoekersVM/>
+        <context:EditOrderVM></context:EditOrderVM>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -26,21 +26,21 @@
             <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" HorizontalAlignment="Center" Margin="8,0,34,0" Width="70" Content="Edit order:" Grid.Column="1"/>
+        <Label Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,42,0" Width="70" Content="Edit order:" Grid.Column="1"/>
         <Label Grid.Column="1" Grid.Row="1" Content="Person ID"/>
         <Label Grid.Column="1" Grid.Row="2" Content="Name:"/>
         <Label Grid.Column="1" Grid.Row="3" Content="E-mail:"/>
         <Label Grid.Column="1" Grid.Row="5">Amount:</Label>
 
         <!--<ListBox ItemsSource="{Binding EditContact}" DisplayMemberPath="Name"></ListBox>-->
-        <Label x:Name="lblOrderID" Content="{Binding Path=SelectedTicket.ID}" Grid.Column="2" HorizontalAlignment="Center" Margin="79,0,45,0" ></Label>
-        <Label x:Name="lblPersonID"  Grid.Column="2" Grid.Row="1" Content="{Binding SelectedTicket.TicketholderID}" HorizontalAlignment="Center" Width="112"/>
-        <Label x:Name="lblName" Grid.Column="2" Grid.Row="2" Content="{Binding SelectedTicket.Name}"/>
+        <Label x:Name="lblOrderID" Content="{Binding Path=SelectedTicketStatic.ID}" Grid.Column="2" HorizontalAlignment="Center" Width="112" />
+        <Label x:Name="lblPersonID"  Grid.Column="2" Grid.Row="1" Content="{Binding SelectedTicketStatic.TicketholderID}" HorizontalAlignment="Center" Width="112"/>
+        <Label x:Name="lblName" Grid.Column="2" Grid.Row="2" Content="{Binding SelectedTicketStatic.Name}"/>
 
         <!--by ref selectedItem-->
-        <ComboBox x:Name="cboTicketType" Grid.Column="2" Grid.Row="4" ItemsSource="{Binding TicketTypeList}" DisplayMemberPath="Name"/>
-        <Label x:Name="lblEmail" Grid.Column="2" Grid.Row="3" Content="{Binding SelectedTicket.Email}"/>
-        <TextBox x:Name="txtAmount" Grid.Column="2" Grid.Row="5" Text="{Binding SelectedTicket.Amount}"/>
+        <ComboBox x:Name="cboTicketType" Grid.Column="2" Grid.Row="4" ItemsSource="{Binding TypeList}" DisplayMemberPath="Name"/>
+        <Label x:Name="lblEmail" Grid.Column="2" Grid.Row="3" Content="{Binding SelectedTicketStatic.Email}"/>
+        <TextBox x:Name="txtAmount" Grid.Column="2" Grid.Row="5" Text="{Binding SelectedTicketStatic.Amount}"/>
 
         <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding EditActionCommand}"  Grid.ColumnSpan="2" Grid.Row="9" Click="sendBtn_Click" Content="Edit order" Grid.Column="1" />
         <Label Grid.Column="1" Grid.Row="4" Content="Type:"/>

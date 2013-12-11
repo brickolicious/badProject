@@ -80,10 +80,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="viewmodel\AddBandVM.cs" />
+    <Compile Include="viewmodel\AddContactTypeVM.cs" />
+    <Compile Include="viewmodel\AddContactVM.cs" />
     <Compile Include="viewmodel\AddLineUpVM.cs" />
     <Compile Include="viewmodel\AddStageVM.cs" />
+    <Compile Include="viewmodel\AddTicketTypeVM.cs" />
     <Compile Include="viewmodel\BezoekersVM.cs" />
     <Compile Include="viewmodel\EditBandVM.cs" />
+    <Compile Include="viewmodel\EditContactVM.cs" />
+    <Compile Include="viewmodel\EditOrderVM.cs" />
     <Compile Include="viewmodel\RelayCommand.cs" />
     <Compile Include="viewmodel\ReserverenVM.cs" />
     <Compile Include="view\AddBand.xaml.cs">

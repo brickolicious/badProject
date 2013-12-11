@@ -3,9 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:BADProject.viewmodel"
              mc:Ignorable="d" Width="1003.887" Height="429.329">
 
-    <Grid Style="{StaticResource gridStyle}">
+    <UserControl.Resources>
+        <vm:EditOrderVM x:Key="editVM"></vm:EditOrderVM>
+    </UserControl.Resources>
+
+
+        <Grid Style="{StaticResource gridStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"/>
             <RowDefinition Height="0.5*"/>
@@ -23,7 +29,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Content="Orders" Grid.Column="1"   HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333"/>
-        <ListView x:Name="lstvwOrders" ItemsSource="{Binding TicketList}" SelectedItem="{Binding SelectedTicket}" Grid.Column="1" Grid.Row="2" Grid.RowSpan="4">
+        <ListView x:Name="lstvwOrders" ItemsSource="{Binding TicketList}" SelectedItem="{Binding Source={StaticResource editVM},Path = SelectedTicket}" Grid.Column="1" Grid.Row="2" Grid.RowSpan="4">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="PersonID" Width="auto" DisplayMemberBinding="{Binding TicketholderID}" />
@@ -35,7 +41,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=lstvwOrders,Path=SelectedItem}" Style="{StaticResource buttonStyle}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwOrders}" Content="Edit" Grid.Column="3" VerticalAlignment="Top" Grid.Row="4"/>
+        <Button Command="{Binding EditCommand}"  Style="{StaticResource buttonStyle}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwOrders}" Content="Edit" Grid.Column="3" VerticalAlignment="Top" Grid.Row="4"/>
         <Button Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=lstvwOrders,Path=SelectedItem}" Style="{StaticResource buttonStyle}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwOrders}" Content="Delete" Grid.Column="3" VerticalAlignment="Top" Grid.Row="5" Margin="0,144,0,0"/>
         <Button Command="{Binding SearchCommand}"   Style="{StaticResource buttonStyle}" Content="Search" Grid.Column="3" VerticalAlignment="Top" Grid.Row="2"/>
     </Grid>

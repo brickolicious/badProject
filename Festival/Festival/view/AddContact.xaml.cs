@@ -30,18 +30,7 @@ namespace BADProject.view
 
         private void sendBtn_Click(object sender, RoutedEventArgs e)
         {
-            ContactPerson tempCon = new ContactPerson();
-            tempCon.Name = txtName.Text;
-            tempCon.Company = txtCompany.Text;
-            tempCon.City = txtPlace.Text;
-            tempCon.Email = txtEmail.Text;
-            tempCon.Phone = txtPhone.Text;
-            tempCon.CellPhone = txtGSM.Text;
-            ContactPersonType tempType = (ContactPersonType)cboJobRole.SelectionBoxItem;
-            tempCon.JobRole = tempType;
-
-            sendBtn.CommandParameter = tempCon;
-
+ 
             this.Close();
         }
     }

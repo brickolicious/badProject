@@ -126,7 +126,7 @@ namespace BADProject.viewmodel
 
         private void EditAnOrder(Ticket ticket)
         {
-            SelectedTicket = ticket;
+            //SelectedTicket = ticket;
             EditOrder editOrderView = new EditOrder();
             editOrderView.Show();
         }

@@ -4,7 +4,7 @@
         xmlns:context="clr-namespace:BADProject.viewmodel"
         Title="AddTicketType" Height="200" Width="300">
     <Window.DataContext>
-        <context:ReserverenVM/>
+        <context:AddTicketTypeVM/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -23,19 +23,19 @@
             <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" HorizontalAlignment="Center" Margin="8,0,34,0" Width="70" Content="Add ticket type" Grid.Column="1"/>
+        <Label Grid.Row="0" HorizontalAlignment="Center" Width="112" Content="Add ticket type" Grid.Column="1"/>
         <Label Grid.Column="1" Grid.Row="1" Content="Name:"/>
         <Label Grid.Column="1" Grid.Row="2" Content="Price:"/>
         <Label Grid.Column="1" Grid.Row="3" Content="Total:"/>
         <Label Grid.Column="0" Grid.Row="5" Content="" Grid.ColumnSpan="2"/>
 
         <!--<ListBox ItemsSource="{Binding EditContact}" DisplayMemberPath="Name"></ListBox>-->
-        <Label x:Name="lblOrderID" Content="{Binding Path=SelectedTicket.ID}" Grid.Column="2" HorizontalAlignment="Center" Margin="79,0,49,0" ></Label>
-        <TextBox x:Name="txtName"  Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch"/>
-        <TextBox x:Name="txtPrice" Grid.Column="2" Grid.Row="2"/>
+        <Label x:Name="lblOrderID" Grid.Column="2" HorizontalAlignment="Center" Margin="79,0,49,0" ></Label>
+        <TextBox x:Name="txtName"  Text="{Binding Type.Name}" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch"/>
+        <TextBox x:Name="txtPrice" Text="{Binding Type.Price}" Grid.Column="2" Grid.Row="2"/>
 
         <!--by ref selectedItem-->
-        <TextBox x:Name="txtTotal" Grid.Column="2" Grid.Row="3"/>
+        <TextBox x:Name="txtTotal" Text="{Binding Type.AvailableTickets}" Grid.Column="2" Grid.Row="3"/>
 
         <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding AddTypeAction}"  Grid.ColumnSpan="2" Grid.Row="5" Click="sendBtn_Click" Content="Add type" Grid.Column="1" />
     </Grid>

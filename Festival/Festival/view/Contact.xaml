@@ -3,7 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:BADProject.viewmodel"
              mc:Ignorable="d" Width="1010.248" Height="580.919">
+
+    <UserControl.Resources>
+        <vm:EditContactVM x:Key="editVM"></vm:EditContactVM>
+    </UserControl.Resources>
 
     <Grid Style="{StaticResource gridStyle}" >
         <Grid.RowDefinitions>
@@ -23,12 +28,13 @@
         </Grid.ColumnDefinitions>
         <!--<TextBox x:Name="txtSearch" Grid.Column="3" Height="30" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Right" Width="120" Margin="0,0,10,0"/>-->
 
+       
 
         <Label Content="Category" Grid.Column="1"  Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333"/>
 
         <ListBox x:Name="lstBxTypes" ItemsSource="{Binding ContactTypeLijst}" SelectedItem="{Binding SelectedContactType}" DisplayMemberPath="Name" Style="{StaticResource listBoxStyle}" Grid.Column="1" Grid.Row="2" Margin="0,0,0,37"/>
 
-        <ListView ItemsSource="{Binding SelectedContactTypeLijst}"  x:Name="lstvwContacten" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2">
+        <ListView ItemsSource="{Binding SelectedContactTypeLijst}" SelectedItem="{Binding Source={StaticResource editVM},Path= SelectedContact}"  x:Name="lstvwContacten" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2">
 
             <ListView.View>
                 <GridView>
@@ -50,8 +56,8 @@
 
         <StackPanel Grid.Column="3" Grid.Row="3" VerticalAlignment="Center" Margin="0,22,0,61">
             <Button Margin="0,0,0,10" Command="{Binding AddContactCom}" Style="{StaticResource buttonStyle}" Content="Contact toevoegen" Height="28" VerticalAlignment="Bottom"/>
-            <Button Margin="0,0,0,10"  Command="{Binding EditContactCommand}" CommandParameter="{Binding SelectedItem, ElementName=lstvwContacten}" Style="{StaticResource buttonStyle}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwContacten}" Content="Contact wijzigen" Height="28" VerticalAlignment="Top"/>
-            <Button Margin="0,0,0,10" Command="{Binding DeleteContact}" Style="{StaticResource buttonStyle}" CommandParameter="{Binding ElementName=lstvwContacten,Path=SelectedItem}" Content="Contact verwijderen" Height="28" VerticalAlignment="Bottom" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwContacten}"/>
+            <Button Margin="0,0,0,10"  Command="{Binding EditContactCommand}" Style="{StaticResource buttonStyle}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwContacten}" Content="Contact wijzigen" Height="28" VerticalAlignment="Top"/>
+            <Button Margin="0,0,0,10" Command="{Binding Source={StaticResource editVM},Path= DeleteContactCommand}" Style="{StaticResource buttonStyle}" CommandParameter="{Binding ElementName=lstvwContacten,Path=SelectedItem}" Content="Contact verwijderen" Height="28" VerticalAlignment="Bottom" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwContacten}"/>
         </StackPanel>
         <Label Content="Contacts" Grid.Column="3"  Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333"/>
         <!--<Label Content="Zoek op naam: " Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,130,10" Grid.Row="2" VerticalAlignment="Bottom" Height="29"/>

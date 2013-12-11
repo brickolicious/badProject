@@ -27,16 +27,6 @@ namespace BADProject.view
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Ticket tempTicket = new Ticket();
-            tempTicket.Name = txtName.Text;
-            tempTicket.Email = txtEmail.Text;
-            tempTicket.Amount = Convert.ToInt16(txtAmount.Text);
-            tempTicket.TicketTypeProp = (TicketType)cboType.SelectedItem;
-            btnSend.CommandParameter = tempTicket;
-        }
-
 
     }
 }
