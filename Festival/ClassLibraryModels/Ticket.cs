@@ -127,7 +127,7 @@ namespace ClassLibraryModels
                     tempTicket.ID = (int)reader["ID"];
                     tempTicket.TicketholderID = (int)reader["UserID"];
                     tempTicket.Amount = (int)reader["Amount"];
-                    tempTicket.TicketTypeProp = TicketType.GetTicketTypeByID(tempTicket.ID);
+                    tempTicket.TicketTypeProp = TicketType.GetTicketTypeByID((int)reader["UserID"]);
 
                     tempTicket.Name = (string)reader["UserName"];
                     tempTicket.Email = (string)reader["UserEmail"];

@@ -2,11 +2,17 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:context="clr-namespace:BADProject.viewmodel"
-        Title="SearchOrder" Height="300" Width="450">
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+        Title="SearchOrder" Height="310" Width="450">
     <Window.DataContext>
-        <context:BezoekersVM/>
+        <context:SearchOrderVM/>
     </Window.DataContext>
 
+
+    <Window.Resources>
+        <context:EditOrderVM x:Key="editVM"></context:EditOrderVM>
+    </Window.Resources>
     <Grid>
 
         <Grid.RowDefinitions>
@@ -19,7 +25,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="0.75*"/>
+            <RowDefinition/>
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -31,9 +37,15 @@
         </Grid.ColumnDefinitions>
 
         <Label Content="Search order:" Grid.Column="1"/>
-        <TextBox Name="txtSearch" Grid.Column="1" Grid.Row="1"/>
-        <Button Style="{StaticResource buttonStyle}" Command="{Binding SearchOrderActionCommand}" CommandParameter="{Binding Text, ElementName=txtSearch}" Grid.Row="1" Grid.Column="3" Content="Search name"/>
-        <ListView x:Name="lstvwOrder" Grid.Row="3" Grid.RowSpan="5" Grid.ColumnSpan="5" ItemsSource="{Binding SearchList}">
+        <!--<TextBox Name="txtSearch" Grid.Column="1" Grid.Row="1"/>-->
+        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Margin="0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="KeyUp">
+                    <cmd:EventToCommand Command="{Binding SearchOrderActionCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+        <ListView x:Name="lstvwOrder" Grid.Row="3" Grid.RowSpan="5" Grid.ColumnSpan="5" ItemsSource="{Binding SearchList}" SelectedItem="{Binding Source=editVM, Path=SelectedTicket}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="OrderID" Width="auto" DisplayMemberBinding="{Binding ID}" />
@@ -44,8 +56,5 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
-
-        <Button Style="{StaticResource buttonStyle}" Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=lstvwOrder,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwOrder}"  Grid.Row="8" Grid.Column="1">Edit</Button>
     </Grid>
 </Window>

@@ -91,6 +91,8 @@
     <Compile Include="viewmodel\EditOrderVM.cs" />
     <Compile Include="viewmodel\RelayCommand.cs" />
     <Compile Include="viewmodel\ReserverenVM.cs" />
+    <Compile Include="viewmodel\SearchContactVM.cs" />
+    <Compile Include="viewmodel\SearchOrderVM.cs" />
     <Compile Include="view\AddBand.xaml.cs">
       <DependentUpon>AddBand.xaml</DependentUpon>
     </Compile>

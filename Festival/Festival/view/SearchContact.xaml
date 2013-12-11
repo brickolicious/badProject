@@ -1,13 +1,15 @@
 ﻿<Window x:Class="BADProject.view.SearchContact"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="http://www.galasoft.ch/mvvmlight"
         xmlns:context="clr-namespace:BADProject.viewmodel"
         Title="SearchContact" Height="300" Width="450">
 
     <Window.DataContext>
-        <context:ContactVM/>
+        <context:SearchContactVM/>
     </Window.DataContext>
-
+    
     <Grid>
         <Grid.RowDefinitions>
 
@@ -30,21 +32,28 @@
             <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Column="1" Grid.Row="1">Zoek contactpersoon:</Label>
-        <TextBox Name="txtSearch" Grid.Row="2" Grid.Column="1"/>
-        <Button Style="{StaticResource buttonStyle}" Command="{Binding SearchContactActionCommand}" CommandParameter="{Binding ElementName=txtSearch,Path=Text}" Grid.Row="2" Grid.Column="3">Zoek</Button>
-        <ListView  Grid.Row="4" Grid.RowSpan="4" Grid.ColumnSpan="5" ItemsSource="{Binding SearchList}">
+        <Label Grid.Column="1" Grid.Row="1" Content="Search by name:"/>
+        <ListView  Grid.Row="3" Grid.RowSpan="4" Grid.ColumnSpan="5" ItemsSource="{Binding SearchList}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Naam" Width="auto" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Bedrijf" Width="auto" DisplayMemberBinding="{Binding Company}" />
-                    <GridViewColumn Header="Plaats" Width="auto" DisplayMemberBinding="{Binding City}" />
+                    <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Company" Width="auto" DisplayMemberBinding="{Binding Company}" />
+                    <GridViewColumn Header="Jobrole" Width="auto" DisplayMemberBinding="{Binding Source=JobRole,Path=Name}"  />
+                    <GridViewColumn Header="City" Width="auto" DisplayMemberBinding="{Binding City}" />
                     <GridViewColumn Header="E-mail" Width="auto" DisplayMemberBinding="{Binding Email}" />
-                    <GridViewColumn Header="Telefoon" Width="auto" DisplayMemberBinding="{Binding Phone}" />
-                    <GridViewColumn Header="GSM" Width="auto" DisplayMemberBinding="{Binding CellPhone}" />
+                    <GridViewColumn Header="Phone" Width="auto" DisplayMemberBinding="{Binding Phone}" />
+                    <GridViewColumn Header="Cellphone" Width="auto" DisplayMemberBinding="{Binding CellPhone}" />
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Margin="0,0,42,0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="KeyUp">
+                    <cmd:EventToCommand Command="{Binding SearchContactActionCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
 
     </Grid>
 </Window>
