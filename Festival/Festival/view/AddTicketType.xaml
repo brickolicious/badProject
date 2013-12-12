@@ -35,7 +35,7 @@
         <TextBox x:Name="txtPrice" Text="{Binding Type.Price}" Grid.Column="2" Grid.Row="2"/>
 
         <!--by ref selectedItem-->
-        <TextBox x:Name="txtTotal" Text="{Binding Type.AvailableTickets}" Grid.Column="2" Grid.Row="3"/>
+        <TextBox x:Name="txtTotal" Text="{Binding Type.TotalTickets}" Grid.Column="2" Grid.Row="3"/>
 
         <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding AddTypeAction}"  Grid.ColumnSpan="2" Grid.Row="5" Click="sendBtn_Click" Content="Add type" Grid.Column="1" />
     </Grid>

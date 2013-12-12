@@ -201,6 +201,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\LineUpVM.cs" />
+    <Compile Include="ViewModels\OrderVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\festivalHome.jpg" />
@@ -320,13 +321,14 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\HomeIndex.cshtml" />
-    <Content Include="Views\Order\OrderIndex.cshtml" />
     <Content Include="Views\Admin\AdminIndex.cshtml" />
     <Content Include="Views\LineUp\LineUpIndex.cshtml" />
     <Content Include="Views\LineUp\LineUpForDay.cshtml" />
     <Content Include="Views\LineUp\DetailBand.cshtml" />
     <Content Include="Views\LineUp\BandLineUp.cshtml" />
     <Content Include="Views\Admin\_RSSpartial.cshtml" />
+    <Content Include="Views\Order\_orderPartial.cshtml" />
+    <Content Include="Views\Order\OrderIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

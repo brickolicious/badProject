@@ -289,6 +289,62 @@ namespace ClassLibraryModels
             }
         }
 
+
+        public static List<Ticket> GetAllReservationsForUser(int UserID) {
+            List<Ticket> tickList = new List<Ticket>();
+
+            try
+            {
+                string sql = "SELECT * FROM Reservatie JOIN UserProfile ON UserProfile.UserId = Reservatie.TicketHolderID WHERE TicketHolderID = @id";
+                DbParameter idPar = DataBase.AddParameter("@id", UserID);
+
+                DbDataReader reader = DataBase.GetData(sql, idPar);
+                foreach (IDataRecord record in reader)
+                {
+                    Ticket tempTicket = new Ticket();
+                    tempTicket.ID = (int)reader["ID"];
+                    tempTicket.TicketholderID = (int)reader["TicketHolderID"];
+                    tempTicket.Name = (string)reader["UserName"];
+                    tempTicket.Email = (string)reader["UserEmail"];
+                    tempTicket.TicketTypeProp = TicketType.GetTicketTypeByID((int)reader["TicketType"]);
+                    tempTicket.Amount = (int)reader["Amount"];
+                    tickList.Add(tempTicket);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return tickList;
+        }
+
+
+        public static int GetUserIDFromUsername(string name) {
+            int userID = 0;
+
+            try
+            {
+                string sql = "SELECT UserId From UserProfile WHERE UserName = @name";
+                DbParameter namePar = DataBase.AddParameter("@name", name);
+                DbDataReader reader = DataBase.GetData(sql, namePar);
+
+                foreach (IDataRecord record in reader)
+                {
+                    userID = (int)reader["UserId"];
+                }
+               
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return userID;
+        }
         #endregion
     }
 }

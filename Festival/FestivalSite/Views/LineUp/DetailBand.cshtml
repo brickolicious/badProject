@@ -19,7 +19,7 @@
        
     </ul>
     @if(Model.SelectedBand.Picture != null){
-    <img src="@Url.Action("GetPhoto",new {photo = Model.SelectedBand.ID})" alt="@Model.SelectedBand.Name" />
+    <img src="@Url.Action("GetPhoto", "LineUp", new { id = Model.SelectedBand.ID })" alt="@Model.SelectedBand.Name" />
     }
 </div>
 

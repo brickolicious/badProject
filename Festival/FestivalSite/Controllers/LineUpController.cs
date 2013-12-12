@@ -67,11 +67,11 @@ namespace FestivalSite.Controllers
 
 
 
-        //public ActionResult GetPhoto(int id)
-        //{
-            
-        //    return File(photo, "image/jpeg");
-        //}
+        public FileContentResult GetPhoto(int id)
+        {
+            Band band = Band.GetBandByID(id);
+            return new FileContentResult(band.Picture, "image/jpeg");
+        }
 
     }
 }

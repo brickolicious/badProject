@@ -114,7 +114,8 @@ namespace ClassLibraryModels
             return typesColl;
         }
 
-        public static TicketType GetTicketTypeByID(int typeID) {
+        //aangepast naar nullable type
+        public static TicketType GetTicketTypeByID(int? typeID) {
             TicketType tempType = new TicketType();
 
             try
@@ -161,6 +162,36 @@ namespace ClassLibraryModels
             return iAantal;
         }
 
+        public static int AvailableTicketsForType(int ticketTypeID)
+        {
+
+            int iAantal = 0;
+
+            try
+            {
+                string sql = "SELECT sum(amount) AS AantalBesteldeTickets FROM Reservatie WHERE TicketType = @id ";
+
+                DbParameter idPar = DataBase.AddParameter("@id", ticketTypeID);
+
+                DbDataReader reader = DataBase.GetData(sql, idPar);
+
+                foreach (IDataRecord record in reader)
+                {
+                    iAantal = (int)reader[0];
+                }
+
+                TicketType tempType =  GetTicketTypeByID(ticketTypeID);
+                iAantal = tempType.TotalTickets-iAantal;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return iAantal;
+        }
+
         public static void AddTicketType(TicketType ticketType) {
 
             try
@@ -189,6 +220,9 @@ namespace ClassLibraryModels
                 Console.WriteLine(ex.Message);
             }
         }
+
+
+
         #endregion
     }
 }
