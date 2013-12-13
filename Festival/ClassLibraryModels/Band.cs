@@ -60,6 +60,7 @@ namespace ClassLibraryModels
 
 
         [Required]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "De naam moet tussen de 3 en 50 karakters bevatten ")]
         public string Name
         {
             get { return _name; }
@@ -100,7 +101,7 @@ namespace ClassLibraryModels
         }
 
         private ObservableCollection<Genre> _genres;
-        [Required]
+        
         public ObservableCollection<Genre> Genres
         {
             get { return _genres; }
@@ -115,13 +116,22 @@ namespace ClassLibraryModels
             set { _genresText = value; }
         }
 
-
+      
         
 
         #endregion
 
 
         #region functions
+        
+        public bool IsValid()
+        {
+            return Validator.TryValidateObject(this, new ValidationContext(this, null, null),
+            null, true);
+        }
+
+
+
         public static ObservableCollection<Band> GetBands() {
 
             ObservableCollection<Band> bandsCol = new ObservableCollection<Band>();

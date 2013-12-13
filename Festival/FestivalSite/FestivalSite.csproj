@@ -205,6 +205,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\festivalHome.jpg" />
+    <Content Include="Content\Images\logo.jpg" />
+    <Content Include="Content\Images\festivalHomeVanilla.jpg" />
     <Content Include="Content\Images\rss-logo.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -358,7 +360,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>28004</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:14783/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

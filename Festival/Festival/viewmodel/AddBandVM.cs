@@ -1,7 +1,10 @@
 ﻿using ClassLibraryModels;
+using GalaSoft.MvvmLight.Command;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +14,11 @@ using System.Windows.Media;
 
 namespace BADProject.viewmodel
 {
-    class AddBandVM:ObservableObject
+    class AddBandVM : ObservableObject
     {
+
+        
+
 
         public AddBandVM()
         {
@@ -40,7 +46,7 @@ namespace BADProject.viewmodel
 
         public ICommand AddToBands {
 
-            get { return new RelayCommand(AddBand); }
+            get { return new RelayCommand(AddBand,BandToAdd.IsValid); }
         
         }
 

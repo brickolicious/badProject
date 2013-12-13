@@ -32,14 +32,14 @@
             <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Center" Content="Add a band to the list." Grid.Column="1" Margin="60,0,57.006,0"/>
+        <Label Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Center" Content="Add a band to the list." Grid.Column="1" Width="224"/>
         <Label Grid.Column="1" Grid.Row="1" Content="Bandnaam:" Margin="0.308,0,0.192,0"/>
         <Label Grid.Column="1" Grid.Row="2" Content="Description:" Margin="0.308,0,0.192,0"/>
         <Label Grid.Column="1" Grid.Row="3" Content="Twitter:" Margin="0.308,0,0.192,0"/>
         <Label Grid.Column="1" Grid.Row="4" Content="Facebook:" Margin="0.308,0,0.192,0"/>
         <Label Grid.Column="1" Grid.Row="6" Content="Photo:" Margin="0.308,0,0.192,0"/>
 
-        <TextBox x:Name="txtName" Text="{Binding BandToAdd.Name}"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" />
+        <TextBox x:Name="txtName" Text="{Binding BandToAdd.Name,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"   Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" />
         <TextBox x:Name="txtDescription" Text="{Binding BandToAdd.Description}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
         <TextBox x:Name="txtTwitter" Text="{Binding BandToAdd.Twitter}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
         <TextBox x:Name="txtFacebook" Text="{Binding BandToAdd.Facebook}" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>

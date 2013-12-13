@@ -7,10 +7,10 @@ using System.Windows.Input;
 
 namespace BADProject.viewmodel
 {
-    class RelayCommand :ICommand
+    class RelayCommandold :ICommand
     {
         private Action _action;
-        public RelayCommand(Action a)
+        public RelayCommandold(Action a)
         {
             _action = a;
         }

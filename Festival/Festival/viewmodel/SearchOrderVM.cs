@@ -1,5 +1,6 @@
 ﻿using BADProject.view;
 using ClassLibraryModels;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

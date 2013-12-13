@@ -15,7 +15,8 @@ namespace FestivalSite.Controllers
     {
 
         public object Get() {
-            var feed = new SyndicationFeed("Festival feed", "The official feed for Howestival", new Uri("http://localhost:14783"));
+            var feed = new SyndicationFeed("Festival feed", "The official feed for Howestival", new Uri("http://localhost:14783/api/RSS"));
+            
             feed.Authors.Add(new  SyndicationPerson("bart.vandecandelaere@student.howest.be"));
             feed.Categories.Add(new SyndicationCategory("Festival"));
             feed.Description = new TextSyndicationContent("This is a feed for all the visitors off Howestival");

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ClassLibraryModels;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
 
 namespace BADProject.viewmodel
 {

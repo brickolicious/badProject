@@ -1,4 +1,5 @@
 ﻿using ClassLibraryModels;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -55,6 +56,8 @@ namespace BADProject.viewmodel
 
     private void AddLineup()
     {
+        
+
         DateTime tempTime = Convert.ToDateTime(LineUpToAdd.From);
         LineUpToAdd.From = tempTime.Hour + ":" + tempTime.Minute;
         tempTime = Convert.ToDateTime(LineUpToAdd.Until);

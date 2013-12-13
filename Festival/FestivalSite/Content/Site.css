@@ -602,7 +602,24 @@ tr.pager td {
 }
 
 
+.site-title img{
+    max-height:50px;
+}
 
+.homeWrapper img{
+    margin-top:50px;
+    max-height:450px;
+    float:left;
+}
+
+
+.introText {
+    margin-top:50px;
+    margin-right:15px;
+    width:200px;
+    float:right;
+    display:inline;
+}
 
 /********************
 *   Mobile Styles   *
