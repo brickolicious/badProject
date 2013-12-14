@@ -14,7 +14,10 @@ namespace BADProject.viewmodel
 {
     class EditContactVM:ObservableObject
     {
-
+        public EditContactVM()
+        {
+            
+        }
 
         private static ContactPerson selected;
 
@@ -46,7 +49,7 @@ namespace BADProject.viewmodel
 
         public ICommand EditContactAction
         {
-            get { return new RelayCommand(EditAction); }
+            get { return new RelayCommand(EditAction,SelectedContactStatic.IsValid); }
         }
 
         private void EditAction()

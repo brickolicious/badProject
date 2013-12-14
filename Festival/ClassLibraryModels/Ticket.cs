@@ -56,18 +56,23 @@ namespace ClassLibraryModels
         }
 
         private int _ticketHolder;
-
+        [Required]
         public int TicketholderID
         {
             get { return _ticketHolder; }
             set { _ticketHolder = value; }
         }
 
+        [Required]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Tussen de 3 en 50 karakters bevatten ")]
         public string Name { get; set; }
+
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
         private TicketType _ticketType;
-
+        [Required]
         public TicketType TicketTypeProp
         {
             get { return _ticketType; }
@@ -75,7 +80,7 @@ namespace ClassLibraryModels
         }
 
         private int _amount;
-
+        [Required]
         public int Amount
         {
             get { return _amount; }
@@ -86,6 +91,12 @@ namespace ClassLibraryModels
         #endregion
 
         #region functions
+
+        public bool IsValid()
+        {
+            return Validator.TryValidateObject(this, new ValidationContext(this, null, null),
+            null, true);
+        }
 
         public static ObservableCollection<Ticket> GetAllVisitors() {
             ObservableCollection<Ticket> visitorsCollection = new ObservableCollection<Ticket>();

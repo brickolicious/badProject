@@ -29,7 +29,7 @@ namespace BADProject.viewmodel
 
         public ICommand AddTypeAction {
 
-            get { return new RelayCommand(AddType); }
+            get { return new RelayCommand(AddType,Type.IsValid); }
         
         }
 

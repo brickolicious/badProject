@@ -60,7 +60,7 @@ namespace ClassLibraryModels
 
 
         [Required]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "De naam moet tussen de 3 en 50 karakters bevatten ")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Tussen de 3 en 50 karakters bevatten ")]
         public string Name
         {
             get { return _name; }
@@ -77,7 +77,9 @@ namespace ClassLibraryModels
         }
 
         private string _description;
+        
         [Required]
+        [StringLength(250, MinimumLength = 3, ErrorMessage = "Tussen de 3 en 250 karakters bevatten ")]
         public string Description
         {
             get { return _description; }
@@ -86,6 +88,7 @@ namespace ClassLibraryModels
 
         private string _twitter;
         [Required]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Tussen de 3 en 50 karakters bevatten ")]
         public string Twitter
         {
             get { return _twitter; }
@@ -94,6 +97,7 @@ namespace ClassLibraryModels
 
         private string _facebook;
         [Required]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Tussen de 3 en 50 karakters bevatten ")]
         public string Facebook
         {
             get { return _facebook; }

@@ -46,22 +46,24 @@ namespace BADProject.viewmodel
     }
 
 
-
-
     public ICommand AddToLineup {
 
-        get { return new RelayCommand(AddLineup); }
+        get { return new RelayCommand(AddLineup,LineUpToAdd.IsValid); }
 
     }
 
     private void AddLineup()
     {
-        
 
-        DateTime tempTime = Convert.ToDateTime(LineUpToAdd.From);
-        LineUpToAdd.From = tempTime.Hour + ":" + tempTime.Minute;
-        tempTime = Convert.ToDateTime(LineUpToAdd.Until);
-        LineUpToAdd.Until = tempTime.Hour+":"+tempTime.Minute;
+
+        string[] splitArr = LineUpToAdd.From.Split(' ');
+        string[] subSplitArr = splitArr[1].Split(':');
+        LineUpToAdd.From = subSplitArr[0]+":"+subSplitArr[1]+" "+splitArr[2];
+
+        splitArr = LineUpToAdd.Until.Split(' ');
+        subSplitArr = splitArr[1].Split(':');
+        LineUpToAdd.Until = subSplitArr[0] + ":" + subSplitArr[1] + " " + splitArr[2];
+
         LineUp.AddLineUp(LineUpToAdd);
     }
         

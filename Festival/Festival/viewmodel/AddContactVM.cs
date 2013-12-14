@@ -39,7 +39,7 @@ namespace BADProject.viewmodel
 
         public ICommand AddContactAction
         {
-            get { return new RelayCommand(AddContact); }
+            get { return new RelayCommand(AddContact,ContactToAdd.IsValid); }
         }
 
         private void AddContact()

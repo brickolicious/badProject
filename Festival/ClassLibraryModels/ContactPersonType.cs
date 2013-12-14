@@ -13,7 +13,7 @@ using System.Windows;
 
 namespace ClassLibraryModels
 {
-    public class ContactPersonType : IDataErrorInfo
+    public class ContactPersonType: IDataErrorInfo
     {
 
         #region IDataErrorInfo
@@ -55,7 +55,8 @@ namespace ClassLibraryModels
         }
 
         private string _name;
-
+        [Required]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Tussen de 3 en 50 karakters bevatten ")]
         public string Name
         {
             get { return _name; }
@@ -65,6 +66,12 @@ namespace ClassLibraryModels
 
 
         #region functions
+        public bool IsValid()
+        {
+            return Validator.TryValidateObject(this, new ValidationContext(this, null, null),
+            null, true);
+        }
+
         public static ObservableCollection<ContactPersonType> GetAllContactPersonType()
         {
             ObservableCollection<ContactPersonType> contactPersonTypeCol = new ObservableCollection<ContactPersonType>();

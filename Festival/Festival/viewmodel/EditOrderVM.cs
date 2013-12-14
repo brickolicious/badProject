@@ -48,7 +48,7 @@ namespace BADProject.viewmodel
 
 
         public ICommand EditActionCommand {
-            get { return new RelayCommand(EditOrder); }
+            get { return new RelayCommand(EditOrder, SelectedTicketStatic.IsValid); }
         }
 
         private void EditOrder()

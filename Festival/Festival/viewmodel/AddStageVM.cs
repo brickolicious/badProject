@@ -29,7 +29,7 @@ namespace BADProject.viewmodel
 
         public ICommand CreateStage
         {
-            get { return new RelayCommand(Addstage); }
+            get { return new RelayCommand(Addstage,StageToCreate.IsValid); }
         }
 
 

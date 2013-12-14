@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Column="1" Grid.ColumnSpan="2">Enter the stagename:</Label>
-        <TextBox Name="txtStage" Text="{Binding StageToCreate.Name }" Grid.Row="1" Grid.Column="1"/>
+        <TextBox Name="txtStage" Text="{Binding StageToCreate.Name,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged }" Grid.Row="1" Grid.Column="1"/>
         <Button Style="{StaticResource buttonStyle}" x:Name="btnAddStage" Command="{Binding CreateStage}" Grid.Row="2" Click="btnAddStage_Click" Grid.Column="1">Add stage.</Button>
     </Grid>
 </Window>

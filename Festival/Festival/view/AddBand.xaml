@@ -40,9 +40,9 @@
         <Label Grid.Column="1" Grid.Row="6" Content="Photo:" Margin="0.308,0,0.192,0"/>
 
         <TextBox x:Name="txtName" Text="{Binding BandToAdd.Name,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"   Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" />
-        <TextBox x:Name="txtDescription" Text="{Binding BandToAdd.Description}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
-        <TextBox x:Name="txtTwitter" Text="{Binding BandToAdd.Twitter}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
-        <TextBox x:Name="txtFacebook" Text="{Binding BandToAdd.Facebook}" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
+        <TextBox x:Name="txtDescription" Text="{Binding BandToAdd.Description,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
+        <TextBox x:Name="txtTwitter" Text="{Binding BandToAdd.Twitter,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
+        <TextBox x:Name="txtFacebook" Text="{Binding BandToAdd.Facebook,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
         <Button Style="{StaticResource buttonStyle}" Grid.Column="1" Command="{Binding ChoosePictureCommand}" Grid.Row="6" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" >Choose image</Button>
         <Border Grid.Row="7" Grid.ColumnSpan="4">
             <Image x:Name="imgBand"  Source="{Binding Photo.Source}"/>

@@ -55,15 +55,18 @@ namespace ClassLibraryModels
         }
 
         private DateTime _date;
-
+        [Required]
         public DateTime Date
         {
             get { return _date; }
             set { _date = value; }
         }
 
-        private string _from;
+  
 
+        private string _from;
+        [Required]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Tussen de 3 en 50 karakters bevatten ")]
         public string From
         {
             get { return _from; }
@@ -71,7 +74,8 @@ namespace ClassLibraryModels
         }
 
         private string _until;
-
+        [Required]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Tussen de 3 en 50 karakters bevatten ")]
         public string Until
         {
             get { return _until; }
@@ -79,7 +83,7 @@ namespace ClassLibraryModels
         }
 
         private Stage _stage;
-
+        [Required]
         public Stage Stage
         {
             get { return _stage; }
@@ -87,7 +91,7 @@ namespace ClassLibraryModels
         }
 
         private Band _band;
-
+        [Required]
         public Band Band
         {
             get { return _band; }
@@ -97,6 +101,13 @@ namespace ClassLibraryModels
 
 
         #region functions
+
+        public bool IsValid()
+        {
+            return Validator.TryValidateObject(this, new ValidationContext(this, null, null),
+            null, true);
+        }
+
         public static ObservableCollection<LineUp> GetLineupByStageAndDate(int stageID,DateTime day) {
             ObservableCollection<LineUp> lineUpCollectie = new ObservableCollection<LineUp>();
             try

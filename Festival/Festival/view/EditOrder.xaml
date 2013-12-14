@@ -38,9 +38,9 @@
         <Label x:Name="lblName" Grid.Column="2" Grid.Row="2" Content="{Binding SelectedTicketStatic.Name}"/>
 
         <!--by ref selectedItem-->
-        <ComboBox x:Name="cboTicketType" Grid.Column="2" Grid.Row="4" ItemsSource="{Binding TypeList}" DisplayMemberPath="Name"/>
+        <ComboBox x:Name="cboTicketType" Grid.Column="2" Grid.Row="4" ItemsSource="{Binding TypeList}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTicketStatic.TicketTypeProp}"/>
         <Label x:Name="lblEmail" Grid.Column="2" Grid.Row="3" Content="{Binding SelectedTicketStatic.Email}"/>
-        <TextBox x:Name="txtAmount" Grid.Column="2" Grid.Row="5" Text="{Binding SelectedTicketStatic.Amount}"/>
+        <TextBox x:Name="txtAmount" Grid.Column="2" Grid.Row="5" Text="{Binding SelectedTicketStatic.Amount,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding EditActionCommand}"  Grid.ColumnSpan="2" Grid.Row="9" Click="sendBtn_Click" Content="Edit order" Grid.Column="1" />
         <Label Grid.Column="1" Grid.Row="4" Content="Type:"/>

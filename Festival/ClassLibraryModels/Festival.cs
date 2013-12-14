@@ -72,6 +72,12 @@ namespace ClassLibraryModels
 
 
         #region functions
+        public bool IsValid()
+        {
+            return Validator.TryValidateObject(this, new ValidationContext(this, null, null),
+            null, true);
+        }
+
         public static List<DateTime> GetFestivalDays()
         {
 

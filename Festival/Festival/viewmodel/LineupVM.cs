@@ -175,10 +175,14 @@ namespace BADProject.viewmodel
         #region commandFunctions
         private void RemoveAction(Stage stage)
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you wish to delete this stage?\nDeleting this stage will also delete all of the line-up elements coupled with it for each day.", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes)
+            if (stage != null)
             {
-                Stage.RemoveStageAndItsLineup(stage.ID);
+                MessageBoxResult result = MessageBox.Show("Are you sure you wish to delete this stage?\nDeleting this stage will also delete all of the line-up elements coupled with it for each day.", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Stage.RemoveStageAndItsLineup(stage.ID);
+                }
+                else { return; }
             }
             else { return; }
         }

@@ -52,7 +52,8 @@ namespace ClassLibraryModels
         }
 
         private string _name;
-
+        [Required]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Tussen de 3 en 50 karakters bevatten ")]
         public string Name
         {
             get { return _name; }
@@ -61,6 +62,13 @@ namespace ClassLibraryModels
         #endregion
 
         #region functions
+
+        public bool IsValid()
+        {
+            return Validator.TryValidateObject(this, new ValidationContext(this, null, null),
+            null, true);
+        }
+
         public static ObservableCollection<Genre> GetGenres() {
             ObservableCollection<Genre> genreList = new ObservableCollection<Genre>();
 

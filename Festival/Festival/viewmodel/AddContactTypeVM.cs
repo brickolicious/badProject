@@ -9,19 +9,30 @@ using System.Windows.Input;
 
 namespace BADProject.viewmodel
 {
-    class AddContactTypeVM
+    class AddContactTypeVM:ObservableObject
     {
-        public string Name { get; set; }
+        public AddContactTypeVM()
+        {
+            Name = new ContactPersonType();
+        }
 
+        private ContactPersonType _name;
+
+        public ContactPersonType Name
+        {
+            get { return _name; }
+            set { _name = value; OnPropertyChanged("Name"); }
+        }
+        
 
 
         public ICommand AddTypeCommand {
-            get { return new RelayCommand(AddTypeAction); }
+            get { return new RelayCommand(AddTypeAction,Name.IsValid); }
         }
 
         private void AddTypeAction()
         {
-            ContactPersonType.AddContactType(Name);
+            ContactPersonType.AddContactType(Name.Name);
         }
         
     }

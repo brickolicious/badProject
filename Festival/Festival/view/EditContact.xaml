@@ -46,15 +46,15 @@
 
         <!--<ListBox ItemsSource="{Binding EditContact}" DisplayMemberPath="Name"></ListBox>-->
         <Label x:Name="lblID" Content="{Binding SelectedContactStatic.ID}" Grid.Column="2" HorizontalAlignment="Center" Width="112" />
-        <TextBox x:Name="txtName"  Grid.Column="2" Grid.Row="1" Text="{Binding SelectedContactStatic.Name}" />
-        <TextBox x:Name="txtCompany" Grid.Column="2" Grid.Row="2" Text="{Binding SelectedContactStatic.Company}"/>
+        <TextBox x:Name="txtName"  Grid.Column="2" Grid.Row="1" Text="{Binding SelectedContactStatic.Name,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox x:Name="txtCompany" Grid.Column="2" Grid.Row="2" Text="{Binding SelectedContactStatic.Company,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"/>
 
         <!--by ref selectedItem-->
-        <ComboBox x:Name="cboJobRole" Grid.Column="2" Grid.Row="3" ItemsSource="{Binding TypeList}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedContactStatic.JobRole}"/>
-        <TextBox x:Name="txtPlace" Grid.Column="2" Grid.Row="4" Text="{Binding SelectedContactStatic.City}"/>
-        <TextBox x:Name="txtEmail" Grid.Column="2" Grid.Row="5" Text="{Binding SelectedContactStatic.Email}"/>
-        <TextBox x:Name="txtPhone" Grid.Column="2" Grid.Row="6" Text="{Binding SelectedContactStatic.Phone}"/>
-        <TextBox x:Name="txtCellPhone" Grid.Column="2" Grid.Row="7" Text="{Binding SelectedContactStatic.CellPhone}"/>
+        <ComboBox x:Name="cboJobRole" Grid.Column="2" Grid.Row="3" ItemsSource="{Binding TypeList}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedContactStatic.JobRole,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtPlace" Grid.Column="2" Grid.Row="4" Text="{Binding SelectedContactStatic.City,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtEmail" Grid.Column="2" Grid.Row="5" Text="{Binding SelectedContactStatic.Email,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtPhone" Grid.Column="2" Grid.Row="6" Text="{Binding SelectedContactStatic.Phone,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtCellPhone" Grid.Column="2" Grid.Row="7" Text="{Binding SelectedContactStatic.CellPhone,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding EditContactAction}"  Grid.ColumnSpan="2" Grid.Row="9" Click="sendBtn_Click" Content="Edit Contact" Grid.Column="1" />
     </Grid>

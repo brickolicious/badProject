@@ -29,15 +29,7 @@ namespace BADProject.view
 
         private void sendBtn_Click(object sender, RoutedEventArgs e)
         {
-            Ticket tempTicket = new Ticket();
-            tempTicket.ID = (int)lblOrderID.Content;
-            tempTicket.TicketholderID = (int)lblPersonID.Content;
-            tempTicket.Name = (string)lblName.Content;
-            tempTicket.Email = (string)lblEmail.Content;
-            tempTicket.TicketTypeProp = (TicketType)cboTicketType.SelectedItem;
-            tempTicket.Amount = Convert.ToInt16(txtAmount.Text);
-            sendBtn.CommandParameter = tempTicket;
-
+           
             
             this.Close();
         }

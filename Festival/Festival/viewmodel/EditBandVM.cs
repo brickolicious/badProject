@@ -86,7 +86,7 @@ namespace BADProject.viewmodel
         }
 
         public ICommand EditBandAction {
-            get { return new RelayCommand(SaveChanges); }
+            get { return new RelayCommand(SaveChanges,SelectedBand.IsValid); }
         }
 
         private void SaveChanges()

@@ -80,7 +80,7 @@ namespace BADProject.viewmodel
         
         public ICommand PlaceOrderCommand
         {
-            get { return new RelayCommand(Reserveren); }
+            get { return new RelayCommand(Reserveren,TicketOrder.IsValid); }
         }
 
 

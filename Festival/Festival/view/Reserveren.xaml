@@ -39,10 +39,10 @@
         </StackPanel>
 
         <StackPanel Grid.Column="4"  Grid.Row="2" Grid.RowSpan="2" Margin="0,0,0,10">
-            <TextBox  x:Name="txtName" Margin="0,3,0,8" Text="{Binding TicketOrder.Name}" Grid.Column="4" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center"/>
-            <TextBox  x:Name="txtEmail" Margin="0,3,0,8" Text="{Binding TicketOrder.Email}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="2" VerticalAlignment="Center" />
-            <TextBox  x:Name="txtAmount" Margin="0,3,0,8" Text="{Binding TicketOrder.Amount}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" />
-            <ComboBox x:Name="cboType" Margin="0,0,0,15"  ItemsSource="{Binding TicketTypeList}" SelectedItem="{Binding TicketOrder.TicketTypeProp}" DisplayMemberPath="Name" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" />
+            <TextBox  x:Name="txtName" Margin="0,3,0,8" Text="{Binding TicketOrder.Name,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center"/>
+            <TextBox  x:Name="txtEmail" Margin="0,3,0,8" Text="{Binding TicketOrder.Email,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="2" VerticalAlignment="Center" />
+            <TextBox  x:Name="txtAmount" Margin="0,3,0,8" Text="{Binding TicketOrder.Amount,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" />
+            <ComboBox x:Name="cboType" Margin="0,0,0,15"  ItemsSource="{Binding TicketTypeList}" SelectedItem="{Binding TicketOrder.TicketTypeProp,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" />
 
         </StackPanel>
         <Button x:Name="btnSend" Command="{Binding PlaceOrderCommand}"  Style="{StaticResource buttonStyle}" Content="Order" Grid.Column="4" Grid.Row="4" Margin="0,0,0,3"/>
