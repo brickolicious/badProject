@@ -141,9 +141,10 @@ namespace ClassLibraryModels
                     genreColl.Add(tempGenre);
                 }
                 else {
-                    if (CreateAndReturnGenre(tempString) != null)
+                    tempGenre = CreateAndReturnGenre(tempString);
+                    if (tempGenre != null)
                     {
-                        genreColl.Add(CreateAndReturnGenre(tempString));
+                        genreColl.Add(tempGenre);
                     }
                 }
 

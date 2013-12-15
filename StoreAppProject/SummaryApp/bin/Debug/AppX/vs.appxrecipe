@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>BVDC</Machine>
+    <WindowsUser>Bart</WindowsUser>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <RegisteredManifestChecksum>69D3E7434C6C81DE2606A8EEC881FA44BD838BBD71B1FC420B5022065125B3F2</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>8a535360-c62a-40ee-a46e-05f2bc000eb1_1.0.0.0_neutral__f6mew5ymcyz06</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>8a535360-c62a-40ee-a46e-05f2bc000eb1_f6mew5ymcyz06!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>8a535360-c62a-40ee-a46e-05f2bc000eb1</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Bart</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-12-14T23:45:04.719</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\SummaryApp.exe">
+      <PackagePath>SummaryApp.exe</PackagePath>
+      <Modified>2013-12-14T23:56:30.946</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\SummaryApp.pdb">
+      <PackagePath>SummaryApp.pdb</PackagePath>
+      <Modified>2013-12-14T23:56:30.926</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppPortLibrary\bin\Debug\StoreAppPortLibrary.dll">
+      <PackagePath>StoreAppPortLibrary.dll</PackagePath>
+      <Modified>2013-12-14T22:37:06.729</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppPortLibrary\bin\Debug\StoreAppPortLibrary.pdb">
+      <PackagePath>StoreAppPortLibrary.pdb</PackagePath>
+      <Modified>2013-12-14T22:37:06.707</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\Assets\Logo.png">
+      <PackagePath>Assets\Logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-15T18:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\Assets\SmallLogo.png">
+      <PackagePath>Assets\SmallLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-15T18:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\Assets\SplashScreen.png">
+      <PackagePath>Assets\SplashScreen.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-15T18:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-15T18:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\Common\ReadMe.txt">
+      <PackagePath>Common\ReadMe.txt</PackagePath>
+      <Modified>2013-12-14T21:52:06.800</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\App.xaml">
+      <PackagePath>App.xaml</PackagePath>
+      <Modified>2013-12-14T21:37:57.391</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\Common\StandardStyles.xaml">
+      <PackagePath>Common\StandardStyles.xaml</PackagePath>
+      <Modified>2012-06-26T14:19:20.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\Page2.xaml">
+      <PackagePath>Page2.xaml</PackagePath>
+      <Modified>2013-12-14T23:55:57.053</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\Page3.xaml">
+      <PackagePath>Page3.xaml</PackagePath>
+      <Modified>2013-12-14T22:02:54.192</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2013-12-14T22:37:10.993</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

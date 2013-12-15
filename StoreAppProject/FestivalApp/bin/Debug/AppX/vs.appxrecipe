@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>BVDC</Machine>
+    <WindowsUser>Bart</WindowsUser>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <RegisteredManifestChecksum>1F9ABBB14119B353E6691AD6C2692408613300E0D0880A72AA20D83B740246EB</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>79f7f65f-3b0b-4580-b652-35cb8bd8b172_1.0.0.0_neutral__f6mew5ymcyz06</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>79f7f65f-3b0b-4580-b652-35cb8bd8b172_f6mew5ymcyz06!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>79f7f65f-3b0b-4580-b652-35cb8bd8b172</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Bart</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-12-14T19:37:42.608</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\bin\Debug\FestivalApp.exe">
+      <PackagePath>FestivalApp.exe</PackagePath>
+      <Modified>2013-12-14T19:37:41.698</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\bin\Debug\FestivalApp.pdb">
+      <PackagePath>FestivalApp.pdb</PackagePath>
+      <Modified>2013-12-14T19:37:41.679</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\Assets\LightGray.png">
+      <PackagePath>Assets\LightGray.png</PackagePath>
+      <Modified>2011-12-12T20:08:56.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\Assets\logo.png">
+      <PackagePath>Assets\logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-12-14T19:07:55.463</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\Assets\MediumGray.png">
+      <PackagePath>Assets\MediumGray.png</PackagePath>
+      <Modified>2011-12-12T20:08:56.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\Assets\DarkGray.png">
+      <PackagePath>Assets\DarkGray.png</PackagePath>
+      <Modified>2011-12-12T20:08:56.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\Assets\SmallLogo.png">
+      <PackagePath>Assets\SmallLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-12-14T19:07:55.476</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\Assets\SplashScreen.png">
+      <PackagePath>Assets\SplashScreen.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-12-14T19:07:55.479</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\Assets\storeLogo.png">
+      <PackagePath>Assets\storeLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-12-14T19:07:55.481</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\Assets\WideLogo.png">
+      <PackagePath>Assets\WideLogo.png</PackagePath>
+      <Modified>2013-12-14T19:07:55.484</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\bin\Debug\App.xaml">
+      <PackagePath>App.xaml</PackagePath>
+      <Modified>2013-12-14T18:55:09.805</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\bin\Debug\Common\StandardStyles.xaml">
+      <PackagePath>Common\StandardStyles.xaml</PackagePath>
+      <Modified>2012-06-26T14:19:20.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\bin\Debug\GroupedItemsPage.xaml">
+      <PackagePath>GroupedItemsPage.xaml</PackagePath>
+      <Modified>2013-12-14T18:38:23.993</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\bin\Debug\GroupDetailPage.xaml">
+      <PackagePath>GroupDetailPage.xaml</PackagePath>
+      <Modified>2013-12-14T18:38:24.060</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\bin\Debug\ItemDetailPage.xaml">
+      <PackagePath>ItemDetailPage.xaml</PackagePath>
+      <Modified>2013-12-14T18:38:24.156</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalApp\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2013-12-14T19:11:03.359</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
