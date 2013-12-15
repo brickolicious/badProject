@@ -67,5 +67,62 @@ namespace StoreAppProject.Models.DAL
             return bandsCol;
         }
 
+        public static List<BandGenre> GetAllBandGenreCouples() {
+            List<BandGenre> lstBandGenres = new List<BandGenre>();
+
+            try
+            {
+                string sql = "SELECT * FROM Band_Genre";
+                DbDataReader reader = DataBase.GetData(sql);
+
+                foreach (IDataRecord record in reader)
+                {
+                    BandGenre tempBandGenre = new BandGenre();
+                    tempBandGenre.ID = (int)reader["ID"];
+                    tempBandGenre.Genre = (int)reader["Genre"];
+                    tempBandGenre.Band = (int)reader["Band"];
+                    lstBandGenres.Add(tempBandGenre);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return lstBandGenres;
+        }
+
+        public static List<BandGenre> GetBandGenreCouplesWithGenreID(int genreID) {
+
+            List<BandGenre> lstBandGenres = new List<BandGenre>();
+
+            try
+            {
+                DbParameter idPar = DataBase.AddParameter("@id", genreID);
+                string sql = "SELECT * FROM Band_Genre WHERE Genre = @id";
+                DbDataReader reader = DataBase.GetData(sql,idPar);
+
+                foreach (IDataRecord record in reader)
+                {
+                    BandGenre tempBandGenre = new BandGenre();
+                    tempBandGenre.ID = (int)reader["ID"];
+                    tempBandGenre.Genre = (int)reader["Genre"];
+                    tempBandGenre.Band = (int)reader["Band"];
+                    lstBandGenres.Add(tempBandGenre);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return lstBandGenres;
+        
+        }
+
     }
 }

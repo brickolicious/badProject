@@ -16,25 +16,25 @@
     <AppXManifest Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-12-14T23:45:04.719</Modified>
+      <Modified>2013-12-15T13:56:29.292</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\SummaryApp.exe">
       <PackagePath>SummaryApp.exe</PackagePath>
-      <Modified>2013-12-14T23:56:30.946</Modified>
+      <Modified>2013-12-15T13:56:27.656</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\SummaryApp.pdb">
       <PackagePath>SummaryApp.pdb</PackagePath>
-      <Modified>2013-12-14T23:56:30.926</Modified>
+      <Modified>2013-12-15T13:56:27.616</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppPortLibrary\bin\Debug\StoreAppPortLibrary.dll">
       <PackagePath>StoreAppPortLibrary.dll</PackagePath>
-      <Modified>2013-12-14T22:37:06.729</Modified>
+      <Modified>2013-12-15T13:56:16.814</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppPortLibrary\bin\Debug\StoreAppPortLibrary.pdb">
       <PackagePath>StoreAppPortLibrary.pdb</PackagePath>
-      <Modified>2013-12-14T22:37:06.707</Modified>
+      <Modified>2013-12-15T13:56:16.791</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
@@ -70,7 +70,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\Page2.xaml">
       <PackagePath>Page2.xaml</PackagePath>
-      <Modified>2013-12-14T23:55:57.053</Modified>
+      <Modified>2013-12-15T13:53:59.660</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\Page3.xaml">
       <PackagePath>Page3.xaml</PackagePath>
@@ -78,7 +78,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2013-12-14T22:37:10.993</Modified>
+      <Modified>2013-12-15T13:56:28.979</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

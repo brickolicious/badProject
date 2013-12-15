@@ -65,7 +65,10 @@
 
 
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-        <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Source={StaticResource genreInst},Path=GenreList}" DisplayMemberPath="Name">
+        <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                 ItemsSource="{Binding Source={StaticResource genreInst},Path=GenreList}" 
+                 DisplayMemberPath="Name" 
+                 SelectedItem="{Binding Source={StaticResource genreInst},Path=SelectedGenre}">
         
             
             <ListBox.ItemsPanel>
@@ -76,6 +79,8 @@
 
         </ListBox>
         </ScrollViewer>
+
+        <ListView Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ItemsSource="{Binding Source={StaticResource genreInst},Path=FilteredBands}"></ListView>
         
         
         
