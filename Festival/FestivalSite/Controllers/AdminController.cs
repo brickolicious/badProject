@@ -1,4 +1,5 @@
 ﻿using ClassLibraryModels;
+using FestivalSite.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -16,7 +17,10 @@ namespace FestivalSite.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-            return View("AdminIndex");
+            AdminPanelVM adminVM = new AdminPanelVM();
+            adminVM.Rss = new RSSmodel();
+
+            return View("AdminIndex",adminVM);
         }
 
 
@@ -38,7 +42,7 @@ namespace FestivalSite.Controllers
             }
 
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Admin");
         }
 
     }

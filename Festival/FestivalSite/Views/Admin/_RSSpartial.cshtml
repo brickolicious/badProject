@@ -1,5 +1,7 @@
 ﻿@model ClassLibraryModels.RSSmodel
 
+
+<div id="addRss">
 @using (Html.BeginForm("OpslaanRSS","Admin",FormMethod.Post)) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -42,11 +44,11 @@
        
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Add RSS item" />
         </p>
     </fieldset>
+    
+    
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+

@@ -4,6 +4,9 @@
     ViewBag.Title = "LineUpForDay";
 }
 
+
+<div id="lineupwrap">
+
 <h2>Line-up: @Model.SelectedDay.Value.DayOfWeek</h2>
 <h3>@Model.SelectedDay.Value.Date.ToShortDateString()</h3>
 
@@ -12,9 +15,10 @@
 @foreach (Stage stage in Model.stagesWithLineup)
 {
     if(stage.LineUpByStage.Count != 0){
-    <div class="stage">
-    <h3>@stage.Name</h3>
+   <div class="stage">
     <table>
+    <tr><td>@stage.Name</td></tr>
+    
         @foreach (LineUp lineupelement in stage.LineUpByStage)
 	{
 		 <tr>
@@ -33,4 +37,7 @@
     
 }
 
-@Html.ActionLink("Go back", "Index");
+@Html.ActionLink("Go back", "Index")
+
+
+</div>

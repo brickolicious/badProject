@@ -14,7 +14,8 @@ namespace FestivalSite.Controllers
     public class RSSController : ApiController
     {
 
-        public object Get() {
+        public Rss20FeedFormatter Get()
+        {
             var feed = new SyndicationFeed("Festival feed", "The official feed for Howestival", new Uri("http://localhost:14783/api/RSS"));
             
             feed.Authors.Add(new  SyndicationPerson("bart.vandecandelaere@student.howest.be"));
@@ -58,8 +59,10 @@ namespace FestivalSite.Controllers
 
             feed.Items = lstSynItems;
 
+            Rss20FeedFormatter rssfeed = new Rss20FeedFormatter(feed);
+            rssfeed.SerializeExtensionsAsAtom = true;
 
-            return new Rss20FeedFormatter(feed);
+            return rssfeed;
         }
 
 

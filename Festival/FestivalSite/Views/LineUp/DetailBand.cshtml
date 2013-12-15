@@ -1,13 +1,17 @@
 ﻿@model FestivalSite.ViewModels.LineUpVM
 @using ClassLibraryModels
 @{
-    ViewBag.Title = "DetailBand";
+   ViewBag.Title = "DetailBand";
 }
 
-<h2>DetailBand</h2>
+<div id="bandWrapper">
 
 
-<div>
+@if(Model.SelectedBand.Picture != null){
+    <img src="@Url.Action("GetPhoto", "LineUp", new { id = Model.SelectedBand.ID })" alt="@Model.SelectedBand.Name" />
+    }
+
+<div id="bandInfo">
     <h3>@Model.SelectedBand.Name</h3>
     <h3>@Model.SelectedBand.Description</h3>
     <h3>Genres</h3>
@@ -18,9 +22,7 @@
         }
        
     </ul>
-    @if(Model.SelectedBand.Picture != null){
-    <img src="@Url.Action("GetPhoto", "LineUp", new { id = Model.SelectedBand.ID })" alt="@Model.SelectedBand.Name" />
-    }
+    
 </div>
 
 @if (Model.SelectedDay != null) {
@@ -34,3 +36,4 @@
 
 }
 
+</div>

@@ -4,11 +4,13 @@
     ViewBag.Title = "DetailLineup";
 }
 
+
+<div id="lineupwrap">
 <div id="bandLineup">
-<h2>Line-up for @Model.SelectedBand.Name</h2>
+
 
 <table>
-   
+<tr><td>Line-up for: @Model.SelectedBand.Name</td></tr>
 
 @foreach (LineUp line in Model.LineupForBand) {
     <tr>
@@ -31,4 +33,6 @@
 </table>
 </div>
 
-@Html.ActionLink("Go back", "Index");
+@Html.ActionLink("Go back", "Index")
+
+</div>

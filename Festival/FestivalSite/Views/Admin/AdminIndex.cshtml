@@ -1,9 +1,37 @@
-﻿@{
+﻿@model FestivalSite.ViewModels.AdminPanelVM
+@using ClassLibraryModels;
+@{
     ViewBag.Title = "AdminIndex";
 }
 
 <h2>Overzicht ticket verkoop</h2>
 
+<div class="ticketVerkoop">
+
+    <table>
+
+            <tr>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Available</th>
+                <th>Total</th>
+
+            </tr>
+        @foreach (TicketType item in Model.TicketTypes)
+        {
+            <tr>
+                <td>@item.Name</td>
+
+                <td>@item.Price</td>
+
+                <td>@item.AvailableTickets</td>
+
+                <td>@item.TotalTickets</td>
+            </tr>
+        }
+    </table>
+</div>
+
 <div>
-    @Html.Partial("_RSSpartial");
+    @Html.Partial("_RSSpartial",Model.Rss)
 </div>
