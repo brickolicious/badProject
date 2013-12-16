@@ -6,15 +6,19 @@
 
 <div id="bandWrapper">
 
-
+    
 @if(Model.SelectedBand.Picture != null){
     <img src="@Url.Action("GetPhoto", "LineUp", new { id = Model.SelectedBand.ID })" alt="@Model.SelectedBand.Name" />
     }
 
 <div id="bandInfo">
-    <h3>@Model.SelectedBand.Name</h3>
-    <h3>@Model.SelectedBand.Description</h3>
-    <h3>Genres</h3>
+    <h2>@Model.SelectedBand.Name
+
+        
+
+    </h2>
+    <p>@Model.SelectedBand.Description</p>
+    <h3>Genres:</h3>
     <ul>
         @foreach (Genre genre in Model.SelectedBand.Genres)
         {
@@ -35,5 +39,9 @@
     @Html.ActionLink("Go back", "Index")
 
 }
-
+    @*<div class="bubble x1"></div>
+        <div class="bubble x2"></div>
+        <div class="bubble x3"></div>
+        <div class="bubble x4"></div>
+        <div class="bubble x5"></div>*@
 </div>

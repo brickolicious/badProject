@@ -4,10 +4,10 @@
     ViewBag.Title = "AdminIndex";
 }
 
-<h2>Overzicht ticket verkoop</h2>
+
 
 <div class="ticketVerkoop">
-
+    <h2>Overzicht ticket verkoop</h2>
     <table>
 
             <tr>
@@ -30,8 +30,10 @@
             </tr>
         }
     </table>
-</div>
+
 
 <div>
     @Html.Partial("_RSSpartial",Model.Rss)
+</div>
+
 </div>

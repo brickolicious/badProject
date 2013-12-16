@@ -2,14 +2,12 @@
 @{
     ViewBag.Title = "Manage Account";
 }
+<div class="credentialWrappers">
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
 
 <p class="message-success">@ViewBag.StatusMessage</p>
 
-<p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
+<span>You're logged in as <strong>@User.Identity.Name</strong>.</span>
 
 @if (ViewBag.HasLocalPassword)
 {
@@ -30,3 +28,5 @@ else
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+</div>

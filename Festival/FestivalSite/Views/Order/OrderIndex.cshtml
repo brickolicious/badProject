@@ -4,42 +4,57 @@
     ViewBag.Title = "OrderIndex";
 }
 
+<div class="orderWrap">
 <h2>Orders for @User.Identity.Name: </h2>
 
 
 <div id="orders">
+    <table>
+        <tr>
+            <td>Order ID</td>
+            <td>E-mail</td>
+            <td>Type</td>
+            <td>Amount</td>
+            <td>Total</td>
+            <td></td>
+        </tr>
 @foreach (Ticket order in Model.OrdersPlacedByUser)
 {
-<ul>
-    <li>
-        <span>Order ID: </span>@order.ID
-    </li>
-    <li>
-        <span>E-mail used to place order: </span>@order.Email
-    </li> 
-    <li>
-        <span>Ticket tyep: </span>@order.TicketTypeProp.Name
-    </li> 
-    <li>
-        <span>Amount orderd: </span>@order.Amount
-    </li>
-    <li>
-        @Html.ActionLink("Remove order","RemoveOrder", new{ orderID = order.ID })
-    </li>
-</ul>
+    <tr>
+        <td>@order.ID</td>
+        <td>@order.Email</td>
+        <td>@order.TicketTypeProp.Name</td>
+        <td>@order.Amount</td>
+        <td>@{var tick = order.Amount * order.TicketTypeProp.Price;}€@Html.Raw(tick)</td>
+        <td>@Html.ActionLink("Remove order","RemoveOrder", new{ orderID = order.ID })
+    </td>
+    </tr>
+    
+    
+
 }
+    </table>
 </div>
 
+
 <div id="placeOrder">
-    @if (!String.IsNullOrEmpty(Model.Message)) { 
+
     
-        <span>@Model.Message </span>
+
     
-    }
 
     @using (Html.BeginForm("PlaceOrder", "Order", FormMethod.Post)) {
 
-        @Html.DropDownList("SelectedType", (SelectList)Model.SelectListTypes, "Select your ticket type.");
+        if (!String.IsNullOrEmpty(Model.Message)) { 
+    
+        <span id="message">@Model.Message</span>
+    
+        }
+        
+        <label><span>Place an order.</span></label>
+        
+        <div>@Html.Label("Type:")</div>
+        @Html.DropDownList("SelectedType", (SelectList)Model.SelectListTypes, "Select your ticket type.")
        
        
         <div class="editor-label">
@@ -52,6 +67,14 @@
         <input type="submit" value="Order" />
     
     }
+
+    
+        
+
+
+
+
 </div>
 
+</div>
 

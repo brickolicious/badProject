@@ -19,6 +19,8 @@ namespace FestivalSite
           //  GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
            // GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
 
+            //toegevoegd om custom error handeling te kunnen doen
+            //GlobalFilters.Add(new HandleErrorAttribute());
 
             AreaRegistration.RegisterAllAreas();
 

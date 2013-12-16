@@ -2,11 +2,10 @@
 @{
     ViewBag.Title = "Register";
 }
+<div class="credentialWrappers">
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
-</hgroup>
+    <span>@ViewBag.Title.</span>
+
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -39,3 +38,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+</div>

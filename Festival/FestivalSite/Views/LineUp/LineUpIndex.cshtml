@@ -39,8 +39,7 @@
             //toon enkel de bands waarvoor een lineup is
             if(LineUp.GetLineUpForBand(band.ID).Count != 0){
             <tr>
-                <td>@band.Name</td>
-                <td>@Html.ActionLink("Info","Detailband",new {bandID = band.ID,lineVM = Model})</td>
+                <td>@Html.ActionLink(band.Name,"Detailband",new {bandID = band.ID,lineVM = Model})</td>
                 <td>@Html.ActionLink("see line-up","BandLineUp",new {bandID = band.ID,lineVM = Model})</td>
             </tr>
             }
