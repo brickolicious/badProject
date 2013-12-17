@@ -7,7 +7,7 @@
              d:DesignHeight="300" d:DesignWidth="300" Width="788" Height="473"
              xmlns:viewModelns="clr-namespace:BADProject.viewmodel">
 
-    
+
     <UserControl.Resources>
         <viewModelns:EditBandVM x:Key="editInst"/>
     </UserControl.Resources>
@@ -21,7 +21,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -36,8 +36,8 @@
                 <GridView>
                     <GridViewColumn Header="Naam" Width="auto" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Description" Width="auto" DisplayMemberBinding="{Binding Description}" />
-                    <GridViewColumn Header="Twitter" Width="auto" DisplayMemberBinding="{Binding Twitter}" />
-                    <GridViewColumn Header="Facebook" Width="auto" DisplayMemberBinding="{Binding Facebook}" />
+                    <!--<GridViewColumn Header="Twitter" Width="auto" DisplayMemberBinding="{Binding Twitter}" />-->
+                    <!--<GridViewColumn Header="Facebook" Width="auto" DisplayMemberBinding="{Binding Facebook}" />-->
                     <GridViewColumn Header="Genres" Width="auto" DisplayMemberBinding="{Binding GenresInText}" />
                 </GridView>
             </ListView.View>
@@ -48,8 +48,21 @@
         <Button Command="{Binding DeleteBandCommand}" CommandParameter="{Binding ElementName=lstvwBands,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwBands}"  Style="{StaticResource buttonStyle}" Content="Delete band" Grid.Column="3" Height="35" Width="120" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
 
         <!--<Image  Source="{Binding SelectedBand.Picture}" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,10" Grid.Row="4" VerticalAlignment="Stretch"/>-->
-        <Image  Source="{Binding Source={StaticResource editInst},Path=SelectedBandNonStatic.Picture,Converter={StaticResource ImgConverter}}" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,10" Grid.Row="4" VerticalAlignment="Stretch"/>
-
+        <Image  Source="{Binding Source={StaticResource editInst},Path=SelectedBandNonStatic.Picture,Converter={StaticResource ImgConverter}}" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,10,0,85" Grid.Row="4" VerticalAlignment="Stretch"/>
+        <Button Command="{Binding Source={StaticResource editInst},Path=FacebookCommand}" Grid.Column="3" Grid.Row="4" Height="30" Width="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="22,0,0,30">
+            <Grid Height="30" Width="30">
+                <Grid.Background>
+                    <ImageBrush ImageSource="..\Content\Images\facelogo.png"/>
+                </Grid.Background>
+            </Grid>
+        </Button>
+        <Button Command="{Binding Source={StaticResource editInst},Path=TwitterCommand}"  Grid.Column="3" Grid.Row="4" Height="30" Width="30" VerticalAlignment="Bottom" HorizontalAlignment="right" Margin="0,0,22,30">
+            <Grid Height="30" Width="30">
+                <Grid.Background>
+                    <ImageBrush ImageSource="..\Content\Images\twitlogo.jpg"/>
+                </Grid.Background>
+            </Grid>
+        </Button>
 
     </Grid>
 </UserControl>

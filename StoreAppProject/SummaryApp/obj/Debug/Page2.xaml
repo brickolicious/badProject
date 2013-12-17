@@ -16,8 +16,17 @@
     <Page.Resources>
 
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
-        <x:String x:Key="AppName">Genres</x:String>
+        <x:String x:Key="AppName">Bands</x:String>
         <vm:GenresVM x:Key="genreInst"></vm:GenresVM>
+        
+        
+        <DataTemplate x:Key="bandsForGenre">
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="{Binding Name}" />
+            </StackPanel>
+        </DataTemplate>
+
+
     </Page.Resources>
 
 
@@ -46,14 +55,27 @@
         * Row 1 contains the rest of the page layout
     -->
     <Grid Style="{StaticResource LayoutRootStyle}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
-            <RowDefinition Height="16*"/>
-            <RowDefinition Height="125*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="294*"/>
         </Grid.RowDefinitions>
 
         <!-- Back button and page title -->
-        <Grid>
+        <Grid Grid.ColumnSpan="6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -64,27 +86,36 @@
 
 
 
-        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-        <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+        <ScrollViewer Grid.Row="1" Grid.RowSpan="7" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <ListView 
                  ItemsSource="{Binding Source={StaticResource genreInst},Path=GenreList}" 
-                 DisplayMemberPath="Name" 
-                 SelectedItem="{Binding Source={StaticResource genreInst},Path=SelectedGenre}">
-        
-            
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
+                DisplayMemberPath="Name"
+                 SelectedItem="{Binding Source={StaticResource genreInst},Path=SelectedGenre, Mode=TwoWay}">
 
-        </ListBox>
+
+
+
+            </ListView>
         </ScrollViewer>
 
-        <ListView Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ItemsSource="{Binding Source={StaticResource genreInst},Path=FilteredBands}"></ListView>
-        
-        
-        
-        
+
+        <ListView ItemsSource="{Binding Source={StaticResource genreInst},Path=FilteredBands}" DisplayMemberPath="Name" SelectedItem="{Binding Source={StaticResource genreInst},Path=SelectedBand,Mode=TwoWay}" Grid.Row="1" Grid.Column="2" Grid.RowSpan="7"/>
+
+
+        <Image Source="{Binding Source={StaticResource genreInst},Path=SelectedBand.Picture,Mode=OneWay}" Grid.Row="2" Grid.Column="3" Grid.RowSpan="4"/>
+        <TextBlock Text="{Binding Source={StaticResource genreInst},Path=SelectedBand.Name,Mode=OneWay}" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"/>
+        <TextBlock Text="{Binding Source={StaticResource genreInst},Path=SelectedBand.Description,Mode=OneWay}" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <TextBlock Text="{Binding Source={StaticResource genreInst},Path=SelectedBand.Facebook,Mode=OneWay}" Grid.Row="5" Grid.Column="4"/>
+        <TextBlock Text="{Binding Source={StaticResource genreInst},Path=SelectedBand.Twitter,Mode=OneWay}" Grid.Row="5" Grid.Column="5"/>
+
+
+
+
+
+
+        <!--<Button Command=""></Button>-->
+
+
         <VisualStateManager.VisualStateGroups>
 
             <!-- Visual states reflect the application's view state -->
@@ -114,7 +145,7 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        
+
     </Grid>
 </common:LayoutAwarePage>
 

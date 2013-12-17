@@ -10,6 +10,10 @@ using Windows.Data.Json;
 using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Windows.Input;
+using System.Runtime.Serialization;
+using Windows.Storage.Streams;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Data;
 
 namespace SummaryApp.ViewModels
 {
@@ -20,6 +24,7 @@ namespace SummaryApp.ViewModels
         {
             GetGenresFromAPI();
             GetBandsFromAPI();
+            
         }
 
         private  ObservableCollection<Genre> _lstGenres;
@@ -36,7 +41,7 @@ namespace SummaryApp.ViewModels
         public ObservableCollection<Band> BandList
         {
             get { return _bandList; }
-            set { _bandList = value; }
+            set { _bandList = value; OnPropertyChanged("BandList"); }
         }
         
 
@@ -50,12 +55,32 @@ namespace SummaryApp.ViewModels
             set { _selecGen = value; GetBandIDsForGenre(_selecGen.ID); OnPropertyChanged("SelectedGenre"); }
         }
 
+        
+
+        private Band _SelectedBand;
+
+        public Band SelectedBand
+        {
+            get { return _SelectedBand; }
+            set { _SelectedBand = value; OnPropertyChanged("SelectedBand"); }
+        }
+
+        private Windows.UI.Xaml.Controls.Image _selectedPhoto;
+
+        public Windows.UI.Xaml.Controls.Image SelectedPhoto
+        {
+            get { return _selectedPhoto; }
+            set { _selectedPhoto = value; OnPropertyChanged("SelectedPhoto"); }
+        }
+        
+
+
         private ObservableCollection<Band> _filterBands;
 
         public ObservableCollection<Band> FilteredBands
         {
             get { return _filterBands; }
-            set { _filterBands = value; }
+            set { _filterBands = value; OnPropertyChanged("FilteredBands"); }
         }
 
         private ObservableCollection<BandGenre> _bandForGenre;
@@ -92,10 +117,14 @@ namespace SummaryApp.ViewModels
         }
 
         public async void GetBandsFromAPI() {
-
+            /*
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(new
             System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            */
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(new
+            System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/xml"));
 
             HttpResponseMessage response = await client.GetAsync("http://localhost:8080/api/Band");
             if (response.IsSuccessStatusCode)
@@ -104,9 +133,11 @@ namespace SummaryApp.ViewModels
 
 
 
-                DataContractJsonSerializer djs = new
+                DataContractSerializer dxml = new DataContractSerializer(typeof(ObservableCollection<Band>));
+                BandList = dxml.ReadObject(stream) as ObservableCollection<Band>;
+                /*DataContractJsonSerializer djs = new
                 DataContractJsonSerializer(typeof(ObservableCollection<Band>));
-                BandList = djs.ReadObject(stream) as ObservableCollection<Band>;
+                BandList = djs.ReadObject(stream) as ObservableCollection<Band>;*/
             }
 
         
@@ -122,19 +153,16 @@ namespace SummaryApp.ViewModels
             if (response.IsSuccessStatusCode)
             {
                 Stream stream = await response.Content.ReadAsStreamAsync();
-
-
-
                 DataContractJsonSerializer djs = new
-                DataContractJsonSerializer(typeof(ObservableCollection<Genre>));
+                DataContractJsonSerializer(typeof(ObservableCollection<BandGenre>));
                 BandIDsForGenreList = djs.ReadObject(stream) as ObservableCollection<BandGenre>;
 
-                FilteredBands = null;
+                FilteredBands = new ObservableCollection<Band>();
                 foreach (BandGenre item in BandIDsForGenreList)
                 {
                     foreach (Band band in BandList)
                     {
-                        if (item.ID == band.ID) {
+                        if (item.Band == band.ID) {
                             FilteredBands.Add(band);
                         }
                     }
@@ -144,6 +172,12 @@ namespace SummaryApp.ViewModels
         
         }
 
-
+        
+        
     }
+
+
+    
+
+
 }

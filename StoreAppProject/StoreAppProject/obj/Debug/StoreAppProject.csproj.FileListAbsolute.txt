@@ -1,7 +1,7 @@
-C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\obj\Debug\StoreAppProject.csprojResolveAssemblyReference.cache
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\bin\StoreAppProject.dll
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\bin\StoreAppProject.pdb
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\bin\Antlr3.Runtime.dll
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\bin\DBHelper.dll
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\bin\EntityFramework.dll
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\bin\Microsoft.Data.Edm.dll
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\bin\Microsoft.Data.OData.dll
@@ -68,6 +68,6 @@ C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\b
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\bin\ru\System.Spatial.resources.dll
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\obj\Debug\StoreAppProject.csprojResolveAssemblyReference.cache
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\obj\Debug\StoreAppProject.dll
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\obj\Debug\StoreAppProject.pdb
-C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppProject\bin\DBHelper.dll

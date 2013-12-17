@@ -215,8 +215,18 @@ namespace ClassLibraryModels
                         DbParameter facebookUpdatePar = DataBase.AddParameter("@facebookUpdate",band.Facebook);
                         DbParameter picturePar = DataBase.AddParameter("@picture", band.Picture);
                         DbParameter idUpdatePar = DataBase.AddParameter("@idUpdate",tempband.ID);
-                        string sql_update = "UPDATE Band SET Name = @nameUpdate,Picture = @picture,Description = @descriptionUpdate, Twitter = @twitterUpdate, Facebook = @facebookUpdate WHERE ID = @idUpdate";
-                        int iModifiedDataUpdate = DataBase.ModifyData(sql_update, nameUpdatePar,picturePar, descriptionUpdatePar, twitterUpdatePar, facebookUpdatePar, idUpdatePar);
+
+                        if (band.Picture != null)
+                        {
+                            string sql_update = "UPDATE Band SET Name = @nameUpdate,Picture = @picture,Description = @descriptionUpdate, Twitter = @twitterUpdate, Facebook = @facebookUpdate WHERE ID = @idUpdate";
+                            int iModifiedDataUpdate = DataBase.ModifyData(sql_update, nameUpdatePar, picturePar, descriptionUpdatePar, twitterUpdatePar, facebookUpdatePar, idUpdatePar);
+                        }
+                        else {
+
+                            string sql_update = "UPDATE Band SET Name = @nameUpdate,Description = @descriptionUpdate, Twitter = @twitterUpdate, Facebook = @facebookUpdate WHERE ID = @idUpdate";
+                            int iModifiedDataUpdate = DataBase.ModifyData(sql_update, nameUpdatePar, descriptionUpdatePar, twitterUpdatePar, facebookUpdatePar, idUpdatePar);
+                        
+                        }
 
                         string sql = "DELETE FROM Band_Genre WHERE Band = @id";
                         DbParameter idpar = DataBase.AddParameter("@id", tempband.ID);

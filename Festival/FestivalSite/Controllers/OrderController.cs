@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FestivalSite.ViewModels;
+using System.Web.Mail;
+using System.Net.Mail;
 
 namespace FestivalSite.Controllers
 {
@@ -36,22 +38,34 @@ namespace FestivalSite.Controllers
         }
 
         
-        public ActionResult PlaceOrder(OrderVM order)
+        public ActionResult PlaceOrder(int type,int Amount)
         {
-            if (order.Amount > TicketType.AvailableTicketsForType(order.SelectedType))
+            if (Amount > TicketType.AvailableTicketsForType(type))
             {
-                //bij doorgeven van niet meer te bestellen type wordt de int niet doorgegeven
-                int typeID = order.SelectedType;
-                return (RedirectToAction("Index", typeID));
+                
+                int typeID = type;
+                return (RedirectToAction("Index", new { typeID=typeID }));
             }
             else {
 
                 Ticket tempTick = new Ticket();
                 tempTick.TicketholderID = Ticket.GetUserIDFromUsername(User.Identity.Name);
-                tempTick.TicketTypeProp = TicketType.GetTicketTypeByID(order.SelectedType);
-                tempTick.Amount = order.Amount;
+                tempTick.TicketTypeProp = TicketType.GetTicketTypeByID(type);
+                tempTick.Amount = Amount;
 
                 Ticket.PlaceAnOrder(tempTick);
+                /*
+                
+                System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                mail.From = new MailAddress("festival@noreply.com");
+                mail.To.Add("bart.vandecandelaere@student.howest.be");
+                mail.Subject = "Password recovery";
+                mail.Body = "Recovering the password";
+
+                SmtpServer.Send(mail);*/
+
 
                 return (RedirectToAction("Index"));
             }

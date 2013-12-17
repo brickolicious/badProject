@@ -219,6 +219,10 @@ namespace SummaryApp.SummaryApp_XamlTypeInfo
                 xamlType = new global::SummaryApp.SummaryApp_XamlTypeInfo.XamlSystemBaseType(typeName, typeof(global::System.String));
                 break;
 
+            case "Windows.UI.Xaml.Controls.Image":
+                xamlType = new global::SummaryApp.SummaryApp_XamlTypeInfo.XamlSystemBaseType(typeName, typeof(global::Windows.UI.Xaml.Controls.Image));
+                break;
+
             case "SummaryApp.Common.LayoutAwarePage":
                 userType = new global::SummaryApp.SummaryApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::SummaryApp.Common.LayoutAwarePage), GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_0_LayoutAwarePage;
@@ -235,6 +239,8 @@ namespace SummaryApp.SummaryApp_XamlTypeInfo
                 AddToMapOfTypeToStandardName(typeof(global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.Band>),
                                                    "System.Collections.ObjectModel.ObservableCollection<StoreAppPortLibrary.Band>");
                 userType.AddMemberName("SelectedGenre");
+                userType.AddMemberName("SelectedBand");
+                userType.AddMemberName("SelectedPhoto");
                 userType.AddMemberName("FilteredBands");
                 AddToMapOfTypeToStandardName(typeof(global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.Band>),
                                                    "System.Collections.ObjectModel.ObservableCollection<StoreAppPortLibrary.Band>");
@@ -541,52 +547,72 @@ namespace SummaryApp.SummaryApp_XamlTypeInfo
             var that = (global::SummaryApp.ViewModels.GenresVM)instance;
             that.SelectedGenre = (global::StoreAppPortLibrary.Genre)Value;
         }
-        private object get_13_GenresVM_FilteredBands(object instance)
+        private object get_13_GenresVM_SelectedBand(object instance)
+        {
+            var that = (global::SummaryApp.ViewModels.GenresVM)instance;
+            return that.SelectedBand;
+        }
+        private void set_13_GenresVM_SelectedBand(object instance, object Value)
+        {
+            var that = (global::SummaryApp.ViewModels.GenresVM)instance;
+            that.SelectedBand = (global::StoreAppPortLibrary.Band)Value;
+        }
+        private object get_14_GenresVM_SelectedPhoto(object instance)
+        {
+            var that = (global::SummaryApp.ViewModels.GenresVM)instance;
+            return that.SelectedPhoto;
+        }
+        private void set_14_GenresVM_SelectedPhoto(object instance, object Value)
+        {
+            var that = (global::SummaryApp.ViewModels.GenresVM)instance;
+            that.SelectedPhoto = (global::Windows.UI.Xaml.Controls.Image)Value;
+        }
+        private object get_15_GenresVM_FilteredBands(object instance)
         {
             var that = (global::SummaryApp.ViewModels.GenresVM)instance;
             return that.FilteredBands;
         }
-        private void set_13_GenresVM_FilteredBands(object instance, object Value)
+        private void set_15_GenresVM_FilteredBands(object instance, object Value)
         {
             var that = (global::SummaryApp.ViewModels.GenresVM)instance;
             that.FilteredBands = (global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.Band>)Value;
         }
-        private object get_14_GenresVM_BandIDsForGenreList(object instance)
+        private object get_16_GenresVM_BandIDsForGenreList(object instance)
         {
             var that = (global::SummaryApp.ViewModels.GenresVM)instance;
             return that.BandIDsForGenreList;
         }
-        private void set_14_GenresVM_BandIDsForGenreList(object instance, object Value)
+        private void set_16_GenresVM_BandIDsForGenreList(object instance, object Value)
         {
             var that = (global::SummaryApp.ViewModels.GenresVM)instance;
             that.BandIDsForGenreList = (global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.BandGenre>)Value;
         }
-        private object get_15_BandGenre_ID(object instance)
+        private object get_17_BandGenre_ID(object instance)
         {
             var that = (global::StoreAppPortLibrary.BandGenre)instance;
             return that.ID;
         }
-        private void set_15_BandGenre_ID(object instance, object Value)
+        private void set_17_BandGenre_ID(object instance, object Value)
         {
             var that = (global::StoreAppPortLibrary.BandGenre)instance;
             that.ID = (global::System.Int32)Value;
         }
-        private object get_16_BandGenre_Genre(object instance)
+        private object get_18_BandGenre_Genre(object instance)
         {
             var that = (global::StoreAppPortLibrary.BandGenre)instance;
             return that.Genre;
         }
-        private void set_16_BandGenre_Genre(object instance, object Value)
+        private void set_18_BandGenre_Genre(object instance, object Value)
         {
             var that = (global::StoreAppPortLibrary.BandGenre)instance;
             that.Genre = (global::System.Int32)Value;
         }
-        private object get_17_BandGenre_Band(object instance)
+        private object get_19_BandGenre_Band(object instance)
         {
             var that = (global::StoreAppPortLibrary.BandGenre)instance;
             return that.Band;
         }
-        private void set_17_BandGenre_Band(object instance, object Value)
+        private void set_19_BandGenre_Band(object instance, object Value)
         {
             var that = (global::StoreAppPortLibrary.BandGenre)instance;
             that.Band = (global::System.Int32)Value;
@@ -677,35 +703,47 @@ namespace SummaryApp.SummaryApp_XamlTypeInfo
                 xamlMember.Getter = get_12_GenresVM_SelectedGenre;
                 xamlMember.Setter = set_12_GenresVM_SelectedGenre;
                 break;
+            case "SummaryApp.ViewModels.GenresVM.SelectedBand":
+                userType = (global::SummaryApp.SummaryApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("SummaryApp.ViewModels.GenresVM");
+                xamlMember = new global::SummaryApp.SummaryApp_XamlTypeInfo.XamlMember(this, "SelectedBand", "StoreAppPortLibrary.Band");
+                xamlMember.Getter = get_13_GenresVM_SelectedBand;
+                xamlMember.Setter = set_13_GenresVM_SelectedBand;
+                break;
+            case "SummaryApp.ViewModels.GenresVM.SelectedPhoto":
+                userType = (global::SummaryApp.SummaryApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("SummaryApp.ViewModels.GenresVM");
+                xamlMember = new global::SummaryApp.SummaryApp_XamlTypeInfo.XamlMember(this, "SelectedPhoto", "Windows.UI.Xaml.Controls.Image");
+                xamlMember.Getter = get_14_GenresVM_SelectedPhoto;
+                xamlMember.Setter = set_14_GenresVM_SelectedPhoto;
+                break;
             case "SummaryApp.ViewModels.GenresVM.FilteredBands":
                 userType = (global::SummaryApp.SummaryApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("SummaryApp.ViewModels.GenresVM");
                 xamlMember = new global::SummaryApp.SummaryApp_XamlTypeInfo.XamlMember(this, "FilteredBands", "System.Collections.ObjectModel.ObservableCollection<StoreAppPortLibrary.Band>");
-                xamlMember.Getter = get_13_GenresVM_FilteredBands;
-                xamlMember.Setter = set_13_GenresVM_FilteredBands;
+                xamlMember.Getter = get_15_GenresVM_FilteredBands;
+                xamlMember.Setter = set_15_GenresVM_FilteredBands;
                 break;
             case "SummaryApp.ViewModels.GenresVM.BandIDsForGenreList":
                 userType = (global::SummaryApp.SummaryApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("SummaryApp.ViewModels.GenresVM");
                 xamlMember = new global::SummaryApp.SummaryApp_XamlTypeInfo.XamlMember(this, "BandIDsForGenreList", "System.Collections.ObjectModel.ObservableCollection<StoreAppPortLibrary.BandGenre>");
-                xamlMember.Getter = get_14_GenresVM_BandIDsForGenreList;
-                xamlMember.Setter = set_14_GenresVM_BandIDsForGenreList;
+                xamlMember.Getter = get_16_GenresVM_BandIDsForGenreList;
+                xamlMember.Setter = set_16_GenresVM_BandIDsForGenreList;
                 break;
             case "StoreAppPortLibrary.BandGenre.ID":
                 userType = (global::SummaryApp.SummaryApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("StoreAppPortLibrary.BandGenre");
                 xamlMember = new global::SummaryApp.SummaryApp_XamlTypeInfo.XamlMember(this, "ID", "Int32");
-                xamlMember.Getter = get_15_BandGenre_ID;
-                xamlMember.Setter = set_15_BandGenre_ID;
+                xamlMember.Getter = get_17_BandGenre_ID;
+                xamlMember.Setter = set_17_BandGenre_ID;
                 break;
             case "StoreAppPortLibrary.BandGenre.Genre":
                 userType = (global::SummaryApp.SummaryApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("StoreAppPortLibrary.BandGenre");
                 xamlMember = new global::SummaryApp.SummaryApp_XamlTypeInfo.XamlMember(this, "Genre", "Int32");
-                xamlMember.Getter = get_16_BandGenre_Genre;
-                xamlMember.Setter = set_16_BandGenre_Genre;
+                xamlMember.Getter = get_18_BandGenre_Genre;
+                xamlMember.Setter = set_18_BandGenre_Genre;
                 break;
             case "StoreAppPortLibrary.BandGenre.Band":
                 userType = (global::SummaryApp.SummaryApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("StoreAppPortLibrary.BandGenre");
                 xamlMember = new global::SummaryApp.SummaryApp_XamlTypeInfo.XamlMember(this, "Band", "Int32");
-                xamlMember.Getter = get_17_BandGenre_Band;
-                xamlMember.Setter = set_17_BandGenre_Band;
+                xamlMember.Getter = get_19_BandGenre_Band;
+                xamlMember.Setter = set_19_BandGenre_Band;
                 break;
             }
             return xamlMember;

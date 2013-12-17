@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Command;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace BADProject.viewmodel
         {
             //SelectedBandNonStatic = new Band();
             Photo = new Image();
+            //SelectedBandNonStatic = new Band();
         }
 
 
@@ -111,6 +113,44 @@ namespace BADProject.viewmodel
                 Band.DeleteBand(this.SelectedBandNonStatic.ID);
             }
             else { return; }
+        }
+
+        public ICommand FacebookCommand {
+
+            get { return new RelayCommand(ShowFacebook); }
+        
+        }
+
+        private void ShowFacebook()
+        {
+            try
+            {
+                ProcessStartInfo sInfo = new ProcessStartInfo("http://www.facebook.com/" + SelectedBandNonStatic.Facebook);
+                Process.Start(sInfo);
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
+
+        public ICommand TwitterCommand
+        {
+
+            get { return new RelayCommand(ShowTwitter); }
+
+        }
+
+        private void ShowTwitter()
+        {
+            try
+            {
+                ProcessStartInfo sInfo = new ProcessStartInfo("http://www.twitter.com/" + SelectedBandNonStatic.Twitter);
+                Process.Start(sInfo);
+            }catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

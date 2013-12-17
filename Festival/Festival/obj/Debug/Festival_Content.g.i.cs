@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("content/images/newimage.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("content/images/facelogo.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("content/images/twitlogo.jpg")]
 
 

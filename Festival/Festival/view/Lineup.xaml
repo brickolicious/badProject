@@ -76,11 +76,12 @@
 
 
 
-
-        <ScrollViewer x:Name="scrlViewer" Grid.Row="4" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="3" Grid.RowSpan="6">
+        <Border BorderBrush="Black" BorderThickness="2" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="6">
+        <ScrollViewer x:Name="scrlViewer"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <ItemsControl 	ItemsSource="{Binding StageList, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource lstLineup}" ItemsPanel="{StaticResource stkPnl}"/>
 
         </ScrollViewer>
+        </Border>
         <Button Command="{Binding DeleteStageCommand}" Style="{StaticResource buttonStyle}" Content="Remove stage"   Grid.Row="9" Grid.Column="4" Margin="0,6,0,10" />
 
 
