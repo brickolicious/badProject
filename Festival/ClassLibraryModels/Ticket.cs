@@ -356,6 +356,32 @@ namespace ClassLibraryModels
 
             return userID;
         }
+
+
+        public static string GetUserEmailFromUsername(string name)
+        {
+            string email = "";
+
+            try
+            {
+                string sql = "SELECT UserEmail From UserProfile WHERE UserName = @name";
+                DbParameter namePar = DataBase.AddParameter("@name", name);
+                DbDataReader reader = DataBase.GetData(sql, namePar);
+
+                foreach (IDataRecord record in reader)
+                {
+                    email = (string)reader["UserEmail"];
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return email;
+        }
         #endregion
     }
 }

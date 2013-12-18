@@ -13,7 +13,7 @@
 
     <fieldset>
         <legend>Registration Form</legend>
-        <ol>
+        <ul>
             <li>
                 @Html.LabelFor(m => m.UserName)
                 @Html.TextBoxFor(m => m.UserName)
@@ -30,8 +30,10 @@
                 @Html.LabelFor(m => m.ConfirmPassword)
                 @Html.PasswordFor(m => m.ConfirmPassword)
             </li>
-        </ol>
-        <input type="submit" value="Register" />
+            <li>
+                <input type="submit" value="Register" />
+            </li>
+        </ul>
     </fieldset>
 }
 

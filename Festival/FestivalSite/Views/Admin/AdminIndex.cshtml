@@ -22,7 +22,7 @@
             <tr>
                 <td>@item.Name</td>
 
-                <td>@item.Price</td>
+                <td>€@item.Price</td>
 
                 <td>@item.AvailableTickets</td>
 
@@ -32,7 +32,7 @@
     </table>
 
 
-<div>
+<div id="rssContainer">
     @Html.Partial("_RSSpartial",Model.Rss)
 </div>
 

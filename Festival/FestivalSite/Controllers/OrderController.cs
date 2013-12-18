@@ -24,7 +24,7 @@ namespace FestivalSite.Controllers
             if (typeID != null)
             {
 
-                ordervm.Message = "Tickets off type " + TicketType.GetTicketTypeByID(typeID).Name + " are sold out.";
+                ordervm.Message = "Tickets off type " + TicketType.GetTicketTypeByID(typeID).Name + " are sold out of not available in this amount.";
 
             }
             
@@ -40,6 +40,13 @@ namespace FestivalSite.Controllers
         
         public ActionResult PlaceOrder(int type,int Amount)
         {
+
+            if (type == 0 || Amount == 0 || Amount==null) {
+
+                return (RedirectToAction("Index"));
+
+            }
+
             if (Amount > TicketType.AvailableTicketsForType(type))
             {
                 
@@ -54,17 +61,33 @@ namespace FestivalSite.Controllers
                 tempTick.Amount = Amount;
 
                 Ticket.PlaceAnOrder(tempTick);
-                /*
+
+
+               try
+                {
+                    System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
+                    string emailTo = Ticket.GetUserEmailFromUsername(HttpContext.User.Identity.Name);
+                    mail.To.Add(emailTo);
+                    mail.From = new MailAddress("festivalManagerSSA@gmail.com");
+                    mail.Subject = "Order confirmation";
+                    string Body = "U heeft zonet " + Amount + " tickets besteld van het type " + TicketType.GetTicketTypeByID(type).Name+" .";
+                    mail.Body = Body;
+                    mail.IsBodyHtml = true;
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new System.Net.NetworkCredential("festivalManagerSSA@gmail.com", "rootroot123");
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                    
+
+                }
+                catch (Exception ex) {
+
+                    Console.WriteLine("Mail not send");
                 
-                System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-
-                mail.From = new MailAddress("festival@noreply.com");
-                mail.To.Add("bart.vandecandelaere@student.howest.be");
-                mail.Subject = "Password recovery";
-                mail.Body = "Recovering the password";
-
-                SmtpServer.Send(mail);*/
+                }
 
 
                 return (RedirectToAction("Index"));
@@ -82,6 +105,40 @@ namespace FestivalSite.Controllers
         {
 
             Ticket.DeleteOrder(orderID);
+
+
+
+
+            try
+            {
+                System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
+                string emailTo = Ticket.GetUserEmailFromUsername(HttpContext.User.Identity.Name);
+                mail.To.Add(emailTo);
+                mail.From = new MailAddress("festivalManagerSSA@gmail.com");
+                mail.Subject = "Order confirmation";
+                string Body = "U heeft zonet uw ticket order met ordernummer: " + orderID + " geannuleerd.";
+                mail.Body = Body;
+                mail.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential("festivalManagerSSA@gmail.com", "rootroot123");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Mail not send");
+
+            }
+
+
+
+
 
             return (RedirectToAction("Index"));
         }
