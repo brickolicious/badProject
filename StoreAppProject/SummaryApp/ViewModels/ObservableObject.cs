@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SummaryApp.ViewModels
 {
-    class ObservableObject : INotifyPropertyChanged
+    public class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

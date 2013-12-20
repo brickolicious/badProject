@@ -25,6 +25,9 @@
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppPortLibrary\bin\Debug\StoreAppPortLibrary.pdb">
       <PackagePath>StoreAppPortLibrary.pdb</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\Assets\fblogo.gif">
+      <PackagePath>Assets\fblogo.gif</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
@@ -41,11 +44,17 @@
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\Assets\twitlogo.png">
+      <PackagePath>Assets\twitlogo.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\Common\ReadMe.txt">
       <PackagePath>Common\ReadMe.txt</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\App.xaml">
       <PackagePath>App.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\Agenda.xaml">
+      <PackagePath>Agenda.xaml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\Common\StandardStyles.xaml">
       <PackagePath>Common\StandardStyles.xaml</PackagePath>

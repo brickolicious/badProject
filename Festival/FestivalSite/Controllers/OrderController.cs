@@ -37,7 +37,7 @@ namespace FestivalSite.Controllers
             return View("OrderIndex",ordervm);
         }
 
-        
+        [HttpPost]
         public ActionResult PlaceOrder(int type,int Amount)
         {
 

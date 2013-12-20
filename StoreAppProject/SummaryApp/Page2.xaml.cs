@@ -57,5 +57,10 @@ namespace SummaryApp
         {
             this.Frame.Navigate(typeof(Page3));
         }
+
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Agenda));
+        }
     }
 }

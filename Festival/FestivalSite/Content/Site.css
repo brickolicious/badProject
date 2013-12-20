@@ -185,8 +185,9 @@ footer {
 }
 
 #lineupwrap {
-    padding-top:150px;
+    padding-top:40px;
     margin-left:250px;
+    padding-bottom:20px;
 
 }
     
@@ -465,7 +466,7 @@ footer {
     .ticketVerkoop table td {color:white;padding-left:10px;padding-right:10px;padding-top:6px;padding-bottom:6px;}
     .ticketVerkoop table  tr:nth-child(odd)		{ background-color:#50483D; }
     .ticketVerkoop table  tr:nth-child(even)		{ background-color:#ED593B; }
-    .ticketVerkoop table  tr:nth-child(1)		{ background-color:#FFC853;font-weight:600; }
+    .ticketVerkoop table  tr:nth-child(1)		{ background-color:#FFC853;color:#FFF;font-weight:600; }
 
 
 .ticketVerkoop a {
@@ -980,25 +981,424 @@ footer {
 
 
 
+}
 
 
 
 
+/******************/
+/* Kleine mobile */
+/*****************/
+
+@media only screen and (max-width: 550px) {
+
+    #body {
+    min-height: 830px;
+    width:500px;
+    margin-left:auto;
+    margin-right: auto;
+    display:block;
+
+}
+
+
+.headercontent {
+        width:500px;
+        height:60px;
+        margin-left:auto;
+        margin-right:auto;
+    
+}
+
+.title {
+    float:left;
+    width:300px;
+    font-size:25px;
+    margin-left:25px;
+    height:80px;
+    margin-top:-10px;
+    
+}
+
+    .title h1 a {
+    color:#FFF;
+    text-decoration:none;
+    }
+
+
+    #login {
+    float:right;
+    
+}
+
+        #login ul {
+        list-style:none;
+        margin-top:5px;
+        }
+        #login li {
+            display:block;
+        }
+        #login a {
+            color:#FFF;
+            font-size:18px;
+            text-decoration:none;
+        }
+
+
+nav {
+    width:500px;
+    height:130px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:#FFC853;
+    text-align:center;
+    
+}
+ 
+ #menu li {
+     margin:0;
+     padding:0;
+ display:block;
+ width:400px;
+        }
+
+       
+       #menu a {
+            
+            font-size:24px;
+            color:#FFF;
+            text-decoration:none;
+        }
+
+    #menu li:hover {
+        border-bottom:3px solid #FFF;
+    }
+
+footer {
+    background-color:#3398AD;
+    height:60px;
+    margin-top:-15px;
+    color:#FFF;
+}
+
+.footer-content {
+    margin-top:10px;
+    width:500px;
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
+
+.float-right img {
+    max-height:40px;
+    float: right;
+    margin-right:50px;
+}
+
+
+.title img{
+    max-height:50px;
+}
+
+    .homeWrapper {
+        min-height:500px;
+    }
+
+.homeWrapper figure{
+    margin-top:50px;
+    float:left;
+    position:absolute;
+    top:450px;
+    left:-80px;
+}
+
+    .homeWrapper figure img {
+    max-height:350px;
+    max-width:500px;
+
+    }
+
+    .homeWrapper figure figcaption {
+    position:relative;
+    top:-110px;
+    left:100px;
+    color:#FFF;
+    background: rgba(0, 0, 0, 0.8);
+    font-size:28px;
+    padding:20px;
+    width:120px;
+    text-align:center;
+
+    }
+
+
+.introText {
+    margin-top:50px;
+    margin-left:7%;
+    width:400px;
+    float:left;
+    display:block;
+    padding:10px;
+    background: rgba(255, 255, 255, 0.9);
+    border-top:2px solid #ED593B;
+    position:relative;
+    top:10px;
+    
+}
+
+#lineupwrap {
+    padding-top:40px;
+    margin-left:20%;
+    min-height:800px;
+    height:auto;
+}
+    
+    #lineupwrap table td a {color: #FFF;}    
+    #lineupwrap table {font-size:18px; border-spacing:0; margin-bottom:30px;display:block;     }
+    #lineupwrap table td {color:white;padding-left:10px;padding-right:10px;padding-top:6px;padding-bottom:6px;}
+    #lineupwrap table  tr:nth-child(odd)		{ background-color:#50483D; }
+    #lineupwrap table  tr:nth-child(even)		{ background-color:#ED593B; }
+    #lineupwrap table  tr:nth-child(1)		{ background-color:#FFC853;font-weight:600; }
+
+
+#lineupwrap a {
+   text-decoration:none;
+   color:#000;
+
+
+}
+
+    #lineupwrap a:hover {
+    color:#FFC853;
+    }
+
+    #lineupwrap ul{
+
+        list-style:none;
+    }
+
+
+    #lineup {
+        display:block;
+    }
+
+
+
+    #bandWrapper {
+    min-height:800px;
+    }
+
+#bandWrapper a{
+    position:relative;
+    top:700px;
+    left:-350px;
+    width:100px;
+    
+}
+
+#bandWrapper img{
+    display:block;
+    margin-top:50px;
+    margin-left:23%;
+    width:250px;
+    max-height:250px;
+    float:left;
+    margin-right:40px;
+    border-right: 8px solid #ED593B;
+    border-bottom: 8px solid #ED593B;
+    border-left: 8px solid #ED593B;
+    border-top: 8px solid #ED593B;
+}
+
+#bandInfo {
+    padding-top:100px;
+    margin-left:20%;
+    position:absolute;
+    top:440px;
+}
+
+    #bandInfo p {
+        padding:10px;
+        background:rgba(255,255,255,0.8);
+    }
+
+
+    #bandInfo h2 {
+        
+        text-align:center;
+        display:block;
+        width:300px;
+        border-bottom:3px solid #ED593B;
+        font-size:24px;
+    }
+
+    #bandInfo li {
+        list-style:none;
+    }
+
+    #bandInfo a {
+        display:block;
+        text-decoration:none;
+        float:left;
+        margin-left:20px;
+    }
+
+  
+
+
+.orderWrap table {float:left;width:95%; font-size:10px;}
+    .orderWrap table td a {color: #FFF;}    
+    .orderWrap table {font-size:10px; border-spacing:0; margin-bottom:30px;     }
+    .orderWrap table td {color:white;padding-left:10px;padding-right:10px;padding-top:6px;padding-bottom:6px;}
+    .orderWrap table  tr:nth-child(odd)		{ background-color:#50483D; }
+    .orderWrap table  tr:nth-child(even)		{ background-color:#ED593B; }
+    .orderWrap table  tr:nth-child(1)		{ background-color:#FFC853;font-weight:600; }
+
+
+.orderWrap a {
+    text-decoration:none;
+   color:#000;
+}
+
+.orderWrap {
+    padding-top:25px;
+    margin-left:2%;
+    min-height:800px;
+}
+
+
+#placeOrder {
+  display:block;
+  float:left;
+  background:#3398AD;
+  width:97%;
+
+}
 
 
 
 
+    #placeOrder span {
+        font-size:100%;
+
+    }
+
+
+#placeOrder form{
+  
+  color:#FFF;
+  font-weight:800;
+  padding:30px;
+  margin-left:35%;
+}
 
 
 
 
+#addRss {
+    padding:10px;
+ 
+    text-align:center;
+    background:#FFF;
+    height:20%;
+    margin-top:30%;
+    color:#FFF;
+}
+    #addRss form {
+        float:left;
+        margin-left:0%;
+        padding:10px;background:#3398AD;
+    
+    }
+
+    #rssContainer {
+    
+        margin-left:10px;
+    
+    }
+
+.ticketVerkoop {
+    width:95%;
+    padding-top:50px;
+    margin-left:18%;
+    min-height:950px;
+     
+}
+
+
+.ticketVerkoop table {float:left;width:50%;}
+    .ticketVerkoop table td a {color: #FFF;}    
+    .ticketVerkoop table {font-size:18px; border-spacing:0; margin-bottom:30px;     }
+    .ticketVerkoop table td {color:white;padding-left:10px;padding-right:10px;padding-top:6px;padding-bottom:6px;}
+    .ticketVerkoop table  tr:nth-child(odd)		{ background-color:#50483D; }
+    .ticketVerkoop table  tr:nth-child(even)		{ background-color:#ED593B; }
+    .ticketVerkoop table  tr:nth-child(1)		{ background-color:#FFC853;color:#FFF;font-weight:600; }
+
+
+.ticketVerkoop a {
+   text-decoration:none;
+   color:#000;
+}
+
+
+.credentialWrappers {
+    min-height:900px;
+    padding-top:30px;
+
+}
+
+
+    .credentialWrappers form {
+        width:25%;
+        margin-left:30%;
+        display:block;
+    
+    }
+
+        .credentialWrappers form li {
+            list-style:none;
+            margin-left:-10%;
+            padding:10px;
+        }
+
+
+.social {
+    margin-left:25%;
+    float:left;
+    width:60%;
+}
+
+#externalLogins {
+    margin-left:25%;
+    width:60%;
+
+}
+
+.credentialWrappers h3 {
+    margin-left:35%;
+}
+.credentialWrappers h3:first-child {
+    margin-left:10%;
+}
+
+.credentialWrappers span:first-child{
+    font-size:24px;
+    font-weight:800;
+}
+
+.credentialWrappers span{
+    margin-left:35%;
+}
 
 
 
 
-
-
-
-
+.errorWrapper {
+    padding:30px;
+    background: rgba(255,255,255,0.9);
+    text-align:center;
+    padding-top:50px;
+}
 
 }

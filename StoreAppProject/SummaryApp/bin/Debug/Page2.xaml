@@ -9,6 +9,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:SummaryApp.ViewModels"
+    xmlns:models="using:SummaryApp.Models"
     mc:Ignorable="d">
 
 
@@ -16,16 +17,25 @@
     <Page.Resources>
 
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
-        <x:String x:Key="AppName">Bands</x:String>
+        <x:String x:Key="AppName">Summary</x:String>
         <vm:GenresVM x:Key="genreInst"></vm:GenresVM>
-        
-        
+        <models:ByteToImageConverter x:Key="converterInst"></models:ByteToImageConverter>
+
         <DataTemplate x:Key="bandsForGenre">
             <StackPanel Orientation="Horizontal" >
                 <TextBlock Text="{Binding Name}" />
             </StackPanel>
         </DataTemplate>
 
+        <DataTemplate x:Key="lineForBand">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Date.DayOfWeek}" Width="90"/>
+                <TextBlock Text="{Binding Stage.Name}" Width="110"/>
+                <TextBlock Text="{Binding Band.Name}" Width="200" Margin="15,0,0,0"/>
+                <TextBlock Text="{Binding From}"  Width="60" Margin="15,0,0,0"/>
+                <TextBlock Text="{Binding Until}" Width="60" Margin="15,0,0,0"/>
+            </StackPanel>
+        </DataTemplate>
 
     </Page.Resources>
 
@@ -34,8 +44,9 @@
     <Page.TopAppBar>
         <AppBar>
             <StackPanel Orientation="Horizontal">
-                <Button x:ConnectionId='1' Content="Genres" Width="140" Height="80"                     />
-                <Button x:ConnectionId='2' Content="Line-up" Width="140" Height="80"                      />
+                <Button x:ConnectionId='1' Background="DarkOrange" Content="Genres" Width="140" Height="80"                     />
+                <Button x:ConnectionId='2' Background="DarkOrange" Content="Line-up" Width="140" Height="80"                      />
+                <Button x:ConnectionId='3' Background="DarkOrange" Content="Agenda" Width="140" Height="80"                      />
             </StackPanel>
         </AppBar>
     </Page.TopAppBar>
@@ -56,12 +67,13 @@
     -->
     <Grid Style="{StaticResource LayoutRootStyle}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.1*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1.5*"/>
-            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
@@ -75,19 +87,22 @@
         </Grid.RowDefinitions>
 
         <!-- Back button and page title -->
-        <Grid Grid.ColumnSpan="6">
+        <Grid Grid.ColumnSpan="7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:ConnectionId='3' x:Name="backButton"                IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+            <Button x:ConnectionId='4' x:Name="backButton"                IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}"/>
         </Grid>
 
 
 
-        <ScrollViewer Grid.Row="1" Grid.RowSpan="7" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <ListView 
+
+        <ListView 
+                
+                ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                Grid.Row="2" Grid.RowSpan="6" Grid.Column="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                  ItemsSource="{Binding Source={StaticResource genreInst},Path=GenreList}" 
                 DisplayMemberPath="Name"
                  SelectedItem="{Binding Source={StaticResource genreInst},Path=SelectedGenre, Mode=TwoWay}">
@@ -95,20 +110,25 @@
 
 
 
-            </ListView>
-        </ScrollViewer>
+        </ListView>
 
 
-        <ListView ItemsSource="{Binding Source={StaticResource genreInst},Path=FilteredBands}" DisplayMemberPath="Name" SelectedItem="{Binding Source={StaticResource genreInst},Path=SelectedBand,Mode=TwoWay}" Grid.Row="1" Grid.Column="2" Grid.RowSpan="7"/>
+        <ListView x:Name="lstvwBands" ItemsSource="{Binding Source={StaticResource genreInst},Path=FilteredBands}" DisplayMemberPath="Name" SelectedItem="{Binding Source={StaticResource genreInst},Path=SelectedBand,Mode=TwoWay}" Grid.Row="2" Grid.Column="2" Grid.RowSpan="6"/>
 
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Genre: " FontSize="24"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="Band: " FontSize="24"/>
+        <TextBlock Grid.Row="1" Grid.Column="3" Text="Picture: " FontSize="24" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Row="1" Grid.Column="5" Text="Detail: " FontSize="24"/>
+        <TextBlock Grid.Row="1" Grid.Column="6" Text="Social media: " FontSize="24"/>
+        <Image MaxHeight="500" Source="{Binding Source={StaticResource genreInst},Path=SelectedBand.Picture,Mode=OneWay,Converter={StaticResource converterInst}}"  Grid.Row="2" Grid.Column="3" Grid.RowSpan="6" VerticalAlignment="top" HorizontalAlignment="left"/>
+        <TextBlock FontSize="20" Text="{Binding Source={StaticResource genreInst},Path=SelectedBand.Name,Mode=OneWay}" Grid.Row="2" Grid.Column="5"/>
+        <TextBlock FontSize="16" Text="{Binding Source={StaticResource genreInst},Path=SelectedBand.Description,Mode=OneWay}" Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
 
-        <Image Source="{Binding Source={StaticResource genreInst},Path=SelectedBand.Picture,Mode=OneWay}" Grid.Row="2" Grid.Column="3" Grid.RowSpan="4"/>
-        <TextBlock Text="{Binding Source={StaticResource genreInst},Path=SelectedBand.Name,Mode=OneWay}" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"/>
-        <TextBlock Text="{Binding Source={StaticResource genreInst},Path=SelectedBand.Description,Mode=OneWay}" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <TextBlock Text="{Binding Source={StaticResource genreInst},Path=SelectedBand.Facebook,Mode=OneWay}" Grid.Row="5" Grid.Column="4"/>
-        <TextBlock Text="{Binding Source={StaticResource genreInst},Path=SelectedBand.Twitter,Mode=OneWay}" Grid.Row="5" Grid.Column="5"/>
+        <HyperlinkButton  Foreground="White" FontStyle="Normal" Content="Facebook" NavigateUri="{Binding Source={StaticResource genreInst},Path=Links[0],Mode=OneWay}" Grid.Row="2" Grid.Column="6" HorizontalAlignment="Left" Padding="0"/>
+        <HyperlinkButton  Foreground="White" FontStyle="Normal" Content="Twitter" NavigateUri="{Binding Source={StaticResource genreInst},Path=Links[1],Mode=OneWay}" Grid.Row="2" Grid.Column="6" HorizontalAlignment="Right" Margin="0,0,20,0"/>
 
-
+        <TextBlock Grid.Row="6" Grid.Column="5" Text="Line-up: " FontSize="24"/>
+        <ListView Grid.Row="7" Grid.Column="5" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource genreInst},Path=FilteredLineUps}" ItemTemplate="{StaticResource lineForBand}"></ListView>
 
 
 
