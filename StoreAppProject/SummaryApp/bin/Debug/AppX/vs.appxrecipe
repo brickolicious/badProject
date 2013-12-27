@@ -22,11 +22,11 @@
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\SummaryApp.exe">
       <PackagePath>SummaryApp.exe</PackagePath>
-      <Modified>2013-12-20T13:05:24.900</Modified>
+      <Modified>2013-12-21T19:50:46.237</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\SummaryApp.pdb">
       <PackagePath>SummaryApp.pdb</PackagePath>
-      <Modified>2013-12-20T13:05:24.874</Modified>
+      <Modified>2013-12-21T19:50:46.212</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppPortLibrary\bin\Debug\StoreAppPortLibrary.dll">
       <PackagePath>StoreAppPortLibrary.dll</PackagePath>
@@ -74,7 +74,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\Agenda.xaml">
       <PackagePath>Agenda.xaml</PackagePath>
-      <Modified>2013-12-20T13:05:23.381</Modified>
+      <Modified>2013-12-20T17:50:00.206</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\bin\Debug\Common\StandardStyles.xaml">
       <PackagePath>Common\StandardStyles.xaml</PackagePath>

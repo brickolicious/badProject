@@ -38,27 +38,28 @@ namespace FestivalSite.Controllers
         }
 
         [HttpPost]
-        public ActionResult PlaceOrder(int type,int Amount)
+        public ActionResult PlaceOrder(OrderVM orderVM)
         {
 
-            if (type == 0 || Amount == 0 || Amount==null) {
+            if (orderVM.SelectedType == 0 || orderVM.Amount == 0 || orderVM.Amount == null)
+            {
 
                 return (RedirectToAction("Index"));
 
             }
 
-            if (Amount > TicketType.AvailableTicketsForType(type))
+            if (orderVM.Amount > TicketType.AvailableTicketsForType(orderVM.SelectedType))
             {
                 
-                int typeID = type;
+                int typeID = orderVM.SelectedType;
                 return (RedirectToAction("Index", new { typeID=typeID }));
             }
             else {
 
                 Ticket tempTick = new Ticket();
                 tempTick.TicketholderID = Ticket.GetUserIDFromUsername(User.Identity.Name);
-                tempTick.TicketTypeProp = TicketType.GetTicketTypeByID(type);
-                tempTick.Amount = Amount;
+                tempTick.TicketTypeProp = TicketType.GetTicketTypeByID(orderVM.SelectedType);
+                tempTick.Amount = orderVM.Amount;
 
                 Ticket.PlaceAnOrder(tempTick);
 
@@ -70,7 +71,7 @@ namespace FestivalSite.Controllers
                     mail.To.Add(emailTo);
                     mail.From = new MailAddress("festivalManagerSSA@gmail.com");
                     mail.Subject = "Order confirmation";
-                    string Body = "U heeft zonet " + Amount + " tickets besteld van het type " + TicketType.GetTicketTypeByID(type).Name+" .";
+                    string Body = "U heeft zonet " + orderVM.Amount + " tickets besteld van het type " + TicketType.GetTicketTypeByID(orderVM.SelectedType).Name + " .";
                     mail.Body = Body;
                     mail.IsBodyHtml = true;
                     SmtpClient smtp = new SmtpClient();
@@ -100,7 +101,7 @@ namespace FestivalSite.Controllers
         }
 
     
-
+        [HttpPost]
         public ActionResult RemoveOrder(int orderID)
         {
 

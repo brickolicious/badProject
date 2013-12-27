@@ -1343,14 +1343,14 @@ footer {
 
 
 .credentialWrappers {
-    min-height:900px;
+    min-height:500px;
     padding-top:30px;
 
 }
 
 
     .credentialWrappers form {
-        width:25%;
+        width:45%;
         margin-left:30%;
         display:block;
     

@@ -53,14 +53,14 @@
         
         <label><span>Place an order.</span></label>
         <div>@Html.Label("Type:")</div>
-        @Html.DropDownList("type", (SelectList)Model.SelectListTypes, "Select your ticket type.")
+        @Html.DropDownList("SelectedType", (SelectList)Model.SelectListTypes, "Select your ticket type.")
        
        
         <div class="editor-label">
             @Html.Label("Number of tickets: ")
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Amount)
+            @Html.TextBoxFor(model => model.Amount  )
             @Html.ValidationMessageFor(model => model.Amount)
         </div>
         <input type="submit" value="Order" />

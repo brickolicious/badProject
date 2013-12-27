@@ -15,6 +15,8 @@ namespace FestivalSite.ViewModels
 
         [Required]
         public SelectList SelectListTypes { get; set; }
+
+        [Required]
         public int SelectedType { get; set; }
 
         [Required]

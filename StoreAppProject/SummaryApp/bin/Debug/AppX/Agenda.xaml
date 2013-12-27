@@ -103,10 +103,10 @@
 
 
 
-        <ListBox Grid.Row="1" ItemsSource="{Binding Source={StaticResource agendaInst},Path=LineUpList}" ItemTemplate="{StaticResource lineTemp}">
+        <ListBox Grid.Row="1" ItemsSource="{Binding Source={StaticResource agendaInst},Path=LineUpList}" SelectedItem="{Binding Source={StaticResource agendaInst},Path=SelectedLineUp}" ItemTemplate="{StaticResource lineTemp}">
             
         </ListBox>
-        
+        <Button Grid.Row="2" Grid.Column="1" Width="100" Height="50" Content="Add to appointments++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"/>
         
 
         <VisualStateManager.VisualStateGroups>
