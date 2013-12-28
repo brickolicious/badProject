@@ -19,6 +19,9 @@
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalWinStoreApp\bin\Debug\FestivalWinStoreApp.pdb">
       <PackagePath>FestivalWinStoreApp.pdb</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\packages\Facebook.6.4.2\lib\win8\Facebook.dll">
+      <PackagePath>Facebook.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppPortLibrary\bin\Debug\StoreAppPortLibrary.dll">
       <PackagePath>StoreAppPortLibrary.dll</PackagePath>
     </AppxPackagedFile>
@@ -58,6 +61,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalWinStoreApp\bin\Debug\ItemsPage.xaml">
       <PackagePath>ItemsPage.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalWinStoreApp\bin\Debug\LineUpSummary.xaml">
+      <PackagePath>LineUpSummary.xaml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalWinStoreApp\bin\Debug\SplitPage.xaml">
       <PackagePath>SplitPage.xaml</PackagePath>

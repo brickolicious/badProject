@@ -116,7 +116,77 @@ namespace FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo
 
         private object Activate_1_ItemsPage() { return new global::FestivalWinStoreApp.ItemsPage(); }
 
-        private object Activate_2_SplitPage() { return new global::FestivalWinStoreApp.SplitPage(); }
+        private object Activate_2_LineUpVM() { return new global::FestivalWinStoreApp.ViewModels.LineUpVM(); }
+
+        private object Activate_3_ObservableObject() { return new global::FestivalWinStoreApp.ViewModels.ObservableObject(); }
+
+        private object Activate_4_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.Stage>(); }
+
+        private object Activate_5_Collection() { return new global::System.Collections.ObjectModel.Collection<global::StoreAppPortLibrary.Stage>(); }
+
+        private object Activate_6_Stage() { return new global::StoreAppPortLibrary.Stage(); }
+
+        private object Activate_7_ObservableObject() { return new global::StoreAppPortLibrary.ObservableObject(); }
+
+        private object Activate_8_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.LineUp>(); }
+
+        private object Activate_9_Collection() { return new global::System.Collections.ObjectModel.Collection<global::StoreAppPortLibrary.LineUp>(); }
+
+        private object Activate_10_LineUp() { return new global::StoreAppPortLibrary.LineUp(); }
+
+        private object Activate_13_Band() { return new global::StoreAppPortLibrary.Band(); }
+
+        private object Activate_14_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::System.DateTime>(); }
+
+        private object Activate_15_Collection() { return new global::System.Collections.ObjectModel.Collection<global::System.DateTime>(); }
+
+        private object Activate_20_LineUpSummary() { return new global::FestivalWinStoreApp.LineUpSummary(); }
+
+        private object Activate_21_ByteArrayToImageConverter() { return new global::FestivalWinStoreApp.DataModel.ByteArrayToImageConverter(); }
+
+        private object Activate_22_SplitPage() { return new global::FestivalWinStoreApp.SplitPage(); }
+
+        private void VectorAdd_4_ObservableCollection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::StoreAppPortLibrary.Stage>)instance;
+            var newItem = (global::StoreAppPortLibrary.Stage)item;
+            collection.Add(newItem);
+        }
+
+        private void VectorAdd_5_Collection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::StoreAppPortLibrary.Stage>)instance;
+            var newItem = (global::StoreAppPortLibrary.Stage)item;
+            collection.Add(newItem);
+        }
+
+        private void VectorAdd_8_ObservableCollection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::StoreAppPortLibrary.LineUp>)instance;
+            var newItem = (global::StoreAppPortLibrary.LineUp)item;
+            collection.Add(newItem);
+        }
+
+        private void VectorAdd_9_Collection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::StoreAppPortLibrary.LineUp>)instance;
+            var newItem = (global::StoreAppPortLibrary.LineUp)item;
+            collection.Add(newItem);
+        }
+
+        private void VectorAdd_14_ObservableCollection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::System.DateTime>)instance;
+            var newItem = (global::System.DateTime)item;
+            collection.Add(newItem);
+        }
+
+        private void VectorAdd_15_Collection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::System.DateTime>)instance;
+            var newItem = (global::System.DateTime)item;
+            collection.Add(newItem);
+        }
 
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(string typeName)
@@ -134,6 +204,22 @@ namespace FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo
                 xamlType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlSystemBaseType(typeName, typeof(global::Windows.UI.Xaml.Controls.UserControl));
                 break;
 
+            case "Object":
+                xamlType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlSystemBaseType(typeName, typeof(global::System.Object));
+                break;
+
+            case "Int32":
+                xamlType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlSystemBaseType(typeName, typeof(global::System.Int32));
+                break;
+
+            case "String":
+                xamlType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlSystemBaseType(typeName, typeof(global::System.String));
+                break;
+
+            case "Int64":
+                xamlType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlSystemBaseType(typeName, typeof(global::System.Int64));
+                break;
+
             case "FestivalWinStoreApp.Common.LayoutAwarePage":
                 userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::FestivalWinStoreApp.Common.LayoutAwarePage), GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_0_LayoutAwarePage;
@@ -146,9 +232,217 @@ namespace FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
+            case "FestivalWinStoreApp.ViewModels.LineUpVM":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::FestivalWinStoreApp.ViewModels.LineUpVM), GetXamlTypeByName("FestivalWinStoreApp.ViewModels.ObservableObject"));
+                userType.Activator = Activate_2_LineUpVM;
+                userType.AddMemberName("StageList");
+                AddToMapOfTypeToStandardName(typeof(global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.Stage>),
+                                                   "System.Collections.ObjectModel.ObservableCollection<StoreAppPortLibrary.Stage>");
+                userType.AddMemberName("LineUpList");
+                AddToMapOfTypeToStandardName(typeof(global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.LineUp>),
+                                                   "System.Collections.ObjectModel.ObservableCollection<StoreAppPortLibrary.LineUp>");
+                userType.AddMemberName("DateList");
+                AddToMapOfTypeToStandardName(typeof(global::System.Collections.ObjectModel.ObservableCollection<global::System.DateTime>),
+                                                   "System.Collections.ObjectModel.ObservableCollection<System.DateTime>");
+                userType.AddMemberName("SelectedDay");
+                xamlType = userType;
+                break;
+
+            case "FestivalWinStoreApp.ViewModels.ObservableObject":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::FestivalWinStoreApp.ViewModels.ObservableObject), GetXamlTypeByName("Object"));
+                userType.Activator = Activate_3_ObservableObject;
+                xamlType = userType;
+                break;
+
+            case "System.Collections.ObjectModel.ObservableCollection<StoreAppPortLibrary.Stage>":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.Stage>), GetXamlTypeByName("System.Collections.ObjectModel.Collection<StoreAppPortLibrary.Stage>"));
+                AddToMapOfTypeToStandardName(typeof(global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.Stage>),
+                                                   "System.Collections.ObjectModel.ObservableCollection<StoreAppPortLibrary.Stage>");
+                userType.Activator = Activate_4_ObservableCollection;
+                userType.CollectionAdd = VectorAdd_4_ObservableCollection;
+                xamlType = userType;
+                break;
+
+            case "System.Collections.ObjectModel.Collection<StoreAppPortLibrary.Stage>":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::System.Collections.ObjectModel.Collection<global::StoreAppPortLibrary.Stage>), GetXamlTypeByName("Object"));
+                AddToMapOfTypeToStandardName(typeof(global::System.Collections.ObjectModel.Collection<global::StoreAppPortLibrary.Stage>),
+                                                   "System.Collections.ObjectModel.Collection<StoreAppPortLibrary.Stage>");
+                userType.Activator = Activate_5_Collection;
+                userType.CollectionAdd = VectorAdd_5_Collection;
+                xamlType = userType;
+                break;
+
+            case "StoreAppPortLibrary.Stage":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::StoreAppPortLibrary.Stage), GetXamlTypeByName("StoreAppPortLibrary.ObservableObject"));
+                userType.Activator = Activate_6_Stage;
+                userType.AddMemberName("ID");
+                AddToMapOfTypeToStandardName(typeof(global::System.Int32),
+                                                   "Int32");
+                userType.AddMemberName("Name");
+                AddToMapOfTypeToStandardName(typeof(global::System.String),
+                                                   "String");
+                userType.AddMemberName("StageLineup");
+                AddToMapOfTypeToStandardName(typeof(global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.LineUp>),
+                                                   "System.Collections.ObjectModel.ObservableCollection<StoreAppPortLibrary.LineUp>");
+                xamlType = userType;
+                break;
+
+            case "StoreAppPortLibrary.ObservableObject":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::StoreAppPortLibrary.ObservableObject), GetXamlTypeByName("Object"));
+                userType.Activator = Activate_7_ObservableObject;
+                xamlType = userType;
+                break;
+
+            case "System.Collections.ObjectModel.ObservableCollection<StoreAppPortLibrary.LineUp>":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.LineUp>), GetXamlTypeByName("System.Collections.ObjectModel.Collection<StoreAppPortLibrary.LineUp>"));
+                AddToMapOfTypeToStandardName(typeof(global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.LineUp>),
+                                                   "System.Collections.ObjectModel.ObservableCollection<StoreAppPortLibrary.LineUp>");
+                userType.Activator = Activate_8_ObservableCollection;
+                userType.CollectionAdd = VectorAdd_8_ObservableCollection;
+                xamlType = userType;
+                break;
+
+            case "System.Collections.ObjectModel.Collection<StoreAppPortLibrary.LineUp>":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::System.Collections.ObjectModel.Collection<global::StoreAppPortLibrary.LineUp>), GetXamlTypeByName("Object"));
+                AddToMapOfTypeToStandardName(typeof(global::System.Collections.ObjectModel.Collection<global::StoreAppPortLibrary.LineUp>),
+                                                   "System.Collections.ObjectModel.Collection<StoreAppPortLibrary.LineUp>");
+                userType.Activator = Activate_9_Collection;
+                userType.CollectionAdd = VectorAdd_9_Collection;
+                xamlType = userType;
+                break;
+
+            case "StoreAppPortLibrary.LineUp":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::StoreAppPortLibrary.LineUp), GetXamlTypeByName("Object"));
+                userType.Activator = Activate_10_LineUp;
+                userType.AddMemberName("ID");
+                AddToMapOfTypeToStandardName(typeof(global::System.Int32),
+                                                   "Int32");
+                userType.AddMemberName("Date");
+                userType.AddMemberName("From");
+                AddToMapOfTypeToStandardName(typeof(global::System.String),
+                                                   "String");
+                userType.AddMemberName("Until");
+                AddToMapOfTypeToStandardName(typeof(global::System.String),
+                                                   "String");
+                userType.AddMemberName("Stage");
+                userType.AddMemberName("Band");
+                xamlType = userType;
+                break;
+
+            case "System.DateTime":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::System.DateTime), GetXamlTypeByName("System.ValueType"));
+                userType.AddMemberName("Date");
+                userType.AddMemberName("Day");
+                AddToMapOfTypeToStandardName(typeof(global::System.Int32),
+                                                   "Int32");
+                userType.AddMemberName("DayOfWeek");
+                userType.AddMemberName("DayOfYear");
+                AddToMapOfTypeToStandardName(typeof(global::System.Int32),
+                                                   "Int32");
+                userType.AddMemberName("Hour");
+                AddToMapOfTypeToStandardName(typeof(global::System.Int32),
+                                                   "Int32");
+                userType.AddMemberName("Kind");
+                userType.AddMemberName("Millisecond");
+                AddToMapOfTypeToStandardName(typeof(global::System.Int32),
+                                                   "Int32");
+                userType.AddMemberName("Minute");
+                AddToMapOfTypeToStandardName(typeof(global::System.Int32),
+                                                   "Int32");
+                userType.AddMemberName("Month");
+                AddToMapOfTypeToStandardName(typeof(global::System.Int32),
+                                                   "Int32");
+                userType.AddMemberName("Second");
+                AddToMapOfTypeToStandardName(typeof(global::System.Int32),
+                                                   "Int32");
+                userType.AddMemberName("Ticks");
+                AddToMapOfTypeToStandardName(typeof(global::System.Int64),
+                                                   "Int64");
+                userType.AddMemberName("TimeOfDay");
+                AddToMapOfTypeToStandardName(typeof(global::System.TimeSpan),
+                                                   "TimeSpan");
+                userType.AddMemberName("Year");
+                AddToMapOfTypeToStandardName(typeof(global::System.Int32),
+                                                   "Int32");
+                xamlType = userType;
+                break;
+
+            case "System.ValueType":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::System.ValueType), GetXamlTypeByName("Object"));
+                xamlType = userType;
+                break;
+
+            case "StoreAppPortLibrary.Band":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::StoreAppPortLibrary.Band), GetXamlTypeByName("Object"));
+                userType.Activator = Activate_13_Band;
+                xamlType = userType;
+                break;
+
+            case "System.Collections.ObjectModel.ObservableCollection<System.DateTime>":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::System.Collections.ObjectModel.ObservableCollection<global::System.DateTime>), GetXamlTypeByName("System.Collections.ObjectModel.Collection<System.DateTime>"));
+                AddToMapOfTypeToStandardName(typeof(global::System.Collections.ObjectModel.ObservableCollection<global::System.DateTime>),
+                                                   "System.Collections.ObjectModel.ObservableCollection<System.DateTime>");
+                userType.Activator = Activate_14_ObservableCollection;
+                userType.CollectionAdd = VectorAdd_14_ObservableCollection;
+                xamlType = userType;
+                break;
+
+            case "System.Collections.ObjectModel.Collection<System.DateTime>":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::System.Collections.ObjectModel.Collection<global::System.DateTime>), GetXamlTypeByName("Object"));
+                AddToMapOfTypeToStandardName(typeof(global::System.Collections.ObjectModel.Collection<global::System.DateTime>),
+                                                   "System.Collections.ObjectModel.Collection<System.DateTime>");
+                userType.Activator = Activate_15_Collection;
+                userType.CollectionAdd = VectorAdd_15_Collection;
+                xamlType = userType;
+                break;
+
+            case "System.DayOfWeek":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::System.DayOfWeek), GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("Sunday", global::System.DayOfWeek.Sunday);
+                userType.AddEnumValue("Monday", global::System.DayOfWeek.Monday);
+                userType.AddEnumValue("Tuesday", global::System.DayOfWeek.Tuesday);
+                userType.AddEnumValue("Wednesday", global::System.DayOfWeek.Wednesday);
+                userType.AddEnumValue("Thursday", global::System.DayOfWeek.Thursday);
+                userType.AddEnumValue("Friday", global::System.DayOfWeek.Friday);
+                userType.AddEnumValue("Saturday", global::System.DayOfWeek.Saturday);
+                xamlType = userType;
+                break;
+
+            case "System.Enum":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::System.Enum), GetXamlTypeByName("System.ValueType"));
+                xamlType = userType;
+                break;
+
+            case "System.DateTimeKind":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::System.DateTimeKind), GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("Unspecified", global::System.DateTimeKind.Unspecified);
+                userType.AddEnumValue("Utc", global::System.DateTimeKind.Utc);
+                userType.AddEnumValue("Local", global::System.DateTimeKind.Local);
+                xamlType = userType;
+                break;
+
+            case "TimeSpan":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::System.TimeSpan), GetXamlTypeByName("System.ValueType"));
+                AddToMapOfTypeToStandardName(typeof(global::System.TimeSpan),
+                                                   "TimeSpan");
+                xamlType = userType;
+                break;
+
+            case "FestivalWinStoreApp.LineUpSummary":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::FestivalWinStoreApp.LineUpSummary), GetXamlTypeByName("FestivalWinStoreApp.Common.LayoutAwarePage"));
+                userType.Activator = Activate_20_LineUpSummary;
+                xamlType = userType;
+                break;
+
+            case "FestivalWinStoreApp.DataModel.ByteArrayToImageConverter":
+                userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::FestivalWinStoreApp.DataModel.ByteArrayToImageConverter), GetXamlTypeByName("Object"));
+                userType.Activator = Activate_21_ByteArrayToImageConverter;
+                xamlType = userType;
+                break;
+
             case "FestivalWinStoreApp.SplitPage":
                 userType = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::FestivalWinStoreApp.SplitPage), GetXamlTypeByName("FestivalWinStoreApp.Common.LayoutAwarePage"));
-                userType.Activator = Activate_2_SplitPage;
+                userType.Activator = Activate_22_SplitPage;
                 xamlType = userType;
                 break;
 
@@ -157,11 +451,366 @@ namespace FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo
         }
 
 
+        private object get_0_LineUpVM_StageList(object instance)
+        {
+            var that = (global::FestivalWinStoreApp.ViewModels.LineUpVM)instance;
+            return that.StageList;
+        }
+        private void set_0_LineUpVM_StageList(object instance, object Value)
+        {
+            var that = (global::FestivalWinStoreApp.ViewModels.LineUpVM)instance;
+            that.StageList = (global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.Stage>)Value;
+        }
+        private object get_1_Stage_ID(object instance)
+        {
+            var that = (global::StoreAppPortLibrary.Stage)instance;
+            return that.ID;
+        }
+        private void set_1_Stage_ID(object instance, object Value)
+        {
+            var that = (global::StoreAppPortLibrary.Stage)instance;
+            that.ID = (global::System.Int32)Value;
+        }
+        private object get_2_Stage_Name(object instance)
+        {
+            var that = (global::StoreAppPortLibrary.Stage)instance;
+            return that.Name;
+        }
+        private void set_2_Stage_Name(object instance, object Value)
+        {
+            var that = (global::StoreAppPortLibrary.Stage)instance;
+            that.Name = (global::System.String)Value;
+        }
+        private object get_3_Stage_StageLineup(object instance)
+        {
+            var that = (global::StoreAppPortLibrary.Stage)instance;
+            return that.StageLineup;
+        }
+        private void set_3_Stage_StageLineup(object instance, object Value)
+        {
+            var that = (global::StoreAppPortLibrary.Stage)instance;
+            that.StageLineup = (global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.LineUp>)Value;
+        }
+        private object get_4_LineUp_ID(object instance)
+        {
+            var that = (global::StoreAppPortLibrary.LineUp)instance;
+            return that.ID;
+        }
+        private void set_4_LineUp_ID(object instance, object Value)
+        {
+            var that = (global::StoreAppPortLibrary.LineUp)instance;
+            that.ID = (global::System.Int32)Value;
+        }
+        private object get_5_LineUp_Date(object instance)
+        {
+            var that = (global::StoreAppPortLibrary.LineUp)instance;
+            return that.Date;
+        }
+        private void set_5_LineUp_Date(object instance, object Value)
+        {
+            var that = (global::StoreAppPortLibrary.LineUp)instance;
+            that.Date = (global::System.DateTime)Value;
+        }
+        private object get_6_LineUp_From(object instance)
+        {
+            var that = (global::StoreAppPortLibrary.LineUp)instance;
+            return that.From;
+        }
+        private void set_6_LineUp_From(object instance, object Value)
+        {
+            var that = (global::StoreAppPortLibrary.LineUp)instance;
+            that.From = (global::System.String)Value;
+        }
+        private object get_7_LineUp_Until(object instance)
+        {
+            var that = (global::StoreAppPortLibrary.LineUp)instance;
+            return that.Until;
+        }
+        private void set_7_LineUp_Until(object instance, object Value)
+        {
+            var that = (global::StoreAppPortLibrary.LineUp)instance;
+            that.Until = (global::System.String)Value;
+        }
+        private object get_8_LineUp_Stage(object instance)
+        {
+            var that = (global::StoreAppPortLibrary.LineUp)instance;
+            return that.Stage;
+        }
+        private void set_8_LineUp_Stage(object instance, object Value)
+        {
+            var that = (global::StoreAppPortLibrary.LineUp)instance;
+            that.Stage = (global::StoreAppPortLibrary.Stage)Value;
+        }
+        private object get_9_LineUp_Band(object instance)
+        {
+            var that = (global::StoreAppPortLibrary.LineUp)instance;
+            return that.Band;
+        }
+        private void set_9_LineUp_Band(object instance, object Value)
+        {
+            var that = (global::StoreAppPortLibrary.LineUp)instance;
+            that.Band = (global::StoreAppPortLibrary.Band)Value;
+        }
+        private object get_10_LineUpVM_LineUpList(object instance)
+        {
+            var that = (global::FestivalWinStoreApp.ViewModels.LineUpVM)instance;
+            return that.LineUpList;
+        }
+        private void set_10_LineUpVM_LineUpList(object instance, object Value)
+        {
+            var that = (global::FestivalWinStoreApp.ViewModels.LineUpVM)instance;
+            that.LineUpList = (global::System.Collections.ObjectModel.ObservableCollection<global::StoreAppPortLibrary.LineUp>)Value;
+        }
+        private object get_11_LineUpVM_DateList(object instance)
+        {
+            var that = (global::FestivalWinStoreApp.ViewModels.LineUpVM)instance;
+            return that.DateList;
+        }
+        private void set_11_LineUpVM_DateList(object instance, object Value)
+        {
+            var that = (global::FestivalWinStoreApp.ViewModels.LineUpVM)instance;
+            that.DateList = (global::System.Collections.ObjectModel.ObservableCollection<global::System.DateTime>)Value;
+        }
+        private object get_12_DateTime_Date(object instance)
+        {
+            var that = (global::System.DateTime)instance;
+            return that.Date;
+        }
+        private object get_13_DateTime_Day(object instance)
+        {
+            var that = (global::System.DateTime)instance;
+            return that.Day;
+        }
+        private object get_14_DateTime_DayOfWeek(object instance)
+        {
+            var that = (global::System.DateTime)instance;
+            return that.DayOfWeek;
+        }
+        private object get_15_DateTime_DayOfYear(object instance)
+        {
+            var that = (global::System.DateTime)instance;
+            return that.DayOfYear;
+        }
+        private object get_16_DateTime_Hour(object instance)
+        {
+            var that = (global::System.DateTime)instance;
+            return that.Hour;
+        }
+        private object get_17_DateTime_Kind(object instance)
+        {
+            var that = (global::System.DateTime)instance;
+            return that.Kind;
+        }
+        private object get_18_DateTime_Millisecond(object instance)
+        {
+            var that = (global::System.DateTime)instance;
+            return that.Millisecond;
+        }
+        private object get_19_DateTime_Minute(object instance)
+        {
+            var that = (global::System.DateTime)instance;
+            return that.Minute;
+        }
+        private object get_20_DateTime_Month(object instance)
+        {
+            var that = (global::System.DateTime)instance;
+            return that.Month;
+        }
+        private object get_21_DateTime_Second(object instance)
+        {
+            var that = (global::System.DateTime)instance;
+            return that.Second;
+        }
+        private object get_22_DateTime_Ticks(object instance)
+        {
+            var that = (global::System.DateTime)instance;
+            return that.Ticks;
+        }
+        private object get_23_DateTime_TimeOfDay(object instance)
+        {
+            var that = (global::System.DateTime)instance;
+            return that.TimeOfDay;
+        }
+        private object get_24_DateTime_Year(object instance)
+        {
+            var that = (global::System.DateTime)instance;
+            return that.Year;
+        }
+        private object get_25_LineUpVM_SelectedDay(object instance)
+        {
+            var that = (global::FestivalWinStoreApp.ViewModels.LineUpVM)instance;
+            return that.SelectedDay;
+        }
+        private void set_25_LineUpVM_SelectedDay(object instance, object Value)
+        {
+            var that = (global::FestivalWinStoreApp.ViewModels.LineUpVM)instance;
+            that.SelectedDay = (global::System.DateTime)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
             global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember xamlMember = null;
-            // No Local Properties
+            global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType userType;
+
+            switch (longMemberName)
+            {
+            case "FestivalWinStoreApp.ViewModels.LineUpVM.StageList":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("FestivalWinStoreApp.ViewModels.LineUpVM");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "StageList", "System.Collections.ObjectModel.ObservableCollection<StoreAppPortLibrary.Stage>");
+                xamlMember.Getter = get_0_LineUpVM_StageList;
+                xamlMember.Setter = set_0_LineUpVM_StageList;
+                break;
+            case "StoreAppPortLibrary.Stage.ID":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("StoreAppPortLibrary.Stage");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "ID", "Int32");
+                xamlMember.Getter = get_1_Stage_ID;
+                xamlMember.Setter = set_1_Stage_ID;
+                break;
+            case "StoreAppPortLibrary.Stage.Name":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("StoreAppPortLibrary.Stage");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Name", "String");
+                xamlMember.Getter = get_2_Stage_Name;
+                xamlMember.Setter = set_2_Stage_Name;
+                break;
+            case "StoreAppPortLibrary.Stage.StageLineup":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("StoreAppPortLibrary.Stage");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "StageLineup", "System.Collections.ObjectModel.ObservableCollection<StoreAppPortLibrary.LineUp>");
+                xamlMember.Getter = get_3_Stage_StageLineup;
+                xamlMember.Setter = set_3_Stage_StageLineup;
+                break;
+            case "StoreAppPortLibrary.LineUp.ID":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("StoreAppPortLibrary.LineUp");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "ID", "Int32");
+                xamlMember.Getter = get_4_LineUp_ID;
+                xamlMember.Setter = set_4_LineUp_ID;
+                break;
+            case "StoreAppPortLibrary.LineUp.Date":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("StoreAppPortLibrary.LineUp");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Date", "System.DateTime");
+                xamlMember.Getter = get_5_LineUp_Date;
+                xamlMember.Setter = set_5_LineUp_Date;
+                break;
+            case "StoreAppPortLibrary.LineUp.From":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("StoreAppPortLibrary.LineUp");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "From", "String");
+                xamlMember.Getter = get_6_LineUp_From;
+                xamlMember.Setter = set_6_LineUp_From;
+                break;
+            case "StoreAppPortLibrary.LineUp.Until":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("StoreAppPortLibrary.LineUp");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Until", "String");
+                xamlMember.Getter = get_7_LineUp_Until;
+                xamlMember.Setter = set_7_LineUp_Until;
+                break;
+            case "StoreAppPortLibrary.LineUp.Stage":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("StoreAppPortLibrary.LineUp");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Stage", "StoreAppPortLibrary.Stage");
+                xamlMember.Getter = get_8_LineUp_Stage;
+                xamlMember.Setter = set_8_LineUp_Stage;
+                break;
+            case "StoreAppPortLibrary.LineUp.Band":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("StoreAppPortLibrary.LineUp");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Band", "StoreAppPortLibrary.Band");
+                xamlMember.Getter = get_9_LineUp_Band;
+                xamlMember.Setter = set_9_LineUp_Band;
+                break;
+            case "FestivalWinStoreApp.ViewModels.LineUpVM.LineUpList":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("FestivalWinStoreApp.ViewModels.LineUpVM");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "LineUpList", "System.Collections.ObjectModel.ObservableCollection<StoreAppPortLibrary.LineUp>");
+                xamlMember.Getter = get_10_LineUpVM_LineUpList;
+                xamlMember.Setter = set_10_LineUpVM_LineUpList;
+                break;
+            case "FestivalWinStoreApp.ViewModels.LineUpVM.DateList":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("FestivalWinStoreApp.ViewModels.LineUpVM");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "DateList", "System.Collections.ObjectModel.ObservableCollection<System.DateTime>");
+                xamlMember.Getter = get_11_LineUpVM_DateList;
+                xamlMember.Setter = set_11_LineUpVM_DateList;
+                break;
+            case "System.DateTime.Date":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.DateTime");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Date", "System.DateTime");
+                xamlMember.Getter = get_12_DateTime_Date;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "System.DateTime.Day":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.DateTime");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Day", "Int32");
+                xamlMember.Getter = get_13_DateTime_Day;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "System.DateTime.DayOfWeek":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.DateTime");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "DayOfWeek", "System.DayOfWeek");
+                xamlMember.Getter = get_14_DateTime_DayOfWeek;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "System.DateTime.DayOfYear":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.DateTime");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "DayOfYear", "Int32");
+                xamlMember.Getter = get_15_DateTime_DayOfYear;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "System.DateTime.Hour":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.DateTime");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Hour", "Int32");
+                xamlMember.Getter = get_16_DateTime_Hour;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "System.DateTime.Kind":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.DateTime");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Kind", "System.DateTimeKind");
+                xamlMember.Getter = get_17_DateTime_Kind;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "System.DateTime.Millisecond":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.DateTime");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Millisecond", "Int32");
+                xamlMember.Getter = get_18_DateTime_Millisecond;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "System.DateTime.Minute":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.DateTime");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Minute", "Int32");
+                xamlMember.Getter = get_19_DateTime_Minute;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "System.DateTime.Month":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.DateTime");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Month", "Int32");
+                xamlMember.Getter = get_20_DateTime_Month;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "System.DateTime.Second":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.DateTime");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Second", "Int32");
+                xamlMember.Getter = get_21_DateTime_Second;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "System.DateTime.Ticks":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.DateTime");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Ticks", "Int64");
+                xamlMember.Getter = get_22_DateTime_Ticks;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "System.DateTime.TimeOfDay":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.DateTime");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "TimeOfDay", "TimeSpan");
+                xamlMember.Getter = get_23_DateTime_TimeOfDay;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "System.DateTime.Year":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("System.DateTime");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "Year", "Int32");
+                xamlMember.Getter = get_24_DateTime_Year;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "FestivalWinStoreApp.ViewModels.LineUpVM.SelectedDay":
+                userType = (global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("FestivalWinStoreApp.ViewModels.LineUpVM");
+                xamlMember = new global::FestivalWinStoreApp.FestivalWinStoreApp_XamlTypeInfo.XamlMember(this, "SelectedDay", "System.DateTime");
+                xamlMember.Getter = get_25_LineUpVM_SelectedDay;
+                xamlMember.Setter = set_25_LineUpVM_SelectedDay;
+                break;
+            }
             return xamlMember;
         }
 

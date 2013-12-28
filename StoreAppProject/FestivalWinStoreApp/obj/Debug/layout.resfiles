@@ -8,4 +8,5 @@ Assets\StoreLogo.png
 App.xaml
 Common\StandardStyles.xaml
 ItemsPage.xaml
+LineUpSummary.xaml
 SplitPage.xaml

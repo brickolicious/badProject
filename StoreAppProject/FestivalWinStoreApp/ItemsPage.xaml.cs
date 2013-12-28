@@ -60,5 +60,12 @@ namespace FestivalWinStoreApp
             var groupId = ((SampleDataGroup)e.ClickedItem).UniqueId;
             this.Frame.Navigate(typeof(SplitPage), groupId);
         }
+
+      
+
+        private void LineUp_Click1(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(LineUpSummary));
+        }
     }
 }

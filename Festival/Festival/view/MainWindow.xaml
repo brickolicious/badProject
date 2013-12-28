@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:BADProject.viewmodel"
         xmlns:v="clr-namespace:BADProject.view"
-        Style="{StaticResource windowStyle}">
+        Style="{StaticResource windowStyle}"
+        Icon="..\Content\Images\Icoon.png">
     
     <Window.DataContext>
         <vm:ApplicationVM/>

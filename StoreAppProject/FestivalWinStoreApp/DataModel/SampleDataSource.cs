@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Media.Imaging;
 using System.Collections.Specialized;
 using StoreAppPortLibrary;
 using FestivalWinStoreApp.ViewModels;
+using System.IO;
+using FestivalWinStoreApp.DataModel;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
 // model that supports notification when members are added, removed, or modified.  The property
@@ -33,14 +35,60 @@ namespace FestivalWinStoreApp.Data
     {
         private static Uri _baseUri = new Uri("ms-appx:///");
 
-        public SampleDataCommon(String uniqueId, String title, String subtitle, String imagePath, String description)
+                                                                            
+        public SampleDataCommon(String uniqueId, String title, String subtitle, string imagePath, String description,string facebook,string twitter,byte[] pic,List<LineUp> lineUp)
         {
             this._uniqueId = uniqueId;
             this._title = title;
             this._subtitle = subtitle;
             this._description = description;
             this._imagePath = imagePath;
+            this._fb = facebook;
+            this._twit = twitter;
+            this._pic = pic;
+            this._LinupForBand = lineUp;
         }
+
+
+        private string _fb;
+
+        public string Facebook
+        {
+            get { return _fb; }
+            set { _fb = value; }
+        }
+
+        private string _twit;
+
+        public string Twitter
+        {
+            get { return _twit; }
+            set { _twit = value; }
+        }
+
+
+        private byte[] _pic;
+
+        public byte[] Picture
+        {
+            get { return _pic; }
+            set { _pic = value; }
+        }
+
+
+        private List<LineUp> _LinupForBand;
+
+        public List<LineUp> LineUpForBand
+        {
+            get { return _LinupForBand; }
+            set { _LinupForBand = value; }
+        }
+        
+        
+
+
+
+
 
         private string _uniqueId = string.Empty;
         public string UniqueId
@@ -71,13 +119,16 @@ namespace FestivalWinStoreApp.Data
         }
 
         private ImageSource _image = null;
-        private String _imagePath = null;
+
+       
+        private string _imagePath = null;
         public ImageSource Image
         {
             get
             {
-                if (this._image == null && this._imagePath != null)
+               if (this._image == null && this._imagePath != null)
                 {
+
                     this._image = new BitmapImage(new Uri(SampleDataCommon._baseUri, this._imagePath));
                 }
                 return this._image;
@@ -90,7 +141,9 @@ namespace FestivalWinStoreApp.Data
             }
         }
 
-        public void SetImage(String path)
+
+
+       public void SetImage(String path)
         {
             this._image = null;
             this._imagePath = path;
@@ -108,8 +161,11 @@ namespace FestivalWinStoreApp.Data
     /// </summary>
     public class SampleDataItem : SampleDataCommon
     {
-        public SampleDataItem(String uniqueId, String title, String subtitle, String imagePath, String description, String content, SampleDataGroup group)
-            : base(uniqueId, title, subtitle, imagePath, description)
+
+
+
+        public SampleDataItem(String uniqueId, String title, String subtitle, string imagePath, String description, String content, SampleDataGroup group, string facebook, string twitter, byte[] pic, List<LineUp> lineUp)
+            : base(uniqueId, title, subtitle, imagePath, description,facebook,twitter,pic,lineUp)
         {
             this._content = content;
             this._group = group;
@@ -135,12 +191,12 @@ namespace FestivalWinStoreApp.Data
     /// </summary>
     public class SampleDataGroup : SampleDataCommon
     {
-        public SampleDataGroup(String uniqueId, String title, String subtitle, String imagePath, String description)
-            : base(uniqueId, title, subtitle, imagePath, description)
+        public SampleDataGroup(String uniqueId, String title, String subtitle, string imagePath, String description, string facebook, string twitter, byte[] pic, List<LineUp> lineUp)
+            : base(uniqueId, title, subtitle, imagePath, description,facebook,twitter,pic,lineUp)
         {
             Items.CollectionChanged += ItemsCollectionChanged;
         }
-
+        
         private void ItemsCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             // Provides a subset of the full items collection to bind to from a GroupedItemsPage
@@ -154,50 +210,50 @@ namespace FestivalWinStoreApp.Data
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
-                    if (e.NewStartingIndex < 12)
+                    if (e.NewStartingIndex < 60)
                     {
                         TopItems.Insert(e.NewStartingIndex, Items[e.NewStartingIndex]);
-                        if (TopItems.Count > 12)
+                        if (TopItems.Count > 60)
                         {
-                            TopItems.RemoveAt(12);
+                            TopItems.RemoveAt(60);
                         }
                     }
                     break;
                 case NotifyCollectionChangedAction.Move:
-                    if (e.OldStartingIndex < 12 && e.NewStartingIndex < 12)
+                    if (e.OldStartingIndex < 60 && e.NewStartingIndex < 60)
                     {
                         TopItems.Move(e.OldStartingIndex, e.NewStartingIndex);
                     }
-                    else if (e.OldStartingIndex < 12)
+                    else if (e.OldStartingIndex < 60)
                     {
                         TopItems.RemoveAt(e.OldStartingIndex);
-                        TopItems.Add(Items[11]);
+                        TopItems.Add(Items[59]);
                     }
-                    else if (e.NewStartingIndex < 12)
+                    else if (e.NewStartingIndex < 60)
                     {
                         TopItems.Insert(e.NewStartingIndex, Items[e.NewStartingIndex]);
-                        TopItems.RemoveAt(12);
+                        TopItems.RemoveAt(24);
                     }
                     break;
                 case NotifyCollectionChangedAction.Remove:
-                    if (e.OldStartingIndex < 12)
+                    if (e.OldStartingIndex < 60)
                     {
                         TopItems.RemoveAt(e.OldStartingIndex);
-                        if (Items.Count >= 12)
+                        if (Items.Count >= 60)
                         {
-                            TopItems.Add(Items[11]);
+                            TopItems.Add(Items[59]);
                         }
                     }
                     break;
                 case NotifyCollectionChangedAction.Replace:
-                    if (e.OldStartingIndex < 12)
+                    if (e.OldStartingIndex < 60)
                     {
                         TopItems[e.OldStartingIndex] = Items[e.OldStartingIndex];
                     }
                     break;
                 case NotifyCollectionChangedAction.Reset:
                     TopItems.Clear();
-                    while (TopItems.Count < Items.Count && TopItems.Count < 12)
+                    while (TopItems.Count < Items.Count && TopItems.Count < 60)
                     {
                         TopItems.Add(Items[TopItems.Count]);
                     }
@@ -297,7 +353,9 @@ namespace FestivalWinStoreApp.Data
            foreach (Genre genre in tempGenList)
             {
 
-                var tempGroup = new SampleDataGroup(genre.Name, genre.Name,"subtitel","Assets/DarkGray.png", "Blabla");
+                
+
+                var tempGroup = new SampleDataGroup(genre.Name, genre.Name, "subtitel", "Assets/LightGray.png", "Blabla",null,null,null,null);
                
                 foreach (BandGenre bandGenre in tempBandGenre)
                 {
@@ -307,7 +365,8 @@ namespace FestivalWinStoreApp.Data
                         {
                             if (band.ID == bandGenre.Band) {
 
-                                SampleDataItem tempItem = new SampleDataItem(genre.Name, band.Name, "subtitle", "Assets/LightGray.png", band.Description, "blablibloe", tempGroup);
+                                List<LineUp> lineUpForBand = await GenresVM.GetLineUpsFromAPI(band.ID);
+                                SampleDataItem tempItem = new SampleDataItem(genre.Name, band.Name, "band", "Assets/LightGray.png", band.Description, band.Description, tempGroup, "https://www.facebook.com/" + band.Facebook, "https://www.twitter.com/" + band.Twitter, band.Picture, lineUpForBand);
 
                                 tempGroup.Items.Add(tempItem);
 

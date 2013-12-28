@@ -22,7 +22,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="FestivalWinStoreApp.exe" EntryPoint="FestivalWinStoreApp.App">
-      <VisualElements DisplayName="FestivalWinStoreApp" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="FestivalWinStoreApp" ForegroundText="light" BackgroundColor="#464646">
+      <VisualElements DisplayName="Festival viewer" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Met deze app krijgt u een overzicht van het festival." ForegroundText="light" BackgroundColor="#464646">
         <DefaultTile ShowName="allLogos" />
         <SplashScreen Image="Assets\SplashScreen.png" />
       </VisualElements>

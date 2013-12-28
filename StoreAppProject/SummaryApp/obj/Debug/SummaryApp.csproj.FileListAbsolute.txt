@@ -31,3 +31,7 @@ C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\obj\De
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\obj\Debug\Agenda.g.i.cs
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\obj\Debug\Agenda.g.cs
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\obj\Debug\Agenda.xaml
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\obj\Debug\priconfig.xml.intermediate
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\obj\Debug\layout.resfiles.intermediate
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\obj\Debug\resources.resfiles.intermediate
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\SummaryApp\obj\Debug\pri.resfiles.intermediate

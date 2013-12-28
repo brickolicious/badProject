@@ -23,43 +23,6 @@ namespace FestivalWinStoreApp.ViewModels
             
         }
 
-        private  ObservableCollection<Genre> _lstGenres;
-
-        public  ObservableCollection<Genre> GenreList
-        {
-            get { return _lstGenres; }
-            set { _lstGenres = value; OnPropertyChanged("GenreList"); }
-        }
-
-
-        private ObservableCollection<Band> _bandList;
-
-        public ObservableCollection<Band> BandList
-        {
-            get { return _bandList; }
-            set { _bandList = value; OnPropertyChanged("BandList"); }
-        }
-        
-
-
-        
-
-        private Band _SelectedBand;
-
-        public Band SelectedBand
-        {
-            get { return _SelectedBand; }
-            set { _SelectedBand = value; if (_SelectedBand != null) { SetURIs(_SelectedBand.Facebook, _SelectedBand.Twitter); GetLineUpsFromAPI(_SelectedBand.ID); } OnPropertyChanged("SelectedBand"); }
-        }
-
-        private Windows.UI.Xaml.Controls.Image _selectedPhoto;
-
-        public Windows.UI.Xaml.Controls.Image SelectedPhoto
-        {
-            get { return _selectedPhoto; }
-            set { _selectedPhoto = value; OnPropertyChanged("SelectedPhoto"); }
-        }
-        
 
 
         private ObservableCollection<Band> _filterBands;
@@ -78,14 +41,6 @@ namespace FestivalWinStoreApp.ViewModels
             set { _bandForGenre = value; }
         }
 
-        private ObservableCollection<string> _links;
-
-        public ObservableCollection<string> Links
-        {
-            get { return _links; }
-            set { _links = value; OnPropertyChanged("Links"); }
-        }
-
         private ObservableCollection<LineUp> _filterLine;
 
         public ObservableCollection<LineUp> FilteredLineUps
@@ -93,9 +48,9 @@ namespace FestivalWinStoreApp.ViewModels
             get { return _filterLine; }
             set { _filterLine = value; OnPropertyChanged("FilteredLineUps"); }
         }
-        
 
-        public async void GetLineUpsFromAPI(int bandID)
+
+        public static async Task<List<LineUp>> GetLineUpsFromAPI(int bandID)
         {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(new
@@ -110,9 +65,9 @@ namespace FestivalWinStoreApp.ViewModels
 
 
 
-                DataContractSerializer dxml = new DataContractSerializer(typeof(ObservableCollection<LineUp>));
-                ObservableCollection<LineUp> tempLineList = dxml.ReadObject(stream) as ObservableCollection<LineUp>;
-                ObservableCollection<LineUp> filterList = new ObservableCollection<LineUp>();
+                DataContractSerializer dxml = new DataContractSerializer(typeof(List<LineUp>));
+                List<LineUp> tempLineList = dxml.ReadObject(stream) as List<LineUp>;
+                List<LineUp> filterList = new List<LineUp>();
                 foreach (LineUp item in tempLineList)
                 {
                     if (item.Band.ID == bandID) {
@@ -121,25 +76,10 @@ namespace FestivalWinStoreApp.ViewModels
                 }
 
 
-                this.FilteredLineUps = filterList;
+                return filterList;
             }
 
-
-        }
-
-        public void SetURIs(string fb,string twit) {
-
-            if (!string.IsNullOrEmpty(fb) && !string.IsNullOrEmpty(twit))
-            {
-
-                ObservableCollection<string> tempList = new ObservableCollection<string>();
-
-                tempList.Add("http://www.facebook.com/" + fb);
-                tempList.Add("http://twitter.com/" + twit);
-
-                this.Links = tempList;
-            }
-            else { return; }
+            return null;
         }
 
         public static async Task<ObservableCollection<Genre>> GetGenresFromAPI() {

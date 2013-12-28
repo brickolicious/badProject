@@ -1,39 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-
-  <Identity Name="a45c40e6-d509-475a-b99d-e4398058fe2d"
-            Publisher="CN=Bart"
-            Version="1.0.0.0" />
-
+  <Identity Name="a45c40e6-d509-475a-b99d-e4398058fe2d" Publisher="CN=Bart" Version="1.0.0.0" />
   <Properties>
     <DisplayName>FestivalWinStoreApp</DisplayName>
     <PublisherDisplayName>Bart</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
-
   <Prerequisites>
     <OSMinVersion>6.2.1</OSMinVersion>
     <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
   </Prerequisites>
-
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application Id="App"
-        Executable="$targetnametoken$.exe"
-        EntryPoint="FestivalWinStoreApp.App">
-        <VisualElements
-            DisplayName="FestivalWinStoreApp"
-            Logo="Assets\Logo.png"
-            SmallLogo="Assets\SmallLogo.png"
-            Description="FestivalWinStoreApp"
-            ForegroundText="light"
-            BackgroundColor="#464646">
-            <DefaultTile ShowName="allLogos" />
-            <SplashScreen Image="Assets\SplashScreen.png" />
-        </VisualElements>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="FestivalWinStoreApp.App">
+      <VisualElements DisplayName="Festival viewer" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Met deze app krijgt u een overzicht van het festival." ForegroundText="light" BackgroundColor="#464646">
+        <DefaultTile ShowName="allLogos" />
+        <SplashScreen Image="Assets\SplashScreen.png" />
+      </VisualElements>
     </Application>
   </Applications>
   <Capabilities>
