@@ -41,12 +41,12 @@
 
 
 
-        <TextBox  x:Name="txtName" Text="{Binding TicketOrder.Name,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" TabIndex="1"/>
-        <TextBox  x:Name="txtEmail" Text="{Binding TicketOrder.Email,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" TabIndex="2"/>
-        <TextBox  x:Name="txtAmount" Text="{Binding TicketOrder.Amount,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="4" VerticalAlignment="Center" TabIndex="3"/>
-        <ComboBox x:Name="cboType" ItemsSource="{Binding TicketTypeList}" SelectedItem="{Binding TicketOrder.TicketTypeProp,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" Grid.Column="4" Grid.Row="5" VerticalAlignment="Center" TabIndex="4" />
+        <TextBox  x:Name="txtName" Text="{Binding TicketOrder.Name,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" TabIndex="1" TextChanged="txtName_TextChanged"/>
+        <TextBox  x:Name="txtEmail" Text="{Binding TicketOrder.Email,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" TabIndex="2" TextChanged="txtEmail_TextChanged"/>
+        <TextBox  x:Name="txtAmount" Text="{Binding TicketOrder.Amount,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="4" VerticalAlignment="Center" TabIndex="3" TextChanged="txtAmount_TextChanged"/>
+        <ComboBox x:Name="cboType" ItemsSource="{Binding TicketTypeList}" SelectedItem="{Binding TicketOrder.TicketTypeProp,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" Grid.Column="4" Grid.Row="5" VerticalAlignment="Center" TabIndex="4" SelectionChanged="cboType_SelectionChanged"/>
 
-        <Button x:Name="btnSend" Command="{Binding PlaceOrderCommand}"  Style="{StaticResource buttonStyle}" Content="Order" Grid.Column="4" Grid.Row="7" Margin="0,0,0,3" TabIndex="5" />
+        <Button x:Name="btnSend" Command="{Binding PlaceOrderCommand}"  Style="{StaticResource buttonStyle}" IsEnabled="False" Content="Order" Grid.Column="4" Grid.Row="7" Margin="0,0,0,3" TabIndex="5" Click="btnSend_Click" />
         <ListView x:Name="lstvwTickets" Grid.Column="1" Grid.Row="2" Grid.RowSpan="5"  ItemsSource="{Binding TicketTypeList}" Margin="0,0,0,4" TabIndex="6">
             <ListView.View>
                 <GridView>
@@ -58,7 +58,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="lstvwUsers" Grid.Column="6" Grid.Row="2"  ItemsSource="{Binding FilterList}" SelectedItem="{Binding TicketOrder}" Margin="0,27,0,2" Grid.RowSpan="6" TabIndex="10">
+        <ListView x:Name="lstvwUsers" Grid.Column="6" Grid.Row="2"  ItemsSource="{Binding FilterList}" SelectedItem="{Binding TicketOrder,Mode=Default}" Margin="0,27,0,2" Grid.RowSpan="6" TabIndex="10">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding Name}" />

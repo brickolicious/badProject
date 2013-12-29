@@ -5,7 +5,7 @@
         
         xmlns:context="clr-namespace:BADProject.viewmodel"
         xmlns:models="clr-namespace:ClassLibraryModels;assembly=ClassLibraryModels"
-        Title="AddLineUp" Height="300" Width="300">
+        Title="AddLineUp" Height="300" Width="383">
 
     <Window.DataContext>
         <context:AddLineUpVM/>
@@ -45,7 +45,7 @@
         <xctk:DateTimeUpDown  x:Name="untilPicker" Grid.Column="2" Grid.Row="3" Format="Custom" FormatString="HH:mm"  Value="{Binding LineUpToAdd.Until,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TabIndex="3"/>
         <ComboBox x:Name="cboStage" Grid.Column="2" Grid.Row="4" ItemsSource="{Binding StageList}" DisplayMemberPath="Name" SelectedItem="{Binding LineUpToAdd.Stage,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TabIndex="4"/>
         <ComboBox x:Name="cboBand" Grid.Column="2" Grid.Row="5" ItemsSource="{Binding BandList}" DisplayMemberPath="Name" SelectedItem="{Binding LineUpToAdd.Band,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TabIndex="4"/>
-        <Button Style="{StaticResource buttonStyle}" x:Name="btnSend" Command="{Binding AddToLineup}" Grid.Row="7" Grid.ColumnSpan="4" Click="Button_Click" Margin="0,5,0,0" TabIndex="5">Add line-up</Button>
+        <Button Style="{StaticResource buttonStyle}" x:Name="btnSend" Command="{Binding AddToLineup}" Grid.Row="7" Grid.ColumnSpan="2" Click="Button_Click" Margin="0,5,0,0" TabIndex="5" Grid.Column="1">Add line-up</Button>
 
     </Grid>
 </Window>

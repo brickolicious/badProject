@@ -23,11 +23,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="4.5*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Orders" Grid.Column="1"   HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333"/>
         <ListView x:Name="lstvwOrders" ItemsSource="{Binding TicketList}" SelectedItem="{Binding Source={StaticResource editVM},Path = SelectedTicket}" Grid.Column="1" Grid.Row="2" Grid.RowSpan="5" TabIndex="1">

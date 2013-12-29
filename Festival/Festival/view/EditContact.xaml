@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:context ="clr-namespace:BADProject.viewmodel"
         xmlns:viewns="clr-namespace:BADProject.view"
-        Title="EditContact" Height="300" Width="300">
+        Title="EditContact" Height="300" Width="477">
 
     <Window.DataContext>
         <context:EditContactVM/>
@@ -30,12 +30,12 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" HorizontalAlignment="Center" Width="112" Grid.Column="1">Edit contact:</Label>
+        <Label Grid.Row="0" HorizontalAlignment="Center" Width="112" Grid.Column="1" >Edit contact:</Label>
         <Label Grid.Column="1" Grid.Row="1">Name:</Label>
         <Label Grid.Column="1" Grid.Row="2">Company:</Label>
         <Label Grid.Column="1" Grid.Row="3">Function:</Label>

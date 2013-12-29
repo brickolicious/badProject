@@ -136,7 +136,55 @@ namespace ClassLibraryModels
 
             try
             {
+
+
+
+
+
+
                 DbParameter partialPar = DataBase.AddParameter("@partial", partialName + "%");
+                DbDataReader reader = DataBase.GetData("SELECT * FROM UserProfile WHERE UserProfile.UserName LIKE @partial OR UserProfile.UserEmail LIKE @partial", partialPar);
+                foreach (IDataRecord record in reader)
+                {
+                    Ticket tempTicket = new Ticket();
+                    
+                    tempTicket.Name = (string)reader["UserName"];
+                    tempTicket.Email = (string)reader["UserEmail"];
+
+                    searchColl.Add(tempTicket);
+                }
+
+                reader.Close();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               /* DbParameter partialPar = DataBase.AddParameter("@partial", partialName + "%");
                 DbDataReader reader = DataBase.GetData("SELECT * FROM UserProfile JOIN Reservatie ON UserProfile.UserId = Reservatie.TicketHolderID WHERE UserProfile.UserName LIKE @partial OR UserProfile.UserEmail LIKE @partial", partialPar);
                 foreach (IDataRecord record in reader)
                 {
@@ -152,7 +200,7 @@ namespace ClassLibraryModels
                     searchColl.Add(tempTicket);
                 }
 
-                reader.Close();
+                reader.Close();*/
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -241,7 +289,7 @@ namespace ClassLibraryModels
                 int modifiedData_3 = DataBase.ModifyData(/*trans,*/sql_q3, userPar_q3, datePar, confirmedPar, failuresPar, hashPar, passwChangedPar, saltPar);
 
                 trans.Commit();
-                System.Windows.MessageBox.Show("A ticket has been orderd for: " + ticket.Name);
+                //System.Windows.MessageBox.Show("A ticket has been orderd for: " + ticket.Name);
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);

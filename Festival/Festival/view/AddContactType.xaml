@@ -16,10 +16,10 @@
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
             <RowDefinition Height="1.5*"/>
             <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
         
         
@@ -27,6 +27,6 @@
         
         <Label Grid.Column="1" HorizontalAlignment="Center" Content="Enter new category:"/>
         <TextBox x:Name="txtType" Text="{Binding Name.Name,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" TabIndex="1"></TextBox>
-        <Button Command="{Binding AddTypeCommand}" Style="{StaticResource buttonStyle}" CommandParameter="{Binding ElementName=txtType, Path=Text}" Grid.Column="1" Grid.Row="2" Click="Button_Click" TabIndex="2">Add category</Button>
+        <Button Command="{Binding AddTypeCommand}" Style="{StaticResource buttonStyle}" CommandParameter="{Binding ElementName=txtType, Path=Text}" Grid.Column="1" Grid.Row="2" Click="Button_Click" TabIndex="2" Margin="0,19,0,0" Grid.RowSpan="2">Add category</Button>
     </Grid>
 </Window>

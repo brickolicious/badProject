@@ -20,7 +20,8 @@ namespace BADProject.viewmodel
         public ReserverenVM()
         {
             TicketOrder = new Ticket();
-            FilterList = Ticket.GetAllVisitors();
+            //FilterList = Ticket.GetAllVisitors();
+            FilterList = Ticket.GetVisitorsSearch("");
         }
 
         #region props
@@ -59,6 +60,10 @@ namespace BADProject.viewmodel
             set { _searchtext = value; OnPropertyChanged("SearchText"); }
         }
 
+        
+
+
+
 
         private Ticket _ticketOrder;
 
@@ -81,7 +86,7 @@ namespace BADProject.viewmodel
         
         public ICommand PlaceOrderCommand
         {
-            get { return new RelayCommand(Reserveren,TicketOrder.IsValid); }
+            get { return new RelayCommand(Reserveren/*,TicketOrder.IsValid*/); }
         }
 
 

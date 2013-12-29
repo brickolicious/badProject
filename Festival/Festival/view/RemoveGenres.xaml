@@ -1,0 +1,28 @@
+﻿<Window x:Class="BADProject.view.RemoveGenres"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewmodels ="clr-namespace:BADProject.viewmodel"
+        Title="RemoveGenres" Height="300" Width="300">
+    
+    
+    
+    <Window.DataContext>
+        <viewmodels:RemoveGenreVM/>
+    </Window.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.8*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="0.3*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="genreLst" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding GenresList}" DisplayMemberPath="Name"></ListBox>
+        <Button Command="{Binding RemoveGenreActionCommand}" CommandParameter="{Binding ElementName=genreLst,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=genreLst}" Grid.Row="3" Grid.Column="1" Style="{StaticResource buttonStyle}" Content="Remove genre" Margin="0,8,0,0" Click="Button_Click"/>
+    </Grid>
+</Window>

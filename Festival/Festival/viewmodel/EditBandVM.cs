@@ -38,7 +38,7 @@ namespace BADProject.viewmodel
         public Band SelectedBandNonStatic
         {
             get { return _selecBandNonStat; }
-            set { _selecBandNonStat = value; SelectedBand = _selecBandNonStat;OnPropertyChanged("SelectedBandNonStatic"); }
+            set { _selecBandNonStat = value; SelectedBand = _selecBandNonStat; OnPropertyChanged("SelectedBandNonStatic"); }
         }
         
 
@@ -47,16 +47,16 @@ namespace BADProject.viewmodel
         public Image Photo
         {
             get { return _photo; }
-            set { _photo = value; }
+            set { _photo = value; OnPropertyChanged("Photo"); }
         }
 
 
-        private static byte[] _pic;
+        private byte[] _pic;
 
-        public static byte[] Pic
+        public byte[] Pic
         {
             get { return _pic; }
-            set { _pic = value; }
+            set { _pic = value; OnPropertyChanged("Pic"); }
         }
         
 
@@ -81,7 +81,8 @@ namespace BADProject.viewmodel
                 this.SelectedBandNonStatic = SelectedBand;
                 Pic = Band.GetPhoto(fileName);
                 this.SelectedBandNonStatic.Picture = Band.GetPhoto(fileName);
-                Photo.Source = new ImageSourceConverter().ConvertFromString(fileName) as ImageSource;
+                //Photo.Source = new ImageSourceConverter().ConvertFromString(fileName) as ImageSource;
+             
             }
 
 
@@ -94,8 +95,16 @@ namespace BADProject.viewmodel
         private void SaveChanges()
         {
             //MessageBox.Show("bla");
-            SelectedBand.Picture = Pic;
+           // SelectedBand.Picture = Pic;
             Genre.InsertBandAndOrAttachGenres(SelectedBand);
+
+            UpdateProps();
+        }
+
+        public static event Update OnComplete;
+        private void UpdateProps()
+        {
+            OnComplete(this);
         }
 
         public ICommand RemoveBand {

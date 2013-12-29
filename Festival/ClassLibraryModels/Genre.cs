@@ -8,6 +8,7 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ClassLibraryModels
 {
@@ -292,6 +293,31 @@ namespace ClassLibraryModels
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public static void RemoveGenre(int genreID) {
+
+            try
+            {
+
+                DbParameter idPar1 = DataBase.AddParameter("@id1", genreID);
+                DbParameter idPar2 = DataBase.AddParameter("@id2", genreID);
+                string sql_tussen = "DELETE from Band_Genre WHERE Band_Genre.Genre = @id1";
+                string sql_genre = "DELETE from Genre WHERE Genre.ID = @id2";
+                int iModifiedData1 = DataBase.ModifyData(sql_tussen, idPar1);
+                int iModifiedData2 = DataBase.ModifyData(sql_genre, idPar2);
+
+                MessageBox.Show("Genre has been removed.","Genre removed");
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+
         #endregion
     }
 }

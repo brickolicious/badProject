@@ -12,30 +12,31 @@
         <viewModelns:EditBandVM x:Key="editInst"/>
     </UserControl.Resources>
 
-    <Grid Style="{StaticResource gridStyle}" >
+    <Grid Style="{StaticResource gridStyle}" Margin="-114,-34,-88,0" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
 
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="16*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="0.1*"/>
             <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.1*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Bands" Grid.Column="1"   HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333"/>
-        <ListView x:Name="lstvwBands" Grid.Column="1" Grid.Row="2" Grid.RowSpan="4" ItemsSource="{Binding Bands}" SelectedItem="{Binding Source={StaticResource editInst},Path=SelectedBandNonStatic}" TabIndex="1">
+        <ListView x:Name="lstvwBands" Grid.Column="1" Grid.Row="2" Grid.RowSpan="5" ItemsSource="{Binding Bands}" SelectedItem="{Binding Source={StaticResource editInst},Path=SelectedBandNonStatic}" TabIndex="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Naam" Width="auto" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Description" Width="300px"  DisplayMemberBinding="{Binding Description}" />
+                    <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Description" Width="430px"  DisplayMemberBinding="{Binding Description}" />
                     <!--<GridViewColumn Header="Twitter" Width="auto" DisplayMemberBinding="{Binding Twitter}" />-->
                     <!--<GridViewColumn Header="Facebook" Width="auto" DisplayMemberBinding="{Binding Facebook}" />-->
                     <GridViewColumn Header="Genres" Width="auto" DisplayMemberBinding="{Binding GenresInText}" />
@@ -43,26 +44,28 @@
             </ListView.View>
         </ListView>
 
-        <Button Command="{Binding AddBandShowCommand}" Style="{StaticResource buttonStyle}" Content="Add band" Grid.Column="3" Height="35" Width="120" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" TabIndex="2"/>
-        <Button Command="{Binding EditBandCommand}" CommandParameter="{Binding ElementName=lstvwBands,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwBands}"  Style="{StaticResource buttonStyle}" Content="Edit band" Grid.Column="3" Height="35" Width="120" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="0,8,0,0" TabIndex="3"/>
-        <Button Command="{Binding DeleteBandCommand}" CommandParameter="{Binding ElementName=lstvwBands,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwBands}"  Style="{StaticResource buttonStyle}" Content="Delete band" Grid.Column="3" Height="35" Width="120" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Stretch" TabIndex="6"/>
+        <Button Command="{Binding AddBandShowCommand}" Style="{StaticResource buttonStyle}" Content="Add band" Grid.Column="3" Height="35" Width="120" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" TabIndex="2" Margin="0,15,152,0"/>
+        <Button Command="{Binding EditBandCommand}" CommandParameter="{Binding ElementName=lstvwBands,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwBands}"  Style="{StaticResource buttonStyle}" Content="Edit band" Grid.Column="3" Height="36" Width="120" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="1,14,151,0" TabIndex="3"/>
+        <Button Command="{Binding DeleteBandCommand}" CommandParameter="{Binding ElementName=lstvwBands,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwBands}"  Style="{StaticResource buttonStyle}" Content="Delete band" Grid.Column="3" Height="35" Width="120" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Stretch" TabIndex="6" Margin="152,14,0,1"/>
 
         <!--<Image  Source="{Binding SelectedBand.Picture}" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,10" Grid.Row="4" VerticalAlignment="Stretch"/>-->
-        <Image  Source="{Binding Source={StaticResource editInst},Path=SelectedBandNonStatic.Picture,Converter={StaticResource ImgConverter}}" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,10,0,85" Grid.Row="4" VerticalAlignment="Stretch"/>
-        <Button Command="{Binding Source={StaticResource editInst},Path=FacebookCommand}" Grid.Column="3" Grid.Row="4" Height="30" Width="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="22,0,0,30" TabIndex="4">
+        <Image  Source="{Binding Source={StaticResource editInst},Path=SelectedBandNonStatic.Picture,Converter={StaticResource ImgConverter}}" Grid.Column="2" HorizontalAlignment="Stretch" Margin="10" Grid.Row="4" VerticalAlignment="Stretch" Grid.ColumnSpan="3"/>
+        <Button IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwBands}" BorderThickness="0" Command="{Binding Source={StaticResource editInst},Path=FacebookCommand}" Grid.Column="1" Grid.Row="1" Height="30" Width="30" VerticalAlignment="Bottom" HorizontalAlignment="right"  TabIndex="4" Margin="0,0,50,0">
             <Grid Height="30" Width="30">
                 <Grid.Background>
                     <ImageBrush ImageSource="..\Content\Images\facelogo.png"/>
                 </Grid.Background>
             </Grid>
         </Button>
-        <Button Command="{Binding Source={StaticResource editInst},Path=TwitterCommand}"  Grid.Column="3" Grid.Row="4" Height="30" Width="30" VerticalAlignment="Bottom" HorizontalAlignment="right" Margin="0,0,22,30" TabIndex="5">
+        <Button IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwBands}" BorderThickness="0" Command="{Binding Source={StaticResource editInst},Path=TwitterCommand}"  Grid.Column="1" Grid.Row="1" Height="30" Width="30" VerticalAlignment="Bottom" HorizontalAlignment="right"  TabIndex="5">
             <Grid Height="30" Width="30">
                 <Grid.Background>
                     <ImageBrush ImageSource="..\Content\Images\twitlogo.jpg"/>
                 </Grid.Background>
             </Grid>
         </Button>
+
+        <Button Command="{Binding ShowRemoveGenreCommand}" Style="{StaticResource buttonStyle}" Grid.Row="2" Grid.Column="3" Content="Delete genre" Height="35" Width="120" Margin="152,15,0,0"/>
 
     </Grid>
 </UserControl>

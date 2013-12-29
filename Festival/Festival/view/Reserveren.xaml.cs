@@ -28,6 +28,39 @@ namespace BADProject.view
         }
 
 
+        //enable disable via codebehind validatie via annotations IsValid flipt op het feit dat een andere lijst ook mijn controls gaan updaten
+        #region enable/disable button
+        private void cboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Check();
+        }
 
+        private void txtName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Check();
+        }
+
+        private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Check();
+        }
+
+        private void txtAmount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Check();
+        }
+
+        private void Check() {
+        if (txtName.Text != string.Empty && txtEmail.Text != string.Empty && txtAmount.Text != string.Empty && cboType.SelectedItem != null)
+        {
+              btnSend.IsEnabled = true;
+        }
+       }
+
+        private void btnSend_Click(object sender, RoutedEventArgs e)
+        {
+            btnSend.IsEnabled = false;
+        }
+        #endregion
     }
 }

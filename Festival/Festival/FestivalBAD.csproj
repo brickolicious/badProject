@@ -92,6 +92,7 @@
     <Compile Include="viewmodel\EditContactVM.cs" />
     <Compile Include="viewmodel\EditOrderVM.cs" />
     <Compile Include="viewmodel\RelayCommand.cs" />
+    <Compile Include="viewmodel\RemoveGenreVM.cs" />
     <Compile Include="viewmodel\ReserverenVM.cs" />
     <Compile Include="viewmodel\SearchContactVM.cs" />
     <Compile Include="viewmodel\SearchOrderVM.cs" />
@@ -133,6 +134,9 @@
     </Compile>
     <Compile Include="view\Contact.xaml.cs">
       <DependentUpon>Contact.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\RemoveGenres.xaml.cs">
+      <DependentUpon>RemoveGenres.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\RemoveStage.xaml.cs">
       <DependentUpon>RemoveStage.xaml</DependentUpon>
@@ -215,6 +219,10 @@
     <Page Include="view\Contact.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\RemoveGenres.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\RemoveStage.xaml">
       <SubType>Designer</SubType>

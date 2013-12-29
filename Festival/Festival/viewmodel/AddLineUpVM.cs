@@ -58,10 +58,30 @@ namespace BADProject.viewmodel
 
         string[] splitArr = LineUpToAdd.From.Split(' ');
         string[] subSplitArr = splitArr[1].Split(':');
+        if (subSplitArr[0].Length == 1) {
+            subSplitArr[0] = 0 + subSplitArr[0];
+        }
+        if (subSplitArr[0].Length == 1)
+        {
+            subSplitArr[1] = 0 + subSplitArr[1];
+        }
+
+
+
         LineUpToAdd.From = subSplitArr[0]+":"+subSplitArr[1]+" "+splitArr[2];
 
         splitArr = LineUpToAdd.Until.Split(' ');
         subSplitArr = splitArr[1].Split(':');
+        if (subSplitArr[0].Length == 1)
+        {
+            subSplitArr[0] = 0 + subSplitArr[0];
+        }
+        if (subSplitArr[0].Length == 1)
+        {
+            subSplitArr[1] = 0 + subSplitArr[1];
+        }
+
+
         LineUpToAdd.Until = subSplitArr[0] + ":" + subSplitArr[1] + " " + splitArr[2];
 
         LineUp.AddLineUp(LineUpToAdd);

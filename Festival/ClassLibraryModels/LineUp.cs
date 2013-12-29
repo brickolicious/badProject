@@ -112,12 +112,16 @@ namespace ClassLibraryModels
             ObservableCollection<LineUp> lineUpCollectie = new ObservableCollection<LineUp>();
             try
             {
+                //opgesplit in 2 queries --> anders PM tijdens de AMs <3 sorting
+
+
+
                 DbParameter stageIdPar = DataBase.AddParameter("@StageID", stageID);
                 day = day.Date;
                 string sDateTime = day.ToString("yyyy/MM/dd HH:mm:ss");
 
                 DbParameter datePar = DataBase.AddParameter("@Day", sDateTime);
-                DbDataReader reader = DataBase.GetData("SELECT * FROM LineUp WHERE Stage = @StageID AND Datum = @Day ORDER BY LineUp.Until ASC", stageIdPar, datePar);
+                DbDataReader reader = DataBase.GetData("SELECT * FROM LineUp WHERE Stage = @StageID AND Datum = @Day AND Start like '%AM' ORDER BY LineUp.Start ASC", stageIdPar, datePar);
                 foreach (IDataRecord record in reader)
                 {
                     LineUp tempLineup = new LineUp();
@@ -132,6 +136,36 @@ namespace ClassLibraryModels
 
 
                 reader.Close();
+
+
+
+
+                DbParameter stageIdPar2 = DataBase.AddParameter("@StageID2", stageID);
+                day = day.Date;
+                string sDateTime2 = day.ToString("yyyy/MM/dd HH:mm:ss");
+
+                DbParameter datePar2 = DataBase.AddParameter("@Day2", sDateTime2);
+                DbDataReader reader2 = DataBase.GetData("SELECT * FROM LineUp WHERE Stage = @StageID2 AND Datum = @Day2 AND Start like '%PM' ORDER BY LineUp.Start ASC", stageIdPar2, datePar2);
+                foreach (IDataRecord record2 in reader2)
+                {
+                    LineUp tempLineup = new LineUp();
+                    tempLineup.ID = (int)reader2["ID"];
+                    tempLineup.Date = (DateTime)reader2["Datum"];
+                    tempLineup.From = (string)reader2["Start"];
+                    tempLineup.Until = (string)reader2["Until"];
+                    tempLineup.Stage = Stage.GetStageByID((int)reader2["Stage"]);
+                    tempLineup.Band = Band.GetBandByID((int)reader2["Band"]);
+                    lineUpCollectie.Add(tempLineup);
+                }
+
+
+                reader2.Close();
+
+
+
+
+
+
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);

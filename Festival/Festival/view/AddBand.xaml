@@ -5,7 +5,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:context="clr-namespace:BADProject.viewmodel"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="BADProject.view.AddBand"
-        Title="AddBand" Height="420" Width="300">
+        Title="AddBand" Height="420" Width="466.5">
 
     <Window.DataContext>
         <context:AddBandVM/>
@@ -26,31 +26,31 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.2*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Center" Content="Add a band to the list." Grid.Column="1" Width="224"/>
+        <Label Grid.Row="0" HorizontalAlignment="Center" Content="Add a band to the list." Grid.Column="1" Width="122" Grid.ColumnSpan="2" Margin="0,0,205,0"/>
         <Label Grid.Column="1" Grid.Row="1" Content="Band name:" Margin="0.308,0,0.192,0"/>
         <Label Grid.Column="1" Grid.Row="2" Content="Description:" Margin="0.308,0,0.192,0"/>
         <Label Grid.Column="1" Grid.Row="3" Content="Twitter:" Margin="0.308,0,0.192,0"/>
         <Label Grid.Column="1" Grid.Row="4" Content="Facebook:" Margin="0.308,0,0.192,0"/>
         <Label Grid.Column="1" Grid.Row="6" Content="Photo:" Margin="0.308,0,0.192,0"/>
 
-        <TextBox x:Name="txtName" Text="{Binding BandToAdd.Name,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"   Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" TabIndex="1"/>
-        <TextBox x:Name="txtDescription" Text="{Binding BandToAdd.Description,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" TabIndex="2"/>
-        <TextBox x:Name="txtTwitter" Text="{Binding BandToAdd.Twitter,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" TabIndex="3"/>
-        <TextBox x:Name="txtFacebook" Text="{Binding BandToAdd.Facebook,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" TabIndex="4"/>
-        <Button Style="{StaticResource buttonStyle}" Grid.Column="1" Command="{Binding ChoosePictureCommand}" Grid.Row="6" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0" TabIndex="5">Choose image</Button>
+        <TextBox x:Name="txtName" Text="{Binding BandToAdd.Name,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"   Grid.Column="2" Grid.Row="1" TabIndex="1"/>
+        <TextBox x:Name="txtDescription" Text="{Binding BandToAdd.Description,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="2" TabIndex="2"/>
+        <TextBox x:Name="txtTwitter" Text="{Binding BandToAdd.Twitter,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="3" TabIndex="3"/>
+        <TextBox x:Name="txtFacebook" Text="{Binding BandToAdd.Facebook,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="4" TabIndex="4"/>
+        <Button Style="{StaticResource buttonStyle}" Grid.Column="2" Command="{Binding ChoosePictureCommand}" Grid.Row="6" Margin="0,0,0,179" TabIndex="5" Grid.RowSpan="2">Choose image</Button>
         <Border Grid.Row="7" Grid.ColumnSpan="4">
             <Image x:Name="imgBand"  Source="{Binding Photo.Source}"/>
         </Border>
 
 
-        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding AddToBands}"  Grid.ColumnSpan="3" Grid.Row="8" Click="sendBtn_Click" Margin="0.308,0,33.692,-1" Content="Voeg toe." Grid.Column="1" TabIndex="6"/>
+        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding AddToBands}"  Grid.ColumnSpan="2" Grid.Row="8" Click="sendBtn_Click" Margin="0,0,0,-2" Content="Voeg toe." Grid.Column="1" TabIndex="6"/>
         <Label Grid.Column="1" Grid.Row="5" Content="Genres:" Margin="0.308,0,0.192,0"/>
-        <TextBox x:Name="txtGenres" Text="{Binding BandToAdd.GenresInText,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Margin="112.308,0,33.692,0"/>
+        <TextBox x:Name="txtGenres" Text="{Binding BandToAdd.GenresInText,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="5"/>
     </Grid>
 </Window>

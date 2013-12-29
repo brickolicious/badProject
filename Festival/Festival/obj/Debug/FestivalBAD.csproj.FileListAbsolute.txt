@@ -27,7 +27,6 @@ C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\bin\Debug\ro\Xc
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\FestivalBAD.csprojResolveAssemblyReference.cache
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\Bezoekers.baml
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\Lineup.baml
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\Contact.baml
@@ -74,3 +73,6 @@ C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\BADPr
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\FestivalBAD.csproj.GenerateResource.Cache
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\Festival.exe
 C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\Festival.pdb
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\RemoveGenres.baml
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\view\RemoveGenres.g.cs
+C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\Festival\Festival\obj\Debug\FestivalBAD.csprojResolveAssemblyReference.cache

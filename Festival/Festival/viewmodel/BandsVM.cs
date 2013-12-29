@@ -81,11 +81,30 @@ namespace BADProject.viewmodel
         {
             get { return new RelayCommand<Band>(EditAction); }
         }
+
+        public ICommand ShowRemoveGenreCommand {
+            get { return new RelayCommand(ShowRemoveGenre); }
+        }
+
         #endregion
 
 
 
         #region commandFunctions
+
+        private void ShowRemoveGenre()
+        {
+            RemoveGenres removeGenreView = new RemoveGenres();
+            RemoveGenreVM.OnComplete += RemoveGenreVM_OnComplete;
+            removeGenreView.Show();
+        }
+
+        void RemoveGenreVM_OnComplete(object sender)
+        {
+            Bands = Band.GetBands();
+        }
+
+
         public void ToonAddBand() {
 
             AddBand addBandWindow = new AddBand();
@@ -133,7 +152,13 @@ namespace BADProject.viewmodel
         {
             SelectedBand = band;
             EditBand viewEditBand = new EditBand();
+            EditBandVM.OnComplete += EditBandVM_OnComplete;
             viewEditBand.Show();
+        }
+
+        void EditBandVM_OnComplete(object sender)
+        {
+            UpdatePropsForBands();
         }
 
         
