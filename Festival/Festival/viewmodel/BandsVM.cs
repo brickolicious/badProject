@@ -89,9 +89,19 @@ namespace BADProject.viewmodel
         public void ToonAddBand() {
 
             AddBand addBandWindow = new AddBand();
+            AddBandVM.OnComplete += AddBandVM_OnComplete;
             addBandWindow.Show();
 
+
+
         }
+
+        private void AddBandVM_OnComplete(object sender)
+        {
+            UpdatePropsForBands();
+        }
+
+        
 
         
 
@@ -137,6 +147,12 @@ namespace BADProject.viewmodel
         #endregion
 
 
+
+        private void UpdatePropsForBands() {
+
+            Bands = Band.GetBands();
+        
+        }
 
 
     }

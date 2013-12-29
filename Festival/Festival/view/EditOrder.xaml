@@ -6,7 +6,7 @@
     <Window.DataContext>
         <context:EditOrderVM></context:EditOrderVM>
     </Window.DataContext>
-    <Grid>
+    <Grid Loaded="txtAmount_TextChanged">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -26,6 +26,11 @@
             <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
 
+        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding EditActionCommand}"  Grid.ColumnSpan="2" Grid.Row="9" Click="sendBtn_Click" Content="Edit order" Grid.Column="1" TabIndex="3" />
+        <ComboBox x:Name="cboTicketType" Grid.Column="2" Grid.Row="4" ItemsSource="{Binding TypeList}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTicketStatic.TicketTypeProp}" TabIndex="1"/>
+        <TextBox x:Name="txtAmount" Grid.Column="2" Grid.Row="5" Text="{Binding SelectedTicketStatic.Amount,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TabIndex="2" TextChanged="txtAmount_TextChanged"/>
+
+
         <Label Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,42,0" Width="70" Content="Edit order:" Grid.Column="1"/>
         <Label Grid.Column="1" Grid.Row="1" Content="Person ID"/>
         <Label Grid.Column="1" Grid.Row="2" Content="Name:"/>
@@ -38,11 +43,8 @@
         <Label x:Name="lblName" Grid.Column="2" Grid.Row="2" Content="{Binding SelectedTicketStatic.Name}"/>
 
         <!--by ref selectedItem-->
-        <ComboBox x:Name="cboTicketType" Grid.Column="2" Grid.Row="4" ItemsSource="{Binding TypeList}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTicketStatic.TicketTypeProp}"/>
         <Label x:Name="lblEmail" Grid.Column="2" Grid.Row="3" Content="{Binding SelectedTicketStatic.Email}"/>
-        <TextBox x:Name="txtAmount" Grid.Column="2" Grid.Row="5" Text="{Binding SelectedTicketStatic.Amount,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"/>
-
-        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding EditActionCommand}"  Grid.ColumnSpan="2" Grid.Row="9" Click="sendBtn_Click" Content="Edit order" Grid.Column="1" />
+       
         <Label Grid.Column="1" Grid.Row="4" Content="Type:"/>
     </Grid>
 </Window>

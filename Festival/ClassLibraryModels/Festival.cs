@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ClassLibraryModels
 {
@@ -78,10 +79,10 @@ namespace ClassLibraryModels
             null, true);
         }
 
-        public static List<DateTime> GetFestivalDays()
+        public static ObservableCollection<DateTime> GetFestivalDays()
         {
 
-            var dates = new List<DateTime>();
+            var dates = new ObservableCollection<DateTime>();
             Festival fest = FestivalDatumsOphalen()[0];
             for (var dt = fest.StartDate; dt <= fest.EndDate; dt = dt.AddDays(1))
             {
@@ -138,8 +139,52 @@ namespace ClassLibraryModels
             }
         }
 
+        public static void SetStartDay(DateTime date) {
+
+
+            try
+            {
+
+                int tempID = 1;
+                DbParameter dagPar = DataBase.AddParameter("@day", date);
+                DbParameter idPar = DataBase.AddParameter("@id", tempID);
+                string sql = "UPDATE FestivalDatums SET StartDatum = @day WHERE id = @id";
+
+                int modifiedData = DataBase.ModifyData(sql, idPar,dagPar);
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
+
+        
+        }
+
+
+
+
+        public static void RemoveDay(int listLenght)
+        {
+            try
+            {
+                int tempID = 1;
+                if (listLenght == 1) { MessageBox.Show("Festival needs to have a length of atleast 1 day."); return; }
+                DbParameter idPar = DataBase.AddParameter("@id", tempID);
+                string sql = "UPDATE FestivalDatums SET EindDatum = EindDatum-1 WHERE id = @id";
+
+                int iModifiedData = DataBase.ModifyData(sql, idPar);
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
         #endregion
 
 
+
+        
     }
 }

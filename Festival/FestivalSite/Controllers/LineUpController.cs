@@ -17,11 +17,11 @@ namespace FestivalSite.Controllers
         
         public ActionResult Index()
         {
-            List<DateTime> lstDays = Festival.GetFestivalDays();
+            ObservableCollection<DateTime> lstDays = Festival.GetFestivalDays();
 
             LineUpVM lineVM = new LineUpVM();
 
-            lineVM.Days = lstDays;
+            lineVM.Days = lstDays.ToList();
             lineVM.BandList = Band.GetBands();
 
             return View("LineUpIndex",lineVM);

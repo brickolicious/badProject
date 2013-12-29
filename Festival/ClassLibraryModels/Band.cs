@@ -69,7 +69,7 @@ namespace ClassLibraryModels
 
         //foto als binairy opslaan om te binden
         private Byte[] _picture;
-
+        [Required]
         public Byte[] Picture
         {
             get { return _picture; }
@@ -79,7 +79,7 @@ namespace ClassLibraryModels
         private string _description;
         
         [Required]
-        [StringLength(250, MinimumLength = 3, ErrorMessage = "Tussen de 3 en 250 karakters bevatten ")]
+        [StringLength(150, MinimumLength = 3, ErrorMessage = "Tussen de 3 en 250 karakters bevatten ")]
         public string Description
         {
             get { return _description; }
@@ -114,6 +114,8 @@ namespace ClassLibraryModels
 
         private string _genresText;
 
+        [Required]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Tussen de 3 en 50 karakters bevatten ")]
         public string GenresInText
         {
             get { return _genresText; }
@@ -167,6 +169,8 @@ namespace ClassLibraryModels
 
                 }
 
+
+                reader.Close();
             }
             catch (Exception ex) {
 
@@ -208,6 +212,7 @@ namespace ClassLibraryModels
 
 
                 }
+                reader.Close();
             }
             catch (Exception ex) {
 

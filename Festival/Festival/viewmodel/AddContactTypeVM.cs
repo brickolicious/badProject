@@ -33,6 +33,14 @@ namespace BADProject.viewmodel
         private void AddTypeAction()
         {
             ContactPersonType.AddContactType(Name.Name);
+            UpdateProps();
+        }
+
+
+        public static event Update OnComplete;
+        private void UpdateProps()
+        {
+            OnComplete(this);
         }
         
     }

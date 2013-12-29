@@ -154,7 +154,13 @@ namespace BADProject.viewmodel
         {
 
             AddContact openNewContact = new AddContact();
+            AddContactVM.OnComplete += AddContactVM_OnComplete;
             openNewContact.Show();
+        }
+
+        void AddContactVM_OnComplete(object sender)
+        {
+            opVullenMetGeselecteerdeType();
         }
 
         private void AddTheContact(ContactPerson person)
@@ -165,6 +171,7 @@ namespace BADProject.viewmodel
         private void DeleteTypeAction(ContactPersonType ConType)
         {
             ContactPersonType.DeleteContactType(ConType.ID);
+            ContactTypeLijst = ContactPersonType.GetAllContactPersonType();
         }
 
         private void DeleteContactAction(ContactPerson contact)
@@ -187,11 +194,33 @@ namespace BADProject.viewmodel
 
         }
 
+
+
+
+
+
         private void OpenAddContactType()
         {
             AddContactType viewAddType = new AddContactType();
+            AddContactTypeVM.OnComplete += AddContactTypeVM_OnComplete;
             viewAddType.Show();
         }
+
+        void AddContactTypeVM_OnComplete(object sender)
+        {
+            UpdatePropsForContact();
+        }
+
+        private void UpdatePropsForContact()
+        {
+            ContactTypeLijst = ContactPersonType.GetAllContactPersonType();
+        }
+
+
+
+
+
+
 
 
         public void EditContactAction(ContactPerson conPer)
@@ -224,9 +253,36 @@ namespace BADProject.viewmodel
         public void opVullenMetGeselecteerdeType()
         {
 
-            SelectedContactTypeLijst = ContactPerson.GetContactPersonsByJobrole(SelectedContactType.ID);
+            //anders crash indien herinladen van contacten na verwijderen van categorie
+            if (SelectedContactType == null) { return; }
+            else
+            {
+                SelectedContactTypeLijst = ContactPerson.GetContactPersonsByJobrole(SelectedContactType.ID);
+            }
 
         }
         #endregion
+
+
+
+
+        public ICommand DeleteContactCommand
+        {
+
+            get { return new RelayCommand<ContactPerson>(RemoveContact); }
+
+        }
+
+        private void RemoveContact(ContactPerson person)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this contact.", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                ContactPerson.DeleteContact(person.ID);
+                opVullenMetGeselecteerdeType();
+            }
+            else { return; }
+        }
+
     }
 }

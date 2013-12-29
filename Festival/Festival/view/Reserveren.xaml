@@ -11,13 +11,16 @@
 
     <Grid Style="{StaticResource gridStyle}" Margin="-6,0,0,0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="108*"/>
+            <RowDefinition Height="111*"/>
             <RowDefinition Height="27*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="87*"/>
+            <RowDefinition Height="31*"/>
+            <RowDefinition Height="31*"/>
             <RowDefinition Height="136*"/>
-            <RowDefinition Height="85*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="133*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"/>
@@ -31,22 +34,20 @@
         </Grid.ColumnDefinitions>
         <Label Content="Tickets" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333" Height="38" Width="74"/>
 
-        <StackPanel Grid.Column="3"  Grid.Row="2" Grid.RowSpan="4">
-            <Label Style="{StaticResource labelStyle}" Content="Name:" VerticalAlignment="Center" Grid.Column="3" Grid.Row="2"/>
-            <Label Style="{StaticResource labelStyle}" Content="E-mail:" VerticalAlignment="Center" Grid.Column="3" Grid.Row="2"/>
-            <Label Style="{StaticResource labelStyle}" Content="Amount:" VerticalAlignment="Center" Grid.Column="3" Grid.Row="3"/>
-            <Label Style="{StaticResource labelStyle}" Content="Type:" VerticalAlignment="Center" Grid.Column="3" Grid.Row="3" Height="32"/>
-        </StackPanel>
+            <Label Style="{StaticResource labelStyle}" Content="Name and lastname:" VerticalAlignment="Center" Grid.Column="3" Grid.Row="2"/>
+            <Label Style="{StaticResource labelStyle}" Content="E-mail:" VerticalAlignment="Center" Grid.Column="3" Grid.Row="3"/>
+            <Label Style="{StaticResource labelStyle}" Content="Amount:" VerticalAlignment="Center" Grid.Column="3" Grid.Row="4"/>
+            <Label Style="{StaticResource labelStyle}" Content="Type:" VerticalAlignment="Center" Grid.Column="3" Grid.Row="5"/>
 
-        <StackPanel Grid.Column="4"  Grid.Row="2" Grid.RowSpan="2" Margin="0,0,0,10">
-            <TextBox  x:Name="txtName" Margin="0,3,0,8" Text="{Binding TicketOrder.Name,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center"/>
-            <TextBox  x:Name="txtEmail" Margin="0,3,0,8" Text="{Binding TicketOrder.Email,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="2" VerticalAlignment="Center" />
-            <TextBox  x:Name="txtAmount" Margin="0,3,0,8" Text="{Binding TicketOrder.Amount,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" />
-            <ComboBox x:Name="cboType" Margin="0,0,0,15"  ItemsSource="{Binding TicketTypeList}" SelectedItem="{Binding TicketOrder.TicketTypeProp,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" />
 
-        </StackPanel>
-        <Button x:Name="btnSend" Command="{Binding PlaceOrderCommand}"  Style="{StaticResource buttonStyle}" Content="Order" Grid.Column="4" Grid.Row="4" Margin="0,0,0,3"/>
-        <ListView x:Name="lstvwTickets" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2"  ItemsSource="{Binding TicketTypeList}" Margin="0,0,0,4">
+
+        <TextBox  x:Name="txtName" Text="{Binding TicketOrder.Name,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" TabIndex="1"/>
+        <TextBox  x:Name="txtEmail" Text="{Binding TicketOrder.Email,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" TabIndex="2"/>
+        <TextBox  x:Name="txtAmount" Text="{Binding TicketOrder.Amount,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Grid.Column="4" Grid.Row="4" VerticalAlignment="Center" TabIndex="3"/>
+        <ComboBox x:Name="cboType" ItemsSource="{Binding TicketTypeList}" SelectedItem="{Binding TicketOrder.TicketTypeProp,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" Grid.Column="4" Grid.Row="5" VerticalAlignment="Center" TabIndex="4" />
+
+        <Button x:Name="btnSend" Command="{Binding PlaceOrderCommand}"  Style="{StaticResource buttonStyle}" Content="Order" Grid.Column="4" Grid.Row="7" Margin="0,0,0,3" TabIndex="5" />
+        <ListView x:Name="lstvwTickets" Grid.Column="1" Grid.Row="2" Grid.RowSpan="5"  ItemsSource="{Binding TicketTypeList}" Margin="0,0,0,4" TabIndex="6">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" Width="auto" DisplayMemberBinding="{Binding ID}" />
@@ -57,7 +58,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="lstvwUsers" Grid.Column="6" Grid.Row="2"  ItemsSource="{Binding FilterList}" SelectedItem="{Binding TicketOrder}" Margin="0,27,0,2" Grid.RowSpan="3" >
+        <ListView x:Name="lstvwUsers" Grid.Column="6" Grid.Row="2"  ItemsSource="{Binding FilterList}" SelectedItem="{Binding TicketOrder}" Margin="0,27,0,2" Grid.RowSpan="6" TabIndex="10">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding Name}" />
@@ -65,7 +66,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox Grid.Column="6" Grid.Row="2" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,109">
+        <TextBox Grid.Column="6" Grid.Row="2" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,6" TabIndex="9">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="KeyUp">
                     <cmd:EventToCommand Command="{Binding SearchCommand}" PassEventArgsToCommand="True"/>
@@ -74,8 +75,8 @@
         </TextBox>
         <Label Content="Order"  Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333" Height="38" Width="89"/>
         <Label Content="Search" Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333" Height="38" Width="89"/>
-        <Button x:Name="btnAdd" Command="{Binding AddTypeCommand}"  Style="{StaticResource buttonStyle}" Content="Add ticket type" Grid.Column="1" Height="Auto" Margin="0,1,88,2" Grid.Row="4"/>
-        <Button x:Name="btnDelete" Command="{Binding DeleteTypeCommand}"  CommandParameter="{Binding ElementName=lstvwTickets,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwTickets}" Style="{StaticResource buttonStyle}" Content="Delete type" Grid.Column="1" Height="28" Margin="0,3,88,0" Grid.Row="5" VerticalAlignment="Top"/>
+        <Button x:Name="btnAdd" Command="{Binding AddTypeCommand}"  Style="{StaticResource buttonStyle}" Content="Add ticket type" Grid.Column="1" Height="Auto" Margin="0,1,88,2" Grid.Row="7" TabIndex="7"/>
+        <Button x:Name="btnDelete" Command="{Binding DeleteTypeCommand}"  CommandParameter="{Binding ElementName=lstvwTickets,Path=SelectedItem}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwTickets}" Style="{StaticResource buttonStyle}" Content="Delete type" Grid.Column="1" Height="28" Margin="0,3,88,0" Grid.Row="8" VerticalAlignment="Top" TabIndex="8"/>
     </Grid>
 
 

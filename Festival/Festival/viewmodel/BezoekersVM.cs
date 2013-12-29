@@ -22,7 +22,7 @@ namespace BADProject.viewmodel
         #region props
         public string Name
         {
-            get { return "Bezoekers"; }
+            get { return "Visitors"; }
         }
 
     
@@ -106,9 +106,21 @@ namespace BADProject.viewmodel
                 return new RelayCommand<Ticket>(EditOrderAction);
             }
         }
+
+        public ICommand PrintOrderCommand
+        {
+            get { return new RelayCommand<Ticket>(PrintOrder); }
+        }
+
+        
         #endregion
 
         #region commandFunctions
+        private void PrintOrder(Ticket order)
+        {
+            Ticket.PrintOrder(order);
+        }
+
         private void SearchOrders()
         {
 
@@ -146,6 +158,9 @@ namespace BADProject.viewmodel
 
         }
         #endregion
+
+
+
 
     }
 }

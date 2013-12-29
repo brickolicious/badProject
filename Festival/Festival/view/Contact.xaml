@@ -32,9 +32,9 @@
 
         <Label Content="Category" Grid.Column="1"  Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333"/>
 
-        <ListBox x:Name="lstBxTypes" ItemsSource="{Binding ContactTypeLijst}" SelectedItem="{Binding SelectedContactType}" DisplayMemberPath="Name" Style="{StaticResource listBoxStyle}" Grid.Column="1" Grid.Row="2" Margin="0,0,0,37"/>
+        <ListBox x:Name="lstBxTypes" ItemsSource="{Binding ContactTypeLijst}" SelectedItem="{Binding SelectedContactType}" DisplayMemberPath="Name" Style="{StaticResource listBoxStyle}" Grid.Column="1" Grid.Row="2" Margin="0,0,0,37" TabIndex="1"/>
 
-        <ListView ItemsSource="{Binding SelectedContactTypeLijst}" SelectedItem="{Binding Source={StaticResource editVM},Path= SelectedContact}"  x:Name="lstvwContacten" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2">
+        <ListView ItemsSource="{Binding SelectedContactTypeLijst}" SelectedItem="{Binding Source={StaticResource editVM},Path= SelectedContact}"  x:Name="lstvwContacten" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" TabIndex="2">
 
             <ListView.View>
                 <GridView>
@@ -50,20 +50,21 @@
         </ListView>
 
         <StackPanel Grid.Row="3" Grid.Column="1" Margin="0,22,0,23">
-            <Button Margin="0,0,0,10" Command="{Binding AddContactTypeCommand}" Style="{StaticResource buttonStyle}" Content="Add category" Height="28" VerticalAlignment="Bottom"/>
-            <Button Margin="0,0,0,10" Command="{Binding DeleteContactTypeCommand}" Style="{StaticResource buttonStyle}" CommandParameter="{Binding ElementName=lstBxTypes,Path=SelectedItem}"  IsEnabled="{Binding SelectedItems.Count, ElementName=lstBxTypes}" Content="Delete category" Height="28" VerticalAlignment="Bottom"/>
+            <Button Margin="0,0,0,10" Command="{Binding AddContactTypeCommand}" Style="{StaticResource buttonStyle}" Content="Add category" Height="28" VerticalAlignment="Bottom" TabIndex="4"/>
+            <Button Margin="0,0,0,10" Command="{Binding DeleteContactTypeCommand}" Style="{StaticResource buttonStyle}" CommandParameter="{Binding ElementName=lstBxTypes,Path=SelectedItem}" TabIndex="5" IsEnabled="{Binding SelectedItems.Count, ElementName=lstBxTypes}" Content="Delete category" Height="28" VerticalAlignment="Bottom"/>
         </StackPanel>
 
         <StackPanel Grid.Column="3" Grid.Row="3" VerticalAlignment="Center" Margin="0,22,0,61">
-            <Button Margin="0,0,0,10" Command="{Binding AddContactCom}" Style="{StaticResource buttonStyle}" Content="Contact toevoegen" Height="28" VerticalAlignment="Bottom"/>
-            <Button Margin="0,0,0,10"  Command="{Binding EditContactCommand}" Style="{StaticResource buttonStyle}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwContacten}" Content="Contact wijzigen" Height="28" VerticalAlignment="Top"/>
-            <Button Margin="0,0,0,10" Command="{Binding Source={StaticResource editVM},Path= DeleteContactCommand}" Style="{StaticResource buttonStyle}" CommandParameter="{Binding ElementName=lstvwContacten,Path=SelectedItem}" Content="Contact verwijderen" Height="28" VerticalAlignment="Bottom" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwContacten}"/>
+            <Button Margin="0,0,0,10" Command="{Binding AddContactCom}" Style="{StaticResource buttonStyle}" Content="Add contact" Height="28" VerticalAlignment="Bottom" TabIndex="6"/>
+            <Button Margin="0,0,0,10"  Command="{Binding EditContactCommand}" Style="{StaticResource buttonStyle}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwContacten}" Content="Edit contact" Height="28" VerticalAlignment="Top" TabIndex="7"/>
+            <!--<Button Margin="0,0,0,10" Command="{Binding Source={StaticResource editVM},Path= DeleteContactCommand}" Style="{StaticResource buttonStyle}" CommandParameter="{Binding ElementName=lstvwContacten,Path=SelectedItem}" Content="Remove contact" Height="28" VerticalAlignment="Bottom" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwContacten}"/>-->
+            <Button Margin="0,0,0,10" Command="{Binding DeleteContactCommand}" Style="{StaticResource buttonStyle}" CommandParameter="{Binding ElementName=lstvwContacten,Path=SelectedItem}" Content="Remove contact" Height="28" VerticalAlignment="Bottom" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwContacten}" TabIndex="8"/>
         </StackPanel>
         <Label Content="Contacts" Grid.Column="3"  Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333"/>
         <!--<Label Content="Zoek op naam: " Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,130,10" Grid.Row="2" VerticalAlignment="Bottom" Height="29"/>
         <Button Command="{Binding SearchContactCommand}"  CommandParameter="{Binding ElementName=txtSearch,Path=Text}" Style="{StaticResource buttonStyle}" Grid.ColumnSpan="2" Content="Button" Grid.Column="4" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Center" Width="75"/>-->
 
-        <Button Grid.Column="4" Grid.Row="1" Command="{Binding SearchContactCommand}" Style="{StaticResource buttonStyle}" Content="Contact Zoeken" Height="28" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,6" Width="115"/>
+        <Button Grid.Column="4" Grid.Row="1" Command="{Binding SearchContactCommand}" Style="{StaticResource buttonStyle}" Content="Search contact" Height="28" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,6" Width="115" TabIndex="3"/>
 
 
     </Grid>

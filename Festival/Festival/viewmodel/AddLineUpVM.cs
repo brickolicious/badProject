@@ -65,6 +65,15 @@ namespace BADProject.viewmodel
         LineUpToAdd.Until = subSplitArr[0] + ":" + subSplitArr[1] + " " + splitArr[2];
 
         LineUp.AddLineUp(LineUpToAdd);
+
+        UpdateProps();
+    }
+
+
+    public static event Update OnComplete;
+    private void UpdateProps()
+    {
+        OnComplete(this);
     }
         
     }

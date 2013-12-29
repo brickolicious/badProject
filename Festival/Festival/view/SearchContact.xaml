@@ -38,7 +38,7 @@
                 <GridView>
                     <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Company" Width="auto" DisplayMemberBinding="{Binding Company}" />
-                    <GridViewColumn Header="Jobrole" Width="auto" DisplayMemberBinding="{Binding Source=JobRole,Path=Name}"  />
+                    <!--<GridViewColumn Header="Jobrole" Width="auto" DisplayMemberBinding="{Binding Source=JobRole,Path=Name}"  />-->
                     <GridViewColumn Header="City" Width="auto" DisplayMemberBinding="{Binding City}" />
                     <GridViewColumn Header="E-mail" Width="auto" DisplayMemberBinding="{Binding Email}" />
                     <GridViewColumn Header="Phone" Width="auto" DisplayMemberBinding="{Binding Phone}" />

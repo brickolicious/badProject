@@ -147,6 +147,9 @@ namespace ClassLibraryModels
 
                     contactCollection.Add(tempContact);
                 }
+
+
+                reader.Close();
             }
             catch (Exception ex) {
 
@@ -184,6 +187,10 @@ namespace ClassLibraryModels
 
                     colContPer.Add(tempContact);
                 }
+
+
+
+                reader.Close();
             }
             catch (Exception ex)
             {
@@ -220,7 +227,10 @@ namespace ClassLibraryModels
 
                     contColl.Add(tempContact);
                 }
-            
+
+
+
+                reader.Close();
             }
             catch (Exception ex)
             {

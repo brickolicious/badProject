@@ -129,6 +129,9 @@ namespace ClassLibraryModels
                     tempLineup.Band = Band.GetBandByID((int)reader["Band"]);
                     lineUpCollectie.Add(tempLineup);
                 }
+
+
+                reader.Close();
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -158,6 +161,9 @@ namespace ClassLibraryModels
                 tempLineup.Band = Band.GetBandByID((int)reader["Band"]);
                 linCol.Add(tempLineup);
                 }
+
+
+                reader.Close();
 
             }
             catch (Exception ex)
@@ -205,6 +211,9 @@ namespace ClassLibraryModels
                 {
                    // tempCol.Add(createLineUp(reader));
                 }
+
+
+                reader.Close();
             }
             catch (Exception ex)
             {
@@ -248,7 +257,11 @@ namespace ClassLibraryModels
                     tempLine.Stage = Stage.GetStageByID((int)reader["Stage"]);
                     tempLine.Band = Band.GetBandByID((int)reader["Band"]);
                     lstLineup.Add(tempLine);
+
+
+                    
                 }
+                reader.Close();
             }
             catch (Exception ex)
             {

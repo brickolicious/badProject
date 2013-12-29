@@ -36,6 +36,14 @@ namespace BADProject.viewmodel
         private void AddType()
         {
             TicketType.AddTicketType(Type);
+            UpdateProps();
+        }
+
+
+        public static event Update OnComplete;
+        private void UpdateProps()
+        {
+            OnComplete(this);
         }
 
     }

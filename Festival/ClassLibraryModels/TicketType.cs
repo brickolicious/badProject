@@ -112,6 +112,9 @@ namespace ClassLibraryModels
 
                     typesColl.Add(tempType);
                 }
+
+
+                reader.Close();
             }
             catch (Exception ex)
             {
@@ -119,6 +122,7 @@ namespace ClassLibraryModels
             }
 
             return typesColl;
+            
         }
 
         //aangepast naar nullable type
@@ -138,6 +142,8 @@ namespace ClassLibraryModels
                     tempType.AvailableTickets = tempType.TotalTickets - AantalBesteldeTicketsPerType(tempType.ID);
 
                 }
+
+                reader.Close();
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -161,6 +167,9 @@ namespace ClassLibraryModels
                 {
                     iAantal = (int)reader[0];
                 }
+
+
+                reader.Close();
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -190,6 +199,7 @@ namespace ClassLibraryModels
                 TicketType tempType =  GetTicketTypeByID(ticketTypeID);
                 iAantal = tempType.TotalTickets-iAantal;
 
+                reader.Close();
             }
             catch (Exception ex)
             {
@@ -208,6 +218,8 @@ namespace ClassLibraryModels
                 DbParameter totalPar = DataBase.AddParameter("@total", ticketType.TotalTickets);
                 string sql = "INSERT INTO TicketType (Name,Price,TotalTickets) VALUES (@name,@price,@total)";
                 int iModifiedData = DataBase.ModifyData(sql, namePar, pricePar, totalPar);
+
+
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);

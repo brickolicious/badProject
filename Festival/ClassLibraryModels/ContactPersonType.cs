@@ -88,6 +88,10 @@ namespace ClassLibraryModels
 
                     contactPersonTypeCol.Add(tempConType);
                 }
+
+
+
+                reader.Close();
             }
             catch (Exception ex) {
 
@@ -112,6 +116,9 @@ namespace ClassLibraryModels
                 tempConTyp.Name = (string)reader["Name"];
             
             }
+
+
+            reader.Close();
             }
             catch (Exception ex) {
 

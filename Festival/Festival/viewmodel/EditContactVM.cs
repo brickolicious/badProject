@@ -58,23 +58,5 @@ namespace BADProject.viewmodel
         }
 
 
-
-        public ICommand DeleteContactCommand {
-
-            get { return new RelayCommand(RemoveContact); }
-        
-        }
-
-        private void RemoveContact()
-        {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this contact.", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes)
-            {
-                ContactPerson.DeleteContact(SelectedContactStatic.ID);
-            }
-            else { return; }
-        }
-
-
     }
 }

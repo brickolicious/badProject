@@ -45,8 +45,17 @@ namespace BADProject.viewmodel
         private void AddContact()
         {
             ContactPerson.AddTheContact(ContactToAdd);
+            UpdateProps();
         }
 
+
+
+
+        public static event Update OnComplete;
+        private void UpdateProps()
+        {
+            OnComplete(this);
+        }
 
     }
 }

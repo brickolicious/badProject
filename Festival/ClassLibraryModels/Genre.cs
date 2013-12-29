@@ -84,7 +84,7 @@ namespace ClassLibraryModels
                     genreList.Add(tempGenre);
                 }
 
-
+                reader.Close();
             }
             catch (Exception ex)
             {
@@ -111,7 +111,7 @@ namespace ClassLibraryModels
                     bandsCol.Add(tempGenre);
                 }
 
-
+                reader.Close();
             }
             catch (Exception ex)
             {
@@ -186,7 +186,12 @@ namespace ClassLibraryModels
                     gen.Name = (string)record["Name"];
                     return gen;
                 }
+
+
+                reader.Close();
                 return null;
+
+
 
             }
             catch (Exception ex)

@@ -87,6 +87,7 @@
     <Compile Include="viewmodel\AddStageVM.cs" />
     <Compile Include="viewmodel\AddTicketTypeVM.cs" />
     <Compile Include="viewmodel\BezoekersVM.cs" />
+    <Compile Include="viewmodel\Delegate.cs" />
     <Compile Include="viewmodel\EditBandVM.cs" />
     <Compile Include="viewmodel\EditContactVM.cs" />
     <Compile Include="viewmodel\EditOrderVM.cs" />

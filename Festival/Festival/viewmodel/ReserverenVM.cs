@@ -20,12 +20,13 @@ namespace BADProject.viewmodel
         public ReserverenVM()
         {
             TicketOrder = new Ticket();
+            FilterList = Ticket.GetAllVisitors();
         }
 
         #region props
         public string Name
         {
-            get { return "Reserveren"; }
+            get { return "Orders"; }
         }
 
 
@@ -130,7 +131,8 @@ namespace BADProject.viewmodel
             else {
                 Ticket.InsertUserAndOrder(TicketOrder);
             }
-            MessageBox.Show("A ticket has been orderd for: " + TicketOrder.Name);
+            
+            TicketOrder = new Ticket();
         }
 
         private void Search(KeyEventArgs e)
@@ -148,6 +150,7 @@ namespace BADProject.viewmodel
             if (result == MessageBoxResult.Yes)
             {
                 TicketType.DeleteTicketTypeAndOrdersPlacedWithThisType(ticketType.ID);
+                TicketTypeList = TicketType.GetAllTicketTypes();
             }
             else { return; }
         }
@@ -156,7 +159,13 @@ namespace BADProject.viewmodel
         private void ShowAddType()
         {
             AddTicketType ticketTypeView = new AddTicketType();
+            AddTicketTypeVM.OnComplete += AddTicketTypeVM_OnComplete;
             ticketTypeView.Show();
+        }
+
+        void AddTicketTypeVM_OnComplete(object sender)
+        {
+            TicketTypeList = TicketType.GetAllTicketTypes();
         }
         #endregion
     }

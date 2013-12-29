@@ -29,7 +29,7 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" HorizontalAlignment="Center" Content="Edit details of band:" Width="112" Grid.Column="1"/>
-        <Label Grid.Column="1" Grid.Row="1" Content="Bandnaam:"/>
+        <Label Grid.Column="1" Grid.Row="1" Content="Band name:"/>
         <Label Grid.Column="1" Grid.Row="2" Content="Description:"/>
         <Label Grid.Column="1" Grid.Row="3" Content="Twitter:"/>
         <Label Grid.Column="1" Grid.Row="4" Content="Facebook:"/>
@@ -37,9 +37,9 @@
 
         <Label x:Name="lblID" Content="{Binding SelectedBand.ID,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"  Grid.Column="2" Grid.ColumnSpan="2" ></Label>
         <Label x:Name="lblName"  Content="{Binding SelectedBand.Name,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="1" />
-        <TextBox x:Name="txtDescription" Text="{Binding SelectedBand.Description,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="2"/>
-        <TextBox x:Name="txtTwitter" Text="{Binding SelectedBand.Twitter,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="3"/>
-        <TextBox x:Name="txtFacebook" Text="{Binding SelectedBand.Facebook,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="4"/>
+        <TextBox x:Name="txtDescription" Text="{Binding SelectedBand.Description,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="2" TabIndex="1"/>
+        <TextBox x:Name="txtTwitter" Text="{Binding SelectedBand.Twitter,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="3" TabIndex="2"/>
+        <TextBox x:Name="txtFacebook" Text="{Binding SelectedBand.Facebook,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="4" TabIndex="3"/>
         <Image Grid.Row="7" Grid.ColumnSpan="4" AllowDrop="True">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Drop">
@@ -47,10 +47,10 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Image>
-        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding EditBandAction}"  Grid.ColumnSpan="2" Grid.Row="8"  Margin="0,0,0,-1" Content="Edit band" Grid.Column="1" Click="sendBtn_Click"/>
+        <Button Style="{StaticResource buttonStyle}" TabIndex="6" x:Name="sendBtn" Command="{Binding EditBandAction}"  Grid.ColumnSpan="2" Grid.Row="8"  Margin="0,0,0,-1" Content="Edit band" Grid.Column="1" Click="sendBtn_Click"/>
         <Label Grid.Column="1" Grid.Row="5" Content="Genres:"/>
-        <TextBox x:Name="txtGenres" Text="{Binding SelectedBand.GenresInText}" Grid.Column="2" Grid.Row="5"/>
-        <Button Style="{StaticResource buttonStyle}" Command="{Binding ChoosePictureCommand}" Grid.Column="2" Grid.Row="6">New image</Button>
+        <TextBox x:Name="txtGenres" Text="{Binding SelectedBand.GenresInText}" Grid.Column="2" Grid.Row="5" TabIndex="4"/>
+        <Button Style="{StaticResource buttonStyle}" Command="{Binding ChoosePictureCommand}" Grid.Column="2" Grid.Row="6" TabIndex="5">New image</Button>
         <Border Grid.Row="7" Grid.ColumnSpan="4">
             <Image x:Name="imgBand"   Source="{Binding Photo.Source}"/>
         </Border>

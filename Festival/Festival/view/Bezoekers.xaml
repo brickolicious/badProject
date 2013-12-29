@@ -11,9 +11,10 @@
     </UserControl.Resources>
 
 
-        <Grid Style="{StaticResource gridStyle}">
+    <Grid Style="{StaticResource gridStyle}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
@@ -23,13 +24,13 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="4.5*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Content="Orders" Grid.Column="1"   HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="21.333"/>
-        <ListView x:Name="lstvwOrders" ItemsSource="{Binding TicketList}" SelectedItem="{Binding Source={StaticResource editVM},Path = SelectedTicket}" Grid.Column="1" Grid.Row="2" Grid.RowSpan="4">
+        <ListView x:Name="lstvwOrders" ItemsSource="{Binding TicketList}" SelectedItem="{Binding Source={StaticResource editVM},Path = SelectedTicket}" Grid.Column="1" Grid.Row="2" Grid.RowSpan="5" TabIndex="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="PersonID" Width="auto" DisplayMemberBinding="{Binding TicketholderID}" />
@@ -41,9 +42,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Command="{Binding EditCommand}"  Style="{StaticResource buttonStyle}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwOrders}" Content="Edit" Grid.Column="3" VerticalAlignment="Top" Grid.Row="4"/>
-        <Button Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=lstvwOrders,Path=SelectedItem}" Style="{StaticResource buttonStyle}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwOrders}" Content="Delete" Grid.Column="3" VerticalAlignment="Top" Grid.Row="5" Margin="0,144,0,0"/>
-        <Button Command="{Binding SearchCommand}"   Style="{StaticResource buttonStyle}" Content="Search" Grid.Column="3" VerticalAlignment="Top" Grid.Row="2"/>
+        <Button Command="{Binding EditCommand}"  Style="{StaticResource buttonStyle}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwOrders}" Content="Edit" Grid.Column="3" VerticalAlignment="Top" Grid.Row="4" TabIndex="3"/>
+        <Button Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=lstvwOrders,Path=SelectedItem}" Style="{StaticResource buttonStyle}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwOrders}" Content="Delete" Grid.Column="3" VerticalAlignment="Top" Grid.Row="6" Margin="0,144,0,0" TabIndex="5"/>
+        <Button Command="{Binding SearchCommand}"  Style="{StaticResource buttonStyle}" Content="Search" Grid.Column="3" VerticalAlignment="Top" Grid.Row="2" TabIndex="2"/>
+        <Button Command="{Binding PrintOrderCommand}" CommandParameter="{Binding ElementName=lstvwOrders,Path=SelectedItem}" Style="{StaticResource buttonStyle}" IsEnabled="{Binding SelectedItems.Count, ElementName=lstvwOrders}" Content="Export order" Grid.Column="3" Grid.Row="6" Margin="0,0,0,144" TabIndex="4"/>
     </Grid>
 
 

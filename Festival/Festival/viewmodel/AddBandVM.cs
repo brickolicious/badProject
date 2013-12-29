@@ -54,6 +54,8 @@ namespace BADProject.viewmodel
         {
             
             Genre.InsertBandAndOrAttachGenres(BandToAdd);
+
+            UpdateProps();
         }
 
 
@@ -77,7 +79,15 @@ namespace BADProject.viewmodel
                 Photo.Source = new ImageSourceConverter().ConvertFromString(fileName) as ImageSource;
             }
         }
-        
 
+
+
+
+
+
+        public static event Update OnComplete;
+        private void UpdateProps() {
+            OnComplete(this);
+        }
     }
 }

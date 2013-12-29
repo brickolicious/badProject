@@ -12,6 +12,12 @@ namespace BADProject.viewmodel
 {
     class SearchContactVM : ObservableObject
     {
+        public SearchContactVM()
+        {
+            SearchList = ContactPerson.GetAllContacts();
+        }
+
+
         private ObservableCollection<ContactPerson> _searchList;
 
         public ObservableCollection<ContactPerson> SearchList

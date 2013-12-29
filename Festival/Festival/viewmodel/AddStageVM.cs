@@ -36,7 +36,17 @@ namespace BADProject.viewmodel
         public void Addstage() {
 
             Stage.AddStageAction(StageToCreate.Name);
-        
+            UpdateProps();
+        }
+
+
+
+
+
+        public static event Update OnComplete;
+        private void UpdateProps()
+        {
+            OnComplete(this);
         }
     }
 }

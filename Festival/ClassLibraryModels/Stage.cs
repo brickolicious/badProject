@@ -106,6 +106,9 @@ namespace ClassLibraryModels
                     //tempStage.LineUpByStage = LineUp.GetLineupByStageAndDate(tempStage.ID, day);
                     stageCollectie.Add(tempStage);
                 }
+
+
+                reader.Close();
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -129,6 +132,8 @@ namespace ClassLibraryModels
                     tempStage.LineUpByStage = LineUp.GetLineupByStageAndDate(tempStage.ID, day);
                     stageCollectie.Add(tempStage);
                 }
+
+                reader.Close();
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -153,6 +158,9 @@ namespace ClassLibraryModels
                     tempStage.Name = (string)reader["Name"];
 
                 }
+
+
+                reader.Close();
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -190,6 +198,9 @@ namespace ClassLibraryModels
                     tempStage.Name = (string)reader["Name"];
 
                 }
+
+
+                reader.Close();
             }
             catch (Exception ex) {
 

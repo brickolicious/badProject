@@ -26,6 +26,25 @@ namespace BADProject.view
             InitializeComponent();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            datePick.Visibility = Visibility.Visible;
+            btnDate.Visibility = Visibility.Hidden;
+            btnSubmit.Visibility = Visibility.Visible;
+        }
+
+        private void btnDate_Click(object sender, RoutedEventArgs e)
+        {
+            
+            btnSubmit.CommandParameter = datePick.SelectedDate;
+
+            datePick.Visibility = Visibility.Hidden;
+            btnDate.Visibility = Visibility.Visible;
+            btnSubmit.Visibility = Visibility.Hidden;
+
+
+        }
+
 
         
 

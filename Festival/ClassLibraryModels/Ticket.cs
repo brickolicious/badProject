@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -11,6 +13,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 
 namespace ClassLibraryModels
 {
@@ -116,6 +119,9 @@ namespace ClassLibraryModels
 
                     visitorsCollection.Add(tempTicket);
                 }
+
+
+                reader.Close();
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -145,6 +151,8 @@ namespace ClassLibraryModels
 
                     searchColl.Add(tempTicket);
                 }
+
+                reader.Close();
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -173,6 +181,7 @@ namespace ClassLibraryModels
                     }
 
                 }
+                reader.Close();
             }
             catch (Exception ex) {
 
@@ -193,6 +202,7 @@ namespace ClassLibraryModels
                 string sql = "INSERT INTO Reservatie (TicketHolderID,TicketType,Amount) VALUES (@userID,@ticketType,@amount)";
 
                 int modifiedData = DataBase.ModifyData(sql, userPar, typePar, amountPar);
+                System.Windows.MessageBox.Show("A ticket has been orderd for: " + ticket.Name);
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -231,11 +241,12 @@ namespace ClassLibraryModels
                 int modifiedData_3 = DataBase.ModifyData(/*trans,*/sql_q3, userPar_q3, datePar, confirmedPar, failuresPar, hashPar, passwChangedPar, saltPar);
 
                 trans.Commit();
-
+                System.Windows.MessageBox.Show("A ticket has been orderd for: " + ticket.Name);
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
                 trans.Rollback();
+                System.Windows.MessageBox.Show("Ticket was not orderd for: " + ticket.Name+"\nCheck if user and email are correct.");
             }
 
         }
@@ -301,6 +312,85 @@ namespace ClassLibraryModels
         }
 
 
+
+        public static void PrintOrder(Ticket ticket)
+        {
+
+            try
+            {
+                FolderBrowserDialog fbrowse = new FolderBrowserDialog();
+                fbrowse.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                DialogResult result = fbrowse.ShowDialog();
+                if (result.ToString() == "OK")
+                {
+                    //System.Windows.MessageBox.Show(""+fbrowse.SelectedPath);
+
+                    string fileName = ticket.Name + "_" + ticket.ID + ".docx";
+                    string filePath = System.IO.Path.Combine(fbrowse.SelectedPath, fileName);
+                    File.Copy("template.docx", filePath, true);
+                    WordprocessingDocument newdoc = WordprocessingDocument.Open(filePath, true);
+                    IDictionary<String, BookmarkStart> bookmarks = new Dictionary<String, BookmarkStart>();
+                    foreach (BookmarkStart bms in newdoc.MainDocumentPart.RootElement.Descendants<BookmarkStart>())
+                    {
+                        bookmarks[bms.Name] = bms;
+                    }
+                    bookmarks["Name"].Parent.InsertAfter<DocumentFormat.OpenXml.Wordprocessing.Run>(new DocumentFormat.OpenXml.Wordprocessing.Run(new Text(Ticket.GetUserNameByID(ticket.TicketholderID))), bookmarks["Name"]);
+                    bookmarks["Email"].Parent.InsertAfter<DocumentFormat.OpenXml.Wordprocessing.Run>(new DocumentFormat.OpenXml.Wordprocessing.Run(new Text(ticket.Email)), bookmarks["Email"]);
+                    bookmarks["Type"].Parent.InsertAfter<DocumentFormat.OpenXml.Wordprocessing.Run>(new DocumentFormat.OpenXml.Wordprocessing.Run(new Text(ticket.TicketTypeProp.Name)), bookmarks["Type"]);
+                    bookmarks["Amount"].Parent.InsertAfter<DocumentFormat.OpenXml.Wordprocessing.Run>(new DocumentFormat.OpenXml.Wordprocessing.Run(new Text(ticket.Amount+"")), bookmarks["Amount"]);
+                    bookmarks["Total"].Parent.InsertAfter<DocumentFormat.OpenXml.Wordprocessing.Run>(new DocumentFormat.OpenXml.Wordprocessing.Run(new Text((ticket.Amount * ticket.TicketTypeProp.Price) + "")), bookmarks["Total"]);
+
+
+
+                    DocumentFormat.OpenXml.Wordprocessing.Run run = new DocumentFormat.OpenXml.Wordprocessing.Run(new Text(ticket.TicketholderID+"-"+ticket.TicketTypeProp.ID+"-"+ticket.Amount));
+                    RunProperties prop = new RunProperties();
+                    RunFonts font = new RunFonts() { Ascii = "Free 3 of 9 Extended", HighAnsi = "Free 3 of 9 Extended" };
+                    FontSize size = new FontSize() { Val = "96" };
+                    prop.Append(font);
+                    prop.Append(size);
+                    run.PrependChild<RunProperties>(prop);
+
+
+
+
+
+                    bookmarks["Code"].Parent.InsertAfter<DocumentFormat.OpenXml.Wordprocessing.Run>(run, bookmarks["Code"]);
+                    newdoc.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+
+        public static string GetUserNameByID(int userID) { 
+            string name="";
+
+            try
+            {
+                DbParameter idPar = DataBase.AddParameter("@id", userID);
+                string sql = "SELECT * FROM UserProfile WHERE UserId = @id";
+                DbDataReader reader = DataBase.GetData(sql, idPar);
+                foreach (IDataRecord record in reader)
+                {
+                    name = (string)reader["UserName"];
+                }
+
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return name;
+        }
+
+
         public static List<Ticket> GetAllReservationsForUser(int UserID) {
             List<Ticket> tickList = new List<Ticket>();
 
@@ -323,6 +413,9 @@ namespace ClassLibraryModels
 
                 }
 
+
+
+                reader.Close();
             }
             catch (Exception ex)
             {
@@ -346,8 +439,8 @@ namespace ClassLibraryModels
                 {
                     userID = (int)reader["UserId"];
                 }
-               
 
+                reader.Close();
             }
             catch (Exception ex)
             {
@@ -373,7 +466,7 @@ namespace ClassLibraryModels
                     email = (string)reader["UserEmail"];
                 }
 
-
+                reader.Close();
             }
             catch (Exception ex)
             {

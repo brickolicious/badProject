@@ -14,6 +14,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Timers;
 
 namespace BADProject.viewmodel
 {
@@ -22,7 +23,19 @@ namespace BADProject.viewmodel
         public LineupVM()
         {
             this.StageList = Stage.GetAllStages();
+
+
+            /*Timer refreshTimer = new Timer();
+            refreshTimer.Elapsed += new ElapsedEventHandler(Refresh);
+            refreshTimer.Interval = 2500;
+            refreshTimer.Start();*/
         }
+
+
+      
+
+
+
 
 
         #region props
@@ -35,9 +48,9 @@ namespace BADProject.viewmodel
 
 
 
-        private List<DateTime> _lstDates;
+        private ObservableCollection<DateTime> _lstDates;
 
-        public List<DateTime> DatesList
+        public ObservableCollection<DateTime> DatesList
         {
             get
             {
@@ -169,10 +182,22 @@ namespace BADProject.viewmodel
         {
             get { return new RelayCommand<Stage>(RemoveAction); }
         }
+
+        public ICommand SetStartCommand {
+            get { return new RelayCommand<DateTime>(SetStartDay); }
+        }
+
+      
         #endregion
 
 
         #region commandFunctions
+        private void SetStartDay(DateTime startDay)
+        {
+            Festival.SetStartDay(startDay);
+            this.DatesList = Festival.GetFestivalDays();
+        }
+
         private void RemoveAction(Stage stage)
         {
             if (stage != null)
@@ -181,6 +206,7 @@ namespace BADProject.viewmodel
                 if (result == MessageBoxResult.Yes)
                 {
                     Stage.RemoveStageAndItsLineup(stage.ID);
+                    ToonLineUp(SelectedDay);
                 }
                 else { return; }
             }
@@ -198,22 +224,8 @@ namespace BADProject.viewmodel
 
         public void DeleteDay()
         {
-
-            //functie deels afhankelijk van property =/= in model
-            try
-            {
-                int tempID = 1;
-                if (DatesList.Count == 1) { MessageBox.Show("Festival needs to have a length of atleast 1 day."); return; }
-                DbParameter idPar = DataBase.AddParameter("@id", tempID);
-                string sql = "UPDATE FestivalDatums SET EindDatum = EindDatum-1 WHERE id = @id";
-
-                int iModifiedData = DataBase.ModifyData(sql, idPar);
-                DatesList = Festival.GetFestivalDays();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
+            Festival.RemoveDay(DatesList.Count);
+            DatesList = Festival.GetFestivalDays();
         }
 
 
@@ -227,9 +239,12 @@ namespace BADProject.viewmodel
         {
 
             AddStage addStage = new AddStage();
+            AddStageVM.OnComplete += AddStageVM_OnComplete;
             addStage.Show();
 
         }
+
+      
 
         public void AddStageAction(string strStageName)
         {
@@ -246,6 +261,7 @@ namespace BADProject.viewmodel
             if (lineup != null)
             {
                 LineUp.DeleteLineUpElement(lineup.ID);
+                StageList = Stage.GetAllStages();
             }
         }
 
@@ -264,10 +280,27 @@ namespace BADProject.viewmodel
         private void ShowAddLineUpAction()
         {
             AddLineUp addLineUpView = new AddLineUp();
+            AddLineUpVM.OnComplete += AddLineUpVM_OnComplete;
             addLineUpView.Show();
+        }
+
+        void AddLineUpVM_OnComplete(object sender)
+        {
+            ToonLineUp(SelectedDay);
         }
 
         #endregion
 
+
+
+        /*public void Refresh(object source, ElapsedEventArgs e)
+        {
+            ToonLineUp(SelectedDay);
+        } */
+
+        void AddStageVM_OnComplete(object sender)
+        {
+            ToonLineUp(SelectedDay);
+        }
     }
 }
