@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
+        @using FestivalSite.Helpers
     </head>
     <body>
         <header>
@@ -14,7 +15,10 @@
             <div class="headercontent">
                 <div class="title">
                     
-                    <h1><img src="~/Content/Images/logo.jpg" />@Html.ActionLink("Festival", "Index", "Home")</h1>
+                    <h1>
+                        <a href="@Url.Action("Index", "Home")" title="Home"><img src="@Url.Content("~/Content/Images/logo.png")" /></a>
+                        @Html.ActionLink("Festival", "Index", "Home")
+                    </h1>
                 
                 </div>
 
@@ -51,7 +55,9 @@
                 <div class="float-left">
                     <p>&copy; @DateTime.Now.Year - Bart Vandecandelaere</p>
                 </div>
-                <div class="float-right"><a href="http://localhost:14783/api/RSS"><img src="~/Content/Images/rss-logo.png" alt="rss logo"/></a></div>
+                <div class="float-right">
+                    <a href="@Url.Action("RSS", "API")" title="RSS feed"><img src="@Url.Content("~/Content/Images/rssWhite.png")" /></a>
+                </div>
             </div>
         </footer>
 

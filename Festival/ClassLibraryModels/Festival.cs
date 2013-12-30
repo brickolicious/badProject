@@ -94,7 +94,7 @@ namespace ClassLibraryModels
 
 
 
-        private static ObservableCollection<Festival> FestivalDatumsOphalen()
+        public static ObservableCollection<Festival> FestivalDatumsOphalen()
         {
             ObservableCollection<Festival> festivalCollectie = new ObservableCollection<Festival>();
 
@@ -110,6 +110,7 @@ namespace ClassLibraryModels
                     tempFestival.EndDate = (DateTime)record["EindDatum"];
                     festivalCollectie.Add(tempFestival);
                 }
+                reader.Close();
             }
             catch (Exception ex) {
 

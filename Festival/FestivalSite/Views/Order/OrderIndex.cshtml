@@ -26,7 +26,7 @@
         <td>@order.TicketTypeProp.Name</td>
         <td>@order.Amount</td>
         <td>@{var tick = order.Amount * order.TicketTypeProp.Price;}€@Html.Raw(tick)</td>
-        <td>@Html.ActionLink("Remove order","RemoveOrder", new{ orderID = order.ID })
+        <td>@Html.ActionLink("Remove order","RemoveOrder","Order", new{ orderID = order.ID },null)
     </td>
     </tr>
     
@@ -60,7 +60,7 @@
             @Html.Label("Number of tickets: ")
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Amount  )
+            @Html.EditorFor(model => model.Amount  )
             @Html.ValidationMessageFor(model => model.Amount)
         </div>
         <input type="submit" value="Order" />

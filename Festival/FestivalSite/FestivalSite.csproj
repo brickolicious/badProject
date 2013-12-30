@@ -194,6 +194,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ImageLinkHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -206,9 +207,10 @@
     <Compile Include="ViewModels\OrderVM.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Images\logo.jpg" />
     <Content Include="Content\Images\festivalHome.jpg" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\rss-logo.png" />
+    <Content Include="Content\Images\rssWhite.png" />
     <Content Include="Content\Images\swirl.png" />
     <Content Include="Content\Images\swirl2.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />

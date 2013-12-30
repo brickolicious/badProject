@@ -18,10 +18,13 @@ namespace FestivalSite.ViewModels
 
         [Required]
         public int SelectedType { get; set; }
-
+        
+        [Range(1,200,ErrorMessage="Min. 1 - Max. 200")]
         [Required]
         public int Amount { get; set; }
+
         public Reservation ReservationByUser { get; set; }
+
         public string Message { get; set; }
     
     }

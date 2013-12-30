@@ -15,17 +15,23 @@ namespace FestivalSite.Controllers
         // GET: /Admin/
 
         [Authorize(Roles = "Admin")]
-        public ActionResult Index()
+        public ActionResult Index(bool insertOke = false)
         {
             AdminPanelVM adminVM = new AdminPanelVM();
+            
+            if (insertOke == true) {
+                adminVM.Message = "RSS item werd opgeslaan.";
+            }
+
+            
             adminVM.Rss = new RSSmodel();
 
             return View("AdminIndex",adminVM);
         }
 
-
+        //[HttpPost]
         public ActionResult OpslaanRSS(RSSmodel rssmodel) {
-
+            
             try
             {
                 DbParameter titlePar = DataBase.AddParameter("@title", rssmodel.Title);
@@ -42,7 +48,7 @@ namespace FestivalSite.Controllers
             }
 
 
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Index", "Admin", new {insertOke = true });
         }
 
     }

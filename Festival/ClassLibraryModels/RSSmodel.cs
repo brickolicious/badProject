@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace ClassLibraryModels
 {
@@ -10,9 +12,15 @@ namespace ClassLibraryModels
     {
         
         public int ID { get; set; }
+        
+        [Required]
         public string Title { get; set; }
+
+        [Required]
         public string RSScontent { get; set; }
         public string AlternativeURI { get; set; }
+
+        [Required]
         public string ItemID { get; set; }
         public DateTime ItemDate { get; set; }
     

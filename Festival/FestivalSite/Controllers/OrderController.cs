@@ -24,7 +24,7 @@ namespace FestivalSite.Controllers
             if (typeID != null)
             {
 
-                ordervm.Message = "Tickets off type " + TicketType.GetTicketTypeByID(typeID).Name + " are sold out of not available in this amount.";
+                ordervm.Message = "Tickets off type " + TicketType.GetTicketTypeByID(typeID).Name + " are sold out or not available in this amount.";
 
             }
             
@@ -101,7 +101,7 @@ namespace FestivalSite.Controllers
         }
 
     
-        [HttpPost]
+        [Authorize]
         public ActionResult RemoveOrder(int orderID)
         {
 

@@ -16,6 +16,7 @@ namespace FestivalSite.ViewModels
 
         public List<TicketType> TicketTypes { get; set; }
         public RSSmodel Rss { get; set; }
+        public string Message { get; set; }
 
     }
 }

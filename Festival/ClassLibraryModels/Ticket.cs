@@ -250,7 +250,7 @@ namespace ClassLibraryModels
                 string sql = "INSERT INTO Reservatie (TicketHolderID,TicketType,Amount) VALUES (@userID,@ticketType,@amount)";
 
                 int modifiedData = DataBase.ModifyData(sql, userPar, typePar, amountPar);
-                System.Windows.MessageBox.Show("A ticket has been orderd for: " + ticket.Name);
+                
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -287,7 +287,7 @@ namespace ClassLibraryModels
                 DbParameter saltPar = DataBase.AddParameter("@salt", "");
                 string sql_q3 = "INSERT INTO webpages_Membership (UserId,CreateDate,IsConfirmed,PasswordFailuresSinceLastSuccess,Password,PasswordChangedDate,PasswordSalt) VALUES (@userID2,@date,@confirm,@fail,@hash,@passChange,@salt)";
                 int modifiedData_3 = DataBase.ModifyData(/*trans,*/sql_q3, userPar_q3, datePar, confirmedPar, failuresPar, hashPar, passwChangedPar, saltPar);
-
+                System.Windows.MessageBox.Show("A ticket has been orderd for: " + ticket.Name);
                 trans.Commit();
                 //System.Windows.MessageBox.Show("A ticket has been orderd for: " + ticket.Name);
             }

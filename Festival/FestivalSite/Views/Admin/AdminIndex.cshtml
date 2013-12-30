@@ -33,6 +33,9 @@
 
 
 <div id="rssContainer">
+    @if(!string.IsNullOrEmpty(Model.Message)){
+        <h3>@Model.Message</h3>
+    }
     @Html.Partial("_RSSpartial",Model.Rss)
 </div>
 
