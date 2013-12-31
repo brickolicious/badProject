@@ -71,8 +71,13 @@ namespace FestivalSite.Controllers
                     mail.To.Add(emailTo);
                     mail.From = new MailAddress("festivalManagerSSA@gmail.com");
                     mail.Subject = "Order confirmation";
-                    string Body = "U heeft zonet " + orderVM.Amount + " tickets besteld van het type " + TicketType.GetTicketTypeByID(orderVM.SelectedType).Name + " .";
-                    mail.Body = Body;
+
+                    mail.IsBodyHtml = true;
+                    //string Body = "U heeft zonet " + orderVM.Amount + " tickets besteld van het type " + TicketType.GetTicketTypeByID(orderVM.SelectedType).Name + " .";
+                    string body = "<html><head><title>Festival order</title></head><body><h3>U plaatste zonet volgend order:</h3><table><tr><td style=padding-left:10px;padding-right:10px;>Ticket</td><td  style=padding-left:10px;padding-right:10px;>Aantal</td><td  style=padding-left:10px;padding-right:10px;>Prijs</td></tr><tr><td>" + TicketType.GetTicketTypeByID(orderVM.SelectedType).Name + "</td><td style=text-align:center;>" + orderVM.Amount + "</td><td>€" + TicketType.GetTicketTypeByID(orderVM.SelectedType).Price * orderVM.Amount + "</td></tr></table></body></html>";
+                   
+                   
+                    mail.Body = body;
                     mail.IsBodyHtml = true;
                     SmtpClient smtp = new SmtpClient();
                     smtp.Host = "smtp.gmail.com";

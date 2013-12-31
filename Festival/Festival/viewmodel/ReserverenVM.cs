@@ -115,7 +115,7 @@ namespace BADProject.viewmodel
         #region functions
         private void AddTickTypeAction(TicketType type)
         {
-            MessageBox.Show("add");
+           
             TicketType.AddTicketType(type);
             TicketTypeList = TicketType.GetAllTicketTypes();
         }
@@ -165,7 +165,7 @@ namespace BADProject.viewmodel
         {
             AddTicketType ticketTypeView = new AddTicketType();
             AddTicketTypeVM.OnComplete += AddTicketTypeVM_OnComplete;
-            ticketTypeView.Show();
+            ticketTypeView.ShowDialog();
         }
 
         void AddTicketTypeVM_OnComplete(object sender)

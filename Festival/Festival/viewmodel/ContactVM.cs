@@ -155,7 +155,7 @@ namespace BADProject.viewmodel
 
             AddContact openNewContact = new AddContact();
             AddContactVM.OnComplete += AddContactVM_OnComplete;
-            openNewContact.Show();
+            openNewContact.ShowDialog();
         }
 
         void AddContactVM_OnComplete(object sender)
@@ -203,7 +203,7 @@ namespace BADProject.viewmodel
         {
             AddContactType viewAddType = new AddContactType();
             AddContactTypeVM.OnComplete += AddContactTypeVM_OnComplete;
-            viewAddType.Show();
+            viewAddType.ShowDialog();
         }
 
         void AddContactTypeVM_OnComplete(object sender)
@@ -235,7 +235,7 @@ namespace BADProject.viewmodel
             //EditContact = conPers;
 
             EditContact editWindow = new EditContact();
-            editWindow.Show();
+            editWindow.ShowDialog();
         }
 
         private void SearchAction(string strName)
@@ -247,7 +247,7 @@ namespace BADProject.viewmodel
         private void SearchContact()
         {
             SearchContact search = new SearchContact();
-            search.Show();
+            search.ShowDialog();
         }
 
         public void opVullenMetGeselecteerdeType()

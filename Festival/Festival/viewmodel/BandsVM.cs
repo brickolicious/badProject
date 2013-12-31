@@ -96,7 +96,7 @@ namespace BADProject.viewmodel
         {
             RemoveGenres removeGenreView = new RemoveGenres();
             RemoveGenreVM.OnComplete += RemoveGenreVM_OnComplete;
-            removeGenreView.Show();
+            removeGenreView.ShowDialog();
         }
 
         void RemoveGenreVM_OnComplete(object sender)
@@ -109,7 +109,7 @@ namespace BADProject.viewmodel
 
             AddBand addBandWindow = new AddBand();
             AddBandVM.OnComplete += AddBandVM_OnComplete;
-            addBandWindow.Show();
+            addBandWindow.ShowDialog();
 
 
 
@@ -153,7 +153,7 @@ namespace BADProject.viewmodel
             SelectedBand = band;
             EditBand viewEditBand = new EditBand();
             EditBandVM.OnComplete += EditBandVM_OnComplete;
-            viewEditBand.Show();
+            viewEditBand.ShowDialog();
         }
 
         void EditBandVM_OnComplete(object sender)

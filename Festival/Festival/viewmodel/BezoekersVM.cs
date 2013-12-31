@@ -125,7 +125,7 @@ namespace BADProject.viewmodel
         {
 
             SearchOrder searchView = new SearchOrder();
-            searchView.Show();
+            searchView.ShowDialog();
 
         }
 
@@ -140,7 +140,7 @@ namespace BADProject.viewmodel
         {
             //SelectedTicket = ticket;
             EditOrder editOrderView = new EditOrder();
-            editOrderView.Show();
+            editOrderView.ShowDialog();
         }
 
         private void EditOrderAction(Ticket ticket)

@@ -240,7 +240,7 @@ namespace BADProject.viewmodel
 
             AddStage addStage = new AddStage();
             AddStageVM.OnComplete += AddStageVM_OnComplete;
-            addStage.Show();
+            addStage.ShowDialog();
 
         }
 
@@ -268,7 +268,7 @@ namespace BADProject.viewmodel
         private void ShowRemoveStage()
         {
             RemoveStage removeView = new RemoveStage();
-            removeView.Show();
+            removeView.ShowDialog();
         }
 
 
@@ -281,7 +281,7 @@ namespace BADProject.viewmodel
         {
             AddLineUp addLineUpView = new AddLineUp();
             AddLineUpVM.OnComplete += AddLineUpVM_OnComplete;
-            addLineUpView.Show();
+            addLineUpView.ShowDialog();
         }
 
         void AddLineUpVM_OnComplete(object sender)
