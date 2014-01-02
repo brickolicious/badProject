@@ -19,6 +19,16 @@ namespace BADProject.viewmodel
             
         }
 
+        private int _type;
+
+        public int ContactTypePosition
+        {
+            get { return _type; }
+            set { _type = value; OnPropertyChanged("ContactTypePosition"); }
+        }
+        
+
+
         private static ContactPerson selected;
 
         public static ContactPerson SelectedContactStatic

@@ -193,7 +193,15 @@ namespace ClassLibraryModels
 
                 foreach (IDataRecord record in reader)
                 {
-                    iAantal = (int)reader[0];
+                    if (reader[0] != System.DBNull.Value)
+                    {
+                        iAantal = (int)reader[0];
+                    }
+                    else {
+
+                        return iAantal = GetTicketTypeByID(ticketTypeID).TotalTickets;
+
+                    }
                 }
 
                 TicketType tempType =  GetTicketTypeByID(ticketTypeID);

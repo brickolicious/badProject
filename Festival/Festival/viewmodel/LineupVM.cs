@@ -25,10 +25,6 @@ namespace BADProject.viewmodel
             this.StageList = Stage.GetAllStages();
 
 
-            /*Timer refreshTimer = new Timer();
-            refreshTimer.Elapsed += new ElapsedEventHandler(Refresh);
-            refreshTimer.Interval = 2500;
-            refreshTimer.Start();*/
         }
 
 
@@ -46,7 +42,8 @@ namespace BADProject.viewmodel
         }
 
 
-
+     
+        
 
         private ObservableCollection<DateTime> _lstDates;
 
@@ -206,7 +203,6 @@ namespace BADProject.viewmodel
                 if (result == MessageBoxResult.Yes)
                 {
                     Stage.RemoveStageAndItsLineup(stage.ID);
-                    ToonLineUp(SelectedDay);
                 }
                 else { return; }
             }
@@ -217,7 +213,6 @@ namespace BADProject.viewmodel
         {
 
             SelectedDay = day;
-
             StageList = Stage.GetAllStages(day);
 
         }
@@ -291,12 +286,6 @@ namespace BADProject.viewmodel
 
         #endregion
 
-
-
-        /*public void Refresh(object source, ElapsedEventArgs e)
-        {
-            ToonLineUp(SelectedDay);
-        } */
 
         void AddStageVM_OnComplete(object sender)
         {

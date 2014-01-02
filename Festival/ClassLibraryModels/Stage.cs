@@ -169,7 +169,8 @@ namespace ClassLibraryModels
             return tempStage;
         }
 
-        private static Stage CreateStageWithDate(DbDataReader reader, DateTime time) {
+       /* private static Stage CreateStageWithDate(DbDataReader reader, DateTime time)
+        {
 
             Stage stage = new Stage();
             try
@@ -178,12 +179,13 @@ namespace ClassLibraryModels
                 stage.Name = (string)reader["Name"];
                 stage.LineUpByStage = LineUp.GetBandsByLineUpIDAndDate((int)reader["ID"], time);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.Message);
             }
             return stage;
         }
-
+        
         public static Stage GetStageByDay(DateTime day)
         {
             Stage tempStage = new Stage();
@@ -202,14 +204,15 @@ namespace ClassLibraryModels
 
                 reader.Close();
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
 
                 Console.WriteLine(ex.Message);
-            
+
             }
 
             return tempStage;
-        }
+        }*/
 
         public static void RemoveStageAndItsLineup(int stageID) {
 

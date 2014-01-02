@@ -64,7 +64,7 @@
         <!--<Label Content="Zoek op naam: " Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,130,10" Grid.Row="2" VerticalAlignment="Bottom" Height="29"/>
         <Button Command="{Binding SearchContactCommand}"  CommandParameter="{Binding ElementName=txtSearch,Path=Text}" Style="{StaticResource buttonStyle}" Grid.ColumnSpan="2" Content="Button" Grid.Column="4" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Center" Width="75"/>-->
 
-        <Button Grid.Column="4" Grid.Row="1" Command="{Binding SearchContactCommand}" Style="{StaticResource buttonStyle}" Content="Search contact" Height="28" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,6" Width="115" TabIndex="3"/>
+        <Button Grid.Column="4" Grid.Row="1" Command="{Binding SearchContactCommand}" Style="{StaticResource buttonStyle}" Content="Search by name" Height="28" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,6" Width="115" TabIndex="3"/>
 
 
     </Grid>

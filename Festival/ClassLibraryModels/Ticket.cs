@@ -84,6 +84,7 @@ namespace ClassLibraryModels
 
         private int _amount;
         [Required]
+        [Range(1,5000)]
         public int Amount
         {
             get { return _amount; }
@@ -386,7 +387,7 @@ namespace ClassLibraryModels
                     bookmarks["Email"].Parent.InsertAfter<DocumentFormat.OpenXml.Wordprocessing.Run>(new DocumentFormat.OpenXml.Wordprocessing.Run(new Text(ticket.Email)), bookmarks["Email"]);
                     bookmarks["Type"].Parent.InsertAfter<DocumentFormat.OpenXml.Wordprocessing.Run>(new DocumentFormat.OpenXml.Wordprocessing.Run(new Text(ticket.TicketTypeProp.Name)), bookmarks["Type"]);
                     bookmarks["Amount"].Parent.InsertAfter<DocumentFormat.OpenXml.Wordprocessing.Run>(new DocumentFormat.OpenXml.Wordprocessing.Run(new Text(ticket.Amount+"")), bookmarks["Amount"]);
-                    bookmarks["Total"].Parent.InsertAfter<DocumentFormat.OpenXml.Wordprocessing.Run>(new DocumentFormat.OpenXml.Wordprocessing.Run(new Text((ticket.Amount * ticket.TicketTypeProp.Price) + "")), bookmarks["Total"]);
+                    bookmarks["Total"].Parent.InsertAfter<DocumentFormat.OpenXml.Wordprocessing.Run>(new DocumentFormat.OpenXml.Wordprocessing.Run(new Text(("€"+ticket.Amount * ticket.TicketTypeProp.Price) + "")), bookmarks["Total"]);
 
 
 

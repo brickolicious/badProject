@@ -149,7 +149,7 @@ namespace ClassLibraryModels
                 int tempID = 1;
                 DbParameter dagPar = DataBase.AddParameter("@day", date);
                 DbParameter idPar = DataBase.AddParameter("@id", tempID);
-                string sql = "UPDATE FestivalDatums SET StartDatum = @day WHERE id = @id";
+                string sql = "UPDATE FestivalDatums SET StartDatum = @day WHERE id = @id;UPDATE FestivalDatums SET EindDatum = StartDatum+1 WHERE id = 1";
 
                 int modifiedData = DataBase.ModifyData(sql, idPar,dagPar);
 

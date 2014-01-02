@@ -45,12 +45,12 @@
         <TextBox x:Name="txtFacebook" Text="{Binding BandToAdd.Facebook,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="4" TabIndex="4"/>
         <Button Style="{StaticResource buttonStyle}" Grid.Column="2" Command="{Binding ChoosePictureCommand}" Grid.Row="6" Margin="0,0,0,179" TabIndex="5" Grid.RowSpan="2">Choose image</Button>
         <Border Grid.Row="7" Grid.ColumnSpan="4">
-            <Image x:Name="imgBand"  Source="{Binding Photo.Source}"/>
+            <Image x:Name="imgBand"  Source="{Binding Photo.Source}" Margin="0,0,0,10"/>
         </Border>
 
 
-        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding AddToBands}"  Grid.ColumnSpan="2" Grid.Row="8" Click="sendBtn_Click" Margin="0,0,0,-2" Content="Voeg toe." Grid.Column="1" TabIndex="6"/>
-        <Label Grid.Column="1" Grid.Row="5" Content="Genres:" Margin="0.308,0,0.192,0"/>
+        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding AddToBands}"  Grid.ColumnSpan="2" Grid.Row="7" Click="sendBtn_Click" Margin="0,179,0,0" Content="Voeg toe." Grid.Column="1" TabIndex="6" Grid.RowSpan="2"/>
+        <Label Grid.Column="1" Grid.Row="5" Content="Genres 1,2,3,...:" Margin="0.308,0,0.192,0"/>
         <TextBox x:Name="txtGenres" Text="{Binding BandToAdd.GenresInText,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="5"/>
     </Grid>
 </Window>

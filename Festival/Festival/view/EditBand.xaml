@@ -48,8 +48,8 @@
             </i:Interaction.Triggers>
         </Image>
         <Button Style="{StaticResource buttonStyle}" TabIndex="6" x:Name="sendBtn" Command="{Binding EditBandAction}"  Grid.ColumnSpan="2" Grid.Row="8"  Margin="0,0,0,-1" Content="Edit band" Grid.Column="1" Click="sendBtn_Click"/>
-        <Label Grid.Column="1" Grid.Row="5" Content="Genres:"/>
-        <TextBox x:Name="txtGenres" Text="{Binding SelectedBand.GenresInText}" Grid.Column="2" Grid.Row="5" TabIndex="4"/>
+        <Label Grid.Column="1" Grid.Row="5" Content="Genres 1,2,3,...:"/>
+        <TextBox x:Name="txtGenres" Text="{Binding SelectedBand.GenresInText,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="5" TabIndex="4"/>
         <Button Style="{StaticResource buttonStyle}" Command="{Binding ChoosePictureCommand}" Grid.Column="2" Grid.Row="6" TabIndex="5">New image</Button>
         <Border Grid.Row="7" Grid.ColumnSpan="4">
             <Image x:Name="imgBand"   Source="{Binding Pic,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"/>

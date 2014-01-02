@@ -78,7 +78,7 @@ namespace ClassLibraryModels
 
             try
             {
-                DbDataReader reader = DataBase.GetData("SELECT * FROM ContactPersonType");
+                DbDataReader reader = DataBase.GetData("SELECT * FROM ContactPersonType ORDER BY Name ASC");
                 foreach (IDataRecord record in reader)
                 {
                     ContactPersonType tempConType = new ContactPersonType();

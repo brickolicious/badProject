@@ -152,7 +152,7 @@
         <DataTemplate x:Key="lstLineup">
             
                 <StackPanel>
-                <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" />
+                <TextBlock Text="{Binding Name}" Width="270" Height="20" TextAlignment="Center" Foreground="White" Background="BlueViolet" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" />
 
                 <ListView x:Name="lstvwLineup" Width="270" Height="290" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding LineUpByStage}" SelectedItem="{Binding SelectedLineup}">
                     <ListView.View>

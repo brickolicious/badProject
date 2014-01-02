@@ -18,6 +18,16 @@ namespace BADProject.viewmodel
         }
 
 
+        private int _indexOfCBO;
+
+        public int TicketTypePosition
+        {
+            get { return _indexOfCBO; }
+            set { _indexOfCBO = value; }
+        }
+        
+
+
         private static Ticket _selectedTicketStatic;
 
         public static Ticket SelectedTicketStatic
@@ -32,7 +42,7 @@ namespace BADProject.viewmodel
         public Ticket SelectedTicket
         {
             get { return _selecTick; }
-            set { _selecTick = value; SelectedTicketStatic = _selecTick; OnPropertyChanged("SelectedTicket"); }
+            set { _selecTick = value; SelectedTicketStatic = _selecTick; SetIndexForComboBoxType(); OnPropertyChanged("SelectedTicket"); }
         }
 
         private ObservableCollection<TicketType> _typeList;
@@ -53,8 +63,33 @@ namespace BADProject.viewmodel
 
         private void EditOrder()
         {
+            Ticket updateTicket = SelectedTicketStatic;
+            updateTicket.Amount = 0;
+            
             Ticket.UpdateOrder(SelectedTicketStatic);
         }
+
+
+
+        public void SetIndexForComboBoxType()
+        {
+            //lukt niet om via XAML dus int prop binden aan index
+
+            if (SelectedTicket == null || SelectedTicket.TicketTypeProp == null) { return; }
+            int iTeller = 1;
+            foreach (TicketType type in TicketType.GetAllTicketTypes())
+            {
+                if (SelectedTicket.TicketTypeProp.ID == type.ID)
+                {
+
+                    TicketTypePosition = iTeller;
+                    
+                }
+                iTeller++;
+            }
+
+        }
+
         
 
 

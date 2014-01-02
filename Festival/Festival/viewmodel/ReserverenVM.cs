@@ -126,19 +126,37 @@ namespace BADProject.viewmodel
 
         private void Reserveren()
         {
-            int iPossibleUserID = Ticket.SearchIfUserExistsOrNot(this.TicketOrder.Name, this.TicketOrder.Email);
 
-            if (iPossibleUserID != 0)
+
+            int iAvailableTicketsForType = TicketType.AvailableTicketsForType(TicketOrder.TicketTypeProp.ID);
+            if (iAvailableTicketsForType < TicketOrder.Amount)
             {
-                TicketOrder.TicketholderID = iPossibleUserID;
-                Ticket.PlaceAnOrder(TicketOrder);
+                MessageBox.Show("There are only " + iAvailableTicketsForType + " tickets for this type left.", "Tickets available", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
-            else {
-                Ticket.InsertUserAndOrder(TicketOrder);
+            else
+            {
+
+
+                int iPossibleUserID = Ticket.SearchIfUserExistsOrNot(this.TicketOrder.Name, this.TicketOrder.Email);
+
+                if (iPossibleUserID != 0)
+                {
+                    TicketOrder.TicketholderID = iPossibleUserID;
+                    Ticket.PlaceAnOrder(TicketOrder);
+                }
+                else
+                {
+                    Ticket.InsertUserAndOrder(TicketOrder);
+                }
+
+                TicketOrder = new Ticket();
+                TicketTypeList = TicketType.GetAllTicketTypes();
             }
-            
-            TicketOrder = new Ticket();
+
         }
+
+
 
         private void Search(KeyEventArgs e)
         {

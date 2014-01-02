@@ -26,8 +26,8 @@
             <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding EditActionCommand}"  Grid.ColumnSpan="2" Grid.Row="9" Click="sendBtn_Click" Content="Edit order" Grid.Column="1" TabIndex="3" />
-        <ComboBox x:Name="cboTicketType" Grid.Column="2" Grid.Row="4" ItemsSource="{Binding TypeList}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTicketStatic.TicketTypeProp}" TabIndex="1"/>
+        <Button Style="{StaticResource buttonStyle}" x:Name="sendBtn" Command="{Binding EditActionCommand}"  Grid.ColumnSpan="2" Grid.Row="8" Click="sendBtn_Click" Content="Edit order" Grid.Column="1" TabIndex="3" Margin="0,25,0,0" Grid.RowSpan="2" />
+        <ComboBox x:Name="cboTicketType" Grid.Column="2" Grid.Row="4" ItemsSource="{Binding TypeList}" DisplayMemberPath="Name" SelectedIndex="{Binding TicketTypePosition}" TabIndex="1"/>
         <TextBox x:Name="txtAmount" Grid.Column="2" Grid.Row="5" Text="{Binding SelectedTicketStatic.Amount,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TabIndex="2" TextChanged="txtAmount_TextChanged"/>
 
 

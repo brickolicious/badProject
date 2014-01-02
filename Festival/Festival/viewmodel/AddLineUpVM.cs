@@ -21,7 +21,8 @@ namespace BADProject.viewmodel
     }
 
 
-        private LineUp _lineup;
+    private LineUp _lineup;
+
 	public LineUp LineUpToAdd
 	{
 		get { return _lineup;}
@@ -55,7 +56,7 @@ namespace BADProject.viewmodel
     private void AddLineup()
     {
 
-
+        #region tijd
         string[] splitArr = LineUpToAdd.From.Split(' ');
         string[] subSplitArr = splitArr[1].Split(':');
         if (subSplitArr[0].Length == 1) {
@@ -80,9 +81,11 @@ namespace BADProject.viewmodel
         {
             subSplitArr[1] = 0 + subSplitArr[1];
         }
-
-
         LineUpToAdd.Until = subSplitArr[0] + ":" + subSplitArr[1] + " " + splitArr[2];
+        #endregion
+
+
+        
 
         LineUp.AddLineUp(LineUpToAdd);
 

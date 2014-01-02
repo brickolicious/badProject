@@ -100,7 +100,7 @@ namespace ClassLibraryModels
 
         private string _phone;
         [Required]
-        [Phone]
+        [DataType(DataType.PhoneNumber)]
         public string Phone
         {
             get { return _phone; }
@@ -110,7 +110,7 @@ namespace ClassLibraryModels
 
         private string _cellphone;
         [Required]
-        [Phone]
+        [DataType(DataType.PhoneNumber)]
         public string CellPhone
         {
             get { return _cellphone; }
