@@ -23,7 +23,7 @@ namespace BADProject.viewmodel
         public LineupVM()
         {
             this.StageList = Stage.GetAllStages();
-
+            SelectedDay = DateTime.Now;
 
         }
 
