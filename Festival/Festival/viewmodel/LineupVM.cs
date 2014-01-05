@@ -31,9 +31,6 @@ namespace BADProject.viewmodel
       
 
 
-
-
-
         #region props
 
         public string Name
@@ -148,20 +145,20 @@ namespace BADProject.viewmodel
             get { return new RelayCommand(AddStages); }
         }
 
-
+        /*
         public ICommand AddStageActionCom
         {
             get { return new RelayCommand<string>(AddStageAction); }
-        }
+        }*/
 
         
         public ICommand ShowAddLineUp {
             get { return new RelayCommand(ShowAddLineUpAction); }
         }
-
+        /*
         public ICommand AddLineUpAction {
             get { return new RelayCommand<LineUp>(AddAction); }
-        }
+        }*/
 
 
         public ICommand RemoveLineUp
@@ -189,12 +186,14 @@ namespace BADProject.viewmodel
 
 
         #region commandFunctions
+        //Sets the start day of the festival
         private void SetStartDay(DateTime startDay)
         {
             Festival.SetStartDay(startDay);
             this.DatesList = Festival.GetFestivalDays();
         }
 
+        //removes the stage and all of its lineup elements
         private void RemoveAction(Stage stage)
         {
             if (stage != null)
@@ -209,6 +208,7 @@ namespace BADProject.viewmodel
             else { return; }
         }
 
+        //refills the stage lists
         public void ToonLineUp(DateTime day)
         {
 
@@ -222,8 +222,6 @@ namespace BADProject.viewmodel
             Festival.RemoveDay(DatesList.Count);
             DatesList = Festival.GetFestivalDays();
         }
-
-
         public void AddDay()
         {
             Festival.AddDay();
@@ -240,14 +238,20 @@ namespace BADProject.viewmodel
         }
 
       
-
+        /*
         public void AddStageAction(string strStageName)
         {
 
             Stage.AddStageAction(strStageName);
             StageList = Stage.GetAllStages();
 
-        }
+        }*/
+  /*
+        private void AddAction(LineUp lineup)
+        {
+            LineUp.AddLineUp(lineup);
+        }*/
+
 
         private void RemoveLineUpAction(LineUp lineup)
         {
@@ -266,12 +270,7 @@ namespace BADProject.viewmodel
             removeView.ShowDialog();
         }
 
-
-        private void AddAction(LineUp lineup)
-        {
-            LineUp.AddLineUp(lineup);
-        }
-
+      
         private void ShowAddLineUpAction()
         {
             AddLineUp addLineUpView = new AddLineUp();
@@ -279,17 +278,20 @@ namespace BADProject.viewmodel
             addLineUpView.ShowDialog();
         }
 
+        //"refreshes" the lists after completing an insert or update
         void AddLineUpVM_OnComplete(object sender)
+        {
+            ToonLineUp(SelectedDay);
+        }
+
+        //"refreshes" the lists after completing an insert or update
+        void AddStageVM_OnComplete(object sender)
         {
             ToonLineUp(SelectedDay);
         }
 
         #endregion
 
-
-        void AddStageVM_OnComplete(object sender)
-        {
-            ToonLineUp(SelectedDay);
-        }
+        
     }
 }

@@ -44,7 +44,7 @@
     
 
     @using (Html.BeginForm("PlaceOrder", "Order", FormMethod.Post)) {
-
+        @Html.AntiForgeryToken()
         if (!String.IsNullOrEmpty(Model.Message)) { 
     
         <span id="message">@Model.Message</span>

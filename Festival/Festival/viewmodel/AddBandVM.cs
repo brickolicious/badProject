@@ -25,6 +25,8 @@ namespace BADProject.viewmodel
             BandToAdd = new Band();
         }
 
+
+        #region props
         private Band _band;
 
         public Band BandToAdd
@@ -41,7 +43,7 @@ namespace BADProject.viewmodel
             set { pic = value; OnPropertyChanged("Photo"); }
         }
         
-
+#endregion
 
 
         public ICommand AddToBands {
@@ -50,18 +52,11 @@ namespace BADProject.viewmodel
         
         }
 
-        private void AddBand()
-        {
-            
-            Genre.InsertBandAndOrAttachGenres(BandToAdd);
-
-            UpdateProps();
-        }
-
-
         public ICommand ChoosePictureCommand {
             get { return new RelayCommand(GetPicture); }
         }
+
+
 
         private void GetPicture()
         {
@@ -80,11 +75,17 @@ namespace BADProject.viewmodel
             }
         }
 
+        private void AddBand()
+        {
+            
+            Genre.InsertBandAndOrAttachGenres(BandToAdd);
+
+            UpdateProps();
+        }
 
 
 
-
-
+        //updates lists in other VMs
         public static event Update OnComplete;
         private void UpdateProps() {
             OnComplete(this);

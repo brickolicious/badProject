@@ -70,6 +70,7 @@ namespace ClassLibraryModels
             null, true);
         }
 
+        //gets a collection of all the genres
         public static ObservableCollection<Genre> GetGenres() {
             ObservableCollection<Genre> genreList = new ObservableCollection<Genre>();
 
@@ -96,7 +97,8 @@ namespace ClassLibraryModels
             return genreList;
         }
 
-
+        //gets a list of genres based on the bands name
+        //does this by inner joining, it goes the the band table and does a where on its name, the gets the genreID from the reservations and looks up the genre
         public static ObservableCollection<Genre> GetListOfGenresByBand(string bandName) {
             ObservableCollection<Genre> bandsCol = new ObservableCollection<Genre>();
 
@@ -124,7 +126,8 @@ namespace ClassLibraryModels
             return bandsCol;
         }
 
-
+        //it gets a string and splits the string based on the ',' charachter it then checks if that genre exists or not if so it adds that genre to the collection
+        //if it checks the genre table it doenst exist, it creates the genre and then adds the newly created genre to the collection
         public static ObservableCollection<Genre> GetCollectionOfGenresForBandFromGenresString(string genresString) {
 
             ObservableCollection<Genre> genreColl = new ObservableCollection<Genre>();
@@ -154,6 +157,8 @@ namespace ClassLibraryModels
             return genreColl;
         }
 
+        //creates a genrebased on a string that should represent its name
+        //then it returns the created genre
         private static Genre CreateAndReturnGenre(string tempString)
         {
             Genre gen;
@@ -173,6 +178,7 @@ namespace ClassLibraryModels
             }
         }
 
+        //checks if there exists a genre that has the same name as its parameter string if so it returns that genre
         private static Genre CheckIfGenreExistsIfSoReturnGenre(string tempString)
         {
             try
@@ -202,6 +208,11 @@ namespace ClassLibraryModels
             }
         }
 
+        //checks if band exists if so it updates the band info
+        //if the band doesnt exist it creates the band
+        //if the band already existed it removes all the genres associated with it and adds all the genres again in the bandgenre table 
+        //this is to make sure there are no old settings left
+        //because all genres are directly visbible in the store app
         public static void InsertBandAndOrAttachGenres(Band band) {
 
             try
@@ -294,6 +305,7 @@ namespace ClassLibraryModels
             }
         }
 
+        //removes a genre based on the given id
         public static void RemoveGenre(int genreID) {
 
             try

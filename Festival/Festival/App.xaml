@@ -144,11 +144,13 @@
 
 
 
-
+        <!--Set all listviews next to eachother-->
         <ItemsPanelTemplate x:Key="stkPnl">
             <StackPanel Orientation="Horizontal"/>
         </ItemsPanelTemplate>
 
+        <!--foreach stage create textbox with its name as title-->
+        <!--and its lineup in a listview with a button to remove the lineup-->
         <DataTemplate x:Key="lstLineup">
             
                 <StackPanel>

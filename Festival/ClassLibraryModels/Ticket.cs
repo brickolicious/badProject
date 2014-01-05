@@ -102,6 +102,7 @@ namespace ClassLibraryModels
             null, true);
         }
 
+        //returns all the orders that have been placed "visitors" with there ticket amount and type
         public static ObservableCollection<Ticket> GetAllVisitors() {
             ObservableCollection<Ticket> visitorsCollection = new ObservableCollection<Ticket>();
 
@@ -131,6 +132,7 @@ namespace ClassLibraryModels
             return visitorsCollection;
         }
 
+        //does a query and returns all the visitors that have been registerd so far it does this with only part of the name, it gets executed on textchanged event to command
         public static ObservableCollection<Ticket> GetVisitorsSearch(string partialName)
         {
             ObservableCollection<Ticket> searchColl = new ObservableCollection<Ticket>();
@@ -210,6 +212,8 @@ namespace ClassLibraryModels
             return searchColl;
         }
 
+        //each combination of name and email is unique, this function checks if this is already present in the database
+        //if the user is present it returns the userID else it returns 0
         public static int SearchIfUserExistsOrNot(string strName,string strEmail){
             int userID = 0;
 
@@ -240,6 +244,7 @@ namespace ClassLibraryModels
                 return userID;
         }
 
+        //inserts an order into the database
         public static void PlaceAnOrder(Ticket ticket){
 
             try
@@ -259,6 +264,7 @@ namespace ClassLibraryModels
 
         }
 
+        //this function checks if a user exists or not and of not creates the user else it places an order for the user it calls several previous functions from this class
         public static void InsertUserAndOrder(Ticket ticket){
 
             DbTransaction trans = DataBase.BeginTransaction();
@@ -301,7 +307,7 @@ namespace ClassLibraryModels
         }
 
 
-        //crypto zodat users die aangemaakt zijn in de desktopapp ook online kunnen inloggen(pasw hash berekenen)
+        //Crypto calculates hashes so that users who get add through the desktop application are also ablo to login to the website with the standard password "root123"
          #region Crypto
         private const int PBKDF2IterCount = 1000; // default for Rfc2898DeriveBytes
         private const int PBKDF2SubkeyLength = 256 / 8; // 256 bits
@@ -330,6 +336,7 @@ namespace ClassLibraryModels
         }
         #endregion
 
+        //makes an adjustment of type or amount to an existing order
         public static void UpdateOrder(Ticket ticket) {
 
             try
@@ -347,6 +354,7 @@ namespace ClassLibraryModels
         
         }
 
+        //deletes an order
         public static void DeleteOrder(int id) {
 
             try
@@ -360,8 +368,9 @@ namespace ClassLibraryModels
             }
         }
 
-
-
+        //in the debug folder is a word template
+        //this function takes a copy of that template and places order information into several of the bookmarks
+        //after which it outputs the copied file to a location chosen by the user.
         public static void PrintOrder(Ticket ticket)
         {
 
@@ -413,8 +422,8 @@ namespace ClassLibraryModels
             }
 
         }
-
-
+        
+        //gets the clients (read order) name by his ID
         public static string GetUserNameByID(int userID) { 
             string name="";
 
@@ -439,7 +448,7 @@ namespace ClassLibraryModels
             return name;
         }
 
-
+        //gets all the orders placed by a user, this function is writen for the MVC site
         public static List<Ticket> GetAllReservationsForUser(int UserID) {
             List<Ticket> tickList = new List<Ticket>();
 
@@ -474,7 +483,7 @@ namespace ClassLibraryModels
             return tickList;
         }
 
-
+        //gets the userID corresponding with the name
         public static int GetUserIDFromUsername(string name) {
             int userID = 0;
 
@@ -499,7 +508,7 @@ namespace ClassLibraryModels
             return userID;
         }
 
-
+        //gets the users email corresponding with his name
         public static string GetUserEmailFromUsername(string name)
         {
             string email = "";

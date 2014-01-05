@@ -92,16 +92,10 @@ namespace BADProject.viewmodel
             get { return new RelayCommand(ToonAddContact); }
         }
 
-        public ICommand AddContactComBtn
-        {
-            get { return new RelayCommand<ContactPerson>(AddTheContact); }
-        }
-
         public ICommand SearchContactCommand
         {
             get { return new RelayCommand(SearchContact); }
         }
-
 
         public ICommand SearchContactActionCommand {
             get
@@ -117,17 +111,9 @@ namespace BADProject.viewmodel
             }
         }
 
-        public ICommand EditContactComBtn {
-            get {
-                return new RelayCommand<ContactPerson>(EditContactAction);
-            }
-        }
-
-
         public ICommand AddContactTypeCommand {
             get { return new RelayCommand(OpenAddContactType); }
         }
-
         
         public ICommand AddCategory
         {
@@ -139,10 +125,11 @@ namespace BADProject.viewmodel
             get { return new RelayCommand<ContactPersonType>(DeleteTypeAction); }
         }
 
-
-        public ICommand DeleteContact
+        public ICommand DeleteContactCommand
         {
-            get { return new RelayCommand<ContactPerson>(DeleteContactAction); }
+
+            get { return new RelayCommand<ContactPerson>(RemoveContact); }
+
         }
 
 #endregion
@@ -158,14 +145,10 @@ namespace BADProject.viewmodel
             openNewContact.ShowDialog();
         }
 
+        //update list event handler
         void AddContactVM_OnComplete(object sender)
         {
             opVullenMetGeselecteerdeType();
-        }
-
-        private void AddTheContact(ContactPerson person)
-        {
-            ContactPerson.AddTheContact(person);
         }
 
         private void DeleteTypeAction(ContactPersonType ConType)
@@ -173,17 +156,7 @@ namespace BADProject.viewmodel
             ContactPersonType.DeleteContactType(ConType.ID);
             ContactTypeLijst = ContactPersonType.GetAllContactPersonType();
         }
-
-        private void DeleteContactAction(ContactPerson contact)
-        {
-            MessageBoxResult result = MessageBox.Show("Are you sure you wish to delete this contact?", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes)
-            {
-                ContactPerson.DeleteContact(contact.ID);
-            }
-            else { return; }
-        }
-
+  
         private void AddCategoryAction(string strName)
         {
 
@@ -194,11 +167,6 @@ namespace BADProject.viewmodel
 
         }
 
-
-
-
-
-
         private void OpenAddContactType()
         {
             AddContactType viewAddType = new AddContactType();
@@ -206,28 +174,14 @@ namespace BADProject.viewmodel
             viewAddType.ShowDialog();
         }
 
+        //updates lists when event is called
         void AddContactTypeVM_OnComplete(object sender)
         {
             UpdatePropsForContact();
         }
-
         private void UpdatePropsForContact()
         {
             ContactTypeLijst = ContactPersonType.GetAllContactPersonType();
-        }
-
-
-
-
-
-
-
-
-        public void EditContactAction(ContactPerson conPer)
-        {
-
-            ContactPerson.UpdateContact(conPer);
-
         }
 
         private void ShowEditContact()
@@ -238,11 +192,11 @@ namespace BADProject.viewmodel
             editWindow.ShowDialog();
         }
 
+        //search for all contacts with the given string as part of there name
         private void SearchAction(string strName)
         {
             SearchList = ContactPerson.GetContactByName(strName);
         }
-
 
         private void SearchContact()
         {
@@ -261,18 +215,7 @@ namespace BADProject.viewmodel
             }
 
         }
-        #endregion
-
-
-
-
-        public ICommand DeleteContactCommand
-        {
-
-            get { return new RelayCommand<ContactPerson>(RemoveContact); }
-
-        }
-
+        
         private void RemoveContact(ContactPerson person)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this contact.", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -283,6 +226,8 @@ namespace BADProject.viewmodel
             }
             else { return; }
         }
+
+        #endregion
 
     }
 }

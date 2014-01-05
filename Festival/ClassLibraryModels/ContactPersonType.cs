@@ -72,6 +72,7 @@ namespace ClassLibraryModels
             null, true);
         }
 
+        //returns a list of all contacttypes
         public static ObservableCollection<ContactPersonType> GetAllContactPersonType()
         {
             ObservableCollection<ContactPersonType> contactPersonTypeCol = new ObservableCollection<ContactPersonType>();
@@ -103,6 +104,7 @@ namespace ClassLibraryModels
             return contactPersonTypeCol;
         }
 
+        //gets a contacttype based on the given id
         public static ContactPersonType GetContactPersonTypeByID(int id) {
             ContactPersonType tempConTyp = new ContactPersonType();
 
@@ -130,6 +132,7 @@ namespace ClassLibraryModels
             return tempConTyp;
         }
 
+        //adds a contacttype to the database
         public static void AddContactType(string strName) {
 
             try
@@ -143,6 +146,7 @@ namespace ClassLibraryModels
             }
         }
 
+        //removes a contacttype from the database
         public static void DeleteContactType(int id) {
             try
             {

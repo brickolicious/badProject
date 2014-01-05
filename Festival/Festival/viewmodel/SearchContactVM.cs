@@ -17,25 +17,25 @@ namespace BADProject.viewmodel
             SearchList = ContactPerson.GetAllContacts();
         }
 
+        #region props
+                private ObservableCollection<ContactPerson> _searchList;
 
-        private ObservableCollection<ContactPerson> _searchList;
-
-        public ObservableCollection<ContactPerson> SearchList
-        {
-            get { return _searchList; }
-            set { _searchList = value;OnPropertyChanged("SearchList"); }
-        }
+                public ObservableCollection<ContactPerson> SearchList
+                {
+                    get { return _searchList; }
+                    set { _searchList = value;OnPropertyChanged("SearchList"); }
+                }
 
 
-        private string _namePartial;
+                private string _namePartial;
 
-        public string Name
-        {
-            get { return _namePartial; }
-            set { _namePartial = value; searchContact(); OnPropertyChanged("Name"); }
-        }
-        
-        
+                public string Name
+                {
+                    get { return _namePartial; }
+                    set { _namePartial = value; searchContact(); OnPropertyChanged("Name"); }
+                }
+        #endregion
+
 
         public ICommand SearchContactActionCommand {
 
@@ -43,6 +43,7 @@ namespace BADProject.viewmodel
         
         }
 
+        //fill list of contacts with contacts that have partially the same name.
         private void searchContact()
         {
             SearchList = ContactPerson.GetContactByName(Name);

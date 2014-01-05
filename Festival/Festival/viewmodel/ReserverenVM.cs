@@ -21,6 +21,8 @@ namespace BADProject.viewmodel
         {
             TicketOrder = new Ticket();
             //FilterList = Ticket.GetAllVisitors();
+
+            //fill list of visitors from the start with all of them
             FilterList = Ticket.GetVisitorsSearch("");
         }
 
@@ -102,28 +104,29 @@ namespace BADProject.viewmodel
             }
         }
 
-
+        /*
         public ICommand AddTypeAction
         {
-            get {
+            get
+            {
                 return new RelayCommand<TicketType>(AddTickTypeAction);
             }
-        }
+        }*/
 
         #endregion
 
         #region functions
-        private void AddTickTypeAction(TicketType type)
+        /*private void AddTickTypeAction(TicketType type)
         {
            
             TicketType.AddTicketType(type);
             TicketTypeList = TicketType.GetAllTicketTypes();
-        }
+        }*/
 
 
 
 
-
+        //checks if there are enough tickets of this type left if not give message els place the order
         private void Reserveren()
         {
 
@@ -156,8 +159,7 @@ namespace BADProject.viewmodel
 
         }
 
-
-
+        //fills up the filterlist property with customers
         private void Search(KeyEventArgs e)
         {
 
@@ -166,6 +168,7 @@ namespace BADProject.viewmodel
             e.Handled = false;
         }
 
+        //calls the delete type function from the model
         private void DeleteTicketType(TicketType ticketType)
         {
 
@@ -178,7 +181,7 @@ namespace BADProject.viewmodel
             else { return; }
         }
 
-
+        //opens up a window to enter new tickettype data
         private void ShowAddType()
         {
             AddTicketType ticketTypeView = new AddTicketType();
@@ -186,6 +189,7 @@ namespace BADProject.viewmodel
             ticketTypeView.ShowDialog();
         }
 
+        //"refreshes" the lists after completing an insert or update
         void AddTicketTypeVM_OnComplete(object sender)
         {
             TicketTypeList = TicketType.GetAllTicketTypes();

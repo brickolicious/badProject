@@ -126,6 +126,7 @@ namespace ClassLibraryModels
             null, true);
         }
 
+        //gets a list of all the contacts
         public static ObservableCollection<ContactPerson> GetAllContacts() {
             ObservableCollection<ContactPerson> contactCollection = new ObservableCollection<ContactPerson>();
 
@@ -161,7 +162,7 @@ namespace ClassLibraryModels
             return contactCollection;
         }
 
-
+        //gets a list of contactpersons whom have a specific jobrole (jobrole being the contacttype)
         public static ObservableCollection<ContactPerson> GetContactPersonsByJobrole(int jobroleID) {
             ObservableCollection<ContactPerson> colContPer = new ObservableCollection<ContactPerson>();
 
@@ -203,7 +204,7 @@ namespace ClassLibraryModels
             return colContPer;
         }
 
-
+        //returns a contactperson object according to the name that was given
         public static ObservableCollection<ContactPerson> GetContactByName(string strName) {
             ObservableCollection<ContactPerson> contColl = new ObservableCollection<ContactPerson>();
 
@@ -241,6 +242,7 @@ namespace ClassLibraryModels
             return contColl;
         }
 
+        //adds contact to the database
         public static void AddTheContact(ContactPerson contact)
         {
             try
@@ -267,6 +269,7 @@ namespace ClassLibraryModels
 
         }
 
+        //updates a contact
         public static void UpdateContact(ContactPerson person) {
 
             try
@@ -293,6 +296,7 @@ namespace ClassLibraryModels
 
         }
 
+        //removes a contact from the database based on his id
         public static void DeleteContact(int contactID) {
             try
             {

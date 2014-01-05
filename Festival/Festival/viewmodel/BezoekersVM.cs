@@ -83,7 +83,6 @@ namespace BADProject.viewmodel
             }
         }
 
-
         public ICommand DeleteCommand
         {
             get
@@ -110,9 +109,7 @@ namespace BADProject.viewmodel
         public ICommand PrintOrderCommand
         {
             get { return new RelayCommand<Ticket>(PrintOrder); }
-        }
-
-        
+        }    
         #endregion
 
         #region commandFunctions

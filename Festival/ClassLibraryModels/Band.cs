@@ -79,7 +79,7 @@ namespace ClassLibraryModels
         private string _description;
         
         [Required]
-        [StringLength(150, MinimumLength = 3, ErrorMessage = "Tussen de 3 en 250 karakters bevatten ")]
+        [StringLength(500, MinimumLength = 3, ErrorMessage = "Tussen de 3 en 350 karakters bevatten ")]
         public string Description
         {
             get { return _description; }
@@ -136,8 +136,7 @@ namespace ClassLibraryModels
             null, true);
         }
 
-
-
+        //returns a collection with all the bands as objects
         public static ObservableCollection<Band> GetBands() {
 
             ObservableCollection<Band> bandsCol = new ObservableCollection<Band>();
@@ -181,7 +180,7 @@ namespace ClassLibraryModels
             return bandsCol;
         }
 
-
+        //returns a band based on the id that was given
         public static Band GetBandByID(int bandID)
         {
             Band tempBand = new Band();
@@ -222,7 +221,8 @@ namespace ClassLibraryModels
 
         }
 
-
+        //returns a byte array for an image in a certain path
+        //experimental methode
         private static byte[] GetBytes(string str)
         {
             byte[] bytes = new byte[str.Length * sizeof(char)];
@@ -230,9 +230,7 @@ namespace ClassLibraryModels
             return bytes;
         }
 
-
-
-        
+        //removes a band based on its id
         public static void DeleteBand(int id) {
 
             try
@@ -250,9 +248,8 @@ namespace ClassLibraryModels
             }
         }
 
-
-
-
+        //given a path to a file this function wil return an its contents as a byte array
+        //used to convert images to a byte array for storage in the database
         public static byte[] GetPhoto(string path)
         {
             FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);

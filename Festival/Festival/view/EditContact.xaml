@@ -50,7 +50,7 @@
         <TextBox x:Name="txtCompany" Grid.Column="2" Grid.Row="2" Text="{Binding SelectedContactStatic.Company,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TabIndex="2"/>
 
         <!--by ref selectedItem-->
-        <ComboBox x:Name="cboJobRole" Grid.Column="2" Grid.Row="3" ItemsSource="{Binding TypeList}" DisplayMemberPath="Name" SelectedIndex="{Binding ContactTypePosition,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TabIndex="3"/>
+        <ComboBox x:Name="cboJobRole" Grid.Column="2" Grid.Row="3" ItemsSource="{Binding TypeList}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedContactStatic.JobRole,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TabIndex="3"/>
         <TextBox x:Name="txtPlace" Grid.Column="2" Grid.Row="4" Text="{Binding SelectedContactStatic.City,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TabIndex="4"/>
         <TextBox x:Name="txtEmail" Grid.Column="2" Grid.Row="5" Text="{Binding SelectedContactStatic.Email,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TabIndex="5"/>
         <TextBox x:Name="txtPhone" Grid.Column="2" Grid.Row="6" Text="{Binding SelectedContactStatic.Phone,ValidatesOnExceptions=True,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" TabIndex="6"/>

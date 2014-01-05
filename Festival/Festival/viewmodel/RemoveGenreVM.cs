@@ -39,6 +39,8 @@ namespace BADProject.viewmodel
             UpdateProps();
         }
 
+
+        //"refreshes" the lists after completing an insert or update
         public static event Update OnComplete;
         private void UpdateProps()
         {

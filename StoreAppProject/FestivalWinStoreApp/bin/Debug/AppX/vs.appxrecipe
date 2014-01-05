@@ -16,17 +16,17 @@
     <AppXManifest Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalWinStoreApp\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-12-28T00:32:00.768</Modified>
+      <Modified>2014-01-05T13:06:25.604</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalWinStoreApp\bin\Debug\FestivalWinStoreApp.exe">
       <PackagePath>FestivalWinStoreApp.exe</PackagePath>
-      <Modified>2013-12-28T00:34:24.006</Modified>
+      <Modified>2014-01-05T13:57:29.159</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalWinStoreApp\bin\Debug\FestivalWinStoreApp.pdb">
       <PackagePath>FestivalWinStoreApp.pdb</PackagePath>
-      <Modified>2013-12-28T00:34:23.984</Modified>
+      <Modified>2014-01-05T13:57:29.135</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\packages\Facebook.6.4.2\lib\win8\Facebook.dll">
       <PackagePath>Facebook.dll</PackagePath>
@@ -34,11 +34,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppPortLibrary\bin\Debug\StoreAppPortLibrary.dll">
       <PackagePath>StoreAppPortLibrary.dll</PackagePath>
-      <Modified>2013-12-28T00:31:57.289</Modified>
+      <Modified>2014-01-05T13:02:32.368</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\StoreAppPortLibrary\bin\Debug\StoreAppPortLibrary.pdb">
       <PackagePath>StoreAppPortLibrary.pdb</PackagePath>
-      <Modified>2013-12-28T00:31:57.268</Modified>
+      <Modified>2014-01-05T13:02:32.295</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Bart\SkyDrive\2NMCT3\8.Opdrachten\BAD\StoreAppProject\FestivalWinStoreApp\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>

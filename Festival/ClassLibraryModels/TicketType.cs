@@ -95,6 +95,7 @@ namespace ClassLibraryModels
             null, true);
         }
 
+        //return all tickettypes
         public static ObservableCollection<TicketType> GetAllTicketTypes() { 
             ObservableCollection<TicketType> typesColl = new ObservableCollection<TicketType>();
 
@@ -125,7 +126,7 @@ namespace ClassLibraryModels
             
         }
 
-        //aangepast naar nullable type
+        //returns a ticket type corresponding with the give id
         public static TicketType GetTicketTypeByID(int? typeID) {
             TicketType tempType = new TicketType();
 
@@ -151,6 +152,7 @@ namespace ClassLibraryModels
             return tempType;
         }
 
+        //returns the amount of tickets that have been ordered from the given type
         public static int AantalBesteldeTicketsPerType(int ticketTypeID){
 
             int iAantal = 0;
@@ -178,6 +180,7 @@ namespace ClassLibraryModels
             return iAantal;
         }
 
+        //returns the available tickets for the given type
         public static int AvailableTicketsForType(int ticketTypeID)
         {
 
@@ -193,6 +196,8 @@ namespace ClassLibraryModels
 
                 foreach (IDataRecord record in reader)
                 {
+
+                    //check else theres a crash when there havent been any orders for this type
                     if (reader[0] != System.DBNull.Value)
                     {
                         iAantal = (int)reader[0];
@@ -217,6 +222,7 @@ namespace ClassLibraryModels
             return iAantal;
         }
 
+        //inserts new ticket into the database
         public static void AddTicketType(TicketType ticketType) {
 
             try
@@ -234,6 +240,7 @@ namespace ClassLibraryModels
             }
         }
 
+        //removes the ticketype and the orders placed with this type, because it wouldnt wake sense the have orders off tickets that dont exist
         public static void DeleteTicketTypeAndOrdersPlacedWithThisType(int ticketTypeID) {
 
             try

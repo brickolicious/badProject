@@ -17,6 +17,8 @@ namespace BADProject.viewmodel
             ContactToAdd = new ContactPerson();
         }
 
+
+        #region props
         private ObservableCollection<ContactPersonType> _types;
 
         public  ObservableCollection<ContactPersonType> TypeList
@@ -34,7 +36,7 @@ namespace BADProject.viewmodel
             get { return _contact; }
             set { _contact = value; }
         }
-
+        #endregion
 
 
         public ICommand AddContactAction
@@ -50,7 +52,7 @@ namespace BADProject.viewmodel
 
 
 
-
+        //updates lists in other VM
         public static event Update OnComplete;
         private void UpdateProps()
         {

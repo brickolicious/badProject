@@ -13,7 +13,7 @@ namespace ClassLibraryModels
     public class ImgConverter : IValueConverter
     {
 
-
+        //often called in XAML to convert byte[]`s to images
         object IValueConverter.Convert(object value,Type targetType,object parameter,System.Globalization.CultureInfo culture)
         {
             if (value != null && value is byte[])

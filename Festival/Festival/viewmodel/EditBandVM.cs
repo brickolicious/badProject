@@ -23,7 +23,7 @@ namespace BADProject.viewmodel
             //SelectedBandNonStatic = new Band();
         }
 
-
+        #region props
         private static Band _selected ;
 
         public static Band SelectedBand
@@ -58,33 +58,26 @@ namespace BADProject.viewmodel
             get { return _pic; }
             set { _pic = value; OnPropertyChanged("Pic"); }
         }
-        
+        #endregion
 
-
+        #region commands
         public ICommand ChoosePictureCommand {
 
             get { return new RelayCommand(GetPicture); }
         
         }
 
-        private void GetPicture()
+        public ICommand FacebookCommand
         {
-            OpenFileDialog oFD = new OpenFileDialog();
-            oFD.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            oFD.Filter = "jpg files (*.jpg)|*.jpg|All files (*.*)|*.*";
-            oFD.Title = "Please select an image for your band.";
-            string fileName;
-            if (oFD.ShowDialog() == true)
-            {
 
-                fileName = oFD.FileName;
-                this.SelectedBandNonStatic = SelectedBand;
-                Pic = Band.GetPhoto(fileName);
-                this.SelectedBandNonStatic.Picture = Band.GetPhoto(fileName);
-                //Photo.Source = new ImageSourceConverter().ConvertFromString(fileName) as ImageSource;
-             
-            }
+            get { return new RelayCommand(ShowFacebook); }
 
+        }
+
+        public ICommand TwitterCommand
+        {
+
+            get { return new RelayCommand(ShowTwitter); }
 
         }
 
@@ -92,6 +85,16 @@ namespace BADProject.viewmodel
             get { return new RelayCommand(SaveChanges,SelectedBand.IsValid); }
         }
 
+        public ICommand RemoveBand
+        {
+
+            get { return new RelayCommand(RemoveBandAction); }
+
+        }
+
+        #endregion
+
+        //save changes made to a band
         private void SaveChanges()
         {
             //MessageBox.Show("bla");
@@ -107,12 +110,7 @@ namespace BADProject.viewmodel
             OnComplete(this);
         }
 
-        public ICommand RemoveBand {
-
-            get { return new RelayCommand(RemoveBandAction); }
-        
-        }
-
+        //calls functions to remove the band
         private void RemoveBandAction()
         {
             MessageBoxResult result = MessageBox.Show("Removing this band will also remove all the line-up elements coupled to this band.\nAre you sure?", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -124,12 +122,29 @@ namespace BADProject.viewmodel
             else { return; }
         }
 
-        public ICommand FacebookCommand {
+        //open filedialog to get image path
+        private void GetPicture()
+        {
+            OpenFileDialog oFD = new OpenFileDialog();
+            oFD.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            oFD.Filter = "jpg files (*.jpg)|*.jpg|All files (*.*)|*.*";
+            oFD.Title = "Please select an image for your band.";
+            string fileName;
+            if (oFD.ShowDialog() == true)
+            {
 
-            get { return new RelayCommand(ShowFacebook); }
-        
+                fileName = oFD.FileName;
+                this.SelectedBandNonStatic = SelectedBand;
+                Pic = Band.GetPhoto(fileName);
+                this.SelectedBandNonStatic.Picture = Band.GetPhoto(fileName);
+                //Photo.Source = new ImageSourceConverter().ConvertFromString(fileName) as ImageSource;
+
+            }
+
+
         }
 
+        //open link to socialmedia of band called when clicked on the icons
         private void ShowFacebook()
         {
             try
@@ -141,16 +156,6 @@ namespace BADProject.viewmodel
                 Console.WriteLine(ex.Message);
             }
         }
-
-
-
-        public ICommand TwitterCommand
-        {
-
-            get { return new RelayCommand(ShowTwitter); }
-
-        }
-
         private void ShowTwitter()
         {
             try

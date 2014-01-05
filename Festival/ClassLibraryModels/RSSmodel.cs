@@ -13,11 +13,14 @@ namespace ClassLibraryModels
         
         public int ID { get; set; }
         
+        [StringLength(50,MinimumLength=3)]
         [Required]
         public string Title { get; set; }
 
         [Required]
         public string RSScontent { get; set; }
+
+        [Required]
         public string AlternativeURI { get; set; }
 
         [Required]

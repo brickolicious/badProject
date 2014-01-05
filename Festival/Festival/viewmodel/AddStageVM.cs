@@ -42,7 +42,8 @@ namespace BADProject.viewmodel
 
 
 
-
+        //updaten van lists in ander VM
+        //delegate gaat zorgen dat oncomplete event in andere VM afvuurt
         public static event Update OnComplete;
         private void UpdateProps()
         {

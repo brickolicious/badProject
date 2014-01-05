@@ -36,7 +36,7 @@ namespace BADProject.viewmodel
             UpdateProps();
         }
 
-
+        //updates lists in other VM
         public static event Update OnComplete;
         private void UpdateProps()
         {

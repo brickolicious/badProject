@@ -20,8 +20,8 @@ namespace BADProject.viewmodel
             LineUpToAdd.Date = Festival.GetFestivalDays()[0];
     }
 
-
-    private LineUp _lineup;
+        #region props
+        private LineUp _lineup;
 
 	public LineUp LineUpToAdd
 	{
@@ -46,6 +46,7 @@ namespace BADProject.viewmodel
         set { _stages = value; }
     }
 
+        #endregion
 
     public ICommand AddToLineup {
 
@@ -53,6 +54,8 @@ namespace BADProject.viewmodel
 
     }
 
+    //adds line up to database
+    //because the prop for the times is string the time needs to be cut up to fit
     private void AddLineup()
     {
 
@@ -85,14 +88,12 @@ namespace BADProject.viewmodel
         #endregion
 
 
-        
-
         LineUp.AddLineUp(LineUpToAdd);
 
         UpdateProps();
     }
 
-
+    //updates lists in other VM
     public static event Update OnComplete;
     private void UpdateProps()
     {

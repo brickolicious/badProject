@@ -19,6 +19,8 @@ namespace BADProject.viewmodel
             
         }
 
+
+        #region props
         private int _type;
 
         public int ContactTypePosition
@@ -43,7 +45,7 @@ namespace BADProject.viewmodel
         public ContactPerson SelectedContact
         {
             get { return _contact; }
-            set { _contact = value; SelectedContactStatic = _contact; OnPropertyChanged("SelectedContact"); }
+            set { _contact = value; SelectedContactStatic = _contact; if (SelectedContactStatic != null) { SelectedContactStatic.JobRole = null; }; OnPropertyChanged("SelectedContact"); }
         }
 
         private ObservableCollection<ContactPersonType>  _types;
@@ -55,7 +57,7 @@ namespace BADProject.viewmodel
                 return _types; }
             set { _types = value; }
         }
-
+        #endregion
 
         public ICommand EditContactAction
         {

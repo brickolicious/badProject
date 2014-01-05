@@ -17,7 +17,7 @@ namespace BADProject.viewmodel
            //SelectedTicket = new Ticket();
         }
 
-
+        #region props
         private int _indexOfCBO;
 
         public int TicketTypePosition
@@ -54,13 +54,14 @@ namespace BADProject.viewmodel
                 return _typeList; }
             set { _typeList = value; }
         }
-        
 
+        #endregion
 
         public ICommand EditActionCommand {
             get { return new RelayCommand(EditOrder, SelectedTicketStatic.IsValid); }
         }
 
+        //calls functions in model te edit the order
         private void EditOrder()
         {
             Ticket updateTicket = SelectedTicketStatic;
@@ -70,7 +71,8 @@ namespace BADProject.viewmodel
         }
 
 
-
+        //experimental setting cbo item XAML way doenst work
+        //one does not simply set comboboxes
         public void SetIndexForComboBoxType()
         {
             //lukt niet om via XAML dus int prop binden aan index

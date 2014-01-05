@@ -29,7 +29,8 @@ namespace FestivalSite.Controllers
             return View("AdminIndex",adminVM);
         }
 
-        //[HttpPost]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
         public ActionResult OpslaanRSS(RSSmodel rssmodel) {
             
             try
@@ -37,7 +38,7 @@ namespace FestivalSite.Controllers
                 DbParameter titlePar = DataBase.AddParameter("@title", rssmodel.Title);
                 DbParameter contentPar = DataBase.AddParameter("@content", rssmodel.RSScontent);
                 DbParameter uriPar = DataBase.AddParameter("@uri", rssmodel.AlternativeURI);
-                DbParameter itemIDPar = DataBase.AddParameter("@itemID", rssmodel.ItemID);
+                DbParameter itemIDPar = DataBase.AddParameter("@itemID", "festivalItem" /*rssmodel.ItemID*/);
                 DbParameter datePar = DataBase.AddParameter("@date", DateTime.Now);
                 string sql = "INSERT INTO RSSfeed (Title,RSScontent,AlternativeURI,ItemID,ItemDate) VALUES (@title,@content,@uri,@itemID,@date)";
                 int iModifiedData = DataBase.ModifyData(sql,titlePar,contentPar,uriPar,itemIDPar,datePar);

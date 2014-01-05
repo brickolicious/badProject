@@ -104,7 +104,6 @@ namespace BADProject.viewmodel
             Bands = Band.GetBands();
         }
 
-
         public void ToonAddBand() {
 
             AddBand addBandWindow = new AddBand();
@@ -120,20 +119,12 @@ namespace BADProject.viewmodel
             UpdatePropsForBands();
         }
 
-        
-
-        
-
         private void AddBandAction(Band band)
         {
             Genre.InsertBandAndOrAttachGenres(band);
             Bands = Band.GetBands();
         }
         
-
-
-        
-
         private void DeleteBand(Band band)
         {
             MessageBoxResult result = MessageBox.Show("Removing this band will also remove all the line-up elements coupled to this band.\nAre you sure?", "Delete Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -145,8 +136,6 @@ namespace BADProject.viewmodel
             }
             else { return; }
         }
-
-        
 
         private void EditSelectedBand(Band band)
         {
@@ -161,23 +150,21 @@ namespace BADProject.viewmodel
             UpdatePropsForBands();
         }
 
-        
-
         private void EditAction(Band band)
         {
             
             Genre.InsertBandAndOrAttachGenres(band);
         }
 
-        #endregion
-
-
-
         private void UpdatePropsForBands() {
 
             Bands = Band.GetBands();
         
         }
+        #endregion
+
+
+        
 
 
     }

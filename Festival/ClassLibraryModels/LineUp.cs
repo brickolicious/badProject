@@ -108,6 +108,8 @@ namespace ClassLibraryModels
             null, true);
         }
 
+        //returns a collection of lineups by stage and date
+        //used to fillup the stages in getAllStages
         public static ObservableCollection<LineUp> GetLineupByStageAndDate(int stageID,DateTime day) {
             ObservableCollection<LineUp> lineUpCollectie = new ObservableCollection<LineUp>();
             try
@@ -175,7 +177,8 @@ namespace ClassLibraryModels
              
         }
 
-
+        //gets all lineup elements for a stage not taking the day into account.
+        //usefull for rest services -> copied to the portable library
         public static ObservableCollection<LineUp> GetLineUpForStage(int stageID) {
             ObservableCollection<LineUp> linCol = new ObservableCollection<LineUp>();
 
@@ -209,7 +212,7 @@ namespace ClassLibraryModels
             return linCol;
         }
             
-
+        //adds a lineup element to the database
         public static void AddLineUp(LineUp lineup) {
 
             try
@@ -230,7 +233,8 @@ namespace ClassLibraryModels
 
         }
 
-
+        //returns a collection of lineups 
+        //old code
         public static ObservableCollection<LineUp> GetBandsByLineUpIDAndDate(int id, DateTime time)
         {
             ObservableCollection<LineUp> tempCol = new ObservableCollection<LineUp>();
@@ -257,6 +261,7 @@ namespace ClassLibraryModels
             return tempCol;
         }
 
+        //removes a lineup element from the database
         public static void DeleteLineUpElement(int lineupID) {
 
             try
@@ -273,7 +278,7 @@ namespace ClassLibraryModels
 
         }
 
-
+        //gets all the lineup elements that have a certain band
         public static ObservableCollection<LineUp> GetLineUpForBand(int bandID) {
             ObservableCollection<LineUp> lstLineup = new ObservableCollection<LineUp>();
 

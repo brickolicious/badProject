@@ -17,6 +17,8 @@ namespace BADProject.viewmodel
             Type = new TicketType();
         }
 
+
+
         private static TicketType typename;
 
         public static TicketType Type
@@ -39,7 +41,7 @@ namespace BADProject.viewmodel
             UpdateProps();
         }
 
-
+        //update van lists in ander VM
         public static event Update OnComplete;
         private void UpdateProps()
         {

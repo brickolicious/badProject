@@ -358,7 +358,7 @@ footer {
 #addRss {
     display:block;
     padding:10px;
-    margin-left:2%;
+    margin-left:6%;
     width:90%;
     text-align:center;
     background:#3398AD;
@@ -366,6 +366,9 @@ footer {
     margin-top:5%;
     color:#FFF;
 }
+    #addRss textarea {
+    height:60px;
+    }
 
 .ticketVerkoop {
     width:95%;
@@ -840,7 +843,7 @@ footer {
 
 #addRss {
     padding:10px;
- 
+    margin-left:10%;
     text-align:center;
     background:#FFF;
     height:80%;
@@ -1261,7 +1264,7 @@ footer {
 
 #addRss {
     padding:10px;
- 
+    margin-left:0%;
     text-align:center;
     background:#FFF;
     height:20%;

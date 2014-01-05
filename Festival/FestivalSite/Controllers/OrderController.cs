@@ -37,6 +37,7 @@ namespace FestivalSite.Controllers
             return View("OrderIndex",ordervm);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult PlaceOrder(OrderVM orderVM)
         {

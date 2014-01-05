@@ -17,7 +17,7 @@ namespace BADProject.viewmodel
         {
             SearchList = Ticket.GetAllVisitors();
         }
-
+        #region props
         private string _name;
 
         public string Name
@@ -33,8 +33,8 @@ namespace BADProject.viewmodel
             get { return _colTick; }
             set { _colTick = value; OnPropertyChanged("SearchList"); }
         }
-        
-        
+
+        #endregion
 
         public ICommand SearchOrderActionCommand {
 

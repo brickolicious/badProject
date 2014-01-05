@@ -90,6 +90,8 @@ namespace ClassLibraryModels
             null, true);
         }
 
+
+        //returns all the stages without any extra information
         public static ObservableCollection<Stage> GetAllStages()
         {
             ObservableCollection<Stage> stageCollectie = new ObservableCollection<Stage>();
@@ -117,6 +119,7 @@ namespace ClassLibraryModels
             return stageCollectie;
         }
 
+        //returns all the stages but also adds the lineup elements to that stage if the day is provided
         public static ObservableCollection<Stage> GetAllStages(DateTime day) {
             ObservableCollection<Stage> stageCollectie = new ObservableCollection<Stage>();
 
@@ -142,7 +145,7 @@ namespace ClassLibraryModels
             return stageCollectie;
         }
 
-
+        //returns the stage corresponding with the id
         public static Stage GetStageByID(int stageID)
         {
             Stage tempStage = new Stage();
@@ -169,51 +172,7 @@ namespace ClassLibraryModels
             return tempStage;
         }
 
-       /* private static Stage CreateStageWithDate(DbDataReader reader, DateTime time)
-        {
-
-            Stage stage = new Stage();
-            try
-            {
-                stage.ID = (int)reader["ID"];
-                stage.Name = (string)reader["Name"];
-                stage.LineUpByStage = LineUp.GetBandsByLineUpIDAndDate((int)reader["ID"], time);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return stage;
-        }
-        
-        public static Stage GetStageByDay(DateTime day)
-        {
-            Stage tempStage = new Stage();
-            try
-            {
-                DbParameter dayPar = DataBase.AddParameter("@day", day);
-                DbDataReader reader = DataBase.GetData("SELECT * FROM Stage");
-                foreach (IDataRecord record in reader)
-                {
-
-                    tempStage.ID = (int)reader["ID"];
-                    tempStage.Name = (string)reader["Name"];
-
-                }
-
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine(ex.Message);
-
-            }
-
-            return tempStage;
-        }*/
-
+        //removes the stage and its lineup based on the stageID
         public static void RemoveStageAndItsLineup(int stageID) {
 
             try
@@ -228,6 +187,7 @@ namespace ClassLibraryModels
             }
         }
 
+        //inserts a stage into the database
         public static void AddStageAction(string strStageName)
         {
 

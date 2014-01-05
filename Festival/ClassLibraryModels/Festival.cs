@@ -79,6 +79,7 @@ namespace ClassLibraryModels
             null, true);
         }
 
+        //gets a collection of days based on the interval between the start and end property
         public static ObservableCollection<DateTime> GetFestivalDays()
         {
 
@@ -92,8 +93,7 @@ namespace ClassLibraryModels
             return dates;
         }
 
-
-
+        //gets the days based on the values that were set in the database
         public static ObservableCollection<Festival> FestivalDatumsOphalen()
         {
             ObservableCollection<Festival> festivalCollectie = new ObservableCollection<Festival>();
@@ -122,6 +122,7 @@ namespace ClassLibraryModels
 
         }
 
+        //updates the start day to the startday+1
         public static void AddDay()
         {
             try
@@ -140,6 +141,9 @@ namespace ClassLibraryModels
             }
         }
 
+        //sets the start day in the database but also sets the end day equal to the startday+1
+        //there is a check if you remove day that the end day cant be lower than the start day
+        //by setting the end day to start+1 you prevent the user from ever getting a lower end day then start day
         public static void SetStartDay(DateTime date) {
 
 
@@ -162,9 +166,8 @@ namespace ClassLibraryModels
         
         }
 
-
-
-
+        //this function gets the length of the list of days there are and if this list has only 1 day left it warns the user and returns so you cant get an end date lower then start
+        //removes a day, by doing endday = endday-1
         public static void RemoveDay(int listLenght)
         {
             try
